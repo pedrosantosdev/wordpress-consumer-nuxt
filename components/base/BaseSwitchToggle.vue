@@ -46,7 +46,7 @@ export default Vue.extend({
   },
   computed: {
     keyId() {
-      return `${this.$props.id}-input`
+      return this.id + '-input'
     },
   },
   methods: {

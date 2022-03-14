@@ -23,7 +23,8 @@
       "@nuxtjs/axios",
       "@types/node",
       "@nuxtjs/date-fns",
-      "~/types"
+      "@/types",
+      "@types/jest"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
