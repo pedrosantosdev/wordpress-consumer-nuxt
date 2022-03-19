@@ -24,7 +24,8 @@
       "@types/node",
       "@nuxtjs/date-fns",
       "@/types",
-      "@types/jest"
+      "@types/jest",
+      "@nuxtjs/auth-next",
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
