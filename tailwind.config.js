@@ -6,5 +6,8 @@ module.exports = {
     ],
     borderColor: ["dark"],
     textColor: ["dark"]
-  }
+  },
+  plugins: [
+    require('@tailwindcss/line-clamp')
+  ]
 };
