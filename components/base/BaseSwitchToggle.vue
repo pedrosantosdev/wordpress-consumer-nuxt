@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import Vue from 'vue'
 
 export default Vue.extend({
   name: 'BaseSwitchToggle',
@@ -41,7 +41,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      currentState: this.$props.defaultState
+      currentState: this.$props.defaultState,
     }
   },
   computed: {
@@ -52,10 +52,10 @@ export default Vue.extend({
   methods: {
     onChangeToggle() {
       if (this.$props.onToggleSwitch) {
-          this.$props.onToggleSwitch(this.$data.currentState)
-        }
-    }
-  }
+        this.$props.onToggleSwitch(this.$data.currentState)
+      }
+    },
+  },
 })
 </script>
 <style lang="postcss" scoped>

@@ -1,5 +1,5 @@
 <template>
-  <login-card-app/>
+  <login-card-app />
 </template>
 
 <script lang="ts">

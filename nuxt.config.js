@@ -18,7 +18,7 @@ export default {
   plugins: [],
 
   router: {
-    middleware: [ 'auth' ]
+    middleware: ['auth'],
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -29,14 +29,17 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/color-mode-module
-    "@nuxtjs/color-mode",
+    '@nuxtjs/color-mode',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     // https://github.com/nuxt-community/fontawesome-module
-    ['@nuxtjs/fontawesome', {
-      component: 'fa',
-      suffix: true,
-    }],
+    [
+      '@nuxtjs/fontawesome',
+      {
+        component: 'fa',
+        suffix: true,
+      },
+    ],
     // https://github.com/nuxt-community/date-fns-module
     '@nuxtjs/date-fns',
   ],
@@ -44,10 +47,10 @@ export default {
   tailwindcss: {
     exposeConfig: true,
     viewer: false,
-    injectPosition: 0
+    injectPosition: 0,
   },
   colorMode: {
-    classSuffix: ""
+    classSuffix: '',
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,24 +60,25 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://auth.nuxtjs.org/
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
   ],
 
   auth: {
     strategies: {
-      local: { token: {
-        property: 'token',
-        maxAge: 1 * 1000 * 60 * 60 * 24
+      local: {
+        token: {
+          property: 'token',
+          maxAge: 1 * 1000 * 60 * 60 * 24,
+        },
+        endpoints: {
+          login: { url: '/login', method: 'post' },
+          // logout: { url: '/logout', method: 'post' },
+          user: false,
+        },
+        user: {
+          property: false,
+        },
       },
-      endpoints: {
-        login: { url: '/login', method: 'post' },
-        // logout: { url: '/logout', method: 'post' },
-        user: false
-      },
-      user: {
-        property: false
-      },
-    },
     },
   },
 
