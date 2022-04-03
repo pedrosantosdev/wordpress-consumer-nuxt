@@ -6,7 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   .main-content {
-    @apply min-h-screen max-h-full flex justify-start items-center bg-white dark:bg-gray-600;
+    @apply bg-white dark:bg-gray-600;
+    @apply min-h-screen max-h-full flex justify-start items-center gap-5 
   }
 }
 
