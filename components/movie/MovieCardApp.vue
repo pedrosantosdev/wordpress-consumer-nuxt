@@ -28,7 +28,7 @@
           <base-switch-toggle
             :id="`${movie.id}-sw`"
             :key="`${movie.id}-sw`"
-            :value="movie.needSync"
+            :default-state="movie.needSync"
             :on-toggle-switch="toggleSwitch"
           />
         </div>

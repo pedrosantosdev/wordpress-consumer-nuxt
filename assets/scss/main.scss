@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  #__layout {
-    @apply min-h-screen max-h-full flex flex-col justify-center items-center bg-white dark:bg-gray-600;
+  .main-content {
+    @apply min-h-screen max-h-full flex justify-start items-center bg-white dark:bg-gray-600;
   }
 }
 
