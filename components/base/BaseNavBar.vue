@@ -1,6 +1,6 @@
 <template>
-  <div class="relative self-start bg-white dark:bg-gray-800">
-    <div class="w-64 h-screen">
+  <div class="fixed md:relative md:w-full md:h-14 self-start bg-white dark:bg-gray-800">
+    <div class="w-64 h-screen md:w-full md:h-14">
       <!-- <div class="flex items-center justify-start mx-6 mt-10">
           <img class="h-10" src="/icons/rocket.svg" />
           <span
@@ -9,13 +9,13 @@
             Tail-Kit
           </span>
         </div> -->
-      <nav class="mt-10 px-6">
+      <nav class="mt-10 px-6  md:mt-0 md:flex md:flex-row">
         <NuxtLink
           v-for="link in links"
           :key="link.path"
           :to="link.path"
           :class="link.cssClass"
-          class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200 text-gray-600 dark:text-gray-400"
+          class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 md:my-1 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200 text-gray-600 dark:text-gray-400"
           href="#"
         >
           <!-- <svg

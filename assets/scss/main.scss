@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   .main-content {
     @apply bg-white dark:bg-gray-600;
-    @apply min-h-screen max-h-full flex justify-start items-center gap-5 
+    @apply min-h-screen max-h-full flex flex-row md:flex-col justify-start items-center gap-5 
   }
 }
 

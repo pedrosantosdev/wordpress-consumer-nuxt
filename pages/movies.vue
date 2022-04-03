@@ -1,6 +1,6 @@
 <template>
-  <div class="p-10">
-    <div class="mb-4">
+  <div class="px-10 pb-5 w-full">
+    <div class="mb-4 relative">
       <input
         v-model="query"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -8,6 +8,9 @@
         @input="debouncedHandler"
         @keydown.enter="searchMovie"
       />
+      <div class="absolute top-0 right-0 cursor-pointer py-2 px-4" @click.once="clearQuery"> 
+        <fa-icon :icon="inputIcon"  class="text-black"/>
+      </div>
     </div>
     <transition>
       <movie-card-loading-app v-if="isLoading && !hasError" />
@@ -35,6 +38,7 @@
 </template>
 
 <script lang="ts">
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import Vue from 'vue'
 import { debounce } from '@/helpers/utils'
 import BaseErrorCard from '~/components/base/card/BaseErrorCard.vue'
@@ -52,19 +56,22 @@ export default Vue.extend({
   },
   computed: {
     getMovies() {
-      return this.$store.state.movies.list
+      return this.$store.getters['movies/getMoviesList']
     },
     getSearchMovies() {
-      return this.$store.state.movies.queryResultList
+      return this.$store.getters['movies/getSearchMoviesList']
     },
     isLoading() {
-      return this.$store.state.movies.isLoading
+      return this.$store.getters['movies/isLoading']
     },
     hasError() {
-      return this.$store.state.movies.hasError
+      return this.$store.getters['movies/hasError']
     },
+    inputIcon() {
+      return faTimes
+    }
   },
-  beforeMount() {
+  mounted() {
     if ((this.$store.state.movies.list?.length ?? 0) === 0) {
       this.$store.dispatch('movies/get')
     }
@@ -83,6 +90,10 @@ export default Vue.extend({
     },
     addMovie(value: { id: Number }) {
       this.$store.dispatch('movies/add', value.id)
+    },
+    clearQuery() {
+      this.$data.query = ''
+      this.$store.commit('movies/setQuery', '')
     }
   },
 })

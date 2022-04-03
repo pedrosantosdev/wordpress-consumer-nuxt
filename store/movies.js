@@ -30,6 +30,21 @@ export const mutations = {
   },
 }
 
+export const getters = {
+  isLoading (state) {
+    return state.isLoading
+  },
+  hasError (state) {
+    return state.hasError
+  },
+  getMoviesList (state) {
+    return state.list
+  },
+  getSearchMoviesList (state) {
+    return state.queryResultList
+  }
+}
+
 export const actions = {
   async get({ commit }) {
     commit('setIsLoading', true)
