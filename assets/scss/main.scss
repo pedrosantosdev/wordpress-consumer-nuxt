@@ -7,7 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   .main-content {
     @apply bg-white dark:bg-gray-600;
-    @apply min-h-screen max-h-full flex flex-row md:flex-col justify-start items-center gap-5 
+    @apply min-h-screen max-h-full grid grid-flow-row grid-cols-1	 justify-center items-center gap-5;
+    grid-template-rows: max-content 1fr;
   }
 }
 
