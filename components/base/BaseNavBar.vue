@@ -66,7 +66,6 @@ export default Vue.extend({
       return this.$data.isActive
     },
     isMobile() {
-      console.log(window.innerWidth < 768)
       if (process.client) {
         // eslint-disable-next-line no-unused-expressions
         return window.innerWidth < 768
@@ -110,7 +109,7 @@ a.nuxt-link-active {
 @media (max-width: 768px) {
   .base-nav-bar-container {
     @apply -left-full;
-    transition: left .6s ease;
+    transition: left 0.6s ease;
     &.active {
       @apply left-0;
     }

@@ -8,8 +8,11 @@
         @input="debouncedHandler"
         @keydown.enter="searchMovie"
       />
-      <div class="absolute top-0 right-0 cursor-pointer py-2 px-4" @click.prevent="clearQuery"> 
-        <fa-icon :icon="inputIcon"  class="text-black"/>
+      <div
+        class="absolute top-0 right-0 cursor-pointer py-2 px-4"
+        @click.prevent="clearQuery"
+      >
+        <fa-icon :icon="inputIcon" class="text-black" />
       </div>
     </div>
     <transition>
@@ -69,7 +72,7 @@ export default Vue.extend({
     },
     inputIcon() {
       return faTimes
-    }
+    },
   },
   mounted() {
     if ((this.$store.state.movies.list?.length ?? 0) === 0) {
@@ -85,7 +88,7 @@ export default Vue.extend({
     searchMovie() {
       this.$store.dispatch('movies/search', this.$data.query)
     },
-    toggleMovie(value: { id: Number, needSync: Boolean }) {
+    toggleMovie(value: { id: Number; needSync: Boolean }) {
       this.$store.dispatch('movies/toggle', value)
     },
     addMovie(value: { id: Number }) {
@@ -94,7 +97,7 @@ export default Vue.extend({
     clearQuery() {
       this.$data.query = ''
       this.$store.commit('movies/setQuery', '')
-    }
+    },
   },
 })
 </script>

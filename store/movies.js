@@ -31,18 +31,18 @@ export const mutations = {
 }
 
 export const getters = {
-  isLoading (state) {
+  isLoading(state) {
     return state.isLoading
   },
-  hasError (state) {
+  hasError(state) {
     return state.hasError
   },
-  getMoviesList (state) {
+  getMoviesList(state) {
     return state.list
   },
-  getSearchMoviesList (state) {
+  getSearchMoviesList(state) {
     return state.queryResultList
-  }
+  },
 }
 
 export const actions = {
@@ -98,7 +98,7 @@ export const actions = {
       commit('add', res.data)
     })
   },
-  async toggle({}, payload) {
+  async toggle({ _ }, payload) {
     await this.$axios.put(`movies/${payload.id}/sync`, {
       need_sync: payload.needSync,
     })

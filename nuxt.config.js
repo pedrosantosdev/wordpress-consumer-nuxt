@@ -99,7 +99,7 @@ export default {
   build: {},
 
   generate: {
-    fallback: true
+    fallback: true,
   },
   ssr: false,
   target: 'static',
