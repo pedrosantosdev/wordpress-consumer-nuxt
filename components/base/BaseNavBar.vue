@@ -66,6 +66,7 @@ export default Vue.extend({
       return this.$data.isActive
     },
     isMobile() {
+      console.log(window.innerWidth < 768)
       if (process.client) {
         // eslint-disable-next-line no-unused-expressions
         return window.innerWidth < 768
@@ -101,7 +102,10 @@ a.nuxt-link-active {
   font-weight: bold;
 }
 .base-nav-bar-icon {
-  @apply cursor-pointer flex items-center justify-center w-10;
+  &:not(.hidden) {
+    @apply flex;
+  }
+  @apply cursor-pointer items-center justify-center w-10;
 }
 @media (max-width: 768px) {
   .base-nav-bar-container {
