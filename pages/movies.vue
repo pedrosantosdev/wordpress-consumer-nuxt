@@ -8,7 +8,7 @@
         @input="debouncedHandler"
         @keydown.enter="searchMovie"
       />
-      <div class="absolute top-0 right-0 cursor-pointer py-2 px-4" @click.once="clearQuery"> 
+      <div class="absolute top-0 right-0 cursor-pointer py-2 px-4" @click.prevent="clearQuery"> 
         <fa-icon :icon="inputIcon"  class="text-black"/>
       </div>
     </div>
