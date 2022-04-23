@@ -43,8 +43,8 @@
       <nav class="mt-5 px-6 md:mt-0 md:flex md:flex-row">
         <NuxtLink
           v-for="{ label, path } in links"
-          :key="path"
-          :to="path"
+          :key="path.toString()"
+          :to="path.toString()"
           class="
             hover:text-gray-800
             hover:bg-gray-100

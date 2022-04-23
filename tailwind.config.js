@@ -3,11 +3,11 @@ module.exports = {
   theme: {
     extend: {},
   },
-  darkMode: "class",
+  darkMode: 'class',
   variants: {
-    backgroundColor: ["dark"],
-    borderColor: ["dark"],
-    textColor: ["dark"],
+    backgroundColor: ['dark'],
+    borderColor: ['dark'],
+    textColor: ['dark'],
   },
-  plugins: [require("@tailwindcss/line-clamp")],
-};
+  plugins: [require('@tailwindcss/line-clamp')],
+}

@@ -1,4 +1,4 @@
-export class MovieModel{
+export class MovieModel {
   id!: number
   title!: string
   overview!: string
