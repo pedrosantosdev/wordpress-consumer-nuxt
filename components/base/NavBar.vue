@@ -8,9 +8,11 @@
         type="checkbox"
         name="base-nav-bar"
       />
-      <label for="base-nav-bar" class="base-nav-bar-icon">{{
-        hamburguer
-      }}</label>
+      <label
+        for="base-nav-bar"
+        class="base-nav-bar-icon"
+        v-html="hamburguer"
+      ></label>
     </div>
     <div
       class="
@@ -37,8 +39,8 @@
           for="base-nav-bar"
           :class="{ hidden: !isMobile }"
           class="base-nav-bar-icon"
-          >{{ hamburguer }}</label
-        >
+          v-html="hamburguer"
+        ></label>
       </div>
       <nav class="mt-5 px-6 md:mt-0 md:flex md:flex-row">
         <NuxtLink

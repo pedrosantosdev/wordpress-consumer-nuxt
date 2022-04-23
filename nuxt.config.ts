@@ -11,12 +11,16 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    // TODO: Axios
+    // https://pinia.vuejs.org/ssr/nuxt.html
+    '@pinia/nuxt',
     // TODO: Auth
     // TODO: DateFns
     // TODO: FontAwesome
     // TODO: Maybe PWA
   ],
+  publicRuntimeConfig: {
+    BASE_URL: process.env.BASE_URL
+  },
   storybook: {
     // Options
   },
@@ -25,6 +29,7 @@ export default defineNuxtConfig({
       lang: 'en',
     },
   },
+  css: ['@/assets/scss/main.scss'],
   tailwindcss: {
     exposeConfig: true,
     viewer: false,

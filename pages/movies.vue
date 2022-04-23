@@ -23,8 +23,8 @@
       <div
         class="absolute top-0 right-0 cursor-pointer py-2 px-4"
         @click.prevent="clearQuery"
+        v-html="inputIcon"
       >
-        <fa-icon :icon="inputIcon" class="text-black" />
       </div>
     </div>
     <transition>
@@ -53,17 +53,17 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { times } from '@/helpers/icons'
 import { debounce } from '@/helpers/utils'
-import { storeToRefs } from 'pinia'
-import { useMoviesStore } from '~~/state/movies'
+import { useMoviesStore } from '@/state/movies'
 
 const $store = useMoviesStore()
 const {
-  getMoviesList: getMovies,
-  getSearchMoviesList: getSearchMovies,
+  list: getMovies,
   hasError,
   isLoading,
+  queryResultList: getSearchMovies,
 } = storeToRefs($store)
 
 const query = ref('')
@@ -87,7 +87,7 @@ onBeforeMount(() => {
   }, 500)
 })
 onMounted(() => {
-  if ((getMovies.value?.length ?? 0) === 0 && !$store.isLoading) {
+  if ((getMovies?.value?.length ?? 0) === 0 && !$store.isLoading) {
     $store.get()
   }
 })

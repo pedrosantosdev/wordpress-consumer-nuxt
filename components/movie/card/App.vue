@@ -21,9 +21,7 @@
         <div class="w-24 h-8">
           {{ inCinemasDate }}
         </div>
-        <div class="w-10 h-8">
-          {{ iconReady }}
-        </div>
+        <div class="w-10 h-8" v-html="iconReady"></div>
         <div class="w-14 h-8 ml-auto">
           <base-switch-toggle
             :id="`${movie.id}-sw`"

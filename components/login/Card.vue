@@ -70,7 +70,7 @@
               "
               placeholder="Your email"
             />
-            {{ times }}
+            <span v-html="times"></span>
           </div>
         </div>
         <div class="flex flex-col mb-6">
@@ -128,7 +128,7 @@
               "
               placeholder="Your password"
             />
-            {{ times }}
+            <span v-html="times"></span>
           </div>
           <p
             class="text-sm text-red-500 -bottom-6 w-full"
@@ -161,7 +161,7 @@
               rounded-lg
             "
           >
-            <div v-if="isLoading" class="spinner">{{iconSpinner}}</div>
+            <div v-if="isLoading" class="spinner" v-html="iconSpinner"></div>
             <span v-else> Login </span>
           </button>
         </div>
