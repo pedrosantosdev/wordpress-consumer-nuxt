@@ -1,5 +1,5 @@
 <template>
-  <base-default-card>
+  <base-card-default>
     <div
       class="sm:w-72 h-52 sm:h-full rounded-xl animate-pulse"
       :class="bgColor"
@@ -24,20 +24,15 @@
         ></div>
       </div>
     </div>
-  </base-default-card>
+  </base-card-default>
 </template>
 
-<script lang="ts">
-import BaseDefaultCard from '~/components/base/card/BaseDefaultCard.vue'
-export default {
-  name: 'MovieCardLoadingApp',
-  components: { BaseDefaultCard },
-  props: {
-    bgColor: {
-      type: String,
-      default: 'bg-gray-200 dark:bg-gray-600',
-      required: false,
-    },
+<script setup lang="ts">
+defineProps({
+  bgColor: {
+    type: String,
+    default: 'bg-gray-200 dark:bg-gray-600',
+    required: false,
   },
-}
+})
 </script>

@@ -1,16 +1,16 @@
-export type MovieModel = {
-  id: number
-  title: String
-  overview: String
-  image: String
-  inCinemas: String
-  hasFile: Boolean
-  needSync: Boolean
+export class MovieModel{
+  id!: number
+  title!: string
+  overview!: string
+  image!: string
+  inCinemas!: string
+  hasFile!: boolean
+  needSync!: boolean
 }
 
-export type MovieSearchModel = {
-  page: number
-  results: MovieModel[]
-  total_pages: number
-  total_results: number
+export class MovieSearchModel {
+  page!: number
+  results!: MovieModel[]
+  total_pages!: number
+  total_results!: number
 }

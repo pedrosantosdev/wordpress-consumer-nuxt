@@ -3,7 +3,19 @@
     <div class="mb-4 relative">
       <input
         v-model="query"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="
+          shadow
+          appearance-none
+          border
+          rounded
+          w-full
+          py-2
+          px-3
+          text-gray-700
+          leading-tight
+          focus:outline-none
+          focus:shadow-outline
+        "
         type="text"
         @input="debouncedHandler"
         @keydown.enter="searchMovie"
@@ -16,9 +28,9 @@
       </div>
     </div>
     <transition>
-      <movie-card-loading-app v-if="isLoading && !hasError" />
-      <base-error-card v-else-if="!isLoading && hasError"
-        >Erro ao carregar a listagem</base-error-card
+      <movie-card-loading v-if="isLoading && !hasError" />
+      <base-card-error v-else-if="!isLoading && hasError"
+        >Erro ao carregar a listagem</base-card-error
       >
       <div v-else-if="query.length" class="flex flex-wrap flex-row gap-4">
         <movie-card-app
@@ -40,64 +52,43 @@
   </div>
 </template>
 
-<script lang="ts">
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import Vue from 'vue'
+<script setup lang="ts">
+import { times } from '@/helpers/icons'
 import { debounce } from '@/helpers/utils'
-import BaseErrorCard from '~/components/base/card/BaseErrorCard.vue'
-import MovieCardApp from '~/components/movie/MovieCardApp.vue'
-import MovieCardLoadingApp from '~/components/movie/MovieCardLoadingApp.vue'
+import { storeToRefs } from 'pinia'
+import { useMoviesStore } from '~~/state/movies'
 
-export default Vue.extend({
-  name: 'MoviesPage',
-  components: { MovieCardLoadingApp, MovieCardApp, BaseErrorCard },
-  data() {
-    return {
-      query: '',
-      debouncedHandler: null,
-    }
-  },
-  computed: {
-    getMovies() {
-      return this.$store.getters['movies/getMoviesList']
-    },
-    getSearchMovies() {
-      return this.$store.getters['movies/getSearchMoviesList']
-    },
-    isLoading() {
-      return this.$store.getters['movies/isLoading']
-    },
-    hasError() {
-      return this.$store.getters['movies/hasError']
-    },
-    inputIcon() {
-      return faTimes
-    },
-  },
-  mounted() {
-    if ((this.$store.state.movies.list?.length ?? 0) === 0) {
-      this.$store.dispatch('movies/get')
-    }
-  },
-  created() {
-    this.$data.debouncedHandler = debounce(() => {
-      this.$store.dispatch('movies/search', this.$data.query)
-    }, 500)
-  },
-  methods: {
-    searchMovie() {
-      this.$store.dispatch('movies/search', this.$data.query)
-    },
-    toggleMovie(value: { id: Number; needSync: Boolean }) {
-      this.$store.dispatch('movies/toggle', value)
-    },
-    addMovie(value: { id: Number }) {
-      this.$store.dispatch('movies/add', value.id)
-    },
-    clearQuery() {
-      this.$data.query = ''
-      this.$store.commit('movies/setQuery', '')
-    },
-  },
+const $store = useMoviesStore()
+const {
+  getMoviesList: getMovies,
+  getSearchMoviesList: getSearchMovies,
+  hasError,
+  isLoading,
+} = storeToRefs($store)
+
+const query = ref('')
+let debouncedHandler = debounce()
+
+const inputIcon = computed(() => times)
+
+const clearQuery = () => {
+  query.value = ''
+  $store.query = ''
+}
+
+const searchMovie = () => $store.search(query.value)
+const toggleMovie = (value: { id: Number; needSync: Boolean }) =>
+  $store.toggle(value)
+const addMovie = (value: { id: Number }) => $store.add(value.id)
+
+onBeforeMount(() => {
+  debouncedHandler = debounce(() => {
+    $store.search(query.value)
+  }, 500)
+})
+onMounted(() => {
+  if ((getMovies.value?.length ?? 0) === 0 && !$store.isLoading) {
+    $store.get()
+  }
 })
 </script>

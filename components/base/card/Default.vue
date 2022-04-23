@@ -7,15 +7,12 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'BaseDefaultCard',
-  props: {
-    bgColor: {
+<script setup lang="ts">
+defineProps({
+  bgColor: {
       type: String,
       default: 'bg-white dark:bg-gray-800 dark:text-white',
       required: false,
     },
-  },
-}
+})
 </script>

@@ -85,9 +85,14 @@ dist
 
 # IDE / Editor
 .idea
+.vscode
 
-# Service worker
-sw.*
+# CI
+.github
+
+# Build
+.nuxt
+node_modules
 
 # macOS
 .DS_Store
