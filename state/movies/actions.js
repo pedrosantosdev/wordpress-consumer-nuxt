@@ -1,59 +1,62 @@
+import { useBaseFetch } from '@/composables/baseFetch'
+
 const actions = {
   async get() {
-    this.setIsLoading = true
-    this.setHasError = false
-    await this.$axios
-      .get('movies')
+    this.isLoading = true
+    this.hasError = false
+    await useBaseFetch('movies')
       .then((res) => {
         if (res.status === 200) {
-          this.setMovies = res.data
+          this.list = res.data
         } else {
-          this.setHasError = true
+          this.hasError = true
         }
       })
       .catch(() => {
-        this.setHasError = true
+        this.hasError = true
       })
       .finally(() => {
-        this.setIsLoading = false
+        this.isLoading = false
       })
   },
   async search(payload) {
     if (payload === this.query) {
       return
     }
-    this.setQuery = payload
+    this.query = payload
     if (payload.trim().length === 0) {
-      this.setIsLoading = false
-      this.setHasError = false
+      this.isLoading = false
+      this.hasError = false
       return
     }
-    this.setIsLoading = true
-    this.setHasError = false
-    await this.$axios
-      .get('movies/info?query=' + encodeURIComponent(payload))
+    this.isLoading = true
+    this.hasError = false
+    await useBaseFetch('movies/info?query=' + encodeURIComponent(payload))
       .then((res) => {
         if (res.status === 200) {
-          this.setQueryResultList = res.data.results
+          this.queryResultList = res.data.results
         } else {
-          this.setHasError = true
+          this.hasError = true
         }
       })
       .catch(() => {
-        this.setHasError = true
+        this.hasError = true
       })
       .finally(() => {
-        this.setIsLoading = false
+        this.isLoading = false
       })
   },
   async add(payload) {
-    await this.$axios.post('movies/' + payload).then((res) => {
-      this.add = res.data
+    await useBaseFetch(`movies/${payload}`, { method: 'POST' }).then((res) => {
+      this.list = { ...this.list, ...res.data }
     })
   },
   async toggle(payload) {
-    await this.$axios.put(`movies/${payload.id}/sync`, {
-      need_sync: payload.needSync,
+    await useBaseFetch(`movies/${payload.id}/sync`, {
+      method: 'PUT',
+      body: {
+        need_sync: payload.needSync,
+      },
     })
   },
 }
