@@ -24,8 +24,7 @@
         class="absolute top-0 right-0 cursor-pointer py-2 px-4"
         @click.prevent="clearQuery"
         v-html="inputIcon"
-      >
-      </div>
+      ></div>
     </div>
     <transition>
       <movie-card-loading v-if="isLoading && !hasError" />

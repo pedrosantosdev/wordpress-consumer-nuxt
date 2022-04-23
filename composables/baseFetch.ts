@@ -1,7 +1,5 @@
-import { env } from 'process'
-
 export const useBaseFetch = (url: string, options = {}) =>
-  $fetch(`/${env.baseUrl}/${url}`, {
+  $fetch(`${useRuntimeConfig().baseUrl}/${url}`, {
     headers: {
       Accept: 'application/json',
     },

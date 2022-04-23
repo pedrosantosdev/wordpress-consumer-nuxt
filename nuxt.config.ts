@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
@@ -18,8 +18,11 @@ export default defineNuxtConfig({
     // TODO: FontAwesome
     // TODO: Maybe PWA
   ],
-  publicRuntimeConfig: {
-    BASE_URL: process.env.BASE_URL
+  // https://v3.nuxtjs.org/guide/features/runtime-config
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.BASE_URL || '',
+    },
   },
   storybook: {
     // Options
