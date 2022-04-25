@@ -9,6 +9,10 @@ body {
     @apply bg-white dark:bg-gray-600;
     @apply min-h-screen max-h-full grid grid-flow-row grid-cols-1	 justify-center justify-items-center items-center gap-5;
     grid-template-rows: max-content 1fr;
+    @apply px-5;
+    & > :first-child {
+      @apply -mx-5;
+    }
   }
 }
 

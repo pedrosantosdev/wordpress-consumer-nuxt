@@ -15,20 +15,7 @@
       ></label>
     </div>
     <div
-      class="
-        base-nav-bar-container
-        w-64
-        h-screen
-        md:w-full
-        md:h-14
-        md:relative
-        fixed
-        top-0
-        z-10
-        md:flex md:flex-row
-        bg-white
-        dark:bg-gray-800
-      "
+      class="base-nav-bar-container"
       :class="{ active: showNavBar, hidden: hide }"
     >
       <div
@@ -108,6 +95,12 @@ a.nuxt-link-active {
     @apply flex;
   }
   @apply cursor-pointer items-center justify-center w-10;
+}
+.base-nav-bar-container {
+  @apply w-64 h-screen md:w-full md:h-14 md:relative fixed top-0 z-10 md:flex-row bg-white dark:bg-gray-800;
+  &:not(.hidden) {
+    @apply md:flex;
+  }
 }
 @media (max-width: 768px) {
   .base-nav-bar-container {

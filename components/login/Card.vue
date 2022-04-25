@@ -194,10 +194,20 @@ const onSubmit = (): void => {
   const data = new FormData()
   data.append('username', form.username.value)
   data.append('password', form.password.value)
+  // Auth Nuxt 3 Alternative
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  new Promise(() => {})
+    .then(() => {
+      useBaseAuth().setUser({ name: form.username.value })
+      router.push({
+        name: route?.query?.lastpage?.toString() ?? 'index',
+      })
+    })
+    .catch(() => {
+      hasError.value = true
+      isLoading.value = false
+    })
   // Auth Nuxt 3 Not ready
-  router.push({
-    name: route?.query?.lastpage?.toString() ?? 'index',
-  })
   // this.$auth
   //   .loginWith('local', { data })
   //   .then(() => {

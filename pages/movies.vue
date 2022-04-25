@@ -76,9 +76,9 @@ const clearQuery = () => {
 }
 
 const searchMovie = () => $store.search(query.value)
-const toggleMovie = (value: { id: Number; needSync: Boolean }) =>
+const toggleMovie = (value: { id: number; needSync: boolean }) =>
   $store.toggle(value)
-const addMovie = (value: { id: Number }) => $store.add(value.id)
+const addMovie = (value: { id: number }) => $store.add(value.id)
 
 onBeforeMount(() => {
   debouncedHandler = debounce(() => {
