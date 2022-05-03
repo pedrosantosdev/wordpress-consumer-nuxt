@@ -196,7 +196,9 @@ const onSubmit = (): void => {
   data.append('password', form.password.value)
   // Auth Nuxt 3 Alternative
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  new Promise(() => {})
+  new Promise((resolve, _) => {
+    resolve(true)
+  })
     .then(() => {
       useBaseAuth().setUser({ name: form.username.value })
       router.push({
@@ -205,6 +207,8 @@ const onSubmit = (): void => {
     })
     .catch(() => {
       hasError.value = true
+    })
+    .finally(() => {
       isLoading.value = false
     })
   // Auth Nuxt 3 Not ready

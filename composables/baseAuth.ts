@@ -2,12 +2,15 @@ import { AuthUserModel, AuthModel } from '@/types/User'
 
 export const useBaseAuth = () => {
   const key = 'auth'
+  const defaultOptions = {
+    secure: true,
+  }
   const defaultValues = () => {
-    return useCookie<AuthModel>(key).value
+    return useCookie<AuthModel>(key, defaultOptions).value
   }
 
-  let _isAuth = defaultValues().isAuth || false
-  let _user: AuthUserModel | null = defaultValues().user || null
+  let _isAuth = defaultValues()?.isAuth || false
+  let _user: AuthUserModel | null = defaultValues()?.user || null
 
   const getUser = (): AuthModel => {
     // Get Formatted Values
@@ -19,7 +22,7 @@ export const useBaseAuth = () => {
 
   const saveState = () => {
     // Save Changes on cookie
-    useCookie<AuthModel>(key).value = getUser()
+    useCookie<AuthModel>(key, defaultOptions).value = getUser()
   }
 
   const setUser = (user: AuthUserModel) => {
