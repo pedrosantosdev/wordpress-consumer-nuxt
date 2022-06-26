@@ -148,35 +148,23 @@
 import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
 
-const route = useRoute()
-const router = useRouter()
 const authStore = useAuthStore()
-const { isLoading, hasError } = storeToRefs(authStore)
+const { isLoading, hasError, isAuth, lastPage } = storeToRefs(authStore)
 const form = {
   username: ref(''),
   password: ref(''),
 }
-const redirect = (isAuth: boolean) => {
-  if (isAuth) {
-    router.push({
-      name:
-        authStore.$state.lastPage ??
-        route?.query?.lastpage?.toString() ??
-        'index',
-    })
+
+onMounted(() => {
+  if (isAuth.value) {
+    navigateTo(lastPage.value ?? '/')
   }
-}
-const unsubscribeAuthStore = authStore.$onAction(
-  ({
-    store, // store instance, same as `someStore`
-    after, // hook if the action throws or rejects
-  }) => {
-    after(() => {
-      console.log(store)
-      redirect(store.$state.isAuth)
-    })
+})
+watch(isAuth, () => {
+  if (isAuth.value) {
+    navigateTo(lastPage.value ?? '/')
   }
-)
+})
 const onSubmit = (): void => {
   const data = new FormData()
   data.append('username', form.username.value)
@@ -184,9 +172,6 @@ const onSubmit = (): void => {
   // Auth Nuxt 3 Alternative
   authStore.login(data)
 }
-onBeforeUnmount(() => {
-  unsubscribeAuthStore()
-})
 </script>
 
 <style lang="scss" scoped>

@@ -10,7 +10,7 @@ export interface AuthState extends AuthModel {
 }
 
 const state = (): AuthState => ({
-  lastPage: 'index',
+  lastPage: '/',
   isAuth: false,
   token: null,
   user: null,
