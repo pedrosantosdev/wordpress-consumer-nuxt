@@ -21,7 +21,7 @@
         <div class="w-24 h-8">
           {{ inCinemasDate }}
         </div>
-        <div class="w-10 h-8" v-html="iconReady"></div>
+        <div class="w-10 h-8"><nuxt-icon name="iconReady" fill /></div>
         <div class="w-14 h-8 ml-auto">
           <base-switch-toggle
             :id="`${movie.id}-sw`"
@@ -37,7 +37,6 @@
 
 <script setup lang="ts">
 import { MovieModel } from '@/types/Movie'
-import { times, check } from '@/helpers/icons'
 const props = defineProps({
   movie: {
     type: MovieModel,
@@ -49,13 +48,13 @@ const props = defineProps({
     default: null,
   },
 })
-const iconReady = computed(() => (props.movie.hasFile ? check : times))
+const iconReady = computed(() => (props.movie.hasFile ? 'check' : 'times'))
 const hasImage = computed(() => !!props.movie.image)
 const inCinemasDate = computed(() =>
   props.movie.inCinemas && props.movie.inCinemas !== 'TBA'
     ? new Date(props.movie.inCinemas.toString()).getDate()
     : 'TBA'
 )
-const toggleSwitch = (value: Boolean) =>
+const toggleSwitch = (value: boolean) =>
   props.onToggleSwitch({ id: props.movie.id, needSync: value })
 </script>

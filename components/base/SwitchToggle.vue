@@ -1,5 +1,6 @@
 <template>
-  <div class="
+  <div
+    class="
       relative
       inline-block
       w-10

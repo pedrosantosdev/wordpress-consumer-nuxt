@@ -8,11 +8,9 @@
         type="checkbox"
         name="base-nav-bar"
       />
-      <label
-        for="base-nav-bar"
-        class="base-nav-bar-icon"
-        v-html="hamburguer"
-      ></label>
+      <label for="base-nav-bar" class="base-nav-bar-icon">
+        <nuxt-icon name="hamburguer" />
+      </label>
     </div>
     <div
       class="base-nav-bar-container"
@@ -26,8 +24,9 @@
           for="base-nav-bar"
           :class="{ hidden: !isMobile }"
           class="base-nav-bar-icon"
-          v-html="hamburguer"
-        ></label>
+        >
+          <nuxt-icon name="hamburguer" />
+        </label>
       </div>
       <nav class="mt-5 px-6 md:mt-0 md:flex md:flex-row">
         <NuxtLink
@@ -61,8 +60,6 @@
 </template>
 <script setup lang="ts">
 import { LinksModel } from '@/types/Links'
-import { debounce } from '@/helpers/utils'
-import { hamburguer } from '@/helpers/icons'
 
 const $route = useRoute()
 
@@ -71,15 +68,18 @@ const links = ref([
   { label: 'Movies', path: '/movies' },
 ] as unknown as LinksModel[])
 const isActive = ref(false)
-const isMobile = computed(() =>
-  process.client ? window.innerWidth < 768 : false
-)
+const isMobile = ref(false)
 const showNavBar = computed(() => !!isActive.value)
 const hide = computed(() => $route.name === 'login')
-const windowResize = () => (isActive.value = window.innerWidth > 768)
+const windowResize = () => {
+  isActive.value = process.client ? window.innerWidth > 768 : true
+  isMobile.value = process.client ? window.innerWidth < 768 : false
+}
 onMounted(() => {
   if (process.client) {
-    window.addEventListener('resize', debounce(windowResize, 250))
+    isActive.value = window.innerWidth > 768
+    isMobile.value = window.innerWidth < 768
+    window.addEventListener('resize', useDebounce(windowResize, 250))
   }
 })
 onUnmounted(() => {

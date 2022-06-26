@@ -20,11 +20,11 @@
         @input="debouncedHandler"
         @keydown.enter="searchMovie"
       />
-      <div
+      <nuxt-icon
         class="absolute top-0 right-0 cursor-pointer py-2 px-4"
+        name="times"
         @click.prevent="clearQuery"
-        v-html="inputIcon"
-      ></div>
+      />
     </div>
     <transition>
       <movie-card-loading v-if="isLoading && !hasError" />
@@ -53,9 +53,8 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { times } from '@/helpers/icons'
-import { debounce } from '@/helpers/utils'
 import { useMoviesStore } from '@/state/movies'
+import { DebouncedFunc } from 'lodash';
 
 const $store = useMoviesStore()
 const {
@@ -66,9 +65,7 @@ const {
 } = storeToRefs($store)
 
 const query = ref('')
-let debouncedHandler = debounce()
-
-const inputIcon = computed(() => times)
+let debouncedHandler: DebouncedFunc<() => void> | null = null
 
 const clearQuery = () => {
   query.value = ''
@@ -81,7 +78,7 @@ const toggleMovie = (value: { id: number; needSync: boolean }) =>
 const addMovie = (value: { id: number }) => $store.add(value.id)
 
 onBeforeMount(() => {
-  debouncedHandler = debounce(() => {
+  debouncedHandler = useDebounce(() => {
     $store.search(query.value)
   }, 500)
 })
@@ -89,5 +86,8 @@ onMounted(() => {
   if ((getMovies?.value?.length ?? 0) === 0 && !$store.isLoading) {
     $store.get()
   }
+})
+onBeforeUnmount(() => {
+  debouncedHandler = null
 })
 </script>

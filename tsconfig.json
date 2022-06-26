@@ -3,6 +3,8 @@
   "extends": "./.nuxt/tsconfig.json",
   "types": [
     "@/types",
-    "@pinia/nuxt"
+    "@pinia/nuxt",
+    "pinia-plugin-persist",
+    "@types/js-cookie"
   ]
 }

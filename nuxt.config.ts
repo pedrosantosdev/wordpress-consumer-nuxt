@@ -13,9 +13,12 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     // https://pinia.vuejs.org/ssr/nuxt.html
     '@pinia/nuxt',
+    // https://github.com/cipami/nuxt-lodash#readme
+    'nuxt-lodash',
+    // https://github.com/gitFoxCode/nuxt-icons
+    'nuxt-icons',
     // TODO: Auth
     // TODO: DateFns
-    // TODO: FontAwesome
     // TODO: Maybe PWA
   ],
   // https://v3.nuxtjs.org/guide/features/runtime-config
@@ -48,4 +51,5 @@ export default defineNuxtConfig({
     classSuffix: '-mode',
     storageKey: 'nuxt-color-mode',
   },
+  plugins: ['@/plugins/pinia-plugin-persist.client'],
 })
