@@ -6,8 +6,8 @@ const actions = {
     this.hasError = false
     await useBaseFetch('movies')
       .then((res) => {
-        if (res.status === 200) {
-          this.list = res.data
+        if (res != undefined) {
+          this.list = res
         } else {
           this.hasError = true
         }
