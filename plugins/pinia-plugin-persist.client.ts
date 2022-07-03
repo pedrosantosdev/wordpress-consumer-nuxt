@@ -1,6 +1,6 @@
-import { Context } from '@nuxt/types'
-import piniaPersist from 'pinia-plugin-persist'
+import { createNuxtPersistedState } from 'pinia-plugin-persistedstate'
+import { defineNuxtPlugin, useCookie } from '#app'
 
-export default ({ app }: Context) => {
-  app.pinia?.use(piniaPersist)
-}
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.$pinia.use(createNuxtPersistedState(useCookie))
+})

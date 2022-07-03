@@ -26,6 +26,7 @@ const actions = {
       .then((response) => {
         this.user = { name: payload.username }
         this.token = response.token
+        this.expiresAt = response.expiresAt
       })
       .catch(
         (response) =>
@@ -35,6 +36,14 @@ const actions = {
           })
       )
       .finally(() => (this.isLoading = false))
+  },
+  async logout(redirect = true) {
+    this.user = null
+    this.token = null
+    this.expiresAt = null
+    if (redirect) {
+      navigateTo('login')
+    }
   },
 }
 

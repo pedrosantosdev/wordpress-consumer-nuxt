@@ -6,7 +6,7 @@ export default defineNuxtPlugin((nuxt) => {
   addRouteMiddleware(
     'auth-middleware-pinia',
     async ({ name, path }) => {
-      if (name !== 'login' && !authStore.isAuth) {
+      if (name !== 'login' && (!authStore.isAuth || authStore.isExpired)) {
         authStore.lastPage = path
         return navigateTo('/login')
       }

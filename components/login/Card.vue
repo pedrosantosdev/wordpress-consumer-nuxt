@@ -149,14 +149,17 @@ import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
 
 const authStore = useAuthStore()
-const { isLoading, hasError, isAuth, lastPage } = storeToRefs(authStore)
+const { isLoading, hasError, isAuth, lastPage, isExpired } =
+  storeToRefs(authStore)
 const form = {
   username: ref(''),
   password: ref(''),
 }
 
-onMounted(() => {
-  if (isAuth.value) {
+onBeforeMount(() => {
+  if (isExpired.value) {
+    authStore.logout(false)
+  } else if (isAuth.value) {
     navigateTo(lastPage.value ?? '/')
   }
 })

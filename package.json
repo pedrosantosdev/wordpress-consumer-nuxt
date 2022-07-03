@@ -34,8 +34,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.1.9",
-    "js-cookie": "^3.0.1",
     "pinia": "^2.0.14",
-    "pinia-plugin-persist": "^1.0.0"
+    "pinia-plugin-persistedstate": "^1.6.1"
   }
 }
