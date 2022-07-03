@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     shim: false,
     strict: true,
   },
+  ssr: false,
   modules: [
     // Doc: https://github.com/nuxt-community/color-mode-module
     '@nuxtjs/color-mode',
@@ -51,5 +52,8 @@ export default defineNuxtConfig({
     classSuffix: '-mode',
     storageKey: 'nuxt-color-mode',
   },
-  plugins: ['@/plugins/pinia-plugin-persist.client'],
+  plugins: [
+    '@/plugins/pinia-plugin-persist.client',
+    '@/plugins/auth-middleware-pinia',
+  ],
 })

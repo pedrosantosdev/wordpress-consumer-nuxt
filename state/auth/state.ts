@@ -11,7 +11,6 @@ export interface AuthState extends AuthModel {
 
 const state = (): AuthState => ({
   lastPage: '/',
-  isAuth: false,
   token: null,
   user: null,
   isLoading: false,

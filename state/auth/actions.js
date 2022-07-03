@@ -16,7 +16,7 @@ const actions = {
       message: '',
       code: '',
     }
-    useBaseFetch(`login`, {
+    await useBaseFetch(`login`, {
       method: 'POST',
       body: payload,
       headers: {
@@ -24,8 +24,8 @@ const actions = {
       },
     })
       .then((response) => {
-        this.token = response.token
         this.user = { name: payload.username }
+        this.token = response.token
       })
       .catch(
         (response) =>

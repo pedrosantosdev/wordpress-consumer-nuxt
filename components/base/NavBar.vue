@@ -106,8 +106,24 @@ a.nuxt-link-active {
   .base-nav-bar-container {
     @apply -left-full;
     transition: left 0.6s ease;
+    &::after {
+      content: '';
+      background-color: black;
+      width: calc(100% - 16rem);
+      height: 100%;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: -1;
+      opacity: 0;
+    }
     &.active {
       @apply left-0;
+      &::after {
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+        transition-delay: 0.5s;
+      }
     }
   }
 }
