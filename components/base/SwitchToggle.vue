@@ -73,14 +73,14 @@ const onChangeToggle = () => {
   }
 }
 </script>
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
 .toggle-checkbox:checked {
-  @apply: right-0 border-green-400;
+  @apply right-0 border-green-400;
   right: 0;
   border-color: #68d391;
 
   & + .toggle-label {
-    @apply: bg-green-400;
+    @apply bg-green-400;
     background-color: #68d391;
   }
 }

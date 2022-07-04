@@ -94,7 +94,7 @@ a.nuxt-link-active {
   &:not(.hidden) {
     @apply flex;
   }
-  @apply cursor-pointer items-center justify-center w-10;
+  @apply cursor-pointer items-center justify-center w-10 dark:text-white text-black text-2xl;
 }
 .base-nav-bar-container {
   @apply w-64 h-screen md:w-full md:h-14 md:relative fixed top-0 z-10 md:flex-row bg-white dark:bg-gray-800;
@@ -109,8 +109,6 @@ a.nuxt-link-active {
     &::after {
       content: '';
       background-color: black;
-      width: calc(100% - 16rem);
-      height: 100%;
       position: fixed;
       right: 0;
       top: 0;
@@ -120,6 +118,8 @@ a.nuxt-link-active {
     &.active {
       @apply left-0;
       &::after {
+        width: calc(100% - 16rem);
+        height: 100%;
         opacity: 0.4;
         transition: opacity 0.3s ease;
         transition-delay: 0.5s;
