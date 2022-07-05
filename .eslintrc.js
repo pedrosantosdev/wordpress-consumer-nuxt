@@ -4,12 +4,17 @@ module.exports = {
     browser: true,
     node: true,
   },
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    parser: '@typescript-eslint/parser',
+  },
   extends: [
-    '@nuxtjs/eslint-config-typescript',
+    'plugin:@typescript-eslint/recommended',
     'plugin:nuxt/recommended',
-    'prettier',
+    'plugin:vue/vue3-recommended',
+    'plugin:prettier/recommended',
   ],
-  plugins: [],
-  // add your custom rules here
+  plugins: ['@typescript-eslint'],
   rules: {},
 }
