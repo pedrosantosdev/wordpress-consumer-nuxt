@@ -1,5 +1,5 @@
 <template>
-  <div class="px-10 pb-5 w-full min-h-screen max-h-full">
+  <div class="px-5 pb-5 w-full min-h-screen max-h-full">
     <div class="mb-4 relative">
       <input
         v-model="query"
