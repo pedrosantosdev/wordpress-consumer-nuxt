@@ -1,30 +1,7 @@
 <template>
   <div class="px-5 pb-5 w-full min-h-screen max-h-full">
     <div class="mb-4 relative">
-      <input
-        v-model="query"
-        class="
-          shadow
-          appearance-none
-          border
-          rounded
-          w-full
-          py-2
-          px-3
-          text-gray-700
-          leading-tight
-          focus:outline-none
-          focus:shadow-outline
-        "
-        type="text"
-        @input="debouncedHandler"
-        @keydown.enter="searchMovie"
-      />
-      <nuxt-icon
-        class="absolute top-0 right-0 cursor-pointer py-2 px-4"
-        name="times"
-        @click.prevent="clearQuery"
-      />
+      <movie-card-search-app :input="query" @update:input="searchMovie" />
     </div>
     <transition>
       <movie-card-loading v-if="isLoading && !hasError" />
@@ -33,17 +10,22 @@
       >
       <div v-else-if="query.length" class="flex flex-wrap flex-row gap-4">
         <movie-card-app
-          v-for="movie in getSearchMovies"
+          v-for="(movie, index) in getSearchMovies"
           :key="movie.id"
           :movie="movie"
-          :on-toggle-switch="addMovie"
+          :index="index"
+          :on-toggle-switch="alreadyExists(movie.id) ? addMovie : toggleMovie"
         />
       </div>
-      <div v-else class="flex flex-wrap flex-row gap-4">
+      <div
+        v-else-if="(getMovies?.length ?? 0) > 0"
+        class="flex flex-wrap flex-row gap-4"
+      >
         <movie-card-app
-          v-for="movie in getMovies"
+          v-for="(movie, index) in getMovies ?? []"
           :key="movie.id"
           :movie="movie"
+          :index="index"
           :on-toggle-switch="toggleMovie"
         />
       </div>
@@ -54,7 +36,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useMoviesStore } from '@/state/movies'
-import { DebouncedFunc } from 'lodash';
 
 const $store = useMoviesStore()
 const {
@@ -65,29 +46,26 @@ const {
 } = storeToRefs($store)
 
 const query = ref('')
-let debouncedHandler: DebouncedFunc<() => void> | null = null
 
-const clearQuery = () => {
-  query.value = ''
-  $store.query = ''
+const alreadyExists = (searchId: number) =>
+  (getMovies?.value?.findIndex((movie) => (movie?.id ?? 0) === searchId) ?? 0) >
+  -1
+
+const searchMovie = (target: Record<string, string | number | boolean>) => {
+  query.value = target.value as string
+  if (target.isLocal || target.isActive || target.isReady) {
+    $store.searchLocal(target)
+  } else {
+    $store.search(target.value)
+  }
 }
-
-const searchMovie = () => $store.search(query.value)
 const toggleMovie = (value: { id: number; needSync: boolean }) =>
   $store.toggle(value)
 const addMovie = (value: { id: number }) => $store.add(value.id)
 
-onBeforeMount(() => {
-  debouncedHandler = useDebounce(() => {
-    $store.search(query.value)
-  }, 500)
-})
 onMounted(() => {
   if ((getMovies?.value?.length ?? 0) === 0 && !$store.isLoading) {
     $store.get()
   }
-})
-onBeforeUnmount(() => {
-  debouncedHandler = null
 })
 </script>

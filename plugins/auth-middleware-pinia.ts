@@ -8,7 +8,7 @@ export default defineNuxtPlugin((nuxt) => {
     async ({ name, path }) => {
       if (name !== 'login' && (!authStore.isAuth || authStore.isExpired)) {
         authStore.lastPage = path
-        return navigateTo('/login')
+        // return navigateTo('/login')
       }
     },
     { global: true }

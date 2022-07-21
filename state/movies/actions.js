@@ -6,7 +6,10 @@ const actions = {
     this.hasError = false
     await useBaseFetch('movies')
       .then((res) => {
-        if (res != undefined) {
+        if (
+          res != undefined &&
+          (typeof res === 'array' || typeof res === 'object')
+        ) {
           this.list = res
         } else {
           this.hasError = true
@@ -18,6 +21,21 @@ const actions = {
       .finally(() => {
         this.isLoading = false
       })
+  },
+  searchLocal(payload) {
+    let filterList = this.list
+    if (payload.isActive) {
+      filterList = filterList.filter((movie) => movie.needSync)
+    }
+    if (payload.isReady) {
+      filterList = filterList.filter((movie) => movie.hasFile)
+    }
+    if (payload.value.trim().length > 0) {
+      filterList = filterList.filter((movie) =>
+        movie.title.contains(payload.value)
+      )
+    }
+    this.queryResultList = filterList
   },
   async search(payload) {
     if (payload === this.query) {
@@ -33,8 +51,12 @@ const actions = {
     this.hasError = false
     await useBaseFetch('movies/info?query=' + encodeURIComponent(payload))
       .then((res) => {
-        if (res.status === 200) {
-          this.queryResultList = res.data.results
+        if (
+          res &&
+          res.results &&
+          (typeof res.results === 'array' || typeof res.results === 'object')
+        ) {
+          this.queryResultList = res.results
         } else {
           this.hasError = true
         }

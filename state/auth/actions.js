@@ -24,9 +24,11 @@ const actions = {
       },
     })
       .then((response) => {
-        this.user = { name: payload.username }
-        this.token = response.token
-        this.expiresAt = response.expiresAt
+        if (response.token && response.token !== '') {
+          this.user = { name: payload.username }
+          this.token = response.token
+          this.expiresAt = response.expiresAt
+        }
       })
       .catch(
         (response) =>
