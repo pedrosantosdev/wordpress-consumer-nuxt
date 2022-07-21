@@ -9,7 +9,7 @@
     "lintfix": "eslint --ext .js,.ts --ignore-path .eslintignore . --fix"
   },
   "devDependencies": {
-    "@nuxt/test-utils-edge": "^3.0.0-rc.4-27600153.ad42023",
+    "@nuxt/test-utils-edge": "^3.0.0-rc.6",
     "@nuxt/types": "^2.15.8",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/storybook": "^4.3.2",
@@ -23,7 +23,7 @@
     "eslint-plugin-nuxt": "^3.2.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.1.1",
-    "nuxt": "^3.0.0-rc.4",
+    "nuxt": "^3.0.0-rc.6",
     "nuxt-icons": "^2.0.1",
     "nuxt-lodash": "^2.2.0",
     "postcss": "^8.4.14",
@@ -31,8 +31,8 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.1.9",
-    "pinia": "^2.0.14",
-    "pinia-plugin-persistedstate": "^1.6.1"
+    "@pinia/nuxt": "^0.3.0",
+    "pinia": "^2.0.16",
+    "pinia-plugin-persistedstate": "^1.6.3"
   }
 }
