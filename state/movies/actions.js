@@ -31,8 +31,10 @@ const actions = {
       filterList = filterList.filter((movie) => movie.hasFile)
     }
     if (payload.value.trim().length > 0) {
-      filterList = filterList.filter((movie) =>
-        movie.title.contains(payload.value)
+      this.query = payload.value
+      filterList = filterList.filter(
+        (movie) =>
+          movie.title.toLowerCase().search(this.query.toLowerCase()) > -1
       )
     }
     this.queryResultList = filterList
