@@ -14,7 +14,7 @@
           :key="movie.id"
           :movie="movie"
           :index="index"
-          :on-toggle-switch="alreadyExists(movie.id) ? addMovie : toggleMovie"
+          :on-toggle-switch="movie.alreadyAdd ? toggleMovie : addMovie"
         />
       </div>
       <div
@@ -42,14 +42,10 @@ const {
   list: getMovies,
   hasError,
   isLoading,
-  queryResultList: getSearchMovies,
+  getSearchMovies,
 } = storeToRefs($store)
 
 const query = ref('')
-
-const alreadyExists = (searchId: number) =>
-  (getMovies?.value?.findIndex((movie) => (movie?.id ?? 0) === searchId) ?? 0) >
-  -1
 
 const searchMovie = (target: Record<string, string | number | boolean>) => {
   query.value = target.value as string

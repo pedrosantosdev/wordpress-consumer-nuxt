@@ -8,6 +8,10 @@ export class MovieModel {
   needSync!: boolean
 }
 
+export class MovieLocalModel extends MovieModel {
+  alreadyAdd!: boolean
+}
+
 export class MovieSearchModel {
   page!: number
   results!: MovieModel[]

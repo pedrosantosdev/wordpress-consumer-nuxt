@@ -1,11 +1,11 @@
-import { MovieModel } from '@/types/Movie'
+import { MovieLocalModel, MovieModel } from '@/types/Movie'
 
 export interface StateModel {
   list?: MovieModel[]
   isLoading: boolean
   hasError: boolean
   query: string
-  queryResultList?: MovieModel[]
+  queryResultList?: MovieLocalModel[]
 }
 
 const state = (): StateModel => ({
