@@ -81,6 +81,13 @@ const actions = {
       body: {
         need_sync: payload.needSync,
       },
+    }).then(() => {
+      this.list = this.list.map((movie) => {
+        if (movie.id === payload.id) {
+          return { ...movie, needSync: payload.needSync }
+        }
+        return movie
+      })
     })
   },
 }
