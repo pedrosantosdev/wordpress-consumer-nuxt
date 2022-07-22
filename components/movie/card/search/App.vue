@@ -73,7 +73,8 @@ const mappedFilters = (): Record<string, string | number | boolean> => {
   const obj = {
     value: value.value,
   }
-  Object.entries(filters).map((value) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Object.entries(filters).map((value: [string, any]) => {
     Object.defineProperty(obj, value[0], {
       value: value[1].value,
       writable: false,
