@@ -60,6 +60,7 @@
 </template>
 <script setup lang="ts">
 import { LinksModel } from '@/types/Links'
+import debounce from '@/helpers/debounce'
 
 const $route = useRoute()
 
@@ -79,7 +80,7 @@ onMounted(() => {
   if (process.client) {
     isActive.value = window.innerWidth > 768
     isMobile.value = window.innerWidth < 768
-    window.addEventListener('resize', useDebounce(windowResize, 250))
+    window.addEventListener('resize', debounce(windowResize, 250))
   }
 })
 onUnmounted(() => {

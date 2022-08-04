@@ -1,10 +1,11 @@
 import { useBaseFetch } from '@/composables/baseFetch'
+import { isNotEmpty } from '@/helpers/string'
 
 const actions = {
   async login(payload) {
     if (this.isLoading) {
       return
-    } else if (payload.username === '' || payload.password === '') {
+    } else if (!isNotEmpty(payload.username) || !isNotEmpty(payload.password)) {
       this.error = {
         message: 'Missing Fields',
         code: 'empty_fields',
@@ -13,8 +14,8 @@ const actions = {
     }
     this.isLoading = true
     this.error = {
-      message: '',
-      code: '',
+      message: null,
+      code: null,
     }
     await useBaseFetch(`login`, {
       method: 'POST',
@@ -24,10 +25,15 @@ const actions = {
       },
     })
       .then((response) => {
-        if (response.token && response.token !== '') {
+        if (
+          [response.accessToken, response.refreshToken, response.expires].every(
+            (value) => isNotEmpty(value)
+          )
+        ) {
           this.user = { name: payload.username }
-          this.token = response.token
-          this.expiresAt = response.expiresAt
+          this.token = response.accessToken
+          this.refreshToken = response.refreshToken
+          this.expiresAt = response.expires
         }
       })
       .catch(
@@ -42,7 +48,13 @@ const actions = {
   async logout(redirect = true) {
     this.user = null
     this.token = null
-    this.expiresAt = null
+    this.refreshToken = null
+    this.expires = null
+    this.isLoading = false
+    this.error = {
+      message: null,
+      code: null,
+    }
     if (redirect) {
       navigateTo('login')
     }

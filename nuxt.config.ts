@@ -14,8 +14,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     // https://pinia.vuejs.org/ssr/nuxt.html
     '@pinia/nuxt',
-    // https://github.com/cipami/nuxt-lodash#readme
-    'nuxt-lodash',
     // https://github.com/gitFoxCode/nuxt-icons
     'nuxt-icons',
     // TODO: Auth

@@ -16,7 +16,12 @@ body {
 }
 
 .spinner {
-  animation: spin infinite 2.5s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    animation: spin infinite 2.5s linear;
+  }
 }
 
 @keyframes spin {
