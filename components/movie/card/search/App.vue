@@ -1,32 +1,18 @@
 <template>
   <div>
-    <input
+    <BaseInput
       v-model="value"
-      class="
-        shadow
-        appearance-none
-        border
-        rounded
-        w-full
-        py-2
-        px-3
-        text-gray-700
-        leading-tight
-        focus:outline-none
-        focus:shadow-outline
-      "
-      type="text"
       @input="debounce(() => emitValue())"
       @keydown.enter="emitValue()"
     />
-    <nuxt-icon
+    <NuxtIcon
       class="absolute top-0 right-0 cursor-pointer mt-1 mx-3 filter-icon"
       :class="{ active: optionsActive }"
       name="gears"
       @click.prevent="optionsActive = !optionsActive"
     />
-    <nuxt-icon
-      class="absolute top-0 right-10 cursor-pointer py-2 px-4"
+    <NuxtIcon
+      class="absolute top-0 right-10 cursor-pointer py-3 px-4"
       name="times"
       @click.prevent="clearQuery"
     />

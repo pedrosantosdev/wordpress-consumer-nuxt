@@ -4,8 +4,8 @@
     :class="{ active: modelValue }"
     @click.prevent="$emit('update:modelValue', !modelValue)"
   >
-    <nuxt-icon v-if="modelValue" name="check" />
-    <nuxt-icon v-else name="times" />
+    <NuxtIcon v-if="modelValue" name="check" />
+    <NuxtIcon v-else name="times" />
     {{ label }}
   </button>
 </template>

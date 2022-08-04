@@ -9,7 +9,7 @@
         name="base-nav-bar"
       />
       <label for="base-nav-bar" class="base-nav-bar-icon">
-        <nuxt-icon name="hamburguer" />
+        <NuxtIcon name="hamburguer" />
       </label>
     </div>
     <div
@@ -25,7 +25,7 @@
           :class="{ hidden: !isMobile }"
           class="base-nav-bar-icon"
         >
-          <nuxt-icon name="hamburguer" />
+          <NuxtIcon name="hamburguer" />
         </label>
       </div>
       <nav class="mt-5 px-6 md:mt-0 md:flex md:flex-row">

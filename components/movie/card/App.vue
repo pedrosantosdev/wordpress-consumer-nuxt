@@ -22,8 +22,8 @@
           {{ inCinemasDate }}
         </div>
         <div class="w-10 h-8 text-2xl dark:text-white text-black">
-          <nuxt-icon v-if="movie.hasFile" name="check" />
-          <nuxt-icon v-else name="times" />
+          <NuxtIcon v-if="movie.hasFile" name="check" />
+          <NuxtIcon v-else name="times" />
         </div>
         <div class="w-14 h-8 ml-auto">
           <base-switch-toggle
