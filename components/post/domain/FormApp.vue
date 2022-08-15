@@ -17,19 +17,17 @@ const deleteEmit = (postDomain: PostDomain) =>
   domainsStore.delete(postDomain.id)
 </script>
 <template>
-  <div class="self-start w-full px-5">
-    <transition>
-      <NuxtIcon v-if="isLoading" class="spinner" name="spinner" />
-      <div v-else class="post-domain-form">
-        <PostDomainInputRow
-          v-for="domain in domains"
-          :key="domain.id"
-          :input="domain"
-          @save="saveEmit"
-          @delete="deleteEmit"
-        />
-        <PostDomainInputRow :is-new="true" @save="saveEmit" />
-      </div>
-    </transition>
-  </div>
+  <transition>
+    <NuxtIcon v-if="isLoading" class="spinner" name="spinner" />
+    <div v-else class="post-domain-form">
+      <PostDomainInputRow
+        v-for="domain in domains"
+        :key="domain.id"
+        :input="domain"
+        @save="saveEmit"
+        @delete="deleteEmit"
+      />
+      <PostDomainInputRow :is-new="true" @save="saveEmit" />
+    </div>
+  </transition>
 </template>
