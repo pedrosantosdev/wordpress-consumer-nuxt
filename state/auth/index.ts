@@ -8,7 +8,7 @@ export const useAuthStore = defineStore('auth', {
   actions,
   getters,
   persist: {
-    paths: ['token', 'expiresAt'],
+    paths: ['token', 'refreshToken', 'expiresAt'],
   },
 })
 

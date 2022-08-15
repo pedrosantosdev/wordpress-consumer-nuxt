@@ -5,7 +5,10 @@ const actions = {
   async login(payload) {
     if (this.isLoading) {
       return
-    } else if (!isNotEmpty(payload.username) || !isNotEmpty(payload.password)) {
+    } else if (
+      !isNotEmpty(payload.get('username')) ||
+      !isNotEmpty(payload.get('password'))
+    ) {
       this.error = {
         message: 'Missing Fields',
         code: 'empty_fields',
@@ -49,7 +52,7 @@ const actions = {
     this.user = null
     this.token = null
     this.refreshToken = null
-    this.expires = null
+    this.expiresAt = null
     this.isLoading = false
     this.error = {
       message: null,

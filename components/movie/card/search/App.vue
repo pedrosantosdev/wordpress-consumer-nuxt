@@ -99,10 +99,9 @@ watch(filters, () => {
   height: 0;
   overflow: hidden;
   display: grid;
-  grid-gap: 5px;
-  grid-auto-columns: max-content;
-  grid-auto-rows: max-content;
+  gap: 5px;
   grid-auto-flow: column;
+  grid-auto-columns: max-content;
   &.active {
     min-height: 100px;
     @apply p-3 transition-all;

@@ -72,7 +72,7 @@ const actions = {
   },
   async add(payload) {
     await useBaseFetch(`movies/${payload}`, { method: 'POST' }).then((res) => {
-      this.list = { ...this.list, ...res.data }
+      this.list = { ...this.list, ...res }
     })
   },
   async toggle(payload) {

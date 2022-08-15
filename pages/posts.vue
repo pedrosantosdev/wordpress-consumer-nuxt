@@ -1,3 +1,3 @@
 <template>
-  <PostDomainForm />
+  <PostApp />
 </template>

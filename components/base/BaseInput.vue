@@ -1,15 +1,38 @@
 <script setup lang="ts">
-defineProps({
+const emit = defineEmits(['update:modelValue'])
+const props = defineProps({
+  label: {
+    type: String,
+    default: '',
+  },
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
   type: {
     type: String,
     default: 'text',
     required: false,
   },
+  modelValue: {
+    type: [String, Number],
+    default: '',
+  },
+})
+const value = computed({
+  get() {
+    return props.modelValue
+  },
+  set(value) {
+    emit('update:modelValue', value)
+  },
 })
 </script>
 
 <template>
+  <label v-if="label">{{ label }}</label>
   <input
+    v-model="value"
     class="
       shadow
       appearance-none
@@ -22,7 +45,11 @@ defineProps({
       leading-tight
       focus:outline-none
       focus:shadow-outline
+      disabled:outline-none
+      disabled:shadow-outline
     "
+    :readonly="readonly"
+    :disabled="readonly"
     :type="type"
   />
 </template>
