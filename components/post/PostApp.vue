@@ -21,11 +21,12 @@ onBeforeMount(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '@/assets/scss/abstract/mixins.scss';
 .posts-page {
   .posts-list {
-    display: grid;
     gap: 10px;
+    @include grid-auto-columns(24rem);
   }
 }
 </style>

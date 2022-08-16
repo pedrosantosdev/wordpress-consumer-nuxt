@@ -4,6 +4,7 @@
       lg:w-96
       w-full
       sm:h-64
+      md:h-auto
       flex flex-col
       sm:flex-row
       p-2

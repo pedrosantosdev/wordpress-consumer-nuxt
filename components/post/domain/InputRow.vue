@@ -53,6 +53,7 @@ const onDeleteClick = () => emit('delete', domain)
   grid-auto-columns: max-content;
   margin-bottom: 10px;
   width: 100%;
+  overflow: hidden;
   .icon-group {
     display: flex;
     gap: 10px;
