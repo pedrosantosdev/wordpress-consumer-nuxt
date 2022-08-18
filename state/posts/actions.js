@@ -22,6 +22,13 @@ const actions = {
         this.isLoading = false
       })
   },
+  async getById(id) {
+    useBaseFetch(`${baseUri}/${id}`).then((res) => {
+      if (res != undefined && typeof res === 'object') {
+        this.currentPost = res
+      }
+    })
+  },
 }
 
 export default actions

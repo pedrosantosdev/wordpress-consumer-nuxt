@@ -10,6 +10,10 @@ const closeModalEvent = () => {
   showModal.value = false
 }
 
+const onPostClick = (id: number) => {
+  navigateTo(id.toString())
+}
+
 onBeforeMount(() => {
   if (!isLoading.value && (posts?.value?.length ?? 0) === 0) {
     postsStores.get()
@@ -28,7 +32,12 @@ onBeforeMount(() => {
       @click="showModal = true"
     />
     <div class="posts-list">
-      <PostCard v-for="post in posts" :key="post.id" :post="post" />
+      <PostCard
+        v-for="post in posts"
+        :key="post.id"
+        :post="post"
+        @click="onPostClick(post.id)"
+      />
     </div>
   </div>
 </template>
