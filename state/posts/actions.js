@@ -28,6 +28,34 @@ const actions = {
         this.isLoading = false
       })
   },
+  async search(query, page = 1) {
+    this.isLoading = true
+    this.hasError = false
+    await useBaseFetch(baseUri, {
+      params: { search: query, page },
+    })
+      .then((res) => {
+        if (
+          res != undefined &&
+          (typeof res === 'array' || typeof res === 'object')
+        ) {
+          const formatted = {
+            page,
+            results: page === 1 ? res : [...this.searchList.results, ...res],
+            total_pages: 1,
+          }
+          this.searchList = formatted
+        } else {
+          this.hasError = true
+        }
+      })
+      .catch(() => {
+        this.hasError = true
+      })
+      .finally(() => {
+        this.isLoading = false
+      })
+  },
   async getById(id) {
     useBaseFetch(`${baseUri}/${id}`).then((res) => {
       if (res != undefined && typeof res === 'object') {

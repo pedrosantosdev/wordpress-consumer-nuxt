@@ -3,13 +3,19 @@ import { storeToRefs } from 'pinia'
 import { usePostsStore } from '@/state/posts'
 
 const postsStores = usePostsStore()
-const { list: posts, isLoading } = storeToRefs(postsStores)
+const {
+  list: posts,
+  isLoading,
+  searchList: searchResults,
+} = storeToRefs(postsStores)
 
 const showModal = ref(false)
 
 const closeModalEvent = () => {
   showModal.value = false
 }
+
+const query = ref('')
 
 let page = 1
 
@@ -19,7 +25,7 @@ const loadMore = () => {
 }
 
 const onPostClick = (id: number) => {
-  navigateTo(id.toString())
+  navigateTo(`posts/${id}`)
 }
 
 onBeforeMount(() => {
@@ -34,24 +40,42 @@ onBeforeMount(() => {
     <BaseModal :show-modal="showModal" @close="closeModalEvent">
       <PostDomainFormApp />
     </BaseModal>
-    <div>
-      <BaseInput />
-      <NuxtIcon name="times" class="cursor-pointer dark:text-white mb-2" />
+    <div class="flex gap-2 items-center relative mb-4">
+      <BaseInput :model-value="query" />
       <NuxtIcon
-        name="gears"
-        class="cursor-pointer dark:text-white mb-2"
-        @click="showModal = true"
+        name="times"
+        class="cursor-pointer absolute text-black right-10"
       />
+      <NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
     </div>
-    <transition-group class="posts-list" name="posts-list" tag="div">
-      <PostCard
-        v-for="post in posts"
-        :key="post.id"
-        class="transition-all"
-        :post="post"
-        @click="onPostClick(post.id)"
-      />
-    </transition-group>
+    <transition
+      enter-active-class="transition ease-out duration-200 transform"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition ease-in duration-200 transform"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+      name="posts-list"
+    >
+      <div v-if="searchResults && query != '' && !isLoading" class="posts-list">
+        <PostCard
+          v-for="post in searchResults.results"
+          :key="post.id"
+          :post="post"
+          @click="onPostClick(post.id)"
+        />
+      </div>
+      <div v-else-if="!isLoading" class="posts-list">
+        <PostCard
+          v-for="post in posts"
+          :key="post.id"
+          class="transition-all"
+          :post="post"
+          @click="onPostClick(post.id)"
+        />
+      </div>
+    </transition>
+
     <button
       v-show="!isLoading"
       class="w-2/4 mx-auto mt-4 text-center p-5 border border-black"
