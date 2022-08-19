@@ -6,8 +6,16 @@ const postsStores = usePostsStore()
 const { list: posts, isLoading } = storeToRefs(postsStores)
 
 const showModal = ref(false)
+
 const closeModalEvent = () => {
   showModal.value = false
+}
+
+let page = 1
+
+const loadMore = () => {
+  ++page
+  postsStores.get(page)
 }
 
 const onPostClick = (id: number) => {
@@ -26,19 +34,36 @@ onBeforeMount(() => {
     <BaseModal :show-modal="showModal" @close="closeModalEvent">
       <PostDomainFormApp />
     </BaseModal>
-    <NuxtIcon
-      name="gears"
-      class="cursor-pointer text-white mb-2"
-      @click="showModal = true"
-    />
-    <div class="posts-list">
+    <div>
+      <BaseInput />
+      <NuxtIcon name="times" class="cursor-pointer dark:text-white mb-2" />
+      <NuxtIcon
+        name="gears"
+        class="cursor-pointer dark:text-white mb-2"
+        @click="showModal = true"
+      />
+    </div>
+    <transition-group class="posts-list" name="posts-list" tag="div">
       <PostCard
         v-for="post in posts"
         :key="post.id"
+        class="transition-all"
         :post="post"
         @click="onPostClick(post.id)"
       />
-    </div>
+    </transition-group>
+    <button
+      v-show="!isLoading"
+      class="w-2/4 mx-auto mt-4 text-center p-5 border border-black"
+      @click="loadMore"
+    >
+      Ver Mais
+    </button>
+    <NuxtIcon
+      v-show="isLoading"
+      class="w-2/4 mx-auto mt-4 spinner"
+      name="spinner"
+    />
   </div>
 </template>
 

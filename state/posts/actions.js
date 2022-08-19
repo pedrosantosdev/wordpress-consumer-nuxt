@@ -1,16 +1,22 @@
 import { useBaseFetch } from '@/composables/baseFetch'
 const baseUri = 'posts'
 const actions = {
-  async get() {
+  async get(page = 1) {
     this.isLoading = true
     this.hasError = false
-    await useBaseFetch(baseUri)
+    await useBaseFetch(baseUri, {
+      params: { page },
+    })
       .then((res) => {
         if (
           res != undefined &&
           (typeof res === 'array' || typeof res === 'object')
         ) {
-          this.list = res
+          if (page === 1) {
+            this.list = res
+          } else {
+            this.list = [...this.list, ...res]
+          }
         } else {
           this.hasError = true
         }
