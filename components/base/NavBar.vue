@@ -67,6 +67,7 @@ const $route = useRoute()
 const links = ref([
   { label: 'Home', path: '/' },
   { label: 'Movies', path: '/movies' },
+  { label: 'Posts', path: '/posts' },
 ] as unknown as LinksModel[])
 const isActive = ref(false)
 const isMobile = ref(false)
