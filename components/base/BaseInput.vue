@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const emit = defineEmits(['update:modelValue'])
+import debounce from '~~/helpers/debounce'
+
+const emit = defineEmits(['update:modelValue', 'enter', 'debounce'])
 const props = defineProps({
   label: {
     type: String,
@@ -27,6 +29,8 @@ const value = computed({
     emit('update:modelValue', value)
   },
 })
+const dispatchValue = () => emit('debounce', value.value)
+const keyDownEnter = () => emit('enter', value.value)
 </script>
 
 <template>
@@ -51,5 +55,7 @@ const value = computed({
     :readonly="readonly"
     :disabled="readonly"
     :type="type"
+    @input="debounce(() => dispatchValue())"
+    @keydown.enter="keyDownEnter"
   />
 </template>

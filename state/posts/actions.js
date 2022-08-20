@@ -29,8 +29,7 @@ const actions = {
       })
   },
   async search(query, page = 1) {
-    this.isLoading = true
-    this.hasError = false
+    this.isLoadingSearch = true
     await useBaseFetch(baseUri, {
       params: { search: query, page },
     })
@@ -45,15 +44,10 @@ const actions = {
             total_pages: 1,
           }
           this.searchList = formatted
-        } else {
-          this.hasError = true
         }
       })
-      .catch(() => {
-        this.hasError = true
-      })
       .finally(() => {
-        this.isLoading = false
+        this.isLoadingSearch = false
       })
   },
   async getById(id) {

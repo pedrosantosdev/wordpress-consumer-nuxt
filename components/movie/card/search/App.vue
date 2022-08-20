@@ -2,17 +2,26 @@
   <div>
     <BaseInput
       v-model="value"
-      @input="debounce(() => emitValue())"
-      @keydown.enter="emitValue()"
+      @debounce="debounce(() => emitValue())"
+      @enter="emitValue()"
     />
     <NuxtIcon
-      class="absolute top-0 right-0 cursor-pointer mt-1 mx-3 filter-icon"
+      class="
+        absolute
+        top-0
+        right-0
+        cursor-pointer
+        mt-1
+        mx-3
+        text-black
+        filter-icon
+      "
       :class="{ active: optionsActive }"
       name="gears"
       @click.prevent="optionsActive = !optionsActive"
     />
     <NuxtIcon
-      class="absolute top-0 right-10 cursor-pointer py-3 px-4"
+      class="absolute top-0 right-10 cursor-pointer text-black py-3 px-4"
       name="times"
       @click.prevent="clearQuery"
     />
