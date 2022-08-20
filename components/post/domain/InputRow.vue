@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// https://comando.to/wp-json/wp/v2
-// https://comando.to/wp-json/wp-site-health/v1/
 const props = defineProps({
   isNew: {
     type: Boolean,
@@ -17,7 +15,9 @@ const defaultWordpressPath = {
   endpoint: 'wp-json/wp/v2/',
   healthEndpoint: 'wp-json/wp-site-health/v1/',
 }
-const domain = reactive(props.input ?? { endpoint: '', healthEndpoint: '' })
+const domain = reactive(
+  props.input ?? { endpoint: '', healthEndpoint: '', isHealth: true }
+)
 const emit = defineEmits(['save', 'delete'])
 const isEditing = ref(false)
 const canType = computed(() => props.isNew || isEditing.value)
@@ -29,7 +29,10 @@ const onDeleteClick = () => emit('delete', domain)
 </script>
 
 <template>
-  <div class="post-domain-input relative">
+  <div
+    class="post-domain-input relative"
+    :class="{ 'bg-red-300': !domain.isHealth }"
+  >
     <BaseInput v-model="domain.endpoint" :readonly="!canType" />
     <BaseInput v-model="domain.healthEndpoint" :readonly="!canType" />
     <div v-if="isNew" class="icon-group">
@@ -51,9 +54,13 @@ const onDeleteClick = () => emit('delete', domain)
   gap: 10px;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
-  margin-bottom: 10px;
+  padding: 10px;
   width: 100%;
   overflow: hidden;
+  border-top: 1px solid grey;
+  &:last-of-type {
+    border-bottom: 1px solid grey;
+  }
   .icon-group {
     display: flex;
     gap: 10px;

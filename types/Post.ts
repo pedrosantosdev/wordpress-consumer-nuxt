@@ -12,5 +12,5 @@ export type PostDomain = {
   id: number
   endpoint: string
   healthEndpoint: string
-  ishealth: boolean
+  isHealth: boolean
 }
