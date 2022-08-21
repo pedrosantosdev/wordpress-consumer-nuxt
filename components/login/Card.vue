@@ -35,7 +35,7 @@
                 text-sm
               "
             >
-              <nuxt-icon name="mail" />
+              <NuxtIcon name="mail" />
             </span>
             <input
               id="username"
@@ -60,7 +60,7 @@
               "
               placeholder="Your email"
             />
-            <nuxt-icon name="times" class="error--icon" />
+            <NuxtIcon name="times" class="error--icon" />
           </div>
         </div>
         <div class="flex flex-col mb-6">
@@ -79,7 +79,7 @@
                 text-sm
               "
             >
-              <nuxt-icon name="unlock" />
+              <NuxtIcon name="unlock" />
             </span>
             <input
               id="password"
@@ -105,7 +105,7 @@
               "
               placeholder="Your password"
             />
-            <nuxt-icon name="times" class="error--icon" />
+            <NuxtIcon name="times" class="error--icon" />
           </div>
           <p class="text-sm text-red-500 -bottom-6 w-full error--message">
             Invalid Credentials
@@ -135,7 +135,7 @@
               rounded-lg
             "
           >
-            <nuxt-icon v-if="isLoading" class="spinner" name="spinner" />
+            <NuxtIcon v-if="isLoading" class="spinner" name="spinner" />
             <span v-else> Login </span>
           </button>
         </div>

@@ -2,7 +2,7 @@ import { AuthModel } from '@/types/User'
 
 export interface AuthState extends AuthModel {
   lastPage: string
-  isLoading: false
+  isLoading: boolean
   expiresAt: string | null
   error: {
     message: string
@@ -13,6 +13,7 @@ export interface AuthState extends AuthModel {
 const state = (): AuthState => ({
   lastPage: '/',
   token: null,
+  refreshToken: null,
   expiresAt: null,
   user: null,
   isLoading: false,

@@ -1,32 +1,27 @@
 <template>
   <div>
-    <input
+    <BaseInput
       v-model="value"
-      class="
-        shadow
-        appearance-none
-        border
-        rounded
-        w-full
-        py-2
-        px-3
-        text-gray-700
-        leading-tight
-        focus:outline-none
-        focus:shadow-outline
-      "
-      type="text"
-      @input="debounce(() => emitValue())"
-      @keydown.enter="emitValue()"
+      @debounce="debounce(() => emitValue())"
+      @enter="emitValue()"
     />
-    <nuxt-icon
-      class="absolute top-0 right-0 cursor-pointer mt-1 mx-3 filter-icon"
+    <NuxtIcon
+      class="
+        absolute
+        top-0
+        right-0
+        cursor-pointer
+        mt-1
+        mx-3
+        text-black
+        filter-icon
+      "
       :class="{ active: optionsActive }"
       name="gears"
       @click.prevent="optionsActive = !optionsActive"
     />
-    <nuxt-icon
-      class="absolute top-0 right-10 cursor-pointer py-2 px-4"
+    <NuxtIcon
+      class="absolute top-0 right-10 cursor-pointer text-black py-3 px-4"
       name="times"
       @click.prevent="clearQuery"
     />
@@ -113,10 +108,9 @@ watch(filters, () => {
   height: 0;
   overflow: hidden;
   display: grid;
-  grid-gap: 5px;
-  grid-auto-columns: max-content;
-  grid-auto-rows: max-content;
+  gap: 5px;
   grid-auto-flow: column;
+  grid-auto-columns: max-content;
   &.active {
     min-height: 100px;
     @apply p-3 transition-all;

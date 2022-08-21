@@ -9,7 +9,7 @@
         name="base-nav-bar"
       />
       <label for="base-nav-bar" class="base-nav-bar-icon">
-        <nuxt-icon name="hamburguer" />
+        <NuxtIcon name="hamburguer" />
       </label>
     </div>
     <div
@@ -25,7 +25,7 @@
           :class="{ hidden: !isMobile }"
           class="base-nav-bar-icon"
         >
-          <nuxt-icon name="hamburguer" />
+          <NuxtIcon name="hamburguer" />
         </label>
       </div>
       <nav class="mt-5 px-6 md:mt-0 md:flex md:flex-row">
@@ -60,12 +60,14 @@
 </template>
 <script setup lang="ts">
 import { LinksModel } from '@/types/Links'
+import debounce from '@/helpers/debounce'
 
 const $route = useRoute()
 
 const links = ref([
   { label: 'Home', path: '/' },
   { label: 'Movies', path: '/movies' },
+  { label: 'Posts', path: '/posts' },
 ] as unknown as LinksModel[])
 const isActive = ref(false)
 const isMobile = ref(false)
@@ -79,7 +81,7 @@ onMounted(() => {
   if (process.client) {
     isActive.value = window.innerWidth > 768
     isMobile.value = window.innerWidth < 768
-    window.addEventListener('resize', useDebounce(windowResize, 250))
+    window.addEventListener('resize', debounce(windowResize, 250))
   }
 })
 onUnmounted(() => {
