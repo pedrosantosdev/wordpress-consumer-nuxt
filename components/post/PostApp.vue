@@ -41,9 +41,9 @@ onBeforeMount(() => {
 <template>
   <div class="posts-page self-start w-full px-5 pb-3">
     <BaseModal :show-modal="showModal" @close="closeModalEvent">
-      <PostDomainFormApp />
+      <PostDomainFormApp class="-m-8 py-8 px-4" />
     </BaseModal>
-    <div class="flex gap-2 items-center relative mb-4">
+    <div class="flex w-full gap-2 items-center relative mb-4">
       <BaseInput v-model="query" @enter="submitQuery" />
       <NuxtIcon
         name="times"
@@ -52,15 +52,7 @@ onBeforeMount(() => {
       />
       <NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
     </div>
-    <transition
-      enter-active-class="transition ease-out duration-200 transform"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-active-class="transition ease-in duration-200 transform"
-      leave-from-class="opacity-100"
-      leave-to-class="opacity-0"
-      name="posts-list"
-    >
+    <transition name="posts-list">
       <div v-if="!isLoadingSearch && query != ''" class="posts-list">
         <PostCard
           v-for="post in searchResults?.results ?? []"
@@ -73,7 +65,6 @@ onBeforeMount(() => {
         <PostCard
           v-for="post in posts"
           :key="post.id"
-          class="transition-all"
           :post="post"
           @click="onPostClick(post.id)"
         />
@@ -98,7 +89,9 @@ onBeforeMount(() => {
 <style lang="scss">
 @import '@/assets/scss/abstract/mixins.scss';
 .posts-page {
+  @apply flex justify-center items-center w-full flex-row flex-wrap;
   .posts-list {
+    @apply w-full;
     gap: 20px;
     justify-content: space-evenly;
     @include grid-auto-columns(24rem);

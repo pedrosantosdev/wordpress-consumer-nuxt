@@ -33,3 +33,25 @@ body {
     transform: rotate(360deg);
   }
 }
+
+// Default Transition
+.v {
+  &-enter-active {
+    @apply transition ease-out duration-200 transform;
+  }
+  &-enter-from {
+    @apply opacity-0;
+  }
+  &-enter-to {
+    @apply opacity-100;
+  }
+  &-leave-active {
+    @apply transition ease-in duration-200 transform;
+  }
+  &-leave-from {
+    @apply opacity-100;
+  }
+  &-leave-to {
+    @apply opacity-0;
+  }
+}

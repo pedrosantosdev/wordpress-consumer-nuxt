@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { isNotEmpty } from '@/helpers/string'
+
 const props = defineProps({
   isNew: {
     type: Boolean,
@@ -22,15 +24,35 @@ const emit = defineEmits(['save', 'delete'])
 const isEditing = ref(false)
 const canType = computed(() => props.isNew || isEditing.value)
 const onSaveClick = () => {
+  if (!isNotEmpty(domain.healthEndpoint) && !hasFullPath(domain.endpoint)) {
+    domain.healthEndpoint = domain.endpoint
+  } else {
+    return
+  }
+
   isEditing.value = false
+
+  domain.endpoint = hasFullPath(domain.endpoint)
+    ? domain.endpoint
+    : `${domain.endpoint}${defaultWordpressPath.endpoint}`
+  domain.healthEndpoint = hasFullPath(domain.healthEndpoint)
+    ? domain.healthEndpoint
+    : `${domain.healthEndpoint}${defaultWordpressPath.healthEndpoint}`
+
   emit('save', domain)
+
+  if (props.isNew) {
+    domain.endpoint = ''
+    domain.healthEndpoint = ''
+  }
 }
+const hasFullPath = (path: string) => path.split('/').length > 4
 const onDeleteClick = () => emit('delete', domain)
 </script>
 
 <template>
   <div
-    class="post-domain-input relative"
+    class="post-domain-input relative px-4 py-2"
     :class="{ 'bg-red-300': !domain.isHealth }"
   >
     <BaseInput v-model="domain.endpoint" :readonly="!canType" />
@@ -54,7 +76,6 @@ const onDeleteClick = () => emit('delete', domain)
   gap: 10px;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
-  padding: 10px;
   width: 100%;
   overflow: hidden;
   border-top: 1px solid grey;
