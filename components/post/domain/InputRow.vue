@@ -24,13 +24,17 @@ const emit = defineEmits(['save', 'delete'])
 const isEditing = ref(false)
 const canType = computed(() => props.isNew || isEditing.value)
 const onSaveClick = () => {
+  if (!isNotEmpty(domain.endpoint)) {
+    return
+  }
   if (!isNotEmpty(domain.healthEndpoint) && !hasFullPath(domain.endpoint)) {
     domain.healthEndpoint = domain.endpoint
-  } else {
-    return
   }
 
   isEditing.value = false
+
+  domain.endpoint += !domain.endpoint.endsWith('/') ? '/' : ''
+  domain.healthEndpoint += !domain.healthEndpoint.endsWith('/') ? '/' : ''
 
   domain.endpoint = hasFullPath(domain.endpoint)
     ? domain.endpoint
@@ -78,6 +82,8 @@ const onDeleteClick = () => emit('delete', domain)
   grid-auto-columns: max-content;
   width: 100%;
   overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   border-top: 1px solid grey;
   &:last-of-type {
     border-bottom: 1px solid grey;

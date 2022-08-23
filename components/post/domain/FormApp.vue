@@ -12,7 +12,10 @@ onBeforeMount(() => {
   }
 })
 
-const saveEmit = (postDomain: PostDomain) => domainsStore.add(postDomain)
+const saveEmit = (postDomain: PostDomain) => {
+  domainsStore.add(postDomain)
+  domainsStore.get()
+}
 const deleteEmit = (postDomain: PostDomain) =>
   domainsStore.delete(postDomain.id)
 </script>

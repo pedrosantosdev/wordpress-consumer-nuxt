@@ -7,9 +7,8 @@ const postStore = usePostsStore()
 const { currentPost: post } = storeToRefs(postStore)
 let isLoading = true
 if (route.params.id) {
-  await postStore.getById(route.params.id)
+  await postStore.getById(route.params.id).finally(() => (isLoading = false))
 }
-isLoading = false
 </script>
 
 <template>

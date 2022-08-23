@@ -13,6 +13,7 @@
       shadow-lg
       gap-5
       select-none
+      dark:bg-gray-800
     "
     :class="bgColor"
   >
