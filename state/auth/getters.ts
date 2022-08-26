@@ -1,9 +1,10 @@
+import { isNotEmpty } from '@/helpers/string'
 import { AuthState } from './state'
 
 const getters = {
   hasError: (state: AuthState) =>
-    state.error.message !== '' || state.error.code !== '',
-  isAuth: (state: AuthState) => state.token !== null && state.token !== '',
+    isNotEmpty(state.error.message) || isNotEmpty(state.error.code),
+  isAuth: (state: AuthState) => isNotEmpty(state.token),
   isExpired: (state: AuthState) =>
     state.expiresAt
       ? new Date(Date.parse(state.expiresAt)) < new Date()
