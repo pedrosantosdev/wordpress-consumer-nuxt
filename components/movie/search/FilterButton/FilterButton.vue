@@ -24,6 +24,7 @@ defineEmits(['update:modelValue'])
   gap: 5px;
   padding: 2px 10px;
   width: 90px;
+  height: fit-content;
   &.active {
     border-color: #68d391;
   }

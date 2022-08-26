@@ -1,15 +1,15 @@
 <template>
   <div class="px-5 pb-5 w-full min-h-screen max-h-full">
     <div class="mb-4 relative">
-      <movie-card-search-app :input="query" @update:input="searchMovie" />
+      <MovieSearchApp :input="query" @update:input="searchMovie" />
     </div>
     <transition>
-      <movie-card-loading v-if="isLoading && !hasError" />
-      <base-card-error v-else-if="!isLoading && hasError"
-        >Erro ao carregar a listagem</base-card-error
+      <MovieCardLoading v-if="isLoading && !hasError" />
+      <BaseCardError v-else-if="!isLoading && hasError"
+        >Erro ao carregar a listagem</BaseCardError
       >
       <div v-else-if="query.length" class="flex flex-wrap flex-row gap-4">
-        <movie-card-app
+        <MovieCardApp
           v-for="(movie, index) in getSearchMovies"
           :key="movie.id"
           :movie="movie"
@@ -21,7 +21,7 @@
         v-else-if="(getMovies?.length ?? 0) > 0"
         class="flex flex-wrap flex-row gap-4"
       >
-        <movie-card-app
+        <MovieCardApp
           v-for="(movie, index) in getMovies ?? []"
           :key="movie.id"
           :movie="movie"

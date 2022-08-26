@@ -27,7 +27,7 @@
     />
   </div>
   <div class="filter-container" :class="{ active: optionsActive }">
-    <MovieCardSearchFilterButton
+    <MovieSearchFilterButton
       v-for="(objValue, key) in filters"
       :key="key"
       v-model="objValue.value"
