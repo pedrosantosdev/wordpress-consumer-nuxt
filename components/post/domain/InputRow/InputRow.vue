@@ -18,7 +18,12 @@ const defaultWordpressPath = {
   healthEndpoint: 'wp-json/wp-site-health/v1/',
 }
 const domain = reactive(
-  props.input ?? { endpoint: '', healthEndpoint: '', isHealth: true }
+  props.input ?? {
+    endpoint: '',
+    healthEndpoint: '',
+    isHealth: true,
+    active: true,
+  }
 )
 const emit = defineEmits(['save', 'delete'])
 const isEditing = ref(false)
@@ -60,11 +65,17 @@ const onDeleteClick = () => emit('delete', domain)
     :class="{ 'bg-red-300': !domain.isHealth }"
   >
     <BaseInput v-model="domain.endpoint" :readonly="!canType" />
-    <BaseInput v-model="domain.healthEndpoint" :readonly="!canType" />
     <div v-if="isNew" class="icon-group">
       <NuxtIcon name="check" @click="onSaveClick" />
     </div>
     <div v-else class="icon-group">
+      <div class="flex self-center">
+        <BaseSwitchToggle
+          :id="`${domain.id}-input`"
+          :default-state="domain.active"
+          :on-toggle-switch="() => (domain.active = !domain.active)"
+        />
+      </div>
       <transition>
         <NuxtIcon v-if="isEditing" name="check" @click="onSaveClick" />
       </transition>

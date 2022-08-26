@@ -13,4 +13,5 @@ export type PostDomain = {
   endpoint: string
   healthEndpoint: string
   isHealth: boolean
+  active: boolean
 }

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 import { usePostsStore } from '@/state/posts'
+import { isNotEmpty } from '@/helpers/string'
 
 const postsStores = usePostsStore()
 const {
@@ -53,7 +54,7 @@ onBeforeMount(() => {
       <NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
     </div>
     <transition name="posts-list">
-      <div v-if="!isLoadingSearch && query != ''" class="posts-list">
+      <div v-if="!isLoadingSearch && isNotEmpty(query)" class="posts-list">
         <PostCard
           v-for="post in searchResults?.results ?? []"
           :key="post.id"
@@ -61,7 +62,10 @@ onBeforeMount(() => {
           @click="onPostClick(post.id)"
         />
       </div>
-      <div v-else-if="!isLoadingSearch" class="posts-list">
+      <div
+        v-else-if="!isLoadingSearch && !isNotEmpty(query)"
+        class="posts-list"
+      >
         <PostCard
           v-for="post in posts"
           :key="post.id"
@@ -72,7 +76,7 @@ onBeforeMount(() => {
     </transition>
 
     <button
-      v-show="!isLoading && query == ''"
+      v-show="!isLoading && !isNotEmpty(query)"
       class="w-2/4 mx-auto mt-4 text-center p-5 border border-black"
       @click="loadMore"
     >

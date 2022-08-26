@@ -49,6 +49,8 @@ watch(
               ref="modal"
               class="
                 bg-white
+                dark:bg-gray-800
+                dark:text-white
                 rounded-lg
                 text-left
                 shadow-xl
@@ -64,10 +66,12 @@ watch(
               <button
                 class="
                   absolute
-                  top-4
-                  right-4
+                  top-3
+                  right-3
                   md:-top-4 md:-right-4
-                  text-lg text-white
+                  text-lg
+                  md:text-white
+                  dark:text-white
                 "
               >
                 <nuxt-icon name="times" @click="closeModal" />
