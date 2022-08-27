@@ -23,10 +23,10 @@ const actions = {
       })
   },
   async add(payload) {
-    await useBaseFetch(baseUri, { method: 'POST', body: payload })
+    return useBaseFetch(baseUri, { method: 'POST', body: payload })
   },
   async update(payload) {
-    await useBaseFetch(`${baseUri}`, {
+    return useBaseFetch(baseUri, {
       method: 'PUT',
       body: payload,
     }).then(() => {
@@ -38,8 +38,11 @@ const actions = {
       })
     })
   },
+  async updateHealth() {
+    return useBaseFetch(`${baseUri}/health`)
+  },
   async delete(payload) {
-    await useBaseFetch(`${baseUri}/${payload}`, { method: 'DELETE' }).then(
+    return useBaseFetch(`${baseUri}/${payload}`, { method: 'DELETE' }).then(
       () => {
         this.list = this.list.filter((item) => item.id !== payload)
       }
