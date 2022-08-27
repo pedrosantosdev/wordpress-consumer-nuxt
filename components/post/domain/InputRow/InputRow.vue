@@ -19,6 +19,7 @@ const defaultWordpressPath = {
 }
 const domain = reactive(
   props.input ?? {
+    id: 0,
     endpoint: '',
     healthEndpoint: '',
     isHealth: true,
@@ -57,6 +58,10 @@ const onSaveClick = () => {
 }
 const hasFullPath = (path: string) => path.split('/').length > 4
 const onDeleteClick = () => emit('delete', domain)
+const toggleActive = () => {
+  domain.active = !domain.active
+  emit('save', domain)
+}
 </script>
 
 <template>
@@ -73,7 +78,7 @@ const onDeleteClick = () => emit('delete', domain)
         <BaseSwitchToggle
           :id="`${domain.id}-input`"
           :default-state="domain.active"
-          :on-toggle-switch="() => (domain.active = !domain.active)"
+          :on-toggle-switch="toggleActive"
         />
       </div>
       <transition>
