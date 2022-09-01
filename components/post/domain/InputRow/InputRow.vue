@@ -33,6 +33,9 @@ const onSaveClick = () => {
   if (!isNotEmpty(domain.endpoint)) {
     return
   }
+  if (!domain.endpoint.startWith('http')) {
+    domain.endpoint = `https://${domain.endpoint}`
+  }
   if (!isNotEmpty(domain.healthEndpoint) && !hasFullPath(domain.endpoint)) {
     domain.healthEndpoint = domain.endpoint
   }
@@ -69,7 +72,7 @@ const toggleActive = () => {
     class="post-domain-input relative px-4 py-2"
     :class="{ 'bg-red-300': !domain.isHealth }"
   >
-    <BaseInput v-model="domain.endpoint" :readonly="!canType" />
+    <BaseInput v-model="domain.endpoint" :type="url" :readonly="!canType" />
     <div v-if="isNew" class="icon-group">
       <NuxtIcon name="check" @click="onSaveClick" />
     </div>
