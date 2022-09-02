@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isNotEmpty } from '@/helpers/string'
+import { isNotEmpty, isUrl } from '@/helpers/string'
 
 const props = defineProps({
   isNew: {
@@ -30,10 +30,10 @@ const emit = defineEmits(['save', 'delete'])
 const isEditing = ref(false)
 const canType = computed(() => props.isNew || isEditing.value)
 const onSaveClick = () => {
-  if (!isNotEmpty(domain.endpoint)) {
+  if (!isNotEmpty(domain.endpoint) || !isUrl(domain.endpoint)) {
     return
   }
-  if (!domain.endpoint.startWith('http')) {
+  if (!domain.endpoint.startsWith('http')) {
     domain.endpoint = `https://${domain.endpoint}`
   }
   if (!isNotEmpty(domain.healthEndpoint) && !hasFullPath(domain.endpoint)) {
@@ -72,7 +72,7 @@ const toggleActive = () => {
     class="post-domain-input relative px-4 py-2"
     :class="{ 'bg-red-300': !domain.isHealth }"
   >
-    <BaseInput v-model="domain.endpoint" :type="url" :readonly="!canType" />
+    <BaseInput v-model="domain.endpoint" :type="'url'" :readonly="!canType" />
     <div v-if="isNew" class="icon-group">
       <NuxtIcon name="check" @click="onSaveClick" />
     </div>

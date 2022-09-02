@@ -6,14 +6,26 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['close'])
+
+const modal = ref(null)
+const { onClickOutside } = useClickOutside()
+onClickOutside(modal.value, () => {
+  console.log('callback')
+  if (isOpen.value) {
+    closeModal()
+  }
+})
 const isOpen = ref(props.showModal)
+useLockScroll(props.showModal)
 const closeModal = () => {
+  useLockScroll(false)
   emit('close', isOpen.value)
 }
 watch(
   () => props.showModal,
   (showModal) => {
     isOpen.value = showModal
+    useLockScroll(showModal)
   }
 )
 </script>
@@ -47,6 +59,9 @@ watch(
             <div
               v-show="isOpen"
               ref="modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-headline"
               class="
                 bg-white
                 dark:bg-gray-800
@@ -59,9 +74,6 @@ watch(
                 max-w-6xl
                 relative
               "
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-headline"
             >
               <button
                 class="

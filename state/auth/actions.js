@@ -1,4 +1,4 @@
-import { useBaseFetch } from '@/composables/baseFetch'
+import { useBaseFetch } from '~~/composables/usBaseFetch'
 import { isNotEmpty } from '@/helpers/string'
 
 const actions = {
