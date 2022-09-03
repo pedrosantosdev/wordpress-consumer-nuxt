@@ -14,12 +14,11 @@ export default defineNuxtPlugin((nuxtApp) => {
         el.getBoundingClientRect().bottom < window.innerHeight ||
         targetHeight <= currentHeightScroll
       ) {
-        console.log('s')
         callback()
       }
     }, 50)
 
-    if (el.getBoundingClientRect().height > 0) {
+    if (el.getBoundingClientRect().height > window.innerHeight) {
       window.addEventListener('scroll', handleScroll)
     }
     onUnmounted(() => {

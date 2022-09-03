@@ -24,6 +24,7 @@ const submitQuery = () => postsStores.search(query.value)
 let page = 1
 
 const loadMore = () => {
+  if (isLoading.value) return
   ++page
   postsStores.get(page)
 }
@@ -32,7 +33,7 @@ const onPostClick = (id: number) => {
   navigateTo(`posts/${id}`)
 }
 
-const debug = (s: string) => console.log(s)
+const debug = () => console.log('s')
 
 onBeforeMount(() => {
   if (!isLoading.value && (posts?.value?.length ?? 0) === 0) {
@@ -56,11 +57,7 @@ onBeforeMount(() => {
       <NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
     </div>
     <transition name="posts-list">
-      <div
-        v-if="!isLoadingSearch && isNotEmpty(query)"
-        v-scroll="{ callback: loadMore() }"
-        class="posts-list"
-      >
+      <div v-if="!isLoadingSearch && isNotEmpty(query)" class="posts-list">
         <PostCard
           v-for="post in searchResults?.results ?? []"
           :key="post.id"
