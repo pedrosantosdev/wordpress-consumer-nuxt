@@ -8,9 +8,8 @@ const props = defineProps({
 const emit = defineEmits(['close'])
 
 const modal = ref(null)
-const { onClickOutside } = useClickOutside()
-onClickOutside(modal.value, () => {
-  console.log('callback')
+onClickOutside(modal, () => {
+  if (!isOpen.value) return
   if (isOpen.value) {
     closeModal()
   }

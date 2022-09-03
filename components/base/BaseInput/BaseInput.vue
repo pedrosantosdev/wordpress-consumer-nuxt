@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import debounce from '~~/helpers/debounce'
+import debounce from '@/helpers/debounce'
 
 const emit = defineEmits(['update:modelValue', 'enter', 'debounce'])
 const props = defineProps({

@@ -16,6 +16,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     // https://github.com/gitFoxCode/nuxt-icons
     'nuxt-icons',
+    // https://vueuse.org/
+    '@vueuse/nuxt',
     // TODO: Auth
     // TODO: DateFns
     // TODO: Maybe PWA
@@ -50,5 +52,6 @@ export default defineNuxtConfig({
   plugins: [
     '@/plugins/pinia-plugin-persist.client',
     '@/plugins/auth-middleware-pinia',
+    '@/plugins/directives',
   ],
 })

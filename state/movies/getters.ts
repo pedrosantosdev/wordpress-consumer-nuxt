@@ -1,4 +1,4 @@
-import { MovieLocalModel } from '~~/types/Movie'
+import { MovieLocalModel } from '@/types/Movie'
 import { StateModel } from './state'
 
 const getters = {
