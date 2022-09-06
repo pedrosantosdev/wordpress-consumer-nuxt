@@ -3,7 +3,6 @@
     <div
       class="
         self-center
-        mb-6
         text-xl
         font-light
         text-gray-600
@@ -13,7 +12,7 @@
     >
       Login To Your Account
     </div>
-    <div class="mt-8">
+    <div class="mt-2">
       <form
         autoComplete="off"
         :class="{ error: hasError }"
@@ -63,7 +62,7 @@
             <NuxtIcon name="times" class="error--icon" />
           </div>
         </div>
-        <div class="flex flex-col mb-6">
+        <div class="flex flex-col mb-4">
           <div class="flex relative flex-wrap input-group">
             <span
               class="

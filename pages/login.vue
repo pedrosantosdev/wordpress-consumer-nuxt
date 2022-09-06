@@ -1,3 +1,3 @@
 <template>
-  <login-card class="mx-10 xl:mx-0" />
+  <LoginCard class="mx-5 md:mx-0 max-w-xs md:max-w-xl" />
 </template>
