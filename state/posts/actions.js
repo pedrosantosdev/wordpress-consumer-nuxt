@@ -15,7 +15,7 @@ const actions = {
           if (page === 1) {
             this.list = res
           } else {
-            this.list.push(res)
+            this.list.push(...res)
           }
         } else {
           this.hasError = true
@@ -40,7 +40,7 @@ const actions = {
         ) {
           const formatted = {
             page,
-            results: page === 1 ? res : this.searchList.results.push(res),
+            results: page === 1 ? res : this.searchList.results.push(...res),
             total_pages: 1,
           }
           this.searchList = formatted
