@@ -24,7 +24,7 @@ const submitQuery = () => postsStores.search(query.value)
 let page = 1
 
 const loadMore = () => {
-  if (isLoading.value) return
+  if (isLoading.value || (page > 1 && (posts?.value?.length ?? 0) < 10)) return
   ++page
   postsStores.get(page)
 }
@@ -32,8 +32,6 @@ const loadMore = () => {
 const onPostClick = (id: number) => {
   navigateTo(`posts/${id}`)
 }
-
-const debug = () => console.log('s')
 
 onBeforeMount(() => {
   if (!isLoading.value && (posts?.value?.length ?? 0) === 0) {
@@ -67,6 +65,7 @@ onBeforeMount(() => {
       </div>
       <div
         v-else-if="!isLoadingSearch && !isNotEmpty(query)"
+        v-lazy-scroll="{ callback: loadMore }"
         class="posts-list"
       >
         <PostCard

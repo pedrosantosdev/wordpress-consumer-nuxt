@@ -1,10 +1,11 @@
 import debounce from '@/helpers/debounce'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.directive('scroll', (el, binding) => {
+  nuxtApp.vueApp.directive('lazy-scroll', (el, binding) => {
     const callback = binding.value.callback
-    if (!callback) return
+    if (callback === undefined) return
     const heightPercent = binding.value.heightPercent ?? 60
+    const debounceTime = binding.value.debounceTime ?? 100
     const handleScroll = debounce(() => {
       const targetHeight = Math.floor(
         (el.getBoundingClientRect().height * heightPercent) / 100
@@ -16,12 +17,12 @@ export default defineNuxtPlugin((nuxtApp) => {
       ) {
         callback()
       }
-    }, 50)
+    }, debounceTime)
 
     if (el.getBoundingClientRect().height > window.innerHeight) {
       window.addEventListener('scroll', handleScroll)
     }
-    onUnmounted(() => {
+    tryOnUnmounted(() => {
       window.removeEventListener('scroll', handleScroll)
     })
   })
