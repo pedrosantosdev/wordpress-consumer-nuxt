@@ -4,7 +4,6 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
-    "storybook:build": "nuxi storybook build",
     "lint": "eslint --ext .js,.ts --ignore-path .eslintignore .",
     "lintfix": "eslint --ext .js,.ts --ignore-path .eslintignore . --fix"
   },
