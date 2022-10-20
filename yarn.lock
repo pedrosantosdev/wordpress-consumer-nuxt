@@ -1417,7 +1417,7 @@
   resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-2.0.0.tgz#c7bd7e9a516514e612d5d2e511ffc399e0eac322"
   integrity sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==
 
-"@nuxt/kit@3.0.0-rc.12", "@nuxt/kit@^3.0.0-rc.11", "@nuxt/kit@^3.0.0-rc.3", "@nuxt/kit@^3.0.0-rc.9":
+"@nuxt/kit@3.0.0-rc.12", "@nuxt/kit@^3.0.0-rc.11", "@nuxt/kit@^3.0.0-rc.12", "@nuxt/kit@^3.0.0-rc.3", "@nuxt/kit@^3.0.0-rc.9":
   version "3.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.0.0-rc.12.tgz#637ab3e63d4213b886ab3cda19632bd08bc5ccb6"
   integrity sha512-d/6SeNVL1OPdru5aKjjUIWIwqIjbYN/VYGCrZs5gddkzJ5202DsMxyn2rs/ZyT8+oBbbVTYcCK6M+G0945mQdA==
@@ -1653,26 +1653,27 @@
     postcss "^8.4.14"
     vue-loader "^15.9.8"
 
-"@nuxtjs/tailwindcss@^5.3.2":
-  version "5.3.5"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-5.3.5.tgz#9d1988f0f8433e67df5707eea2ea2e8ac004a10c"
-  integrity sha512-d6noacVfcN88R6Iqd5/kl7YyumE+EIsz6ky26JvidHtkTeAPxZt8XN/KFEMJ6xwSvhsUndrNW94XYPKv7l79jg==
+"@nuxtjs/tailwindcss@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-6.0.1.tgz#420654f3ec5bc15f293b0315586706b007b0f98e"
+  integrity sha512-C6wdGq6CJDfHWGpDf5PNon1elJMFzMbb/x5mA2Zr9854Xq8e6DgfTMMM7H5x5RpqFV61CfFDMKNPyFrNXdAj0g==
   dependencies:
-    "@nuxt/kit" "^3.0.0-rc.9"
+    "@nuxt/kit" "^3.0.0-rc.12"
     "@nuxt/postcss8" "^1.1.3"
-    autoprefixer "^10.4.8"
-    chalk "^5.0.1"
+    autoprefixer "^10.4.12"
+    chalk "^5.1.2"
     clear-module "^4.1.2"
     consola "^2.15.3"
     defu "^6.1.0"
-    postcss "^8.4.16"
-    postcss-custom-properties "^12.1.8"
-    postcss-nesting "^10.1.10"
+    h3 "^0.8.5"
+    postcss "^8.4.18"
+    postcss-custom-properties "^12.1.9"
+    postcss-nesting "^10.2.0"
     tailwind-config-viewer "^1.7.2"
-    tailwindcss "^3.1.8"
-    ufo "^0.8.5"
+    tailwindcss "^3.2.0"
+    ufo "^0.8.6"
 
-"@pinia/nuxt@^0.4.2":
+"@pinia/nuxt@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@pinia/nuxt/-/nuxt-0.4.3.tgz#1cb254ef87faee1524a15ad073516394f3fd6f7c"
   integrity sha512-pDyThvbOi9ztSPI9RDJG857Knb/mmUdDrDiLXbtLVQ3/l647jKncdP4TiRLnMlObENJjcFPEwHT7OVPq4VhQMw==
@@ -4105,7 +4106,7 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autoprefixer@^10.2.5, autoprefixer@^10.4.12, autoprefixer@^10.4.8:
+autoprefixer@^10.2.5, autoprefixer@^10.4.12:
   version "10.4.12"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.12.tgz#183f30bf0b0722af54ee5ef257f7d4320bb33129"
   integrity sha512-WrCGV9/b97Pa+jtwf5UGaRjgQIg7OK3D06GnoYoZNcG1Xb8Gt3EfuKjlhh9i/VtT16g6PYjZ69jdJ2g8FxSC4Q==
@@ -4738,7 +4739,7 @@ chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^5.0.0, chalk@^5.0.1, chalk@^5.1.0, chalk@^5.1.2:
+chalk@^5.0.0, chalk@^5.1.0, chalk@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.1.2.tgz#d957f370038b75ac572471e83be4c5ca9f8e8c45"
   integrity sha512-E5CkT4jWURs1Vy5qGJye+XwCkNj7Od3Af7CP6SujMetSMkLs8Do2RWJK5yx1wamHV/op8Rz+9rltjaTQWDnEFQ==
@@ -7255,7 +7256,7 @@ gzip-size@^7.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-h3@^0.8.1, h3@^0.8.4:
+h3@^0.8.1, h3@^0.8.4, h3@^0.8.5:
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/h3/-/h3-0.8.5.tgz#59b84b55da407cd9f8d02ae838a3d5130816fa90"
   integrity sha512-A+rVzJ+31e67JJzlRf2Ycphu/mvl2qknbpch38xRfrs9HuGSKTtOWuzPnpgaEGIfnzuD/BsDOfhQLJevXEm3ag==
@@ -9597,7 +9598,7 @@ nuxt-icons@^2.0.2:
   dependencies:
     "@nuxt/kit" "^3.0.0-rc.3"
 
-nuxt@^3.0.0-rc.10:
+nuxt@^3.0.0-rc.12:
   version "3.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.0.0-rc.12.tgz#09e79dbc681930286e838281cd1017540a84a470"
   integrity sha512-VhSod1u/w+C3VWsagTd5Prnsjk/VxPRt/bbADhUz3l0zxxajHRhHFX4xZSJWNgzsakducDqhn7N1pY6Ukko9kg==
@@ -10203,12 +10204,12 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
-pinia-plugin-persistedstate@^2.1.1:
+pinia-plugin-persistedstate@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-2.3.0.tgz#12fc1452ac0fe1a4730f162a1e458d339d340b03"
   integrity sha512-K7vzt68Z3lbMDjb23Ki2vgHVBP2QFvjl7WNwzIwqY/DAkhSt8mi/z6bN/cXTst7fJjXWF0lC9NyxFKHfxWehuw==
 
-pinia@>=2.0.23, pinia@^2.0.22:
+pinia@>=2.0.23, pinia@^2.0.23:
   version "2.0.23"
   resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.23.tgz#570f5f82160b656b412602789683faa95502d227"
   integrity sha512-N15hFf4o5STrxpNrib1IEb1GOArvPYf1zPvQVRGOO1G1d74Ak0J0lVyalX/SmrzdT4Q0nlEFjbURsmBmIGUR5Q==
@@ -10317,7 +10318,7 @@ postcss-convert-values@^5.1.2:
     browserslist "^4.20.3"
     postcss-value-parser "^4.2.0"
 
-postcss-custom-properties@^12.1.8:
+postcss-custom-properties@^12.1.9:
   version "12.1.10"
   resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-12.1.10.tgz#624517179fd4cf50078a7a60f628d5782e7d4903"
   integrity sha512-U3BHdgrYhCrwTVcByFHs9EOBoqcKq4Lf3kXwbTi4hhq0qWhl/pDWq2THbv/ICX/Fl9KqeHBb8OVrTf2OaYF07A==
@@ -10529,7 +10530,7 @@ postcss-nested@6.0.0:
   dependencies:
     postcss-selector-parser "^6.0.10"
 
-postcss-nesting@^10.1.10:
+postcss-nesting@^10.2.0:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-10.2.0.tgz#0b12ce0db8edfd2d8ae0aaf86427370b898890be"
   integrity sha512-EwMkYchxiDiKUhlJGzWsD9b2zvq/r2SSubcRrgP+jujMXFzqvANLt16lJANC+5uZ6hjI7lpRmI6O8JIl+8l1KA==
@@ -10695,7 +10696,7 @@ prettier-linter-helpers@^1.0.0:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.0.tgz#b6a5bf1284026ae640f17f7ff5658a7567fc0d18"
   integrity sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==
 
-"prettier@^1.18.2 || ^2.0.0":
+"prettier@^1.18.2 || ^2.0.0", prettier@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
   integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
@@ -12337,7 +12338,7 @@ tailwind-config-viewer@^1.7.2:
     portfinder "^1.0.26"
     replace-in-file "^6.1.0"
 
-tailwindcss@^3.1.8:
+tailwindcss@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.2.0.tgz#0164a930645e7e1df301df1e9d434a52602c918d"
   integrity sha512-ARh/W0uH5UlWIC2nn02V0+5fyF0k6qZliyt4QYic2upOhPUE/Spu1EURNc9txJ3+4j8OEmdigqfDpw4d2tA4vA==
