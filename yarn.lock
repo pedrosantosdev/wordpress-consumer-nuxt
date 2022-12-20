@@ -44,7 +44,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@^7.1.0", "@babel/core@^7.12.10", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.19.6", "@babel/core@^7.20.2":
+"@babel/core@^7.1.0", "@babel/core@^7.12.10", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.19.6", "@babel/core@^7.20.2", "@babel/core@^7.20.5":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.20.5.tgz#45e2114dc6cd4ab167f81daf7820e8fa1250d113"
   integrity sha512-UdOWmk4pNWTm/4DlPUl/Pt4Gz4rcEMb7CY0Y3eJl5Yz1vI8ZJGmHWaVE55LoxRjdpx0z259GE9U5STA9atUinQ==
@@ -1068,7 +1068,7 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@babel/standalone@^7.20.4":
+"@babel/standalone@^7.20.4", "@babel/standalone@^7.20.6":
   version "7.20.6"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.20.6.tgz#7deb7ad244176414c3cbde020aad0607afdbe2fe"
   integrity sha512-u5at/CbBLETf7kx2LOY4XdhseD79Y099WZKAOMXeT8qvd9OSR515my2UNBBLY4qIht/Qi9KySeQHQwQwxJN4Sw==
@@ -1384,7 +1384,7 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@jridgewell/sourcemap-codec@1.4.14", "@jridgewell/sourcemap-codec@^1.4.10":
+"@jridgewell/sourcemap-codec@1.4.14", "@jridgewell/sourcemap-codec@^1.4.10", "@jridgewell/sourcemap-codec@^1.4.13":
   version "1.4.14"
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz#add4c98d341472a289190b424efbdb096991bb24"
   integrity sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==
@@ -1544,16 +1544,16 @@
     unimport "^1.0.1"
     untyped "^1.0.0"
 
-"@nuxt/kit@npm:@nuxt/kit-edge@3.0.1-rc.0-27845213.4641e8e":
-  version "3.0.1-rc.0-27845213.4641e8e"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.1-rc.0-27845213.4641e8e.tgz#afdf60383a33543a3ce022fbced1638fe1a9158c"
-  integrity sha512-hESlFH3E3UgSDA3P67mcVqIrY/SS7UxIAX/qIFt8XLtCkV4rmLcV36ajifl8dMTds6RUj5VSQLxzMfvtt3DVRg==
+"@nuxt/kit@npm:@nuxt/kit-edge@3.0.1-rc.0-27857531.faf2607":
+  version "3.0.1-rc.0-27857531.faf2607"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.1-rc.0-27857531.faf2607.tgz#7cf846187c9c5634f20321cd1951eb2aad863dba"
+  integrity sha512-tICLujK7DysEwmsgpDGsU3UQj7tHsHGmCtk8jW98QriqlK3vs8rnLGP7TLm6Zzp9zkDxtb1kWu5cVBznRtw16A==
   dependencies:
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.1-rc.0-27845213.4641e8e"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.1-rc.0-27857531.faf2607"
     c12 "^1.1.0"
     consola "^2.15.3"
     defu "^6.1.1"
-    globby "^13.1.2"
+    globby "^13.1.3"
     hash-sum "^2.0.0"
     ignore "^5.2.1"
     jiti "^1.16.0"
@@ -1565,8 +1565,8 @@
     scule "^1.0.0"
     semver "^7.3.8"
     unctx "^2.1.1"
-    unimport "^1.0.1"
-    untyped "^1.0.0"
+    unimport "^1.0.2"
+    untyped "^1.2.0"
 
 "@nuxt/postcss8@^1.1.3":
   version "1.1.3"
@@ -1600,14 +1600,15 @@
     unimport "^1.0.1"
     untyped "^1.0.0"
 
-"@nuxt/schema@npm:@nuxt/schema-edge@3.0.1-rc.0-27845213.4641e8e":
-  version "3.0.1-rc.0-27845213.4641e8e"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.1-rc.0-27845213.4641e8e.tgz#cd16fb9dfd1f1b7ce9935a6c340a8eea78f8d913"
-  integrity sha512-4SSrDEDzMtmpelrzy7aNQJrbR/nCi+LWgxRGlBz5SuWvc5K9QvB6ALp8PGvvpNLX+V7+GvYS1MoxwBZCNB+uuQ==
+"@nuxt/schema@npm:@nuxt/schema-edge@3.0.1-rc.0-27857531.faf2607":
+  version "3.0.1-rc.0-27857531.faf2607"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.1-rc.0-27857531.faf2607.tgz#ccb4672c7f0f6abaab637809776f2e6f59977ef4"
+  integrity sha512-lVgUM65H8NnWHH/Qtq+K9Nhwffz1taHm4zzN3nLMQ0DfUQaqfbS0Ptv3EWqUTXpc85GOPgTSBDxRE5XXNwAw4w==
   dependencies:
     c12 "^1.1.0"
     create-require "^1.1.1"
     defu "^6.1.1"
+    hookable "^5.4.2"
     jiti "^1.16.0"
     pathe "^1.0.0"
     pkg-types "^1.0.1"
@@ -1615,8 +1616,8 @@
     scule "^1.0.0"
     std-env "^3.3.1"
     ufo "^1.0.1"
-    unimport "^1.0.1"
-    untyped "^1.0.0"
+    unimport "^1.0.2"
+    untyped "^1.2.0"
 
 "@nuxt/telemetry@^2.1.8":
   version "2.1.8"
@@ -1644,13 +1645,13 @@
     rc9 "^2.0.0"
     std-env "^3.3.1"
 
-"@nuxt/test-utils-edge@^3.0.0":
-  version "3.0.1-rc.0-27845213.4641e8e"
-  resolved "https://registry.yarnpkg.com/@nuxt/test-utils-edge/-/test-utils-edge-3.0.1-rc.0-27845213.4641e8e.tgz#b99f7204a299bcd36e730ea230aa31b7b18d61d3"
-  integrity sha512-TaWJwrVJD3//6SWRnEKWevWjKRKr1Pmwas/Z9IIzdQdCGwTN8CVS2LA9Au0w1FDfThogtqnmmUfzHnKopQKcRw==
+"@nuxt/test-utils-edge@^3.0.1-rc.0-27857531.faf2607":
+  version "3.0.1-rc.0-27857531.faf2607"
+  resolved "https://registry.yarnpkg.com/@nuxt/test-utils-edge/-/test-utils-edge-3.0.1-rc.0-27857531.faf2607.tgz#40dba39fab03d33b883e42693ced314193adb6a0"
+  integrity sha512-S5U6wpL4Zxf01451Jc/O9vYg2DeDGvYm4OJnihA5SeBDFJuIk00dzVEBRNNBHnLa5k/Q3hRUwn6+hPiHOw9qrg==
   dependencies:
-    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.1-rc.0-27845213.4641e8e"
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.1-rc.0-27845213.4641e8e"
+    "@nuxt/kit" "npm:@nuxt/kit-edge@3.0.1-rc.0-27857531.faf2607"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.1-rc.0-27857531.faf2607"
     consola "^2.15.3"
     defu "^6.1.1"
     execa "^6.1.0"
@@ -7375,6 +7376,17 @@ globby@^13.1.2:
     merge2 "^1.4.1"
     slash "^4.0.0"
 
+globby@^13.1.3:
+  version "13.1.3"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-13.1.3.tgz#f62baf5720bcb2c1330c8d4ef222ee12318563ff"
+  integrity sha512-8krCNHXvlCgHDpegPzleMq07yMYTO2sXKASmZmquEYWEmCx6J5UTRbp5RwMJkTJGtcQ44YpiUYUiN0b9mzy8Bw==
+  dependencies:
+    dir-glob "^3.0.1"
+    fast-glob "^3.2.11"
+    ignore "^5.2.0"
+    merge2 "^1.4.1"
+    slash "^4.0.0"
+
 globby@^9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/globby/-/globby-9.2.0.tgz#fd029a706c703d29bdd170f4b6db3a3f7a7cb63d"
@@ -9014,6 +9026,13 @@ magic-string@^0.26.4, magic-string@^0.26.7:
   integrity sha512-hX9XH3ziStPoPhJxLq1syWuZMxbDvGNbVchfrdCtanC7D13888bMFow61x8axrx+GfHLtVeAx2kxL7tTGRl+Ow==
   dependencies:
     sourcemap-codec "^1.4.8"
+
+magic-string@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.27.0.tgz#e4a3413b4bab6d98d2becffd48b4a257effdbbf3"
+  integrity sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==
+  dependencies:
+    "@jridgewell/sourcemap-codec" "^1.4.13"
 
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
@@ -13054,6 +13073,23 @@ unimport@^1.0.0, unimport@^1.0.1:
     strip-literal "^1.0.0"
     unplugin "^1.0.0"
 
+unimport@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/unimport/-/unimport-1.0.2.tgz#3d250dea0a441010f7e710c2031d6e334c7705ef"
+  integrity sha512-DcYkDwl1XMZNmyEKUFzVzHAul0FZcj9m0OM/WRfaAtg6Gw1waYlypYJl6qAg31k57TnNPwGDCAxYPodYC5qomQ==
+  dependencies:
+    "@rollup/pluginutils" "^5.0.2"
+    escape-string-regexp "^5.0.0"
+    fast-glob "^3.2.12"
+    local-pkg "^0.4.2"
+    magic-string "^0.27.0"
+    mlly "^1.0.0"
+    pathe "^1.0.0"
+    pkg-types "^1.0.1"
+    scule "^1.0.0"
+    strip-literal "^1.0.0"
+    unplugin "^1.0.1"
+
 union-value@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/union-value/-/union-value-1.0.1.tgz#0b6fe7b835aecda61c6ea4d4f02c14221e109847"
@@ -13156,6 +13192,16 @@ unplugin@^1.0.0:
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.4.6"
 
+unplugin@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-1.0.1.tgz#83b528b981cdcea1cad422a12cd02e695195ef3f"
+  integrity sha512-aqrHaVBWW1JVKBHmGo33T5TxeL0qWzfvjWokObHA9bYmN7eNDkwOxmLjhioHl9878qDFMAaT51XNroRyuz7WxA==
+  dependencies:
+    acorn "^8.8.1"
+    chokidar "^3.5.3"
+    webpack-sources "^3.2.3"
+    webpack-virtual-modules "^0.5.0"
+
 unset-value@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unset-value/-/unset-value-1.0.0.tgz#8376873f7d2335179ffb1e6fc3a8ed0dfc8ab559"
@@ -13196,6 +13242,16 @@ untyped@^1.0.0:
     "@babel/core" "^7.20.2"
     "@babel/standalone" "^7.20.4"
     "@babel/types" "^7.20.2"
+    scule "^1.0.0"
+
+untyped@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/untyped/-/untyped-1.2.0.tgz#0421ed67880b2e3b3f5786ebe068ae9f0f46cb5d"
+  integrity sha512-nG0A55YEhUU5UCEM+nhIhCVkA8a4L1spIVtzO0937WDjEA6jrKpu184O2K9iv5UuJNHnwhu+Q3TXiSJh/JrjlQ==
+  dependencies:
+    "@babel/core" "^7.20.5"
+    "@babel/standalone" "^7.20.6"
+    "@babel/types" "^7.20.5"
     scule "^1.0.0"
 
 upath@^1.1.1:
@@ -13660,6 +13716,11 @@ webpack-virtual-modules@^0.4.6:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.4.6.tgz#3e4008230731f1db078d9cb6f68baf8571182b45"
   integrity sha512-5tyDlKLqPfMqjT3Q9TAqf2YqjwmnUleZwzJi1A5qXnlBCdj2AtOJ6wAWdglTIDOPgOiOrXeBeFcsQ8+aGQ6QbA==
+
+webpack-virtual-modules@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.5.0.tgz#362f14738a56dae107937ab98ea7062e8bdd3b6c"
+  integrity sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==
 
 webpack@4:
   version "4.46.0"
