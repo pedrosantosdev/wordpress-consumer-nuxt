@@ -8,7 +8,7 @@
     "lintfix": "eslint --ext .js,.ts --ignore-path .eslintignore . --fix"
   },
   "devDependencies": {
-    "@nuxt/test-utils-edge": "^3.0.0",
+    "@nuxt/test-utils-edge": "^3.0.1-rc.0-27880943.da38c62",
     "@nuxt/types": "^2.15.8",
     "@nuxtjs/color-mode": "^3.1.8",
     "@nuxtjs/storybook": "^4.3.2",
