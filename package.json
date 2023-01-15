@@ -20,7 +20,7 @@
     "@vueuse/core": "^9.5.0",
     "@vueuse/nuxt": "^9.5.0",
     "eslint": "^8.27.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.7.0",
