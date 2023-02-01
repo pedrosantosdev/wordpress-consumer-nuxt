@@ -1662,7 +1662,7 @@
     unimport "^1.0.1"
     untyped "^1.0.0"
 
-"@nuxt/kit@^3.0.0", "@nuxt/kit@^3.0.0-rc.14", "@nuxt/kit@^3.0.0-rc.3", "@nuxt/kit@^3.1.1":
+"@nuxt/kit@^3.0.0", "@nuxt/kit@^3.0.0-rc.14", "@nuxt/kit@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.1.1.tgz#7641afe192297db02d3585234e9d2a71caf164df"
   integrity sha512-wmqVCIuD/te6BKf3YiqWyMumKI5JIpkiv0li/1Y3QHnTkoxyIhLkbFgNcQHuBxJ3eMlk2UjAjAqWiqBHTX54vQ==
@@ -9994,12 +9994,12 @@ nuxi@3.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt-icons@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/nuxt-icons/-/nuxt-icons-2.0.2.tgz#6a24e02553014f7c3c8c58e5f94204357feac2c0"
-  integrity sha512-Sr9xwM6sLH9k6gCpr1j8Vdixgm2LBgkPcoCRngU9xlBglEnEmLZzPHi6eMpl0u2ux4RkRdyRIt+cdvgdFqD/FQ==
+nuxt-icons@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/nuxt-icons/-/nuxt-icons-3.1.0.tgz#dd9860ff62fe21ae6204e301208eb7eb742a9dd7"
+  integrity sha512-5BAIXF+kctNxDtM+KlNHWu4dzhSkc1asSzvbMzsiP/IKKKlnTiXLP3hC+renhPVAyCMSYa2bf+ULqDSVDFTekg==
   dependencies:
-    "@nuxt/kit" "^3.0.0-rc.3"
+    "@nuxt/kit" "^3.0.0"
 
 nuxt@^3.0.0:
   version "3.0.0"
