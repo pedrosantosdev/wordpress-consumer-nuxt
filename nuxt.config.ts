@@ -1,6 +1,3 @@
-import { defineNuxtConfig } from 'nuxt'
-
-// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   typescript: {
     shim: false,
@@ -18,10 +15,18 @@ export default defineNuxtConfig({
     'nuxt-icons',
     // https://vueuse.org/
     '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
     // TODO: Auth
     // TODO: DateFns
     // TODO: Maybe PWA
   ],
+  piniaPersistedstate: {
+    cookieOptions: {
+      sameSite: 'strict',
+    },
+    storage: 'cookies'
+  },
   // https://v3.nuxtjs.org/guide/features/runtime-config
   runtimeConfig: {
     public: {
@@ -50,7 +55,6 @@ export default defineNuxtConfig({
     storageKey: 'nuxt-color-mode',
   },
   plugins: [
-    '@/plugins/pinia-plugin-persist.client',
     '@/plugins/auth-middleware-pinia',
     '@/plugins/directives',
   ],
