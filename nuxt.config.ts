@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     cookieOptions: {
       sameSite: 'strict',
     },
-    storage: 'cookies'
+    storage: 'cookies',
   },
   // https://v3.nuxtjs.org/guide/features/runtime-config
   runtimeConfig: {
@@ -54,8 +54,5 @@ export default defineNuxtConfig({
     classSuffix: '',
     storageKey: 'nuxt-color-mode',
   },
-  plugins: [
-    '@/plugins/auth-middleware-pinia',
-    '@/plugins/directives',
-  ],
+  plugins: ['@/plugins/auth-middleware-pinia', '@/plugins/directives'],
 })
