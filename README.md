@@ -1,4 +1,4 @@
-# nuxt-3-2-0
+# Wordpress Consumer Nuxt
 
 ## Build Setup
 

@@ -6,7 +6,7 @@ describe('BaseInputVue', () => {
 		const wrapper = render(BaseInputVue, {
 			props: {
 				label: 'Type Here',
-				modelValue: ''
+				modelValue: '',
 			},
 		})
 		expect(wrapper.html()).toMatchSnapshot()
