@@ -14,8 +14,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node", "@/types",
-    "@pinia/nuxt",]
+    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node", "@/types", "@pinia/nuxt", "@types/jest"]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }

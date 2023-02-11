@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     strict: true,
   },
   ssr: false,
-  ignore: [ '**/*.test.*', '**/*.spec.*' ],
+  ignore: [ 'jest.config.js', '**/*.test.*', '**/*.spec.*'],
   head: {
     title: 'wordpress-consumer-nuxt',
     htmlAttrs: {

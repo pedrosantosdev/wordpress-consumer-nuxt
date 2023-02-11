@@ -7,3 +7,4 @@ nuxt.d.ts
 # Nuxt Storybook
 .nuxt-storybook
 storybook-static
+coverage
