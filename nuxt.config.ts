@@ -4,6 +4,20 @@ export default defineNuxtConfig({
     strict: true,
   },
   ssr: false,
+  ignore: [ '**/*.test.*', '**/*.spec.*' ],
+  head: {
+    title: 'wordpress-consumer-nuxt',
+    htmlAttrs: {
+      lang: 'en',
+    },
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' },
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+  },
   modules: [
     // Doc: https://github.com/nuxt-community/color-mode-module
     '@nuxtjs/color-mode',
@@ -15,7 +29,6 @@ export default defineNuxtConfig({
     'nuxt-icons',
     // https://vueuse.org/
     '@vueuse/nuxt',
-    '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     // TODO: Auth
     // TODO: DateFns
