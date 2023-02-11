@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 export default function debounce(fn, delay) {
-  let timeoutID = null
-  return function () {
-    clearTimeout(timeoutID)
-    const args = arguments
-    const that = this
-    timeoutID = setTimeout(function () {
-      fn.apply(that, args)
-    }, delay || 500)
-  }
+	let timeoutID = null
+	return function () {
+		clearTimeout(timeoutID)
+		const args = arguments
+		const that = this
+		timeoutID = setTimeout(function () {
+			fn.apply(that, args)
+		}, delay || 500)
+	}
 }

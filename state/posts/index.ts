@@ -3,10 +3,10 @@ import state from './state'
 import actions from './actions'
 
 export const usePostsStore = defineStore('posts', {
-  state,
-  actions,
+	state,
+	actions,
 })
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(usePostsStore, import.meta.hot))
+	import.meta.hot.accept(acceptHMRUpdate(usePostsStore, import.meta.hot))
 }

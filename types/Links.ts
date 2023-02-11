@@ -1,5 +1,5 @@
 export type LinksModel = {
-  label: string
-  path: string
-  cssClass: string | null
+	label: string
+	path: string
+	cssClass: string | null
 }
