@@ -6,7 +6,7 @@ const emit = defineEmits(["update:modelValue", "enter", "debounce"]);
 const props = withDefaults(
   defineProps<{
     label: string;
-    readonly: boolean;
+    readonly?: boolean;
     type?: string;
     modelValue: string | number;
   }>(),
