@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseModalVue should render properly 1`] = `
+"<!--teleport start-->
+<!--teleport end-->"
+`;

@@ -1,7 +1,6 @@
 module.exports = {
 	moduleNameMapper: {
 		'^@/(.*)$': '<rootDir>/$1',
-		// '^vue$': 'vue/dist/vue.runtime.js'
 	},
 	testRegex: '\\.(test|spec)\\.(js|ts)$',
 	testPathIgnorePatterns: ['/dist/', '/node_modules/', '/.nuxt/'],
