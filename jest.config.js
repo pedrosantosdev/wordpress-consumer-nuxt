@@ -1,12 +1,14 @@
 module.exports = {
+	preset: 'ts-jest',
 	moduleNameMapper: {
 		'^@/(.*)$': '<rootDir>/$1',
 	},
-	testRegex: '\\.(test|spec)\\.(js|ts)$',
+	testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(js?|ts?)$',
 	testPathIgnorePatterns: ['/dist/', '/node_modules/', '/.nuxt/'],
 	testEnvironmentOptions: {
 		customExportConditions: ['node', 'node-addons'],
 	},
+	modulePaths: ['<rootDir>/node_modules'],
 	moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
 	transform: {
 		'^.+\\.ts$': 'ts-jest',
@@ -23,5 +25,6 @@ module.exports = {
 		'<rootDir>/helpers/**/*.ts',
 		'<rootDir>/helpers/**/*.js',
 	],
-	testEnvironment: 'jsdom',
+	testEnvironment: '@happy-dom/jest-environment',
+	setupFiles: ['<rootDir>/jest.setup.ts'],
 }
