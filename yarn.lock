@@ -1708,15 +1708,15 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@happy-dom/jest-environment@^8.2.6":
-  version "8.2.6"
-  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-8.2.6.tgz#b1072f8082534a8484cecfb07cfe5a18b8ff9063"
-  integrity sha512-lfKz/lo1d7R7fI8Gj8JyowZs2P230MjiFKLQIwNk68D8cyWGFFQjnlR/+7A77eM59ggeAZWCcgC4biDhtKGMWQ==
+"@happy-dom/jest-environment@^8.3.2":
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-8.3.2.tgz#173fec8716b67d0be1563d4f4c77740dbc7ba191"
+  integrity sha512-vytqbcPVPXgBUO/BNWh2nV0Lp9dhOmXmNoSs+WleLvu/6IU2L0DEpoikzd1y5cHIQY1dRqa+8gv3vopKawN5IA==
   dependencies:
     "@jest/environment" "^29.4.0"
     "@jest/fake-timers" "^29.4.0"
     "@jest/types" "^29.4.0"
-    happy-dom "^8.2.6"
+    happy-dom "^8.3.2"
     jest-mock "^29.4.0"
     jest-util "^29.4.0"
 
@@ -8440,10 +8440,10 @@ handlebars@^4.7.7:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-happy-dom@^8.2.6:
-  version "8.2.6"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-8.2.6.tgz#5dae532277766d9490d23762c7591d159690cf84"
-  integrity sha512-s53VwyMFpQPEZdN00M82i3tFTzz0T4kBVD4tu8b+im99s1NkLK6tfKGCCl2Jmf3ZWfFCRwS+DV2qkR7S1wmIhQ==
+happy-dom@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-8.3.2.tgz#767fb6f0b607ee6776f13f47c621183ac197cff3"
+  integrity sha512-Z0RigOkogHBIkkG/G3WHh5mMVZEO5Q8zSNFKEJ/e19kq83dbrHjWJJKOIXsDLOu9KtqM8QKj9IinpZC/tRNIQA==
   dependencies:
     css.escape "^1.5.1"
     he "^1.2.0"
