@@ -1708,15 +1708,15 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@happy-dom/jest-environment@^8.4.3":
-  version "8.4.3"
-  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-8.4.3.tgz#295fff3d3db2e5447fecd2a94b8f4d3a075511ef"
-  integrity sha512-ktH7pjwfZ/gMc3n1IzoXwQjzK7ILHd/meaMesQBgEH5wdEHUlN9iTKpPGrfB5AF9illAld7ewrtfJWC4AmXsGA==
+"@happy-dom/jest-environment@^8.6.0":
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-8.6.0.tgz#9efc0ffe95ede22748a4826e45805544a9e30114"
+  integrity sha512-JmKyMG7ClW8YXaui8/pnmoM/2bKadk/XBhiJ8old8b/dEi2tVIqhCCJHXRhwW9ISdMA4+tA1uUhg4AgsYAlNQg==
   dependencies:
     "@jest/environment" "^29.4.0"
     "@jest/fake-timers" "^29.4.0"
     "@jest/types" "^29.4.0"
-    happy-dom "^8.4.3"
+    happy-dom "^8.6.0"
     jest-mock "^29.4.0"
     jest-util "^29.4.0"
 
@@ -8540,10 +8540,10 @@ handlebars@^4.7.7:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-happy-dom@^8.4.3:
-  version "8.4.3"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-8.4.3.tgz#5bb2c93eefb3ab1c2502b827888c2d14d07b067f"
-  integrity sha512-mCkO1QWgoRdZqFRj6Fvzz7st9sFhuqKe9CojWmkYOHkBSCnA1AhSTApKTz/uDQIqsbWSBQuo+rek/x+2vQbpOg==
+happy-dom@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-8.6.0.tgz#7c3b54b95d23b1ff9bb40b1e2977765b9daa0b03"
+  integrity sha512-XCpbyWSfyttYBVJn+9gSxXUfSIxrS0I01seRvsCz1tUu/SNcJG/Dir4DTcafSaeSVPALBfrIGelnOCgN0qByQQ==
   dependencies:
     css.escape "^1.5.1"
     he "^1.2.0"
@@ -14942,11 +14942,6 @@ typescript@^4.9.5:
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 ufo@^1.0.0, ufo@^1.0.1, ufo@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.1.0.tgz#a5c4c814b0a98f7e0ca42c478688663fd3e3c037"
-  integrity sha512-LQc2s/ZDMaCN3QLpa+uzHUOQ7SdV0qgv3VBXOolQGXTaaZpIur6PwUclF5nN2hNkiTRcUugXd1zFOW3FLJ135Q==
-
-ufo@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.1.0.tgz#a5c4c814b0a98f7e0ca42c478688663fd3e3c037"
   integrity sha512-LQc2s/ZDMaCN3QLpa+uzHUOQ7SdV0qgv3VBXOolQGXTaaZpIur6PwUclF5nN2hNkiTRcUugXd1zFOW3FLJ135Q==
