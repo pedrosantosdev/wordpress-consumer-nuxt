@@ -30,7 +30,8 @@ export default defineNuxtConfig({
 		// https://vueuse.org/
 		'@vueuse/nuxt',
 		'@pinia-plugin-persistedstate/nuxt',
-		// TODO: Auth
+		// https://nuxt.com/modules/device
+		'@nuxtjs/device',
 		// TODO: DateFns
 		// TODO: Maybe PWA
 	],
@@ -68,4 +69,7 @@ export default defineNuxtConfig({
 		storageKey: 'nuxt-color-mode',
 	},
 	plugins: ['@/plugins/auth-middleware-pinia', '@/plugins/directives'],
+	device: {
+		refreshOnResize: true,
+	},
 })
