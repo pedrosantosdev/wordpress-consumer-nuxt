@@ -49,6 +49,6 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.3",
-    "pinia": "^2.0.30"
+    "pinia": "^2.0.31"
   }
 }
