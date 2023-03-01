@@ -17,4 +17,4 @@ jobs:
     steps:
       - name: Deploy webhook
         run: |
-          curl -X GET ${{secrets.WEBHOOK_DEPLOY}}
+          curl -X POST -d '{}' ${{secrets.WEBHOOK_DEPLOY}}
