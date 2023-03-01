@@ -2295,13 +2295,13 @@
     rc9 "^2.0.1"
     std-env "^3.3.2"
 
-"@nuxt/test-utils@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@nuxt/test-utils/-/test-utils-3.2.2.tgz#1480f72c0957f5549a6f00b740baa4c0eb041061"
-  integrity sha512-ar7WoBg+MQlOtCN8fxGtrlXNyaxZdjSf2TEVqZ5gN+Y4SrtUluD2F4SY26RRQmxihNJWpq1h8nayhEpG0i4fpg==
+"@nuxt/test-utils@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/test-utils/-/test-utils-3.2.3.tgz#9aee563b22c12620136c01b0bda0b7526d33649b"
+  integrity sha512-msry2+sDLdPEGUzXwJdkbjg6yh6q46xfXYu/FXl0dAAtUWbciQ/CkWKH840XIwDfyjm00E+m69Ou14kT3mD84w==
   dependencies:
-    "@nuxt/kit" "3.2.2"
-    "@nuxt/schema" "3.2.2"
+    "@nuxt/kit" "3.2.3"
+    "@nuxt/schema" "3.2.3"
     consola "^2.15.3"
     defu "^6.1.2"
     execa "^7.0.0"
@@ -14897,6 +14897,11 @@ typescript@^4.9.5:
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 ufo@^1.0.0, ufo@^1.0.1, ufo@^1.1.0, ufo@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.1.1.tgz#e70265e7152f3aba425bd013d150b2cdf4056d7c"
+  integrity sha512-MvlCc4GHrmZdAllBc0iUDowff36Q9Ndw/UzqmEKyrfSzokTd9ZCy1i+IIk5hrYKkjoYVQyNbrw7/F8XJ2rEwTg==
+
+ufo@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.1.1.tgz#e70265e7152f3aba425bd013d150b2cdf4056d7c"
   integrity sha512-MvlCc4GHrmZdAllBc0iUDowff36Q9Ndw/UzqmEKyrfSzokTd9ZCy1i+IIk5hrYKkjoYVQyNbrw7/F8XJ2rEwTg==
