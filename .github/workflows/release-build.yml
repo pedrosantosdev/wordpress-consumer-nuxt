@@ -1,0 +1,20 @@
+name: release-build
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [lts/*]
+
+    steps:
+      - name: Deploy webhook
+        run: |
+          curl -X GET ${{secrets.WEBHOOK_DEPLOY}}
