@@ -29,7 +29,7 @@
     "@vueuse/core": "^9.13.0",
     "@vueuse/nuxt": "^9.13.0",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^29.4.3",
+    "babel-jest": "^29.5.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-nuxt": "^4.0.0",
