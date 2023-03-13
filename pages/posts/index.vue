@@ -1,3 +1,3 @@
 <template>
-  <PostApp />
+	<PostApp />
 </template>

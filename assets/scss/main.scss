@@ -1,72 +1,71 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  @apply dark:text-white text-black;
-  .main-content {
-    @apply bg-white dark:bg-gray-600;
-    @apply min-h-screen max-h-full grid grid-flow-row grid-cols-1	 justify-center justify-items-center items-center gap-5;
-    grid-template-rows: max-content 1fr;
-    & > :first-child {
-      @apply -mx-5;
-    }
-  }
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	@apply dark:text-white text-black;
+	.main-content {
+		@apply bg-white dark:bg-gray-600;
+		@apply min-h-screen max-h-full grid grid-flow-row grid-cols-1	 justify-center justify-items-center items-center gap-5;
+		grid-template-rows: max-content 1fr;
+		& > :first-child {
+			@apply -mx-5;
+		}
+	}
 }
 
 .spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  svg {
-    animation: spin infinite 2.5s linear;
-  }
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	svg {
+		animation: spin infinite 2.5s linear;
+	}
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 // Default Transition
 .v {
-  &-enter-active {
-    @apply transition ease-out duration-200 transform;
-  }
-  &-enter-from {
-    @apply opacity-0;
-  }
-  &-enter-to {
-    @apply opacity-100;
-  }
-  &-leave-active {
-    @apply transition ease-in duration-200 transform;
-  }
-  &-leave-from {
-    @apply opacity-100;
-  }
-  &-leave-to {
-    @apply opacity-0;
-  }
+	&-enter-active {
+		@apply transition ease-out duration-200 transform;
+	}
+	&-enter-from {
+		@apply opacity-0;
+	}
+	&-enter-to {
+		@apply opacity-100;
+	}
+	&-leave-active {
+		@apply transition ease-in duration-200 transform;
+	}
+	&-leave-from {
+		@apply opacity-100;
+	}
+	&-leave-to {
+		@apply opacity-0;
+	}
 }
 
 ::-webkit-scrollbar {
-  width: 17px;
+	width: 17px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #4b5563;
+	background-color: #4b5563;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 100px;
-  border: 5px solid transparent;
-  background-clip: content-box;
-  background-color: #1f2937;
+	border-radius: 100px;
+	border: 5px solid transparent;
+	background-clip: content-box;
+	background-color: #1f2937;
 }

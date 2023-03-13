@@ -1,4 +1,4 @@
 @mixin grid-auto-columns($max) {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(auto, $max));
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(auto, $max));
 }
