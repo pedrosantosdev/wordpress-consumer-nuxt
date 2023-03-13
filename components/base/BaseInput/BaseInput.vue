@@ -5,7 +5,7 @@ import { computed } from "@vue/reactivity";
 const emit = defineEmits(["update:modelValue", "enter", "debounce"]);
 const props = withDefaults(
   defineProps<{
-    label: string;
+    label?: string;
     readonly?: boolean;
     type?: string;
     modelValue: string | number;

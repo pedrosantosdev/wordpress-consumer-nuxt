@@ -25,22 +25,16 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		// https://pinia.vuejs.org/ssr/nuxt.html
 		'@pinia/nuxt',
+		'@pinia-plugin-persistedstate/nuxt',
 		// https://github.com/gitFoxCode/nuxt-icons
 		'nuxt-icons',
 		// https://vueuse.org/
 		'@vueuse/nuxt',
-		'@pinia-plugin-persistedstate/nuxt',
 		// https://nuxt.com/modules/device
 		'@nuxtjs/device',
 		// TODO: DateFns
 		// TODO: Maybe PWA
 	],
-	piniaPersistedstate: {
-		cookieOptions: {
-			sameSite: 'strict',
-		},
-		storage: 'cookies',
-	},
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {
 		public: {
@@ -68,7 +62,7 @@ export default defineNuxtConfig({
 		classSuffix: '',
 		storageKey: 'nuxt-color-mode',
 	},
-	plugins: ['@/plugins/auth-middleware-pinia', '@/plugins/directives'],
+	plugins: ['@/plugins/auth-middleware-pinia'],
 	device: {
 		refreshOnResize: true,
 	},

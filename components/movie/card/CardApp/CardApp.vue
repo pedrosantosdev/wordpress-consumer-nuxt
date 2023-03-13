@@ -1,7 +1,13 @@
 <template>
 	<base-card-default>
 		<div class="h-52 sm:h-full lg:w-1/3 w-full">
-			<img v-if="hasImage" class="max-h-full mx-auto" :src="movie.image" :alt="movie.title" />
+			<img
+				v-if="hasImage"
+				loading="lazy"
+				class="max-h-full mx-auto"
+				:src="movie.image"
+				:alt="movie.title"
+			/>
 		</div>
 		<div class="flex flex-col lg:w-2/3 w-full flex-1 gap-5 sm:p-2">
 			<div class="flex flex-1 flex-col gap-3">

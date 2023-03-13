@@ -45,7 +45,7 @@ const actions = {
 			})
 	},
 	async getById(id) {
-		useBaseFetch(`${baseUri}/${id}`).then((res) => {
+		return useBaseFetch(`${baseUri}/${id}`).then((res) => {
 			if (res != undefined && typeof res === 'object') {
 				this.currentPost = res
 			}
