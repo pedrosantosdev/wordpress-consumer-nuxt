@@ -19,7 +19,7 @@
 		"@pinia-plugin-persistedstate/nuxt": "^1.1.1",
 		"@tailwindcss/line-clamp": "^0.4.2",
 		"@testing-library/vue": "^7.0.0",
-		"@types/jest": "^29.4.0",
+		"@types/jest": "^29.5.0",
 		"@typescript-eslint/eslint-plugin": "^5.54.1",
 		"@typescript-eslint/parser": "^5.55.0",
 		"@vue/eslint-config-standard": "^8.0.1",
