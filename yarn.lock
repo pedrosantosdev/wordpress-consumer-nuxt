@@ -1297,7 +1297,7 @@
     unimport "^2.2.4"
     untyped "^1.2.2"
 
-"@nuxt/kit@^3.0.0", "@nuxt/kit@^3.0.0-rc.13", "@nuxt/kit@^3.2.0", "@nuxt/kit@^3.2.3":
+"@nuxt/kit@3.3.1", "@nuxt/kit@^3.0.0", "@nuxt/kit@^3.0.0-rc.13", "@nuxt/kit@^3.2.0", "@nuxt/kit@^3.2.3":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.3.1.tgz#93e02a41d9adc7369d704deb88ae143c29554a4e"
   integrity sha512-zb7/2FUIB1g7nl6K6qozUzfG5uu4yrs9TQjZvpASnPBZ/x1EuJX5k3AA71hMMIVBEX9Adxvh9AuhDEHE5W26Zg==
@@ -1399,18 +1399,18 @@
     rc9 "^2.0.1"
     std-env "^3.3.2"
 
-"@nuxt/test-utils@^3.2.3":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@nuxt/test-utils/-/test-utils-3.2.3.tgz#9aee563b22c12620136c01b0bda0b7526d33649b"
-  integrity sha512-msry2+sDLdPEGUzXwJdkbjg6yh6q46xfXYu/FXl0dAAtUWbciQ/CkWKH840XIwDfyjm00E+m69Ou14kT3mD84w==
+"@nuxt/test-utils@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/test-utils/-/test-utils-3.3.1.tgz#364d07074b44f328c58032e7eac8e476e9c31b28"
+  integrity sha512-kkX5OTQ43Gc8CltSPlvem55rKfg1tOSq9FWLTu+Z1z00wc1oQzDAdVoHz0uSKT9anmbaWMX2u6c0oJb1DukyCg==
   dependencies:
-    "@nuxt/kit" "3.2.3"
-    "@nuxt/schema" "3.2.3"
+    "@nuxt/kit" "3.3.1"
+    "@nuxt/schema" "3.3.1"
     consola "^2.15.3"
     defu "^6.1.2"
-    execa "^7.0.0"
+    execa "^7.1.0"
     get-port-please "^3.0.1"
-    jiti "^1.17.1"
+    jiti "^1.17.2"
     ofetch "^1.0.1"
     pathe "^1.1.0"
 
@@ -4481,10 +4481,10 @@ execa@^5.0.0, execa@^5.1.1:
     signal-exit "^3.0.3"
     strip-final-newline "^2.0.0"
 
-execa@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-7.0.0.tgz#2a44e20e73797f6c2df23889927972386157d7e4"
-  integrity sha512-tQbH0pH/8LHTnwTrsKWideqi6rFB/QNUawEwrn+WHyz7PX1Tuz2u7wfTvbaNBdP5JD5LVWxNo8/A8CHNZ3bV6g==
+execa@^7.1.0:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-7.1.1.tgz#3eb3c83d239488e7b409d48e8813b76bb55c9c43"
+  integrity sha512-wH0eMf/UXckdUYnO21+HDztteVv05rq2GXksxT4fCGeHkBhw1DROXh40wcjMcRqDOWE7iPJ4n3M7e2+YFP+76Q==
   dependencies:
     cross-spawn "^7.0.3"
     get-stream "^6.0.1"
@@ -6054,12 +6054,7 @@ jest@^29.5.0:
     import-local "^3.0.2"
     jest-cli "^29.5.0"
 
-jiti@^1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.17.1.tgz#264daa43ee89a03e8be28c3d712ccc4eb9f1e8ed"
-  integrity sha512-NZIITw8uZQFuzQimqjUxIrIcEdxYDFIe/0xYfIlVXTkiBjjyBEvgasj5bb0/cHtPRD/NziPbT312sFrkI5ALpw==
-
-jiti@^1.17.2:
+jiti@^1.17.1, jiti@^1.17.2:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.18.2.tgz#80c3ef3d486ebf2450d9335122b32d121f2a83cd"
   integrity sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==
