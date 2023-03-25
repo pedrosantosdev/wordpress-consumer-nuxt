@@ -19,13 +19,12 @@ export default defineNuxtConfig({
 		link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 	},
 	modules: [
+		// https://pinia.vuejs.org/ssr/nuxt.html
+		'@pinia/nuxt',
 		// Doc: https://github.com/nuxt-community/color-mode-module
 		'@nuxtjs/color-mode',
 		// https://go.nuxtjs.dev/tailwindcss
 		'@nuxtjs/tailwindcss',
-		// https://pinia.vuejs.org/ssr/nuxt.html
-		'@pinia/nuxt',
-		'@pinia-plugin-persistedstate/nuxt',
 		// https://github.com/gitFoxCode/nuxt-icons
 		'nuxt-icons',
 		// https://vueuse.org/
@@ -38,9 +37,6 @@ export default defineNuxtConfig({
 		public: {
 			baseUrl: process.env.BASE_URL || 'http://localhost:8080',
 		},
-	},
-	piniaPersistedstate: {
-		storage: 'localStorage',
 	},
 	css: ['@/assets/scss/main.scss'],
 	tailwindcss: {
@@ -55,7 +51,7 @@ export default defineNuxtConfig({
 		classSuffix: '',
 		storageKey: 'nuxt-color-mode',
 	},
-	plugins: ['@/plugins/auth-middleware-pinia'],
+	plugins: ['@/plugins/auth-middleware-pinia', '@/plugins/pinia-persist.client.ts'],
 	device: {
 		refreshOnResize: true,
 	},
