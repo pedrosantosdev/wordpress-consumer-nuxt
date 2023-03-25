@@ -9,9 +9,7 @@ export const useAuthStore = defineStore('auth', {
 	getters,
 	persist: {
 		paths: ['token', 'refreshToken', 'expiresAt'],
-		storage: persistedState.cookiesWithOptions({
-			sameSite: 'strict',
-		}),
+		storage: persistedState.cookiesWithOptions(),
 	},
 })
 

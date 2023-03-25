@@ -32,22 +32,15 @@ export default defineNuxtConfig({
 		'@vueuse/nuxt',
 		// https://nuxt.com/modules/device
 		'@nuxtjs/device',
-		// TODO: DateFns
-		// TODO: Maybe PWA
 	],
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {
 		public: {
-			baseUrl: process.env.BASE_URL || '',
+			baseUrl: process.env.BASE_URL || 'http://localhost:8080',
 		},
 	},
-	storybook: {
-		// Options
-	},
-	pwa: {
-		manifest: {
-			lang: 'en',
-		},
+	piniaPersistedstate: {
+		storage: 'localStorage',
 	},
 	css: ['@/assets/scss/main.scss'],
 	tailwindcss: {

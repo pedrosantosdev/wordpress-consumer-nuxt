@@ -30,10 +30,12 @@ const actions = {
 						isNotEmpty(value)
 					)
 				) {
-					this.user = { name: payload.username }
-					this.token = response.accessToken
-					this.refreshToken = response.refreshToken
-					this.expiresAt = response.expires
+					this.$patch({
+						user: { name: payload.get('username') },
+						token: response.accessToken,
+						refreshToken: response.refreshToken,
+						expiresAt: response.expires,
+					})
 				}
 			})
 			.catch(

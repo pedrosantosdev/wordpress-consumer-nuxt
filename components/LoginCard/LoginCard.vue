@@ -60,6 +60,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
+import { ref, onBeforeMount, watch } from 'vue';
 
 const authStore = useAuthStore()
 const { isLoading, hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
