@@ -69,3 +69,10 @@ body {
 	background-clip: content-box;
 	background-color: #1f2937;
 }
+
+a[href^='magnet:?'] {
+	display: inline-block;
+	img {
+		margin: 0 auto;
+	}
+}

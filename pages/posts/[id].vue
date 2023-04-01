@@ -29,10 +29,4 @@ img[src$='Trailer.png'],
 a {
 	display: none;
 }
-a[href^='magnet:?'] {
-	display: inline-block;
-	img {
-		margin: 0 auto;
-	}
-}
 </style>
