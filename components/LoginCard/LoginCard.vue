@@ -60,10 +60,11 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
-import { ref, onBeforeMount, watch } from 'vue';
+import { ref, onBeforeMount, watch } from 'vue'
 
 const authStore = useAuthStore()
-const { isLoading, hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
+const { hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
+const isLoading = ref(false)
 const form = {
 	username: ref(''),
 	password: ref(''),
@@ -81,12 +82,13 @@ watch(isAuth, () => {
 		navigateTo(lastPage.value ?? '/')
 	}
 })
-const onSubmit = (): void => {
+const onSubmit = async (): Promise<void> => {
 	const data = new FormData()
 	data.append('username', form.username.value)
 	data.append('password', form.password.value)
-	// Auth Nuxt 3 Alternative
-	authStore.login(data)
+	isLoading.value = true
+	await authStore.login(data)
+	isLoading.value = false
 }
 </script>
 

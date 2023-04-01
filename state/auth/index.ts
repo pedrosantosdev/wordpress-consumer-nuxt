@@ -3,9 +3,19 @@ import { AuthModel } from '@/types/User'
 import { isNotEmpty } from '@/helpers/string'
 import { useBaseFetch } from '@/composables/usBaseFetch'
 
+type ResponseError = {
+	data: string
+	code: string
+}
+
+type ResponseAuth = {
+	accessToken: string
+	refreshToken: string
+	expires: string
+}
+
 export interface AuthState extends AuthModel {
 	lastPage: string
-	isLoading: boolean
 	expiresAt: string | null
 	error: {
 		message: string | null
@@ -21,7 +31,6 @@ export const useAuthStore = defineStore('auth', {
 			refreshToken: null,
 			expiresAt: null,
 			user: null,
-			isLoading: false,
 			error: {
 				message: null,
 				code: null,
@@ -29,64 +38,58 @@ export const useAuthStore = defineStore('auth', {
 		}
 	},
 	actions: {
-		login(payload: FormData) {
-			if (this.isLoading) {
-				return
-			} else if (
+		setError(message: string | null = null, code: string | null = null): void {
+			this.$patch((state) => {
+				state.error = {
+					message,
+					code,
+				}
+			})
+		},
+		async login(payload: FormData) {
+			if (
 				!isNotEmpty(payload.get('username') as string) ||
 				!isNotEmpty(payload.get('password') as string)
 			) {
-				this.error = {
-					message: 'Missing Fields',
-					code: 'empty_fields',
-				}
+				this.setError('Missing Fields', 'empty_fields')
 				return
 			}
-			this.isLoading = true
-			this.error = {
-				message: null,
-				code: null,
-			}
-			useBaseFetch(`login`, {
+			this.setError()
+			const response = await useBaseFetch<Partial<ResponseError & ResponseAuth>>(`login`, {
 				method: 'POST',
 				body: payload,
 				headers: {
 					Accept: 'application/json',
 				},
 			})
-				.then((response: { accessToken: string; refreshToken: string; expires: string }) => {
-					if (
-						[response.accessToken, response.refreshToken, response.expires].every((value) =>
-							isNotEmpty(value)
-						)
-					) {
-						this.$patch({
-							user: { name: payload.get('username') as string },
-							token: response.accessToken,
-							refreshToken: response.refreshToken,
-							expiresAt: response.expires,
-						})
-					}
-				})
-				.catch(
-					(response) =>
-						(this.error = {
-							message: response.data,
-							code: response.code,
-						})
+			if (response.data && response.code) {
+				this.setError(response.data, response.code)
+				return
+			}
+			if (
+				[response.accessToken, response.refreshToken, response.expires].every((value) =>
+					isNotEmpty(value)
 				)
-				.finally(() => (this.isLoading = false))
+			) {
+				await this.$patch((state) => {
+					state.user = { name: payload.get('username') as string }
+					state.token = response.accessToken ?? ''
+					state.refreshToken = response.refreshToken ?? ''
+					state.expiresAt = response.expires ?? ''
+				})
+			}
 		},
 		async logout(redirect = true) {
-			this.user = null
-			this.token = null
-			this.refreshToken = null
-			this.expiresAt = null
-			this.isLoading = false
-			this.error = {
-				message: null,
-				code: null,
-			}
+			await this.$patch((state) => {
+				state.user = null
+				state.token = null
+				state.refreshToken = null
+				state.expiresAt = null
+				state.error = {
+					message: null,
+					code: null,
+				}
+			})
 			if (redirect) {
 				navigateTo('login')
 			}
