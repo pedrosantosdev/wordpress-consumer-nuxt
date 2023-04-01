@@ -9,11 +9,10 @@ const postStore = usePostsStore()
 const { currentPost: post } = storeToRefs(postStore)
 const isLoading = ref(true)
 if (route.params.id) {
-	postStore.getById(route.params.id).finally(() =>
-		setTimeout(() => {
-			isLoading.value = false
-		}, 325)
-	)
+	await postStore.getById(route.params.id)
+	setTimeout(() => {
+		isLoading.value = false
+	}, 325)
 }
 </script>
 

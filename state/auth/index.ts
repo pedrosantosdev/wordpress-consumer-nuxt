@@ -14,14 +14,14 @@ type ResponseAuth = {
 	expires: string
 }
 
-export interface AuthState extends AuthModel {
+export type AuthState = {
 	lastPage: string
 	expiresAt: string | null
 	error: {
 		message: string | null
 		code: string | null
 	}
-}
+} & AuthModel
 
 export const useAuthStore = defineStore({
 	id: 'auth',
@@ -40,7 +40,7 @@ export const useAuthStore = defineStore({
 	},
 	actions: {
 		setError(message: string | null = null, code: string | null = null): void {
-			this.$patch((state) => {
+			this.$patch((state: AuthState) => {
 				state.error = {
 					message,
 					code,
@@ -72,7 +72,7 @@ export const useAuthStore = defineStore({
 					isNotEmpty(value)
 				)
 			) {
-				await this.$patch((state) => {
+				await this.$patch((state: AuthState) => {
 					state.user = { name: payload.get('username') as string }
 					state.token = response.accessToken ?? ''
 					state.refreshToken = response.refreshToken ?? ''
@@ -94,9 +94,7 @@ export const useAuthStore = defineStore({
 			state.expiresAt ? new Date(Date.parse(state.expiresAt)) < new Date() : false,
 	},
 	persist: {
-		storage: persistedState.cookiesWithOptions({
-			sameSite: 'strict',
-		}),
+		storage: persistedState.cookies,
 		paths: ['token', 'expiresAt', 'refreshToken'],
 	},
 })
