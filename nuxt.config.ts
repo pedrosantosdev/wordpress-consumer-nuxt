@@ -34,6 +34,12 @@ export default defineNuxtConfig({
 		// https://nuxt.com/modules/device
 		'@nuxtjs/device',
 	],
+	piniaPersistedstate: {
+		cookieOptions: {
+			sameSite: 'strict',
+		},
+		storage: 'localStorage',
+	},
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {
 		public: {

@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
-import { ref, onBeforeMount, watch } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 
 const authStore = useAuthStore()
 const { hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
@@ -77,7 +77,7 @@ onBeforeMount(() => {
 		navigateTo(lastPage.value ?? '/')
 	}
 })
-watch(isAuth, () => {
+authStore.$subscribe(() => {
 	if (isAuth.value) {
 		navigateTo(lastPage.value ?? '/')
 	}

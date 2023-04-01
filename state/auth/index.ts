@@ -23,7 +23,8 @@ export interface AuthState extends AuthModel {
 	}
 }
 
-export const useAuthStore = defineStore('auth', {
+export const useAuthStore = defineStore({
+	id: 'auth',
 	state: (): AuthState => {
 		return {
 			lastPage: '/',
@@ -80,16 +81,7 @@ export const useAuthStore = defineStore('auth', {
 			}
 		},
 		async logout(redirect = true) {
-			await this.$patch((state) => {
-				state.user = null
-				state.token = null
-				state.refreshToken = null
-				state.expiresAt = null
-				state.error = {
-					message: null,
-					code: null,
-				}
-			})
+			await this.$reset()
 			if (redirect) {
 				navigateTo('login')
 			}
@@ -101,7 +93,12 @@ export const useAuthStore = defineStore('auth', {
 		isExpired: (state: AuthState) =>
 			state.expiresAt ? new Date(Date.parse(state.expiresAt)) < new Date() : false,
 	},
-	persist: true,
+	persist: {
+		storage: persistedState.cookiesWithOptions({
+			sameSite: 'strict',
+		}),
+		paths: ['token', 'expiresAt', 'refreshToken'],
+	},
 })
 
 if (import.meta.hot) {
