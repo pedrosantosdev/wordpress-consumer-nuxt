@@ -22,7 +22,7 @@ export default defineNuxtConfig({
 		// https://pinia.vuejs.org/ssr/nuxt.html
 		'@pinia/nuxt',
 		// https://prazdevs.github.io/pinia-plugin-persistedstate/frameworks/nuxt-3.html
-		'@pinia-plugin-persistedstate/nuxt',
+		// '@pinia-plugin-persistedstate/nuxt',
 		// Doc: https://github.com/nuxt-community/color-mode-module
 		'@nuxtjs/color-mode',
 		// https://go.nuxtjs.dev/tailwindcss

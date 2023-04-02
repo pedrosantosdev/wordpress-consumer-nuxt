@@ -94,7 +94,6 @@ export const useAuthStore = defineStore({
 			state.expiresAt ? new Date(Date.parse(state.expiresAt)) < new Date() : false,
 	},
 	persist: {
-		storage: persistedState.cookies,
 		paths: ['token', 'expiresAt', 'refreshToken'],
 	},
 })
