@@ -1127,15 +1127,15 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.36.0.tgz#9837f768c03a1e4a30bd304a64fb8844f0e72efe"
   integrity sha512-lxJ9R5ygVm8ZWgYdUweoq5ownDlJ4upvoWmO4eLxBYHdMo+vZ/Rx0EN6MbKWDJOSUGrqJy2Gt+Dyv/VKml0fjg==
 
-"@happy-dom/jest-environment@^8.9.0":
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-8.9.0.tgz#465ef9b1883a7f9a18eb3244d4350b17e5c0f191"
-  integrity sha512-tcNmoVv1ffeeOjCuUGoJKgH52YOmrdyPUSjiAB5YJPih4e3WoZT1lh95+dbEg4KLDO4yJVmHAWcQ1Oa1CJWNQQ==
+"@happy-dom/jest-environment@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-9.1.0.tgz#ddb3ceb6a5746b7b02f33122f24f2caabbbad43d"
+  integrity sha512-xuo/LEpjmkt+IaZmMxTRI/ygPlPTh3d8TYd5Mgmx/jt2HbE1Ro08yRRqrx/EZ7tP168LbD9q7YbD08LlxphX0A==
   dependencies:
     "@jest/environment" "^29.4.0"
     "@jest/fake-timers" "^29.4.0"
     "@jest/types" "^29.4.0"
-    happy-dom "^8.9.0"
+    happy-dom "^9.1.0"
     jest-mock "^29.4.0"
     jest-util "^29.4.0"
 
@@ -4847,15 +4847,14 @@ h3@^1.5.0, h3@^1.6.2:
     ufo "^1.1.1"
     uncrypto "^0.1.2"
 
-happy-dom@^8.9.0:
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-8.9.0.tgz#b7c9986538b83c3ca3197ce22a1d27a1777c49d9"
-  integrity sha512-JZwJuGdR7ko8L61136YzmrLv7LgTh5b8XaEM3P709mLjyQuXJ3zHTDXvUtBBahRjGlcYW0zGjIiEWizoTUGKfA==
+happy-dom@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-9.1.0.tgz#95749c6aad0c6da0311f92d7318e8e7407104a41"
+  integrity sha512-Z/oOcAJsZjHFOQ/VK8n0CnZBjWucZNeZwFdlDK234vIBW9IVYGWjSUR9ujK6nwsSzJ6vNdYuSZoiag72AzlD0A==
   dependencies:
     css.escape "^1.5.1"
     he "^1.2.0"
     iconv-lite "^0.6.3"
-    node-fetch "^2.x.x"
     webidl-conversions "^7.0.0"
     whatwg-encoding "^2.0.0"
     whatwg-mimetype "^3.0.0"
@@ -6580,7 +6579,7 @@ node-fetch-native@^1.0.2:
   resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.0.2.tgz#de3651399fda89a1a7c0bf6e7c4e9c239e8d0697"
   integrity sha512-KIkvH1jl6b3O7es/0ShyCgWLcfXxlBrLBbP3rOr23WArC66IMcU4DeZEeYEOwnopYhawLTn7/y+YtmASe8DFVQ==
 
-node-fetch@^2.6.7, node-fetch@^2.x.x:
+node-fetch@^2.6.7:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.9.tgz#7c7f744b5cc6eb5fd404e0c7a9fec630a55657e6"
   integrity sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==
