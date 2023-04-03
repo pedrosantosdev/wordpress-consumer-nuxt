@@ -1502,6 +1502,30 @@
     unimport "^3.0.4"
     untyped "^1.2.2"
 
+"@nuxt/kit@^3.2.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.3.3.tgz#14706db145101750ac4ab75f2cc6d5a5c507c51b"
+  integrity sha512-8ql3DweT1BNOCM6mmP8st+33NCAHHvmQuOS6Q75kXMZ6Ygqv06hxp5slpLXpT1ZOEoM+vzfkjO2lJ3rnjWYC4Q==
+  dependencies:
+    "@nuxt/schema" "3.3.3"
+    c12 "^1.2.0"
+    consola "^2.15.3"
+    defu "^6.1.2"
+    globby "^13.1.3"
+    hash-sum "^2.0.0"
+    ignore "^5.2.4"
+    jiti "^1.18.2"
+    knitwork "^1.0.0"
+    lodash.template "^4.5.0"
+    mlly "^1.2.0"
+    pathe "^1.1.0"
+    pkg-types "^1.0.2"
+    scule "^1.0.0"
+    semver "^7.3.8"
+    unctx "^2.1.2"
+    unimport "^3.0.4"
+    untyped "^1.3.2"
+
 "@nuxt/postcss8@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nuxt/postcss8/-/postcss8-1.1.3.tgz#a7f8f6f2a664430bbdd3b175498eb693e0b1b351"
@@ -1534,6 +1558,25 @@
     ufo "^1.1.1"
     unimport "^3.0.4"
     untyped "^1.2.2"
+
+"@nuxt/schema@3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.3.3.tgz#8b7c6965120b3210f426946479181a1d2902293f"
+  integrity sha512-OxedDFqBJG8bfTEDOH5hVbQLXpFpSmBOM/oC6J4dTqM2GiWxYJysML5Lo7FPSMqFkTtgxVmd75bp+DRPE5XzWA==
+  dependencies:
+    c12 "^1.2.0"
+    create-require "^1.1.1"
+    defu "^6.1.2"
+    hookable "^5.5.3"
+    jiti "^1.18.2"
+    pathe "^1.1.0"
+    pkg-types "^1.0.2"
+    postcss-import-resolver "^2.0.0"
+    scule "^1.0.0"
+    std-env "^3.3.2"
+    ufo "^1.1.1"
+    unimport "^3.0.4"
+    untyped "^1.3.2"
 
 "@nuxt/telemetry@^2.1.10":
   version "2.1.10"
@@ -1686,6 +1729,15 @@
     tailwindcss "^3.2.7"
     ufo "^1.1.1"
     uncrypto "^0.1.2"
+
+"@pinia-plugin-persistedstate/nuxt@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@pinia-plugin-persistedstate/nuxt/-/nuxt-1.1.1.tgz#53d1f26fa405aa20803da6d710c6777ab50445f2"
+  integrity sha512-b6ZNP3Re8COmfZEpj4KQmbp2TuDKrLggDFLZa8FiJF68xE/oCsPXIuXUvAt8E4ht/5sq4Z/grlA+iGXaI2aeKQ==
+  dependencies:
+    "@nuxt/kit" "^3.2.3"
+    defu "^6.1.2"
+    pinia-plugin-persistedstate ">=3.1.0"
 
 "@pinia/nuxt@^0.4.7":
   version "0.4.7"
@@ -4926,6 +4978,11 @@ hookable@^5.5.0, hookable@^5.5.1:
   resolved "https://registry.yarnpkg.com/hookable/-/hookable-5.5.2.tgz#e70b8ee4f6c9aaad75b152c3d9150a7ad15e0f07"
   integrity sha512-9JZdvGuxXswyoT47M0xrg+IabnK76Ppc7qjf8JdFZu/IaCWflTHVf/ln/GzicraEnPONPIfxgk929rdYiOqv9w==
 
+hookable@^5.5.3:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/hookable/-/hookable-5.5.3.tgz#6cfc358984a1ef991e2518cb9ed4a778bbd3215d"
+  integrity sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==
+
 html-encoding-sniffer@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-3.0.0.tgz#2cb1a8cf0db52414776e5b2a7a04d5dd98158de9"
@@ -7050,10 +7107,10 @@ pify@^2.3.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
-pinia-plugin-persistedstate@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-2.4.0.tgz#fda569b3c397517a0cf8aba83a628283767da620"
-  integrity sha512-bQcpv47jk3ISl+InuJWsFaS/K7pRZ97kfoD2WCf/suhnlLy48k3BnFM2tI6YZ1xMsDaPv4yOsaPuPAUuSmEO2Q==
+pinia-plugin-persistedstate@>=3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-3.1.0.tgz#eada2b61ecd478fce88e490a685210415cd7a1b4"
+  integrity sha512-8UN+vYMEPBdgNLwceY08mi5olI0wkYaEb8b6hD6xW7SnBRuPydWHlEhZvUWgNb/ibuf4PvufpvtS+dmhYjJQOw==
 
 pinia@>=2.0.31, pinia@^2.0.33:
   version "2.0.33"
@@ -8670,6 +8727,19 @@ untyped@^1.2.2:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/untyped/-/untyped-1.3.1.tgz#76b251700baeda5ec8a6bbd26968b945e174a57a"
   integrity sha512-kTEm6MsCrAtfMqwlXeoN++F3Z+xBZjS0jBVW/Kiq58BYsAP5aV5Qzfo2Yj+SFrVHeBNBtLfHhbTm+2OBuThKYg==
+  dependencies:
+    "@babel/core" "^7.21.3"
+    "@babel/standalone" "^7.21.3"
+    "@babel/types" "^7.21.3"
+    defu "^6.1.2"
+    jiti "^1.18.2"
+    mri "^1.2.0"
+    scule "^1.0.0"
+
+untyped@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/untyped/-/untyped-1.3.2.tgz#0cff7ae9acf373dc404315b0e3c604af10648113"
+  integrity sha512-z219Z65rOGD6jXIvIhpZFfwWdqQckB8sdZec2NO+TkcH1Bph7gL0hwLzRJs1KsOo4Jz4mF9guBXhsEnyEBGVfw==
   dependencies:
     "@babel/core" "^7.21.3"
     "@babel/standalone" "^7.21.3"

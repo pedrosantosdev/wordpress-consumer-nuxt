@@ -1,7 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import { AuthModel } from '@/types/User'
 import { isNotEmpty } from '@/helpers/string'
-import { useBaseFetch } from '@/composables/usBaseFetch'
+import { useBaseFetch } from '@/composables/useBaseFetch'
 
 type ResponseError = {
 	data: string
