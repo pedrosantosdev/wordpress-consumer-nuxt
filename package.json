@@ -49,6 +49,6 @@
 	"dependencies": {
 		"@pinia/nuxt": "^0.4.7",
 		"pinia": "^2.0.33",
-		"pinia-plugin-persistedstate": "2.4.0"
+		"pinia-plugin-persistedstate": "3.1.0"
 	}
 }
