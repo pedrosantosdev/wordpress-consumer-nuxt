@@ -1,4 +1,5 @@
-import { useAuthStore } from '@/state/auth'
+import { useAuthStore } from '@/state/auth/auth'
+import { useRuntimeConfig } from 'nuxt/app'
 
 export const useBaseFetch = <T = unknown>(url: string, options = {}) => {
 	const authStore = useAuthStore()

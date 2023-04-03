@@ -1,4 +1,4 @@
-import { useBaseFetch } from '@/composables/usBaseFetch'
+import { useBaseFetch } from '@/composables/useBaseFetch'
 const baseUri = 'posts'
 const actions = {
 	async get(page = 1) {

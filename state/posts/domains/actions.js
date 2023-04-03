@@ -1,4 +1,4 @@
-import { useBaseFetch } from '@/composables/usBaseFetch'
+import { useBaseFetch } from '@/composables/useBaseFetch'
 const baseUri = 'post-domain'
 const actions = {
 	async get() {
