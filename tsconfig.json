@@ -10,5 +10,4 @@
 			"@types/jest"
 		]
 	},
-	"exclude": ["node_modules", ".nuxt", "dist"]
 }

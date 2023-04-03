@@ -95,6 +95,9 @@ export const useAuthStore = defineStore({
 	},
 	persist: {
 		paths: ['token', 'expiresAt', 'refreshToken'],
+		storage: persistedState.cookiesWithOptions({
+			sameSite: 'strict',
+		}),
 	},
 })
 

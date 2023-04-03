@@ -1,6 +1,9 @@
 {
 	"private": true,
 	"scripts": {
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
 		"dev": "nuxi dev",
 		"build": "nuxi build",
 		"start": "node .output/server/index.mjs",
