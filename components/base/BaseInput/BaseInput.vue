@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import debounce from '@/helpers/debounce'
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 
 const emit = defineEmits(['update:modelValue', 'enter', 'debounce'])
 const props = withDefaults(
@@ -25,8 +25,17 @@ const value = computed({
 		emit('update:modelValue', value)
 	},
 })
-const dispatchValue = () => emit('debounce', value.value)
 const keyDownEnter = () => emit('enter', value.value)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let debounceHandler: ((...args: any[]) => void) | undefined = undefined
+onBeforeMount(() => {
+	debounceHandler = debounce(() => {
+		emit('debounce', value.value)
+	})
+})
+onBeforeUnmount(() => {
+	debounceHandler = undefined
+})
 </script>
 
 <template>
@@ -37,7 +46,7 @@ const keyDownEnter = () => emit('enter', value.value)
 		:readonly="readonly"
 		:disabled="readonly"
 		:type="type"
-		@input="debounce(() => dispatchValue())"
+		@input="debounceHandler"
 		@keydown.enter="keyDownEnter"
 	/>
 </template>

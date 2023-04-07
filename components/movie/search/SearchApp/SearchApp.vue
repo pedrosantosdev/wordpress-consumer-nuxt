@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<BaseInput v-model="value" @debounce="debounce(() => emitValue())" @enter="emitValue()" />
+		<BaseInput v-model="value" @debounce="emitValue()" @enter="emitValue()" />
 		<NuxtIcon
 			class="absolute top-0 right-0 cursor-pointer mt-1 mx-3 text-black filter-icon"
 			:class="{ active: optionsActive }"
@@ -24,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import debounce from '@/helpers/debounce'
 const props = defineProps({
 	input: {
 		type: String,
