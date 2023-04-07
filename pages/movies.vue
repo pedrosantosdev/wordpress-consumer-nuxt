@@ -6,7 +6,7 @@
 		<transition>
 			<MovieCardLoading v-if="isLoading && !hasError" />
 			<BaseCardError v-else-if="!isLoading && hasError">Erro ao carregar a listagem</BaseCardError>
-			<div v-else-if="query.length" class="flex flex-wrap flex-row gap-4">
+			<div v-else-if="searchActive" class="flex flex-wrap flex-row gap-4">
 				<MovieCardApp
 					v-for="(movie, index) in getSearchMovies"
 					:key="movie.id"
@@ -36,9 +36,14 @@ const $store = useMoviesStore()
 const { list: getMovies, hasError, isLoading, getSearchMovies } = storeToRefs($store)
 
 const query = ref('')
+const searchActive = ref(false)
 
 const searchMovie = (target: Record<string, string | number | boolean>) => {
 	query.value = target.value as string
+	searchActive.value = (query.value.length > 0 ||
+		target.isLocal ||
+		target.isActive ||
+		target.isReady) as boolean
 	if (target.isLocal || target.isActive || target.isReady) {
 		$store.searchLocal(target)
 	} else {
