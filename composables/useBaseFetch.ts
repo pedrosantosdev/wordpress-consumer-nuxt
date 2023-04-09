@@ -11,6 +11,11 @@ export const useBaseFetch = <T = unknown>(url: string, options = {}) => {
 		headers,
 		baseURL: useRuntimeConfig().baseUrl,
 		...options,
+		async onRequest({ request, options }) {
+			if (authStore.isExpired && url != 'login') {
+				await authStore.refreshToken()
+			}
+		},
 		onResponseError: async (response) => {
 			if (response.response.status == 401 && authStore.isAuth && url != 'login') {
 				authStore.logout()

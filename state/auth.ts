@@ -47,6 +47,19 @@ export const useAuthStore = defineStore({
 				}
 			})
 		},
+		async setCredential(response: ResponseAuth) {
+			if (
+				[response.accessToken, response.refreshToken, response.expires].every((value) =>
+					isNotEmpty(value)
+				)
+			) {
+				await this.$patch((state: AuthState) => {
+					state.token = response.accessToken ?? ''
+					state.refreshToken = response.refreshToken ?? ''
+					state.expiresAt = response.expires ?? ''
+				})
+			}
+		},
 		async login(payload: FormData) {
 			if (
 				!isNotEmpty(payload.get('username') as string) ||
@@ -67,18 +80,28 @@ export const useAuthStore = defineStore({
 				this.setError(response.data, response.code)
 				return
 			}
-			if (
-				[response.accessToken, response.refreshToken, response.expires].every((value) =>
-					isNotEmpty(value)
-				)
-			) {
-				await this.$patch((state: AuthState) => {
-					state.user = { name: payload.get('username') as string }
-					state.token = response.accessToken ?? ''
-					state.refreshToken = response.refreshToken ?? ''
-					state.expiresAt = response.expires ?? ''
-				})
+			this.setCredential(response as ResponseAuth)
+		},
+		async refreshToken() {
+			if (!this.$state.refreshToken || !this.$state.token) {
+				this.logout()
+				return
 			}
+			const response = await useBaseFetch<Partial<ResponseError & ResponseAuth>>(`login`, {
+				method: 'POST',
+				body: {
+					access_token: this.$state.token,
+					refresh_token: this.$state.refreshToken,
+				},
+				headers: {
+					Accept: 'application/json',
+				},
+			})
+			if (response.data && response.code) {
+				this.logout()
+				return
+			}
+			this.setCredential(response as ResponseAuth)
 		},
 		async logout(redirect = true) {
 			await this.$reset()
@@ -91,7 +114,9 @@ export const useAuthStore = defineStore({
 		hasError: (state: AuthState) => isNotEmpty(state.error.message) || isNotEmpty(state.error.code),
 		isAuth: (state: AuthState) => isNotEmpty(state.token),
 		isExpired: (state: AuthState) =>
-			state.expiresAt ? new Date(Date.parse(state.expiresAt)) < new Date() : false,
+			state.expiresAt && !isNotEmpty(state.refreshToken)
+				? new Date(Date.parse(state.expiresAt)) < new Date()
+				: false,
 	},
 	persist: {
 		paths: ['token', 'expiresAt', 'refreshToken'],
