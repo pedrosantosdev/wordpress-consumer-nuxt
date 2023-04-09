@@ -53,7 +53,7 @@ const isActive = ref(false)
 const showNavBar = computed(() => !!isActive.value)
 const hide = computed(() => $route.name === 'login')
 const windowResize = () => {
-	isActive.value = process.client ? window.innerWidth < 768 : true
+	isActive.value = process.client ? false : true
 }
 onMounted(() => {
 	if (process.client) {
