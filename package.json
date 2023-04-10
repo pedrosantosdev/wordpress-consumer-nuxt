@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@babel/preset-env": "^7.21.4",
-		"@happy-dom/jest-environment": "^9.1.7",
+		"@happy-dom/jest-environment": "^9.1.9",
 		"@nuxt/test-utils": "^3.3.3",
 		"@nuxt/types": "^2.16.3",
 		"@nuxtjs/color-mode": "^3.1.8",
