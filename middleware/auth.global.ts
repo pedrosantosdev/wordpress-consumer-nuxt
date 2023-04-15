@@ -1,10 +1,10 @@
 import { useAuthStore } from '@/state/auth'
-import { defineNuxtRouteMiddleware, navigateTo } from 'nuxt/app'
+import { defineNuxtRouteMiddleware } from 'nuxt/app'
 
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
 	const authStore = useAuthStore()
-	if (to.name !== 'login' && (!authStore.isAuth || authStore.isExpired)) {
-		authStore.lastPage = to.path
-		return navigateTo('/login')
+	if (to.name !== 'login' && !authStore.isAuth) {
+		authStore.lastPage = to.path ?? '/'
+		return navigateTo('login')
 	}
 })

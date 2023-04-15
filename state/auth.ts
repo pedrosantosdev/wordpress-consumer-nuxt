@@ -21,6 +21,7 @@ export type AuthState = {
 		message: string | null
 		code: string | null
 	}
+	onRequest: boolean
 } & AuthModel
 
 export const useAuthStore = defineStore({
@@ -32,6 +33,7 @@ export const useAuthStore = defineStore({
 			refreshToken: null,
 			expiresAt: null,
 			user: null,
+			onRequest: false,
 			error: {
 				message: null,
 				code: null,
@@ -84,10 +86,10 @@ export const useAuthStore = defineStore({
 		},
 		async refreshToken() {
 			if (!this.$state.refreshToken || !this.$state.token) {
-				this.logout()
-				return
+				return false
 			}
-			const response = await useBaseFetch<Partial<ResponseError & ResponseAuth>>(`login`, {
+			this.$state.onRequest = true
+			const response = await useBaseFetch<Partial<ResponseError & ResponseAuth>>(`refresh`, {
 				method: 'POST',
 				body: {
 					access_token: this.$state.token,
@@ -98,15 +100,16 @@ export const useAuthStore = defineStore({
 				},
 			})
 			if (response.data && response.code) {
-				this.logout()
-				return
+				return false
 			}
+			this.$state.onRequest = false
 			this.setCredential(response as ResponseAuth)
+			return true
 		},
 		async logout(redirect = true) {
 			await this.$reset()
 			if (redirect) {
-				navigateTo('login')
+				return navigateTo('login')
 			}
 		},
 	},
@@ -114,9 +117,9 @@ export const useAuthStore = defineStore({
 		hasError: (state: AuthState) => isNotEmpty(state.error.message) || isNotEmpty(state.error.code),
 		isAuth: (state: AuthState) => isNotEmpty(state.token),
 		isExpired: (state: AuthState) =>
-			state.expiresAt && !isNotEmpty(state.refreshToken)
+			state.expiresAt && state.refreshToken
 				? new Date(Date.parse(state.expiresAt)) < new Date()
-				: false,
+				: true,
 	},
 	persist: {
 		paths: ['token', 'expiresAt', 'refreshToken'],

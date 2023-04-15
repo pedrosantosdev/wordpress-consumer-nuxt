@@ -1,19 +1,22 @@
 import { useAuthStore } from '@/state/auth'
 import { useRuntimeConfig } from 'nuxt/app'
 
-export const useBaseFetch = <T = unknown>(url: string, options = {}) => {
+export const useBaseFetch = async <T = unknown>(url: string, options = {}) => {
 	const authStore = useAuthStore()
 	const headers = { Accept: 'application/json', Authorization: '' }
 	if (authStore.isAuth) {
 		headers.Authorization = `Bearer ${authStore.token}`
 	}
-	return $fetch<T>(url, {
+	const { data } = await useFetch(url, {
 		headers,
 		baseURL: useRuntimeConfig().baseUrl,
 		...options,
 		async onRequest({ request, options }) {
-			if (authStore.isExpired && url != 'login') {
-				await authStore.refreshToken()
+			if (authStore.isExpired && url != 'login' && url != 'refresh' && !authStore.onRequest) {
+				const token = await authStore.refreshToken()
+				if (!token) {
+					authStore.logout(true)
+				}
 			}
 		},
 		onResponseError: async (response) => {
@@ -22,4 +25,5 @@ export const useBaseFetch = <T = unknown>(url: string, options = {}) => {
 			}
 		},
 	})
+	return data.value as T
 }
