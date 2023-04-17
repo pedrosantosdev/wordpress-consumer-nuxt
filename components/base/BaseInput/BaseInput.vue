@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import debounce from '@/helpers/debounce'
-import { computed } from 'vue'
+import { computed, onBeforeMount, onBeforeUnmount } from 'vue'
 
 const emit = defineEmits(['update:modelValue', 'enter', 'debounce'])
 const props = withDefaults(
