@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isNotEmpty, isUrl } from '@/helpers/string'
+import { isNotEmpty } from '@/helpers/string'
 
 const props = defineProps({
 	isNew: {
@@ -30,7 +30,7 @@ const emit = defineEmits(['save', 'delete'])
 const isEditing = ref(false)
 const canType = computed(() => props.isNew || isEditing.value)
 const onSaveClick = () => {
-	if (!isNotEmpty(domain.endpoint) || !isUrl(domain.endpoint)) {
+	if (!isNotEmpty(domain.endpoint)) {
 		return
 	}
 	if (!domain.endpoint.startsWith('http')) {
@@ -52,18 +52,22 @@ const onSaveClick = () => {
 		? domain.healthEndpoint
 		: `${domain.healthEndpoint}${defaultWordpressPath.healthEndpoint}`
 
-	emit('save', domain)
+	emit('save', { ...domain })
 
 	if (props.isNew) {
 		domain.endpoint = ''
 		domain.healthEndpoint = ''
 	}
 }
-const hasFullPath = (path: string) => path.split('/').length > 4
-const onDeleteClick = () => emit('delete', domain)
-const toggleActive = () => {
+function hasFullPath(path: string) {
+	return path.split('/').length > 4
+}
+function onDeleteClick() {
+	emit('delete', { ...domain })
+}
+function toggleActive() {
 	domain.active = !domain.active
-	emit('save', domain)
+	emit('save', { ...domain })
 }
 </script>
 

@@ -14,7 +14,7 @@ onBeforeMount(() => {
 	}
 })
 
-const refreshHealth = () => {
+function refreshHealth() {
 	isLoadingRefresh.value = true
 	domainsStore
 		.updateHealth()
@@ -22,14 +22,27 @@ const refreshHealth = () => {
 		.finally(() => (isLoadingRefresh.value = false))
 }
 
-const saveEmit = (postDomain: PostDomain) => {
+function saveEmit(postDomain: PostDomain) {
+	isLoadingRefresh.value = true
 	if (postDomain.id > 0) {
-		domainsStore.update(postDomain)
+		domainsStore.update(postDomain).finally(() => {
+			isLoadingRefresh.value = false
+		})
 	} else {
-		domainsStore.add(postDomain).then(() => domainsStore.get())
+		domainsStore
+			.add(postDomain)
+			.then(() => domainsStore.get())
+			.finally(() => {
+				isLoadingRefresh.value = false
+			})
 	}
 }
-const deleteEmit = (postDomain: PostDomain) => domainsStore.delete(postDomain.id)
+function deleteEmit(postDomain: PostDomain) {
+	isLoadingRefresh.value = true
+	domainsStore.delete(postDomain.id).finally(() => {
+		isLoadingRefresh.value = false
+	})
+}
 </script>
 <template>
 	<transition>

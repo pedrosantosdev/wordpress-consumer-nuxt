@@ -16,28 +16,31 @@ const {
 const showModal = ref(false)
 const el = ref<HTMLElement>(null)
 
-const closeModalEvent = () => {
+function closeModalEvent() {
 	showModal.value = false
 }
 
 const query = ref('')
-const clearQuery = () => (query.value = '')
-const submitQuery = () => postsStores.search(query.value)
+function clearQuery() {
+	query.value = ''
+}
+function submitQuery() {
+	postsStores.search(query.value)
+}
 
 let page = 1
 
-const loadMore = () => {
+function loadMore() {
 	if (isLoading.value || (page > 1 && (posts?.value?.length ?? 0) < 10)) return
 	++page
 	postsStores.get(page)
 }
 
-useInfiniteScroll(el, loadMore)
-
-const onPostClick = (id: number) => {
+function onPostClick(id: number) {
 	navigateTo(`posts/${id}`)
 }
 
+// useInfiniteScroll(el, loadMore, { distance: 1000 })
 onBeforeMount(() => {
 	if (!isLoading.value && (posts?.value?.length ?? 0) === 0) {
 		postsStores.get()
