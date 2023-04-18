@@ -1237,15 +1237,15 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.38.0.tgz#73a8a0d8aa8a8e6fe270431c5e72ae91b5337892"
   integrity sha512-IoD2MfUnOV58ghIHCiil01PcohxjbYR/qCxsoC+xNgUwh1EY8jOOrYmu3d3a71+tJJ23uscEV4X2HJWMsPJu4g==
 
-"@happy-dom/jest-environment@^9.7.1":
-  version "9.7.1"
-  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-9.7.1.tgz#8fcda05ca93cf95fd9d43090c660a7e358f988f8"
-  integrity sha512-TBxosKGY6Jb4qSCrAP6SgkdfSKvMolkE1PnzXUU4c3BPZ+AkQVJmKY1qs9bYpebXqL/kVPkLg4l7nZ4gmkOG6A==
+"@happy-dom/jest-environment@^9.8.1":
+  version "9.8.1"
+  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-9.8.1.tgz#d1aa5172e4db9521222b2bf36000fabb7d2b3a96"
+  integrity sha512-cfbCaXV3sR9hdb5IzX4QiszkWXyb/RxtnArsZ+7g5RqBYWMu7ct5cJq+ceyk2eSve908vEilrJwUlhnNpFg4gQ==
   dependencies:
     "@jest/environment" "^29.4.0"
     "@jest/fake-timers" "^29.4.0"
     "@jest/types" "^29.4.0"
-    happy-dom "^9.7.1"
+    happy-dom "^9.8.1"
     jest-mock "^29.4.0"
     jest-util "^29.4.0"
 
@@ -5031,10 +5031,10 @@ h3@^1.5.0, h3@^1.6.2, h3@^1.6.4:
     ufo "^1.1.1"
     uncrypto "^0.1.2"
 
-happy-dom@^9.7.1:
-  version "9.7.1"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-9.7.1.tgz#f9ef22ffb09ef6c1531e606d11724fe1fef960d7"
-  integrity sha512-C5KQXt5JA3Og1qNf32Zqg65Oj5DKe/IeeGo8269DKE4VFK8NZpOEBY1R6ofJLCqsaPppu1t73okYuh7CPJUB6A==
+happy-dom@^9.8.1:
+  version "9.8.1"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-9.8.1.tgz#6f4e7193a6b0e3c9cc4944c0d96d207d76f74c8a"
+  integrity sha512-V98qplc8eS01+vEX5OU0/SQ+GghxxlTt/StPoFQ7fCO5Kbv9BUV1C2lBD2bs4hG8FjHicT91jsu+9idr8goL2Q==
   dependencies:
     css.escape "^1.5.1"
     he "^1.2.0"
