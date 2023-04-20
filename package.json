@@ -43,7 +43,7 @@
 		"jest-transform-stub": "^2.0.0",
 		"nuxt": "^3.3.3",
 		"nuxt-icons": "^3.1.0",
-		"postcss": "^8.4.22",
+		"postcss": "^8.4.23",
 		"prettier": "^2.8.7",
 		"sass": "^1.62.0",
 		"ts-jest": "^29.1.0",
