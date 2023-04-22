@@ -78,8 +78,11 @@ export const useAuthStore = defineStore({
 					Accept: 'application/json',
 				},
 			})
-			if (response.data && response.code) {
-				this.setError(response.data, response.code)
+			if (response && (!response.data || response.code)) {
+				this.setError(
+					response.data ?? 'Invalid Credentials',
+					response.code ?? 'invalid_credentials'
+				)
 				return
 			}
 			this.setCredential(response as ResponseAuth)
@@ -99,10 +102,14 @@ export const useAuthStore = defineStore({
 					Accept: 'application/json',
 				},
 			})
-			if (response.data && response.code) {
+			this.$state.onRequest = false
+			if (response && (!response.data || response.code)) {
+				this.setError(
+					response.data ?? 'Invalid Credentials',
+					response.code ?? 'invalid_credentials'
+				)
 				return false
 			}
-			this.$state.onRequest = false
 			this.setCredential(response as ResponseAuth)
 			return true
 		},
