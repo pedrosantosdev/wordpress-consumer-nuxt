@@ -1,13 +1,23 @@
 import { useAuthStore } from '@/state/auth'
 import { useRuntimeConfig } from 'nuxt/app'
+import type { Ref } from 'vue'
 
-export const useBaseFetch = async <T = unknown>(url: string, options = {}) => {
+type FetchResponse<DataT, ErrorT> = {
+	data: Ref<DataT | null>
+	pending: Ref<boolean>
+	error: Ref<ErrorT | null>
+}
+
+export async function useBaseFetch<T = unknown, K = unknown>(
+	url: string,
+	options = {}
+): Promise<FetchResponse<T, K>> {
 	const authStore = useAuthStore()
 	const headers = { Accept: 'application/json', Authorization: '' }
 	if (authStore.isAuth) {
 		headers.Authorization = `Bearer ${authStore.token}`
 	}
-	const { data } = await useFetch(url, {
+	const response = await useFetch<T, K>(url, {
 		headers,
 		baseURL: useRuntimeConfig().baseUrl,
 		...options,
@@ -19,11 +29,11 @@ export const useBaseFetch = async <T = unknown>(url: string, options = {}) => {
 				}
 			}
 		},
-		onResponseError: async (response) => {
-			if (response.response.status == 401 && authStore.isAuth && url != 'login') {
+		onResponseError({ request, response, options }) {
+			if (response.status == 401 && authStore.isAuth && url != 'login') {
 				authStore.logout()
 			}
 		},
 	})
-	return data.value as T
+	return response as FetchResponse<T, K>
 }

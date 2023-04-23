@@ -3,11 +3,6 @@ import { AuthModel } from '@/types/User'
 import { isNotEmpty } from '@/helpers/string'
 import { useBaseFetch } from '@/composables/useBaseFetch'
 
-type ResponseError = {
-	data: string
-	code: string
-}
-
 type ResponseAuth = {
 	accessToken: string
 	refreshToken: string
@@ -71,28 +66,25 @@ export const useAuthStore = defineStore({
 				return
 			}
 			this.setError()
-			const response = await useBaseFetch<Partial<ResponseError & ResponseAuth>>(`login`, {
+			const response = await useBaseFetch<ResponseAuth>(`login`, {
 				method: 'POST',
 				body: payload,
 				headers: {
 					Accept: 'application/json',
 				},
 			})
-			if (response && (!response.data || response.code)) {
-				this.setError(
-					response.data ?? 'Invalid Credentials',
-					response.code ?? 'invalid_credentials'
-				)
+			if (!response || response.error.value) {
+				this.setError('Invalid Credentials', 'invalid_credentials')
 				return
 			}
-			this.setCredential(response as ResponseAuth)
+			this.setCredential(response.data.value as ResponseAuth)
 		},
 		async refreshToken() {
 			if (!this.$state.refreshToken || !this.$state.token) {
 				return false
 			}
 			this.$state.onRequest = true
-			const response = await useBaseFetch<Partial<ResponseError & ResponseAuth>>(`refresh`, {
+			const response = await useBaseFetch<ResponseAuth>(`refresh`, {
 				method: 'POST',
 				body: {
 					access_token: this.$state.token,
@@ -103,14 +95,11 @@ export const useAuthStore = defineStore({
 				},
 			})
 			this.$state.onRequest = false
-			if (response && (!response.data || response.code)) {
-				this.setError(
-					response.data ?? 'Invalid Credentials',
-					response.code ?? 'invalid_credentials'
-				)
-				return false
+			if (!response || response.error.value) {
+				this.setError('Invalid Credentials', 'invalid_credentials')
+				return
 			}
-			this.setCredential(response as ResponseAuth)
+			this.setCredential(response.data.value as ResponseAuth)
 			return true
 		},
 		async logout(redirect = true) {

@@ -9,7 +9,7 @@ const postStore = usePostsStore()
 const { currentPost: post } = storeToRefs(postStore)
 const isLoading = ref(true)
 if (route.params.id) {
-	postStore.getById(route.params.id).finally(() =>
+	postStore.getById(+route.params.id.toString()).finally(() =>
 		setTimeout(() => {
 			isLoading.value = false
 		}, 325)
@@ -29,5 +29,11 @@ if (route.params.id) {
 img[src$='Trailer.png'],
 a {
 	display: none;
+}
+a[href^='magnet:?'] {
+	display: inline-block;
+	img {
+		margin: 0 auto;
+	}
 }
 </style>

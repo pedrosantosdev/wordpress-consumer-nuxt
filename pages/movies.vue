@@ -47,7 +47,7 @@ const searchMovie = (target: Record<string, string | number | boolean>) => {
 	if (target.isLocal || target.isActive || target.isReady) {
 		$store.searchLocal(target)
 	} else {
-		$store.search(target.value)
+		$store.search(target.value as string)
 	}
 }
 const toggleMovie = (value: { id: number; needSync: boolean }) => $store.toggle(value)
