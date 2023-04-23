@@ -4,10 +4,6 @@
 		"paths": {
 			"@/*": ["./*"]
 		},
-		"types": [
-			"@/types",
-			"@pinia/nuxt",
-			"@types/jest"
-		]
-	},
+		"types": ["@/types", "@pinia/nuxt", "@types/jest"]
+	}
 }
