@@ -28,7 +28,6 @@
 		"@vue/eslint-config-standard": "^8.0.1",
 		"@vue/test-utils": "^2.3.2",
 		"@vue/vue3-jest": "29",
-		"@vueuse/core": "^10.0.2",
 		"@vueuse/nuxt": "^10.0.2",
 		"babel-core": "7.0.0-bridge.0",
 		"babel-jest": "^29.5.0",
@@ -50,7 +49,6 @@
 		"typescript": "^4.9.5"
 	},
 	"dependencies": {
-		"@pinia/nuxt": "^0.4.9",
-		"pinia": "^2.0.34"
+		"@pinia/nuxt": "^0.4.9"
 	}
 }
