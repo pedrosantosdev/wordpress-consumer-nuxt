@@ -42,7 +42,7 @@
 		"jest-environment-jsdom": "^29.5.0",
 		"jest-transform-stub": "^2.0.0",
 		"nuxt": "^3.3.3",
-		"nuxt-icons": "^3.1.0",
+		"nuxt-icons": "^3.2.1",
 		"postcss": "^8.4.23",
 		"prettier": "^2.8.8",
 		"sass": "^1.62.0",
