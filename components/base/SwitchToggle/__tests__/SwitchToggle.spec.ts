@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/vue'
 import SwitchToggleVue from '@/components/base/SwitchToggle/SwitchToggle.vue'
 

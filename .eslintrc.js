@@ -15,6 +15,6 @@ module.exports = {
 		'plugin:vue/vue3-recommended',
 		'plugin:prettier/recommended',
 	],
-	plugins: ['@typescript-eslint', 'prettier'],
+	plugins: ['@typescript-eslint', 'prettier', 'vitest'],
 	rules: {},
 }

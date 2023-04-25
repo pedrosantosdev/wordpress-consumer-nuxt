@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/vue'
 import CardAppVue from '@/components/movie/card/CardApp/CardApp.vue'
 
