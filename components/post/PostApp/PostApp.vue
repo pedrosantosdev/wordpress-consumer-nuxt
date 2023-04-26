@@ -92,14 +92,14 @@ onBeforeMount(() => {
 </template>
 
 <style lang="scss">
-@import '@/assets/scss/abstract/mixins.scss';
+@use '@/assets/scss/abstract/_mixins.scss';
 .posts-page {
 	@apply flex justify-center items-center w-full flex-row flex-wrap;
 	.posts-list {
 		@apply w-full;
 		gap: 20px;
 		justify-content: space-evenly;
-		@include grid-auto-columns(24rem);
+		@include mixins.grid-auto-columns(24rem);
 	}
 }
 </style>

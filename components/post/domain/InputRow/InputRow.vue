@@ -95,6 +95,7 @@ function toggleActive() {
 </template>
 
 <style lang="scss" scoped>
+@use '@/assets/scss/abstract/_variables.scss';
 .post-domain-input {
 	display: grid;
 	gap: 10px;
@@ -117,7 +118,7 @@ function toggleActive() {
 			width: 40px;
 			padding: 10px;
 			border: 1px solid grey;
-			color: #68d391;
+			color: variables.$green-light;
 			border-radius: 25px;
 			svg {
 				padding: 2px 0 0 2px;
