@@ -31,7 +31,7 @@
 						:id="`${movie.id}-sw`"
 						:key="`${movie.id}-sw`"
 						:default-state="movie.needSync"
-						:on-toggle-switch="toggleSwitch"
+						@toggle="toggleSwitch"
 					/>
 				</div>
 			</div>

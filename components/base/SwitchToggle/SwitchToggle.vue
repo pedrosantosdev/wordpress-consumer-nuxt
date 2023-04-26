@@ -24,31 +24,25 @@ const props = withDefaults(
 	defineProps<{
 		id: string
 		defaultState?: boolean
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		onToggleSwitch: (v: boolean) => any
 	}>(),
 	{
 		defaultState: false,
 	}
 )
+const emit = defineEmits(['toggle'])
 
 const currentState = ref(props.defaultState)
 const keyId = computed(() => props.id + '-input')
-const onChangeToggle = () => {
-	if (props.onToggleSwitch) {
-		props.onToggleSwitch(currentState.value)
-	}
+function onChangeToggle() {
+	emit('toggle', currentState.value)
 }
 </script>
 <style lang="scss" scoped>
 .toggle-checkbox:checked {
 	@apply right-0 border-green-400;
-	right: 0;
-	border-color: #68d391;
 
 	& + .toggle-label {
 		@apply bg-green-400;
-		background-color: #68d391;
 	}
 }
 </style>

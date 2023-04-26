@@ -82,7 +82,7 @@ function toggleActive() {
 				<BaseSwitchToggle
 					:id="`${domain.id}-input`"
 					:default-state="domain.active"
-					:on-toggle-switch="toggleActive"
+					@toggle="toggleActive"
 				/>
 			</div>
 			<transition>
