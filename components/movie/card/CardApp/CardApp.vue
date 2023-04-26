@@ -27,7 +27,7 @@
 					<NuxtIcon v-else name="times" />
 				</div>
 				<div class="w-14 h-8 ml-auto">
-					<base-switch-toggle
+					<BaseSwitchToggle
 						:id="`${movie.id}-sw`"
 						:key="`${movie.id}-sw`"
 						:default-state="movie.needSync"
@@ -41,6 +41,7 @@
 
 <script setup lang="ts">
 import BaseCardDefault from '@/components/base/CardDefault/CardDefault.vue'
+import BaseSwitchToggle from '@/components/base/SwitchToggle/SwitchToggle.vue'
 import { MovieModel } from '@/types/Movie'
 
 const props = withDefaults(

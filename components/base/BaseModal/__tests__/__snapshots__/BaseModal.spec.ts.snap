@@ -4,8 +4,3 @@ exports[`BaseModalVue > should render properly 1`] = `
 "<!--teleport start-->
 <!--teleport end-->"
 `;
-
-exports[`BaseModalVue should render properly 1`] = `
-"<!--teleport start-->
-<!--teleport end-->"
-`;
