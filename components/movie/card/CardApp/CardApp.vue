@@ -1,5 +1,5 @@
 <template>
-	<base-card-default>
+	<BaseCardDefault>
 		<div class="h-52 sm:h-full lg:w-1/3 w-full">
 			<img
 				v-if="hasImage"
@@ -36,10 +36,11 @@
 				</div>
 			</div>
 		</div>
-	</base-card-default>
+	</BaseCardDefault>
 </template>
 
 <script setup lang="ts">
+import BaseCardDefault from '@/components/base/CardDefault/CardDefault.vue'
 import { MovieModel } from '@/types/Movie'
 
 const props = withDefaults(

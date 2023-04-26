@@ -1,5 +1,5 @@
 <template>
-	<base-card-default>
+	<BaseCardDefault>
 		<div class="self-center text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
 			Login To Your Account
 		</div>
@@ -49,7 +49,7 @@
 				</div>
 			</form>
 		</div>
-	</base-card-default>
+	</BaseCardDefault>
 </template>
 
 <script setup lang="ts">
