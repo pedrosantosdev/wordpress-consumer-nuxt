@@ -25,6 +25,6 @@ function onClickButton() {
 		@click.prevent="onClickButton"
 	>
 		<NuxtIcon v-if="showIcon" class="spinner" name="spinner" />
-		<span v-else><slot></slot></span>
+		<template v-else><slot /></template>
 	</button>
 </template>
