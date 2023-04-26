@@ -43,14 +43,9 @@
 					<p class="text-sm text-red-500 -bottom-6 w-full error--message">Invalid Credentials</p>
 				</div>
 				<div class="flex w-full">
-					<button
-						type="submit"
-						:disabled="isLoading"
-						class="py-2 px-4 h-10 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+					<BaseButton :disabled="isLoading" :show-icon="isLoading" @click="onSubmit"
+						>Login</BaseButton
 					>
-						<NuxtIcon v-if="isLoading" class="spinner" name="spinner" />
-						<span v-else> Login </span>
-					</button>
 				</div>
 			</form>
 		</div>
@@ -61,6 +56,8 @@
 import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
 import { ref, onBeforeMount } from 'vue'
+import BaseButton from '@/components/base/BaseButton/BaseButton.vue'
+import BaseCardDefault from '@/components/base/CardDefault/CardDefault.vue'
 
 const authStore = useAuthStore()
 const { hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
@@ -82,7 +79,7 @@ authStore.$subscribe(() => {
 		navigateTo(lastPage.value ?? '/')
 	}
 })
-const onSubmit = async (): Promise<void> => {
+async function onSubmit(): Promise<void> {
 	const data = new FormData()
 	data.append('username', form.username.value)
 	data.append('password', form.password.value)
