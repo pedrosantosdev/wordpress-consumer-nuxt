@@ -56,6 +56,7 @@
 import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
 import { ref, onBeforeMount } from 'vue'
+import { navigateTo } from 'nuxt/app'
 import BaseButton from '@/components/base/BaseButton/BaseButton.vue'
 import BaseCardDefault from '@/components/base/CardDefault/CardDefault.vue'
 
@@ -71,14 +72,17 @@ onBeforeMount(() => {
 	if (isExpired.value) {
 		authStore.logout(false)
 	} else if (isAuth.value) {
-		navigateTo(lastPage.value ?? '/')
+		goForward()
 	}
 })
 authStore.$subscribe(() => {
 	if (isAuth.value) {
-		navigateTo(lastPage.value ?? '/')
+		goForward()
 	}
 })
+function goForward(): void {
+	navigateTo(lastPage.value ?? '/')
+}
 async function onSubmit(): Promise<void> {
 	const data = new FormData()
 	data.append('username', form.username.value)

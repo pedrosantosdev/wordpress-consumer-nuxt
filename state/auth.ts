@@ -2,6 +2,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 import { AuthModel } from '@/types/User'
 import { isNotEmpty } from '@/helpers/string'
 import { useBaseFetch } from '@/composables/useBaseFetch'
+import { navigateTo } from 'nuxt/app'
 
 type ResponseAuth = {
 	accessToken: string

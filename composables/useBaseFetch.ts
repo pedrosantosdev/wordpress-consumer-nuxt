@@ -25,7 +25,7 @@ export async function useBaseFetch<T = unknown, K = unknown>(
 			if (authStore.isExpired && url != 'login' && url != 'refresh' && !authStore.onRequest) {
 				const token = await authStore.refreshToken()
 				if (!token) {
-					authStore.logout(true)
+					authStore.logout()
 				}
 			}
 		},
