@@ -4,12 +4,12 @@ import BaseInputVue from '@/components/base/BaseInput/BaseInput.vue'
 
 describe('BaseInputVue', () => {
 	it('should render properly', () => {
-		const wrapper = render(BaseInputVue, {
+		const { html }= render(BaseInputVue, {
 			props: {
 				label: 'Type Here',
 				modelValue: '',
 			},
 		})
-		expect(wrapper.html()).toMatchSnapshot()
+		expect(html()).toMatchSnapshot()
 	})
 })

@@ -40,11 +40,11 @@ describe('BaseButtonVue', () => {
 	})
 	describe.each(dataPropsRender)('should render properly', (data) => {
 		it(data.label, () => {
-			const wrapper = render(BaseButtonVue, {
+			const { html }= render(BaseButtonVue, {
 				props: data.props,
 				slots: { default: defaultLabelSlot },
 			})
-			expect(wrapper.html()).toMatchSnapshot()
+			expect(html()).toMatchSnapshot()
 		})
 	})
 	it(`should emit click properly when not disabled`, async () => {

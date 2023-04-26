@@ -4,7 +4,7 @@ import CardAppVue from '@/components/movie/card/CardApp/CardApp.vue'
 
 describe('CardAppVue', () => {
 	it('should render properly props else case', () => {
-		const wrapper = render(CardAppVue, {
+		const { html }= render(CardAppVue, {
 			props: {
 				movie: {
 					id: 'id',
@@ -17,10 +17,10 @@ describe('CardAppVue', () => {
 				},
 			},
 		})
-		expect(wrapper.html()).toMatchSnapshot()
+		expect(html()).toMatchSnapshot()
 	})
 	it('should render properly props if case', () => {
-		const wrapper = render(CardAppVue, {
+		const { html }= render(CardAppVue, {
 			props: {
 				movie: {
 					id: 'id',
@@ -33,6 +33,6 @@ describe('CardAppVue', () => {
 				},
 			},
 		})
-		expect(wrapper.html()).toMatchSnapshot()
+		expect(html()).toMatchSnapshot()
 	})
 })
