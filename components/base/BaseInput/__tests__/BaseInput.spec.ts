@@ -4,7 +4,7 @@ import BaseInputVue from '@/components/base/BaseInput/BaseInput.vue'
 
 describe('BaseInputVue', () => {
 	it('should render properly', () => {
-		const { html }= render(BaseInputVue, {
+		const { html } = render(BaseInputVue, {
 			props: {
 				label: 'Type Here',
 				modelValue: '',

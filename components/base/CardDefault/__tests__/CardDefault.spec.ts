@@ -4,7 +4,7 @@ import CardDefaultVue from '@/components/base/CardDefault/CardDefault.vue'
 
 describe('CardDefaultVue', () => {
 	it('should render properly', () => {
-		const { html }= render(CardDefaultVue)
+		const { html } = render(CardDefaultVue)
 		expect(html()).toMatchSnapshot()
 	})
 })

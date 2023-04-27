@@ -40,7 +40,7 @@ describe('BaseButtonVue', () => {
 	})
 	describe.each(dataPropsRender)('should render properly', (data) => {
 		it(data.label, () => {
-			const { html }= render(BaseButtonVue, {
+			const { html } = render(BaseButtonVue, {
 				props: data.props,
 				slots: { default: defaultLabelSlot },
 			})

@@ -4,7 +4,7 @@ import CardErrorVue from '@/components/base/CardError/CardError.vue'
 
 describe('CardErrorVue', () => {
 	it('should render properly', () => {
-		const { html }= render(CardErrorVue)
+		const { html } = render(CardErrorVue)
 		expect(html()).toMatchSnapshot()
 	})
 })
