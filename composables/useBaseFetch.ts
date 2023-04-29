@@ -1,5 +1,5 @@
 import { useAuthStore } from '@/state/auth'
-import { useRuntimeConfig } from 'nuxt/app'
+import { useRuntimeConfig, useFetch } from 'nuxt/app'
 import type { Ref } from 'vue'
 
 type FetchResponse<DataT, ErrorT> = {

@@ -18,6 +18,7 @@
 		"@nuxtjs/device": "^3.1.0",
 		"@nuxtjs/tailwindcss": "^6.6.6",
 		"@pinia-plugin-persistedstate/nuxt": "^1.1.1",
+		"@pinia/testing": "^0.0.16",
 		"@testing-library/vue": "^7.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.59.1",
 		"@typescript-eslint/parser": "^5.59.1",

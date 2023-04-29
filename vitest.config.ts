@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
-import Vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 
 export default defineConfig({
-	plugins: [Vue()],
+	plugins: [vue(), vueJsx()],
 	resolve: {
 		alias: {
 			// eslint-disable-next-line no-undef
@@ -12,5 +13,11 @@ export default defineConfig({
 	},
 	test: {
 		environment: 'happy-dom',
+		globals: true,
+		setupFiles: ['test/mock/FakeRouter', 'test/mock/FakeNuxt'],
+		coverage: {
+			reporter: ['lcov', 'json', 'html'],
+			exclude: ['assets', 'test'],
+		},
 	},
 })
