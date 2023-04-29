@@ -1,5 +1,4 @@
-import { createRouter, createMemoryHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createMemoryHistory, type RouteRecordRaw } from 'vue-router'
 import Dummy from '@/pages/index.vue'
 
 const allRoutes = [
