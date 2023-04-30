@@ -23,3 +23,5 @@ vi.mock('#app', () => {
 vi.mock('#imports', () => {
 	return nuxtMock
 })
+
+export default nuxtMock

@@ -69,7 +69,7 @@ const form = {
 }
 
 onBeforeMount(() => {
-	if (isExpired.value) {
+	if (isAuth.value && isExpired.value) {
 		authStore.logout(false)
 	} else if (isAuth.value) {
 		goForward()
