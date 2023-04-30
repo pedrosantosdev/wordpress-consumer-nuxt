@@ -1,21 +1,17 @@
 <template>
-	<div class="relative w-full md:h-14">
-		<div class="block pl-3 pt-3" :class="{ hidden: !isMobile || hide }">
-			<input
-				id="base-nav-bar"
-				v-model="isActive"
-				class="hidden"
-				type="checkbox"
-				name="base-nav-bar"
-			/>
-			<label for="base-nav-bar" class="base-nav-bar-icon">
+	<nav class="relative w-full md:h-14" :class="{ sticky: goingUp }">
+		<div class="block pl-3 pt-3" :class="{ hidden: !isMobile }">
+			<label class="base-nav-bar-icon" @click.prevent="() => (isActive = !isActive)">
 				<NuxtIcon name="hamburguer" />
 			</label>
 		</div>
-		<div class="base-nav-bar-container" :class="{ active: showNavBar, hidden: hide }">
+		<div class="base-nav-bar-container" :class="{ active: showNavBar }">
 			<div class="items-center inline-flex md:mx-3 px-10 gap-6 w-full md:w-auto">
-				<img class="h-10" src="@/assets/icons/nuxt.png" />
-				<label for="base-nav-bar" :class="{ hidden: !isMobile }" class="base-nav-bar-icon">
+				<label
+					:class="{ hidden: !isMobile && !showNavBar }"
+					class="base-nav-bar-icon"
+					@click.prevent="() => (isActive = false)"
+				>
 					<NuxtIcon name="hamburguer" />
 				</label>
 			</div>
@@ -33,15 +29,11 @@
 				</NuxtLink>
 			</nav>
 		</div>
-	</div>
+	</nav>
 </template>
 <script setup lang="ts">
 import { LinksModel } from '@/types/Links'
-import debounce from '@/helpers/debounce'
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import { useRoute } from 'vue-router'
-
-const $route = useRoute()
+import { ref, computed } from 'vue'
 const { isMobile } = useDevice()
 
 const links = ref([
@@ -51,57 +43,50 @@ const links = ref([
 ] as unknown as LinksModel[])
 const isActive = ref(false)
 const showNavBar = computed(() => !!isActive.value)
-const hide = computed(() => $route.name === 'login')
-const windowResize = () => {
-	isActive.value = process.client ? false : true
-}
-onMounted(() => {
-	if (process.client) {
-		isActive.value = !isMobile
-		window.addEventListener('resize', debounce(windowResize, 250))
-	}
-})
-onBeforeUnmount(() => {
-	window.removeEventListener('resize', windowResize)
-})
+const { directions } = useScroll(document.body)
+const goingUp = computed(() => !directions.bottom)
 </script>
-<style lang="scss" scoped>
-a.nuxt-link-active {
-	font-weight: bold;
-}
-.base-nav-bar-icon {
-	&:not(.hidden) {
-		@apply flex;
+<style lang="scss">
+nav {
+	z-index: 1;
+	top: 0;
+	a.nuxt-link-active {
+		font-weight: bold;
 	}
-	@apply cursor-pointer items-center justify-center w-10 dark:text-white text-black text-2xl;
-}
-.base-nav-bar-container {
-	@apply w-64 h-screen md:w-full md:h-14 md:relative fixed top-0 z-10 md:flex-row bg-white dark:bg-gray-800;
-	&:not(.hidden) {
-		@apply md:flex;
-	}
-}
-@media (max-width: 768px) {
-	.base-nav-bar-container {
-		@apply -left-full;
-		transition: left 0.6s ease;
-		&::after {
-			content: '';
-			background-color: black;
-			position: fixed;
-			right: 0;
-			top: 0;
-			z-index: -1;
-			opacity: 0;
+	.base-nav-bar-icon {
+		&:not(.hidden) {
+			@apply flex;
 		}
-		&.active {
-			@apply left-0;
+		@apply cursor-pointer items-center justify-center w-10 dark:text-white text-black text-2xl;
+	}
+	.base-nav-bar-container {
+		@apply w-64 h-screen md:w-full md:h-14 md:relative fixed top-0 z-10 md:flex-row bg-white dark:bg-gray-800;
+		&:not(.hidden) {
+			@apply md:flex;
+		}
+	}
+	@media (max-width: 768px) {
+		.base-nav-bar-container {
+			@apply -left-full;
+			transition: left 0.6s ease;
 			&::after {
-				width: calc(100% - 16rem);
-				height: 100%;
-				opacity: 0.4;
-				transition: opacity 0.3s ease;
-				transition-delay: 0.5s;
+				content: '';
+				background-color: black;
+				position: fixed;
+				right: 0;
+				top: 0;
+				z-index: -1;
+				opacity: 0;
+			}
+			&.active {
+				@apply left-0;
+				&::after {
+					width: calc(100% - 16rem);
+					height: 100%;
+					opacity: 0.4;
+					transition: opacity 0.3s ease;
+					transition-delay: 0.5s;
+				}
 			}
 		}
 	}

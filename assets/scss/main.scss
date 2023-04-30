@@ -17,7 +17,7 @@ body {
 	.main-content {
 		@apply grid grid-flow-row grid-cols-1 justify-center justify-items-center items-center gap-5;
 		grid-template-rows: 1fr;
-		&:has(navbar) {
+		&:has(nav) {
 			grid-template-rows: max-content 1fr;
 			& > :first-child {
 				@apply -mx-5;
