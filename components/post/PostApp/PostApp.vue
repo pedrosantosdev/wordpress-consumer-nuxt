@@ -3,7 +3,6 @@ import { storeToRefs } from 'pinia'
 import { usePostsStore } from '@/state/posts'
 import { isNotEmpty } from '@/helpers/string'
 import { ref, onBeforeMount } from 'vue'
-import { useInfiniteScroll } from '@vueuse/core'
 
 const postsStores = usePostsStore()
 const {
@@ -13,8 +12,8 @@ const {
 	isLoadingSearch,
 } = storeToRefs(postsStores)
 
+const el: Ref<HTMLElement | null> = ref(null)
 const showModal = ref(false)
-const el = ref<HTMLElement>(null)
 
 function closeModalEvent() {
 	showModal.value = false
@@ -31,20 +30,35 @@ function submitQuery() {
 let page = 1
 
 function loadMore() {
-	if (isLoading.value || (page > 1 && (posts?.value?.length ?? 0) < 10)) return
-	++page
+	if (
+		isLoading.value ||
+		isNotEmpty(query.value) ||
+		(page > 1 && (posts?.value?.length ?? 0) < 10)
+	) {
+		return
+	}
+	page += 1
 	postsStores.get(page)
 }
-
 function onPostClick(id: number) {
 	navigateTo(`posts/${id}`)
 }
 
-// useInfiniteScroll(el, loadMore, { distance: 1000 })
 onBeforeMount(() => {
 	if (!isLoading.value && (posts?.value?.length ?? 0) === 0) {
 		postsStores.get()
 	}
+})
+onMounted(() => {
+	const { y } = useWindowScroll()
+	watch(
+		() => y.value,
+		(newValue) => {
+			if (el.value && window.innerHeight + newValue >= +(el.value.offsetHeight * 0.9).toFixed(1)) {
+				loadMore()
+			}
+		}
+	)
 })
 </script>
 
@@ -96,9 +110,7 @@ onBeforeMount(() => {
 .posts-page {
 	@apply flex justify-center items-center w-full flex-row flex-wrap;
 	.posts-list {
-		@apply w-full;
-		gap: 20px;
-		justify-content: space-evenly;
+		@apply w-full gap-5 justify-evenly;
 		@include mixins.grid-auto-columns(24rem);
 	}
 }
