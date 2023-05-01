@@ -1,7 +1,3 @@
-html {
-	@apply h-screen;
-	height: -webkit-fill-available;
-}
 body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
 		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -17,7 +13,7 @@ body {
 	.main-content {
 		@apply grid grid-flow-row grid-cols-1 justify-center justify-items-center items-center gap-5;
 		grid-template-rows: 1fr;
-		&:has(nav) {
+		&:has(header) {
 			grid-template-rows: max-content 1fr;
 			& > :first-child {
 				@apply -mx-5;
