@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 		cookieOptions: {
 			sameSite: 'strict',
 		},
-		storage: 'localStorage',
+		storage: 'cookies',
 	},
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {

@@ -2,7 +2,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 import { AuthModel } from '@/types/User'
 import { isNotEmpty } from '@/helpers/string'
 import { useBaseFetch } from '@/composables/useBaseFetch'
-import { navigateTo } from 'nuxt/app'
+import { navigateTo } from '#app'
 
 type ResponseAuth = {
 	accessToken: string
@@ -120,9 +120,6 @@ export const useAuthStore = defineStore({
 	},
 	persist: {
 		paths: ['token', 'expiresAt', 'refreshToken'],
-		storage: persistedState.cookiesWithOptions({
-			sameSite: 'strict',
-		}),
 	},
 })
 

@@ -21,7 +21,7 @@ export async function useBaseFetch<T = unknown, K = unknown>(
 		headers,
 		baseURL: useRuntimeConfig().public.baseUrl,
 		...options,
-		async onRequest({ request, options }) {
+		async onRequest({}) {
 			if (authStore.isExpired && url != 'login' && url != 'refresh' && !authStore.onRequest) {
 				const token = await authStore.refreshToken()
 				if (!token) {
@@ -29,7 +29,7 @@ export async function useBaseFetch<T = unknown, K = unknown>(
 				}
 			}
 		},
-		onResponseError({ request, response, options }) {
+		onResponseError({ response }) {
 			if (response.status == 401 && authStore.isAuth && url != 'login') {
 				authStore.logout()
 			}
