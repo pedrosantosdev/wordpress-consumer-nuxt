@@ -1,39 +1,32 @@
 <template>
-	<nav class="relative w-full md:h-14" :class="{ sticky: goingUp }">
-		<div class="block pl-3 pt-3" :class="{ hidden: !isMobile }">
-			<label class="base-nav-bar-icon" @click.prevent="() => (isActive = !isActive)">
-				<NuxtIcon name="hamburguer" />
-			</label>
+	<header class="relative w-full md:h-14 duration-200 transition-all" :class="{ sticky: goingUp }">
+		<div v-if="isMobile" class="block pl-3 pt-3">
+			<NuxtIcon name="hamburguer" @click.prevent="() => (isActive = !isActive)" />
 		</div>
-		<div class="base-nav-bar-container" :class="{ active: showNavBar }">
-			<div class="items-center inline-flex md:mx-3 px-10 gap-6 w-full md:w-auto">
-				<label
-					:class="{ hidden: !isMobile && !showNavBar }"
-					class="base-nav-bar-icon"
-					@click.prevent="() => (isActive = false)"
-				>
-					<NuxtIcon name="hamburguer" />
-				</label>
+		<div class="base-nav-bar-container" :class="{ active: isActive }">
+			<div
+				v-if="isMobile"
+				class="items-center inline-flex pt-3 md:mt-0 md:ml-3 px-10 gap-6 w-full md:w-auto"
+				@click.prevent="() => (isActive = false)"
+			>
+				<NuxtIcon name="hamburguer" />
 			</div>
-			<nav class="mt-5 px-6 md:mt-0 md:flex md:flex-row">
+			<nav class="mt-3 px-6 md:mt-0 flex flex-row flex-wrap">
 				<NuxtLink
 					v-for="{ label, path } in links"
 					:key="path"
 					:to="path"
-					class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 md:my-1 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200 text-gray-600 dark:text-gray-400"
+					class="pl-3 md:px-5 md:pt-2 py-4 md:py-0 md:my-1 w-full md:w-auto text-gray-600 dark:text-gray-400 hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600 transition-colors duration-200 text-lg font-normal"
 				>
-					<span class="mx-4 text-lg font-normal">
-						{{ label }}
-					</span>
-					<span class="flex-grow text-right"> </span>
+					{{ label }}
 				</NuxtLink>
 			</nav>
 		</div>
-	</nav>
+	</header>
 </template>
 <script setup lang="ts">
 import { LinksModel } from '@/types/Links'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 const { isMobile } = useDevice()
 
 const links = ref([
@@ -42,28 +35,25 @@ const links = ref([
 	{ label: 'Posts', path: '/posts' },
 ] as unknown as LinksModel[])
 const isActive = ref(false)
-const showNavBar = computed(() => !!isActive.value)
-const { directions } = useScroll(document.body)
-const goingUp = computed(() => !directions.bottom)
+const goingUp = ref(false)
+const lastPosition = ref(0)
+const { y } = useWindowScroll()
+watch(y, (newValue) => {
+	goingUp.value = lastPosition.value > newValue
+	lastPosition.value = newValue
+})
 </script>
 <style lang="scss">
-nav {
-	z-index: 1;
-	top: 0;
+header {
+	@apply top-0 z-10;
 	a.nuxt-link-active {
 		font-weight: bold;
 	}
-	.base-nav-bar-icon {
-		&:not(.hidden) {
-			@apply flex;
-		}
-		@apply cursor-pointer items-center justify-center w-10 dark:text-white text-black text-2xl;
+	.nuxt-icon {
+		@apply cursor-pointer w-10 dark:text-white text-black text-2xl;
 	}
 	.base-nav-bar-container {
-		@apply w-64 h-screen md:w-full md:h-14 md:relative fixed top-0 z-10 md:flex-row bg-white dark:bg-gray-800;
-		&:not(.hidden) {
-			@apply md:flex;
-		}
+		@apply w-64 h-screen md:w-full md:h-14 md:relative fixed top-0 z-20 md:flex md:flex-row bg-white dark:bg-gray-800;
 	}
 	@media (max-width: 768px) {
 		.base-nav-bar-container {
