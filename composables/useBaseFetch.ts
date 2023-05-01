@@ -19,7 +19,7 @@ export async function useBaseFetch<T = unknown, K = unknown>(
 	}
 	const response = await useFetch<T, K>(url, {
 		headers,
-		baseURL: useRuntimeConfig().baseUrl,
+		baseURL: useRuntimeConfig().public.baseUrl,
 		...options,
 		async onRequest({ request, options }) {
 			if (authStore.isExpired && url != 'login' && url != 'refresh' && !authStore.onRequest) {
