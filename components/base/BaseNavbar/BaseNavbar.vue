@@ -14,6 +14,7 @@
 			<nav class="mt-3 px-6 md:mt-0 flex flex-row flex-wrap">
 				<NuxtLink
 					v-for="{ label, path } in links"
+					v-once
 					:key="path"
 					:to="path"
 					class="pl-3 md:px-5 md:pt-2 py-4 md:py-0 md:my-1 w-full md:w-auto text-gray-600 dark:text-gray-400 hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600 transition-colors duration-200 text-lg font-normal"
@@ -46,8 +47,11 @@ watch(y, (newValue) => {
 <style lang="scss">
 header {
 	@apply top-0 z-10;
-	a.nuxt-link-active {
+	.nuxt-link-active,
+	.router-link-active,
+	.router-link-exact-active {
 		font-weight: bold;
+		@apply text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600;
 	}
 	.nuxt-icon {
 		@apply cursor-pointer w-10 dark:text-white text-black text-2xl;
