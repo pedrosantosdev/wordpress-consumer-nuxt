@@ -4,10 +4,11 @@ import BaseModalVue from '@/components/base/BaseModal.vue'
 
 describe('BaseModalVue', () => {
 	it('should render properly', () => {
-		const { html } = render(BaseModalVue, {
+		render(BaseModalVue, {
 			props: {
 				showModal: true,
 			},
+			slots: { default: '<div>Conteudo Bacana</div>' },
 			global: {
 				stubs: {
 					NuxtIcon: true,

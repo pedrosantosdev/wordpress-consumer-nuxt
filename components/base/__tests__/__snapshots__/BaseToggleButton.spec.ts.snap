@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseToggleButtonVue > should render properly 1`] = `
+"<button class=\\"filter-button active\\">
+  <nuxt-icon-stub name=\\"check\\"></nuxt-icon-stub> Filtro
+</button>"
+`;
+
+exports[`BaseToggleButtonVue > should render properly 2`] = `
+"<button class=\\"filter-button\\">
+  <nuxt-icon-stub name=\\"times\\"></nuxt-icon-stub> Filtro
+</button>"
+`;

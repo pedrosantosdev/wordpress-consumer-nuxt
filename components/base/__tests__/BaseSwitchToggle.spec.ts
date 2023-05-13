@@ -33,6 +33,6 @@ describe('BaseSwitchToggleVue', () => {
 		await fireEvent.click(input)
 		expect(emitted().toggle).toBeTruthy()
 		expect(emitted().toggle.length).toBe(1)
-		expect(emitted().toggle.values().next().value).toBeTruthy()
+		expect(emitted().toggle.values().next().value[0]).toBeTruthy()
 	})
 })

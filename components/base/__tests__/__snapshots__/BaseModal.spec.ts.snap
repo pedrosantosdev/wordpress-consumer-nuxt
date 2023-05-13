@@ -50,7 +50,9 @@ exports[`BaseModalVue > should render properly 1`] = `
               />
             </button>
             
-            I'm empty inside
+            <div>
+              Conteudo Bacana
+            </div>
             
           </div>
         </transition-stub>
