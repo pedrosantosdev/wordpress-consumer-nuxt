@@ -1,13 +1,13 @@
 <template>
 	<div class="movie-page">
 		<div class="mb-4 relative">
-			<MovieSearchApp :input="query" @update:input="searchMovie" />
+			<MovieSearchBar :input="query" @update:input="searchMovie" />
 		</div>
 		<transition>
 			<MovieCardLoading v-if="isLoading && !hasError" />
 			<BaseCardError v-else-if="!isLoading && hasError">Erro ao carregar a listagem</BaseCardError>
 			<div v-else-if="searchActive" class="movie-list">
-				<MovieCardApp
+				<MovieCard
 					v-for="(movie, index) in getSearchMovies"
 					:key="movie.id"
 					:movie="movie"
@@ -16,7 +16,7 @@
 				/>
 			</div>
 			<div v-else-if="(getMovies?.length ?? 0) > 0" class="movie-list">
-				<MovieCardApp
+				<MovieCard
 					v-for="(movie, index) in getMovies ?? []"
 					:key="movie.id"
 					:movie="movie"
@@ -47,7 +47,7 @@ const searchMovie = (target: Record<string, string | number | boolean>) => {
 	if (target.isLocal || target.isActive || target.isReady) {
 		$store.searchLocal(target)
 	} else {
-		$store.search(target.value as string)
+		$store.search(query.value as string)
 	}
 }
 const toggleMovie = (value: { id: number; needSync: boolean }) => $store.toggle(value)
@@ -61,7 +61,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@use '@/assets/scss/abstract/_mixins.scss';
 .movie-page {
 	@apply px-5 pb-5 w-full min-h-screen max-h-full;
 	.movie-list {

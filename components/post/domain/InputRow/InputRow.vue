@@ -105,9 +105,9 @@ function toggleActive() {
 	overflow: hidden;
 	overflow-x: auto;
 	scroll-behavior: smooth;
-	border-top: 1px solid grey;
+	border-top: 1px solid variables.$grey;
 	&:last-of-type {
-		border-bottom: 1px solid grey;
+		border-bottom: 1px solid variables.$grey;
 	}
 	.icon-group {
 		display: flex;
@@ -117,7 +117,7 @@ function toggleActive() {
 			cursor: pointer;
 			width: 40px;
 			padding: 10px;
-			border: 1px solid grey;
+			border: 1px solid variables.$grey;
 			color: variables.$green-light;
 			border-radius: 25px;
 			svg {

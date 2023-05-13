@@ -8,3 +8,4 @@ nuxt.d.ts
 .nuxt-storybook
 storybook-static
 coverage
+.vscode

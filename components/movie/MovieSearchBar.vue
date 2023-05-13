@@ -14,8 +14,9 @@
 		/>
 	</div>
 	<div class="filter-container" :class="{ active: optionsActive }">
-		<MovieSearchFilterButton
+		<BaseToggleButton
 			v-for="(objValue, key) in filters"
+			v-once
 			:key="key"
 			v-model="objValue.value"
 			:label="objValue.label"
@@ -48,7 +49,15 @@ const initStateFilters = {
 	},
 }
 
-let filters = reactive(JSON.parse(JSON.stringify(initStateFilters)))
+const filters = reactive<
+	Record<
+		string,
+		{
+			label: string
+			value: boolean
+		}
+	>
+>(JSON.parse(JSON.stringify(initStateFilters)))
 
 const mappedFilters = (): Record<string, string | number | boolean> => {
 	const obj = {

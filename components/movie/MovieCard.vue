@@ -23,8 +23,7 @@
 					{{ inCinemasDate }}
 				</div>
 				<div class="w-10 h-8 text-2xl dark:text-white text-black">
-					<NuxtIcon v-if="movie.hasFile" name="check" />
-					<NuxtIcon v-else name="times" />
+					<NuxtIcon :name="showIcon" />
 				</div>
 				<div class="w-14 h-8 ml-auto">
 					<BaseSwitchToggle
@@ -44,18 +43,16 @@ import BaseCard from '@/components/base/BaseCard.vue'
 import BaseSwitchToggle from '@/components/base/BaseSwitchToggle.vue'
 import { MovieModel } from '@/types/Movie'
 
-const props = withDefaults(
-	defineProps<{
-		movie: MovieModel
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any, vue/require-default-prop
-		onToggleSwitch?: (model: { id: number; needSync: boolean }) => any
-	}>(),
-	{}
-)
+const props = defineProps<{
+	movie: MovieModel
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any, vue/require-default-prop
+	onToggleSwitch?: (model: { id: number; needSync: boolean }) => any
+}>()
 const date =
 	props.movie.inCinemas && props.movie.inCinemas !== 'TBA' ? new Date(props.movie.inCinemas) : null
 const hasImage = !!props.movie.image
 const inCinemasDate = date ? `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}` : 'TBA'
+const showIcon = props.movie.hasFile ? 'check' : 'times'
 
 const toggleSwitch = (value: boolean) =>
 	props.onToggleSwitch ? props.onToggleSwitch({ id: props.movie.id, needSync: value }) : null

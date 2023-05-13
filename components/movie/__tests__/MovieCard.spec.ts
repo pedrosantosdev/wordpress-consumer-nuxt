@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/vue'
-import CardAppVue from '@/components/movie/card/CardApp/CardApp.vue'
+import MovieCardVue from '@/components/movie/MovieCard.vue'
 
-describe('CardAppVue', () => {
+describe('MovieCardVue', () => {
 	it('should render properly props else case', () => {
-		const { html } = render(CardAppVue, {
+		const { html } = render(MovieCardVue, {
 			global: {
 				stubs: {
 					NuxtIcon: true,
@@ -25,7 +25,7 @@ describe('CardAppVue', () => {
 		expect(html()).toMatchSnapshot()
 	})
 	it('should render properly props if case', () => {
-		const { html } = render(CardAppVue, {
+		const { html } = render(MovieCardVue, {
 			global: {
 				stubs: {
 					NuxtIcon: true,

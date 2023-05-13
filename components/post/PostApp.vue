@@ -54,7 +54,7 @@ onMounted(() => {
 	watch(
 		() => y.value,
 		(newValue) => {
-			if (el.value && window.innerHeight + newValue >= +(el.value.offsetHeight * 0.9).toFixed(1)) {
+			if (el.value && window.innerHeight + newValue >= +(el.value.offsetHeight * 0.8).toFixed(1)) {
 				loadMore()
 			}
 		}
@@ -65,7 +65,7 @@ onMounted(() => {
 <template>
 	<div class="posts-page self-start w-full px-5 pb-3">
 		<BaseModal :show-modal="showModal" @close="closeModalEvent">
-			<PostDomainFormApp class="-m-8 py-8 px-4" />
+			<PostDomainForm class="-m-8 py-8 px-4" />
 		</BaseModal>
 		<div class="flex w-full gap-2 items-center relative mb-4">
 			<BaseInput v-model="query" @enter="submitQuery" />

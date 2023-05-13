@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/vue'
-import CardLoadingVue from '@/components/movie/card/CardLoading/CardLoading.vue'
+import MovieCardLoadingVue from '@/components/movie/MovieCardLoading.vue'
 
-describe('CardLoadingVue', () => {
+describe('MovieCardLoadingVue', () => {
 	it('should render properly', () => {
-		const { html } = render(CardLoadingVue)
+		const { html } = render(MovieCardLoadingVue)
 		expect(html()).toMatchSnapshot()
 	})
 })
