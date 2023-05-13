@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/vue'
-import CardDefaultVue from '@/components/base/CardDefault/CardDefault.vue'
+import BaseCardVue from '@/components/base/BaseCard.vue'
 
-describe('CardDefaultVue', () => {
+describe('BaseCardVue', () => {
 	it('should render properly', () => {
-		const { html } = render(CardDefaultVue)
+		const { html } = render(BaseCardVue)
 		expect(html()).toMatchSnapshot()
 	})
 })

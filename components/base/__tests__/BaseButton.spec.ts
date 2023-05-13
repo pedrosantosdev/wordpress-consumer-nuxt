@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from 'vitest'
 import { fireEvent, render } from '@testing-library/vue'
-import BaseButtonVue from '@/components/base/BaseButton/BaseButton.vue'
+import BaseButtonVue from '@/components/base/BaseButton.vue'
 
 const dataPropsRender = [
 	{

@@ -1,5 +1,5 @@
 <template>
-	<BaseCardDefault>
+	<BaseCard>
 		<div class="sm:w-72 h-52 sm:h-full rounded-xl animate-pulse" :class="bgColor"></div>
 		<div class="flex flex-1 flex-col gap-5 sm:p-2 sm:pt-0">
 			<div class="flex flex-1 flex-col gap-3">
@@ -12,11 +12,11 @@
 				<div class="w-20 h-8 rounded-full ml-auto animate-pulse" :class="bgColor"></div>
 			</div>
 		</div>
-	</BaseCardDefault>
+	</BaseCard>
 </template>
 
 <script setup lang="ts">
-import BaseCardDefault from '@/components/base/CardDefault/CardDefault.vue'
+import BaseCard from '@/components/base/BaseCard.vue'
 withDefaults(defineProps<{ bgColor?: string }>(), {
 	bgColor: 'bg-gray-200 dark:bg-gray-600',
 })

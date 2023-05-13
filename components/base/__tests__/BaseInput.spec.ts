@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/vue'
-import BaseInputVue from '@/components/base/BaseInput/BaseInput.vue'
+import BaseInputVue from '@/components/base/BaseInput.vue'
 
 describe('BaseInputVue', () => {
 	it('should render properly', () => {

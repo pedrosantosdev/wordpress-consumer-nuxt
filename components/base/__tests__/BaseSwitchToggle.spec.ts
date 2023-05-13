@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { fireEvent, render } from '@testing-library/vue'
-import SwitchToggleVue from '@/components/base/SwitchToggle/SwitchToggle.vue'
+import BaseSwitchToggleVue from '@/components/base/BaseSwitchToggle.vue'
 
-describe('SwitchToggleVue', () => {
+describe('BaseSwitchToggleVue', () => {
 	beforeEach(() => {
 		document.body.innerHTML = ''
 	})
 	it('should render properly without default state', () => {
-		const { html } = render(SwitchToggleVue, {
+		const { html } = render(BaseSwitchToggleVue, {
 			props: {
 				id: 'toggle',
 			},
@@ -15,7 +15,7 @@ describe('SwitchToggleVue', () => {
 		expect(html()).toMatchSnapshot()
 	})
 	it('should render properly with default state', () => {
-		const { html } = render(SwitchToggleVue, {
+		const { html } = render(BaseSwitchToggleVue, {
 			props: {
 				id: 'toggle',
 				defaultState: true,
@@ -24,7 +24,7 @@ describe('SwitchToggleVue', () => {
 		expect(html()).toMatchSnapshot()
 	})
 	it('should emit toggle when click', async () => {
-		const { container, emitted } = render(SwitchToggleVue, {
+		const { container, emitted } = render(BaseSwitchToggleVue, {
 			props: {
 				id: 'toggle',
 			},

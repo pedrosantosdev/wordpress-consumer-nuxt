@@ -1,5 +1,5 @@
 <template>
-	<BaseCardDefault>
+	<BaseCard>
 		<div class="self-center text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
 			Login To Your Account
 		</div>
@@ -49,7 +49,7 @@
 				</div>
 			</form>
 		</div>
-	</BaseCardDefault>
+	</BaseCard>
 </template>
 
 <script setup lang="ts">
@@ -57,8 +57,8 @@ import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
 import { ref, onBeforeMount } from 'vue'
 import { navigateTo } from 'nuxt/app'
-import BaseButton from '@/components/base/BaseButton/BaseButton.vue'
-import BaseCardDefault from '@/components/base/CardDefault/CardDefault.vue'
+import BaseButton from '@/components/base/BaseButton.vue'
+import BaseCard from '@/components/base/BaseCard.vue'
 
 const authStore = useAuthStore()
 const { hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)

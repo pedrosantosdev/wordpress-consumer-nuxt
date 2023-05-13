@@ -1,5 +1,5 @@
 <template>
-	<BaseCardDefault>
+	<BaseCard>
 		<div class="h-52 sm:h-full lg:w-1/3 w-full">
 			<img
 				v-if="hasImage"
@@ -36,12 +36,12 @@
 				</div>
 			</div>
 		</div>
-	</BaseCardDefault>
+	</BaseCard>
 </template>
 
 <script setup lang="ts">
-import BaseCardDefault from '@/components/base/CardDefault/CardDefault.vue'
-import BaseSwitchToggle from '@/components/base/SwitchToggle/SwitchToggle.vue'
+import BaseCard from '@/components/base/BaseCard.vue'
+import BaseSwitchToggle from '@/components/base/BaseSwitchToggle.vue'
 import { MovieModel } from '@/types/Movie'
 
 const props = withDefaults(

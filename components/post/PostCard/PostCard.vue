@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-	<BaseCardDefault>
+	<BaseCard>
 		<div class="flex flex-row flex-wrap">
 			<div class="w-full mb-1">
 				{{ post.title.rendered }}
@@ -26,5 +26,5 @@ defineProps({
 				v-html="post.excerpt.rendered"
 			></div>
 		</div>
-	</BaseCardDefault>
+	</BaseCard>
 </template>
