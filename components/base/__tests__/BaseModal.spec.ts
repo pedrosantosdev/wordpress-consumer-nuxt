@@ -8,7 +8,12 @@ describe('BaseModalVue', () => {
 			props: {
 				showModal: true,
 			},
+			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
+			},
 		})
-		expect(html()).toMatchSnapshot()
+		expect(document.body).toMatchSnapshot()
 	})
 })

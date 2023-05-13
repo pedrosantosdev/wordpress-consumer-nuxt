@@ -6,13 +6,13 @@ exports[`LoginCard > should render properly 1`] = `
   <div data-v-47574c68=\\"\\" class=\\"mt-2\\">
     <form data-v-47574c68=\\"\\" autocomplete=\\"off\\" class=\\"\\">
       <div data-v-47574c68=\\"\\" class=\\"flex flex-col mb-2\\">
-        <div data-v-47574c68=\\"\\" class=\\"flex relative flex-wrap input-group\\"><span data-v-47574c68=\\"\\" class=\\"rounded-l-md inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm\\"><nuxticon data-v-47574c68=\\"\\" name=\\"mail\\"></nuxticon></span><input data-v-47574c68=\\"\\" id=\\"username\\" type=\\"text\\" name=\\"username\\" class=\\"rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600\\" placeholder=\\"Your email\\">
-          <nuxticon data-v-47574c68=\\"\\" name=\\"times\\" class=\\"error--icon\\"></nuxticon>
+        <div data-v-47574c68=\\"\\" class=\\"flex relative flex-wrap input-group\\"><span data-v-47574c68=\\"\\" class=\\"rounded-l-md inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm\\"><nuxt-icon-stub data-v-47574c68=\\"\\" name=\\"mail\\"></nuxt-icon-stub></span><input data-v-47574c68=\\"\\" id=\\"username\\" type=\\"text\\" name=\\"username\\" class=\\"rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600\\" placeholder=\\"Your email\\">
+          <nuxt-icon-stub data-v-47574c68=\\"\\" name=\\"times\\" class=\\"error--icon\\"></nuxt-icon-stub>
         </div>
       </div>
       <div data-v-47574c68=\\"\\" class=\\"flex flex-col mb-4\\">
-        <div data-v-47574c68=\\"\\" class=\\"flex relative flex-wrap input-group\\"><span data-v-47574c68=\\"\\" class=\\"rounded-l-md inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm\\"><nuxticon data-v-47574c68=\\"\\" name=\\"unlock\\"></nuxticon></span><input data-v-47574c68=\\"\\" id=\\"password\\" type=\\"password\\" name=\\"password\\" class=\\"rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent\\" placeholder=\\"Your password\\">
-          <nuxticon data-v-47574c68=\\"\\" name=\\"times\\" class=\\"error--icon\\"></nuxticon>
+        <div data-v-47574c68=\\"\\" class=\\"flex relative flex-wrap input-group\\"><span data-v-47574c68=\\"\\" class=\\"rounded-l-md inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm\\"><nuxt-icon-stub data-v-47574c68=\\"\\" name=\\"unlock\\"></nuxt-icon-stub></span><input data-v-47574c68=\\"\\" id=\\"password\\" type=\\"password\\" name=\\"password\\" class=\\"rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent\\" placeholder=\\"Your password\\">
+          <nuxt-icon-stub data-v-47574c68=\\"\\" name=\\"times\\" class=\\"error--icon\\"></nuxt-icon-stub>
         </div>
         <p data-v-47574c68=\\"\\" class=\\"text-sm text-red-500 -bottom-6 w-full error--message\\">Invalid Credentials</p>
       </div>

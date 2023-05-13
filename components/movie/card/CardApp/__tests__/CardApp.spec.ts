@@ -5,6 +5,11 @@ import CardAppVue from '@/components/movie/card/CardApp/CardApp.vue'
 describe('CardAppVue', () => {
 	it('should render properly props else case', () => {
 		const { html } = render(CardAppVue, {
+			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
+			},
 			props: {
 				movie: {
 					id: 'id',
@@ -21,6 +26,11 @@ describe('CardAppVue', () => {
 	})
 	it('should render properly props if case', () => {
 		const { html } = render(CardAppVue, {
+			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
+			},
 			props: {
 				movie: {
 					id: 'id',

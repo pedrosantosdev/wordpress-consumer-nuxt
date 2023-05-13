@@ -63,7 +63,7 @@ watch(
 							<button
 								class="absolute top-3 right-3 md:-top-4 md:-right-4 text-lg md:text-white dark:text-white"
 							>
-								<nuxt-icon name="times" @click="closeModal" />
+								<NuxtIcon name="times" @click="closeModal" />
 							</button>
 							<slot>I'm empty inside</slot>
 						</div>

@@ -16,6 +16,9 @@ describe('LoginCard', () => {
 	it('should render properly', () => {
 		const { html } = render(LoginCard, {
 			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
 				plugins: [createPiniaSut()],
 			},
 		})
@@ -31,6 +34,9 @@ describe('LoginCard', () => {
 		}
 		render(LoginCard, {
 			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
 				plugins: [createPiniaSut(initialState)],
 			},
 		})
@@ -48,6 +54,9 @@ describe('LoginCard', () => {
 		}
 		render(LoginCard, {
 			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
 				plugins: [createPiniaSut(initialState)],
 			},
 		})
@@ -59,6 +68,9 @@ describe('LoginCard', () => {
 	it('should redirect when subscribe isAuth', async () => {
 		render(LoginCard, {
 			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
 				plugins: [createPiniaSut()],
 			},
 		})
@@ -71,6 +83,9 @@ describe('LoginCard', () => {
 	it('should call login action when click button form', async () => {
 		const { getByText } = render(LoginCard, {
 			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
 				plugins: [createPiniaSut()],
 			},
 		})

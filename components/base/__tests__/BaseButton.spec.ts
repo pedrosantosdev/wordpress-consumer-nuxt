@@ -43,6 +43,11 @@ describe('BaseButtonVue', () => {
 			const { html } = render(BaseButtonVue, {
 				props: data.props,
 				slots: { default: defaultLabelSlot },
+				global: {
+					stubs: {
+						NuxtIcon: true,
+					},
+				},
 			})
 			expect(html()).toMatchSnapshot()
 		})
@@ -50,6 +55,11 @@ describe('BaseButtonVue', () => {
 	it(`should emit click properly when not disabled`, async () => {
 		const { emitted, getByText } = render(BaseButtonVue, {
 			slots: { default: defaultLabelSlot },
+			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
+			},
 		})
 		await fireEvent.click(getByText(defaultLabelSlot))
 		expect(emitted().click).toBeTruthy()
@@ -60,6 +70,11 @@ describe('BaseButtonVue', () => {
 		const { container, emitted } = render(BaseButtonVue, {
 			props: { disabled: true },
 			slots: { default: defaultLabelSlot },
+			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
+			},
 		})
 		await fireEvent.click(container)
 		expect(emitted().click).toBeFalsy()
