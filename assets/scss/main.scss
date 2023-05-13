@@ -20,6 +20,7 @@ body {
 		grid-template-rows: 1fr;
 		&:has(header) {
 			grid-template-rows: max-content 1fr;
+			@apply pt-14 md:pt-20;
 			& > :first-child {
 				@apply -mx-5;
 			}

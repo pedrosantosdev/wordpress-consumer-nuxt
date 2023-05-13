@@ -1,12 +1,12 @@
 <template>
-	<header class="relative w-full md:h-14 duration-200 transition-all" :class="{ sticky: goingUp }">
+	<header class="fixed w-full md:h-14 duration-200 transition-all">
 		<div v-if="isMobile" class="block pl-3 pt-3">
 			<NuxtIcon name="hamburguer" @click.prevent="() => (isActive = !isActive)" />
 		</div>
 		<div class="base-nav-bar-container" :class="{ active: isActive }">
 			<div
 				v-if="isMobile"
-				class="items-center inline-flex pt-3 md:mt-0 md:ml-3 px-10 gap-6 w-full md:w-auto"
+				class="items-center inline-flex pt-3 md:mt-0 md:ml-3 px-9 gap-6 w-full md:w-auto"
 				@click.prevent="() => (isActive = false)"
 			>
 				<NuxtIcon name="hamburguer" />
@@ -36,13 +36,6 @@ const links = ref([
 	{ label: 'Posts', path: '/posts' },
 ] as unknown as LinksModel[])
 const isActive = ref(false)
-const goingUp = ref(false)
-const lastPosition = ref(0)
-const { y } = useWindowScroll()
-watch(y, (newValue) => {
-	goingUp.value = lastPosition.value > newValue
-	lastPosition.value = newValue
-})
 </script>
 <style lang="scss">
 header {
