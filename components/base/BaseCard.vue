@@ -8,12 +8,11 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(
-	defineProps<{
-		bgColor?: string
-	}>(),
-	{
-		bgColor: 'bg-white dark:bg-gray-800 dark:text-white',
-	}
-)
+defineProps({
+	bgColor: {
+		type: String,
+		default: 'bg-white dark:bg-gray-800 dark:text-white',
+		required: false,
+	},
+})
 </script>

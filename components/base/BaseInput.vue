@@ -3,20 +3,25 @@ import debounce from '@/helpers/debounce'
 import { computed, onBeforeMount, onBeforeUnmount } from 'vue'
 
 const emit = defineEmits(['update:modelValue', 'enter', 'debounce'])
-const props = withDefaults(
-	defineProps<{
-		label?: string
-		readonly?: boolean
-		type?: string
-		modelValue: string | number
-	}>(),
-	{
-		label: '',
-		readonly: false,
-		type: 'text',
-		modelValue: '',
-	}
-)
+const props = defineProps({
+	label: {
+		type: String,
+		default: '',
+	},
+	readonly: {
+		type: Boolean,
+		default: false,
+	},
+	type: {
+		type: String,
+		default: 'text',
+		required: false,
+	},
+	modelValue: {
+		type: [String, Number],
+		default: '',
+	},
+})
 const value = computed({
 	get() {
 		return props.modelValue

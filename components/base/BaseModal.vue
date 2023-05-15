@@ -2,14 +2,12 @@
 import { ref, watch } from 'vue'
 import useLockScroll from '@/composables/useLockScroll'
 
-const props = withDefaults(
-	defineProps<{
-		showModal: boolean
-	}>(),
-	{
-		showModal: false,
-	}
-)
+const props = defineProps({
+	showModal: {
+		type: Boolean,
+		default: false,
+	},
+})
 const emit = defineEmits(['close'])
 
 const modal = ref(null)

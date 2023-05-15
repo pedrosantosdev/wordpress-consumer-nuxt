@@ -1,14 +1,8 @@
 <script setup lang="ts">
-const props = withDefaults(
-	defineProps<{
-		showIcon?: boolean
-		disabled?: boolean
-	}>(),
-	{
-		showIcon: false,
-		disabled: false,
-	}
-)
+const props = defineProps({
+	showIcon: { type: Boolean, required: false, default: false },
+	disabled: { type: Boolean, required: false, default: false },
+})
 const emit = defineEmits(['click'])
 function onClickButton() {
 	if (!props.disabled) {

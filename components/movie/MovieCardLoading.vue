@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import BaseCard from '@/components/base/BaseCard.vue'
-withDefaults(defineProps<{ bgColor?: string }>(), {
-	bgColor: 'bg-gray-200 dark:bg-gray-600',
+defineProps({
+	bgColor: { type: String, required: false, default: 'bg-gray-200 dark:bg-gray-600' },
 })
 </script>

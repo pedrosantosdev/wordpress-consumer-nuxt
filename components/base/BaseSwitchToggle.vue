@@ -20,15 +20,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const props = withDefaults(
-	defineProps<{
-		id: string
-		defaultState?: boolean
-	}>(),
-	{
-		defaultState: false,
-	}
-)
+const props = defineProps({
+	id: {
+		type: String,
+		required: true,
+		default: '',
+	},
+	defaultState: {
+		type: Boolean,
+		required: false,
+		default: false,
+	},
+})
 const emit = defineEmits(['toggle'])
 
 const currentState = ref(props.defaultState)
