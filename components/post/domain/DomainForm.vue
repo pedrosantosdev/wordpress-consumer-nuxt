@@ -51,7 +51,7 @@ function deleteEmit(postDomain: PostDomain) {
 			<PostDomainInputRow
 				v-for="domain in domains"
 				:key="domain.id"
-				:input="domain"
+				:domain="domain"
 				@save="saveEmit"
 				@delete="deleteEmit"
 			/>
