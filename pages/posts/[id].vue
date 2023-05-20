@@ -4,6 +4,13 @@ import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
+definePageMeta({
+	validate: async (route) => {
+		// Check if the id is made up of digits
+		return /^\d+$/.test(route.params.id)
+	},
+})
+
 const route = useRoute()
 const postStore = usePostsStore()
 const { currentPost: post } = storeToRefs(postStore)
@@ -25,7 +32,7 @@ if (route.params.id) {
 	</transition>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 img[src$='Trailer.png'],
 a {
 	display: none;

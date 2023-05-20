@@ -42,8 +42,7 @@ header {
 	.nuxt-link-active,
 	.router-link-active,
 	.router-link-exact-active {
-		font-weight: bold;
-		@apply text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600;
+		@apply text-gray-800 bg-gray-100 dark:text-white dark:bg-gray-600 font-bold;
 	}
 	.nuxt-icon {
 		@apply cursor-pointer w-10 dark:text-white text-black text-2xl;
@@ -57,12 +56,7 @@ header {
 			transition: left 0.6s ease;
 			&::after {
 				content: '';
-				background-color: black;
-				position: fixed;
-				right: 0;
-				top: 0;
-				z-index: -1;
-				opacity: 0;
+				@apply right-0 top-0 fixed bg-black -z-10 opacity-0;
 			}
 			&.active {
 				@apply left-0;

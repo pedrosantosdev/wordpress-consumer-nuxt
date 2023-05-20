@@ -41,7 +41,7 @@ function loadMore() {
 	postsStores.get(page)
 }
 function onPostClick(id: number) {
-	navigateTo(`posts/${id}`)
+	navigateTo(`/posts/${id}`)
 }
 
 onBeforeMount(() => {
