@@ -33,7 +33,7 @@ function loadMore() {
 	if (
 		isLoading.value ||
 		isNotEmpty(query.value) ||
-		(page > 1 && (posts?.value?.length ?? 0) < 10)
+		(page > 1 && (posts.value.results.length ?? 0) < 10)
 	) {
 		return
 	}
@@ -45,7 +45,8 @@ function onPostClick(id: number) {
 }
 
 onBeforeMount(() => {
-	if (!isLoading.value && (posts?.value?.length ?? 0) === 0) {
+	page = posts.value.page
+	if (!isLoading.value && (posts.value.results.length ?? 0) === 0) {
 		postsStores.get()
 	}
 })
@@ -86,7 +87,12 @@ onMounted(() => {
 				/>
 			</div>
 			<div v-else-if="!isLoadingSearch && !isNotEmpty(query)" ref="el" class="posts-list">
-				<PostCard v-for="post in posts" :key="post.id" :post="post" @click="onPostClick(post.id)" />
+				<PostCard
+					v-for="post in posts.results"
+					:key="post.id"
+					:post="post"
+					@click="onPostClick(post.id)"
+				/>
 			</div>
 		</transition>
 

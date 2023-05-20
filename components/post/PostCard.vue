@@ -14,7 +14,7 @@ defineProps({
 				{{ post.title.rendered }}
 			</div>
 			<img
-				v-show="post.image_url"
+				v-if="post.image_url"
 				class="lg:w-2/6 w-full object-scale-down"
 				crossorigin="anonymous"
 				loading="lazy"
