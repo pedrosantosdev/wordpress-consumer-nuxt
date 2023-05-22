@@ -1,12 +1,13 @@
 <script lang="ts" setup>
+import { isNotEmpty } from '@/helpers/string'
 import { usePostsStore } from '@/state/posts'
+import { useToastStore } from '@/state/toast'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 definePageMeta({
 	validate: async (route) => {
-		// Check if the id is made up of digits
 		return /^\d+$/.test(route.params.id)
 	},
 })
@@ -41,18 +42,34 @@ watchEffect(() => {
 	}
 })
 function copyTextToClipboard(text?: string): void {
-	textToCopy.value += text
+	textToCopy.value += text ?? ''
 	textToCopy.value += multipleSelectActive.value ? '\n' : ''
 	if (!text || !multipleSelectActive.value) {
-		copy(textToCopy.value)
-		textToCopy.value = ''
+		if (isNotEmpty(textToCopy.value.trim())) {
+			copy(textToCopy.value)
+			useToastStore().showToast('Link Copiado')
+			textToCopy.value = ''
+			return
+		}
+		useToastStore().showToast('Selecione pelo menos um link.', { status: 'error' })
 	}
 }
 </script>
 
 <template>
-	<div class="px-5 py-2">
+	<div class="px-5 py-2 post-page">
 		<NuxtIcon v-show="isLoading" class="spinner" name="spinner" />
+		<div v-show="post && !isLoading" class="selection-list">
+			<div
+				class="icon-item cursor-pointer"
+				:class="{ 'dark:bg-gray-400 bg-gray-500': multipleSelectActive }"
+			>
+				<NuxtIcon name="list" @click.prevent="multipleSelectActive = !multipleSelectActive" />
+			</div>
+			<div class="icon-item cursor-pointer">
+				<NuxtIcon name="check" @click.prevent="copyTextToClipboard()" />
+			</div>
+		</div>
 		<transition>
 			<div v-if="post && !isLoading" ref="el" v-html="post.content.rendered"></div>
 			<div v-else-if="!isLoading && !post">Not Found</div>
@@ -60,15 +77,16 @@ function copyTextToClipboard(text?: string): void {
 	</div>
 </template>
 
-<style lang="scss" scoped>
-img[src$='Trailer.png'],
-a {
-	display: none;
-}
-a[href^='magnet:?'] {
-	display: inline-block;
-	img {
-		margin: 0 auto;
+<style lang="scss">
+.post-page {
+	img[src$='Trailer.png'],
+	a[href^='http'] {
+		display: none;
+	}
+	.selection-list {
+		width: 80px;
+		height: 56px;
+		@apply flex justify-center items-center gap-3 fixed top-0 right-0 z-10 p-3;
 	}
 }
 </style>
