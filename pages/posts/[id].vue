@@ -16,11 +16,12 @@ const route = useRoute()
 const postStore = usePostsStore()
 const { currentPost: post } = storeToRefs(postStore)
 const isLoading = ref(true)
-const textToCopy = ref('')
+let textToCopy = reactive<string[]>([])
 const el = ref<HTMLDivElement | null>(null)
 const listening = ref(false)
+const linkCount = ref(0)
 const multipleSelectActive = ref(false)
-const { copy } = useClipboard({ source: textToCopy, legacy: true })
+const { copy } = useClipboard({ legacy: true })
 if (route.params.id) {
 	postStore.getById(+route.params.id.toString()).finally(() =>
 		setTimeout(() => {
@@ -42,13 +43,16 @@ watchEffect(() => {
 	}
 })
 function copyTextToClipboard(text?: string): void {
-	textToCopy.value += text ?? ''
-	textToCopy.value += multipleSelectActive.value ? '\n' : ''
+	if (text && textToCopy.findIndex((value) => value.trim() === text.trim()) === -1) {
+		textToCopy.push(text)
+		linkCount.value += multipleSelectActive.value ? 1 : 0
+	}
 	if (!text || !multipleSelectActive.value) {
-		if (isNotEmpty(textToCopy.value.trim())) {
-			copy(textToCopy.value)
+		if (textToCopy.length > 0) {
+			copy(textToCopy.join('\n'))
+			linkCount.value = 0
 			useToastStore().showToast('Link Copiado')
-			textToCopy.value = ''
+			textToCopy = []
 			return
 		}
 		useToastStore().showToast('Selecione pelo menos um link.', { status: 'error' })
@@ -64,6 +68,7 @@ function copyTextToClipboard(text?: string): void {
 				class="icon-item cursor-pointer"
 				:class="{ 'dark:bg-gray-400 bg-gray-500': multipleSelectActive }"
 			>
+				<span v-show="multipleSelectActive" class="badge">{{ linkCount }}</span>
 				<NuxtIcon name="list" @click.prevent="multipleSelectActive = !multipleSelectActive" />
 			</div>
 			<div class="icon-item cursor-pointer">
@@ -84,9 +89,18 @@ function copyTextToClipboard(text?: string): void {
 		display: none;
 	}
 	.selection-list {
-		width: 80px;
+		min-width: 80px;
 		height: 56px;
 		@apply flex justify-center items-center gap-3 fixed top-0 right-0 z-10 p-3;
+		.icon-item {
+			border-radius: 25%;
+			@apply relative p-3;
+			.badge {
+				font-size: 10px;
+				border-radius: 50%;
+				@apply right-0.5 bottom-1 absolute bg-red-400 py-0.5 px-1.5;
+			}
+		}
 	}
 }
 </style>
