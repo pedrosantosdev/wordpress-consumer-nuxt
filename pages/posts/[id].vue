@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { isNotEmpty } from '@/helpers/string'
+import useIsSeriesLink from '@/composables/useIsSeriesLink'
 import { usePostsStore } from '@/state/posts'
 import { useToastStore } from '@/state/toast'
 import { storeToRefs } from 'pinia'
@@ -20,6 +20,7 @@ let textToCopy = reactive<string[]>([])
 const el = ref<HTMLDivElement | null>(null)
 const listening = ref(false)
 const linkCount = ref(0)
+const rabbit = ref(false)
 const multipleSelectActive = ref(false)
 const { copy } = useClipboard({ legacy: true })
 if (route.params.id) {
@@ -32,31 +33,47 @@ if (route.params.id) {
 watchEffect(() => {
 	if (el.value && !listening.value) {
 		listening.value = true
-		document.body.querySelectorAll('a[href^="magnet:?"]').forEach((elLink) => {
+		el.value.querySelectorAll('a[href^="magnet:?"]').forEach((elLink) => {
 			elLink.addEventListener('click', (e) => {
 				e.preventDefault()
 				e.stopPropagation()
 				e.stopImmediatePropagation()
-				copyTextToClipboard((e.currentTarget as HTMLLinkElement).href)
+				overrideLinkMagnet((e.currentTarget as HTMLLinkElement).href)
 			})
 		})
 	}
 })
-function copyTextToClipboard(text?: string): void {
+function overrideLinkMagnet(text?: string): void {
 	if (text && textToCopy.findIndex((value) => value.trim() === text.trim()) === -1) {
 		textToCopy.push(text)
-		linkCount.value += multipleSelectActive.value ? 1 : 0
+		linkCount.value += 1
 	}
-	if (!text || !multipleSelectActive.value) {
-		if (textToCopy.length > 0) {
-			copy(textToCopy.join('\n'))
-			linkCount.value = 0
-			useToastStore().showToast('Link Copiado')
-			textToCopy = []
-			return
-		}
+	if (text && multipleSelectActive.value) return
+	if (linkCount.value === 0) {
 		useToastStore().showToast('Selecione pelo menos um link.', { status: 'error' })
+		return
 	}
+	let message = 'Link Copiado'
+	const readyText = textToCopy.join('\n')
+	if (rabbit.value) {
+		useBaseFetch('movies/heap', {
+			method: 'POST',
+			body: {
+				link: readyText,
+				type: useIsSeriesLink(readyText) ? 'series' : 'movies',
+			},
+			headers: {
+				Accept: 'application/json',
+			},
+		})
+		message = 'Link enfileirado'
+	} else {
+		copy(readyText)
+	}
+	linkCount.value = 0
+	useToastStore().showToast(message)
+	textToCopy = []
+	return
 }
 </script>
 
@@ -72,7 +89,10 @@ function copyTextToClipboard(text?: string): void {
 				<NuxtIcon name="list" @click.prevent="multipleSelectActive = !multipleSelectActive" />
 			</div>
 			<div class="icon-item cursor-pointer">
-				<NuxtIcon name="check" @click.prevent="copyTextToClipboard()" />
+				<NuxtIcon name="check" @click.prevent="overrideLinkMagnet()" />
+			</div>
+			<div class="icon-item cursor-pointer" :class="{ 'dark:bg-gray-400 bg-gray-500': rabbit }">
+				<NuxtIcon name="rabbitmq-icon" @click.prevent="rabbit = !rabbit" />
 			</div>
 		</div>
 		<transition>

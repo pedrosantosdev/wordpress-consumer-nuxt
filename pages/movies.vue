@@ -50,8 +50,12 @@ const searchMovie = (target: Record<string, string | number | boolean>) => {
 		$store.search(query.value as string)
 	}
 }
-const toggleMovie = (value: { id: number; needSync: boolean }) => $store.toggle(value)
-const addMovie = (value: { id: number }) => $store.add(value.id)
+function toggleMovie(value: { id: number; needSync: boolean }) {
+	$store.toggle(value)
+}
+function addMovie(value: { id: number }) {
+	$store.add(value.id)
+}
 
 onMounted(() => {
 	if ((getMovies?.value?.length ?? 0) === 0 && !$store.isLoading) {
