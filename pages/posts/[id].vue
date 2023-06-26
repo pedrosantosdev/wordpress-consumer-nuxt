@@ -43,7 +43,7 @@ watchEffect(() => {
 		})
 	}
 })
-function overrideLinkMagnet(text?: string): void {
+async function overrideLinkMagnet(text?: string): Promise<void> {
 	if (text && textToCopy.findIndex((value) => value.trim() === text.trim()) === -1) {
 		textToCopy.push(text)
 		linkCount.value += 1
@@ -56,14 +56,11 @@ function overrideLinkMagnet(text?: string): void {
 	let message = 'Link Copiado'
 	const readyText = textToCopy.join('\n')
 	if (rabbit.value) {
-		useBaseFetch('movies/heap', {
+		await useBaseFetch('movies/heap', {
 			method: 'POST',
 			body: {
 				link: readyText,
 				type: useIsSeriesLink(readyText) ? 'series' : 'movies',
-			},
-			headers: {
-				Accept: 'application/json',
 			},
 		})
 		message = 'Link enfileirado'
