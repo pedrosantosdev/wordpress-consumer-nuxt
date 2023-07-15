@@ -16,7 +16,6 @@
 	<div class="filter-container" :class="{ active: optionsActive }">
 		<BaseToggleButton
 			v-for="(objValue, key) in filters"
-			v-once
 			:key="key"
 			v-model="objValue.value"
 			:label="objValue.label"
@@ -83,9 +82,7 @@ const clearQuery = () => {
 const emitValue = () => {
 	emit('update:input', mappedFilters())
 }
-watch(filters, () => {
-	emitValue()
-})
+watch(filters, () => emitValue(), { immediate: true, deep: true })
 </script>
 <style lang="scss">
 .filter-icon {

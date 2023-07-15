@@ -98,7 +98,7 @@ export const useAuthStore = defineStore({
 			this.$state.onRequest = false
 			if (!response || response.error.value) {
 				this.setError('Invalid Credentials', 'invalid_credentials')
-				return
+				return false
 			}
 			this.setCredential(response.data.value as ResponseAuth)
 			return true

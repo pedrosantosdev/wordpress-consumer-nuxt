@@ -14,7 +14,7 @@ const props = defineProps<{
 	label: string
 }>()
 defineEmits(['update:modelValue'])
-const showIcon = props.modelValue ? 'check' : 'times'
+const showIcon = computed(() => (props.modelValue ? 'check' : 'times'))
 </script>
 
 <style lang="scss">
