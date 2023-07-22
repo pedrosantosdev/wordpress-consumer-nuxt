@@ -49,7 +49,7 @@ describe('LoginCard', () => {
 			auth: {
 				token: 'token',
 				refreshToken: 'refreshToken',
-				expiresAt: '2050-01-01 10:00:00',
+				expiresAt: '2050-01-01T10:00:00',
 			},
 		}
 		render(LoginCard, {

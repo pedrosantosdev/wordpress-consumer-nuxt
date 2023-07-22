@@ -80,7 +80,7 @@ export const useAuthStore = defineStore({
 			}
 			this.setCredential(response.data.value as ResponseAuth)
 		},
-		async refreshToken() {
+		async credentialRefreshToken() {
 			if (!this.$state.refreshToken || !this.$state.token) {
 				return false
 			}
@@ -114,9 +114,9 @@ export const useAuthStore = defineStore({
 		hasError: (state: AuthState) => isNotEmpty(state.error.message) || isNotEmpty(state.error.code),
 		isAuth: (state: AuthState) => isNotEmpty(state.token),
 		isExpired: (state: AuthState) =>
-			state.expiresAt && state.refreshToken
-				? new Date(Date.parse(state.expiresAt)) < new Date()
-				: true,
+			!isNotEmpty(state.expiresAt) ||
+			!isNotEmpty(state.refreshToken) ||
+			Date.parse(state.expiresAt) < new Date().getTime(),
 	},
 	persist: {
 		paths: ['token', 'expiresAt', 'refreshToken'],
