@@ -34,7 +34,7 @@ describe.concurrent('useAuthStore', () => {
 					'expiresAt not empty and refreshToken not empty and expiresAt is in pass',
 					{ expiresAt: '2003-01-01T00:00:00', refreshToken: '' },
 				],
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			])('should be true when %s', (_label: string, args: any) => {
 				const store = useAuthStore()
 				store.$patch(args)
@@ -55,7 +55,7 @@ describe.concurrent('useAuthStore', () => {
 			test.each([
 				['message not empty', { error: { message: 'error', code: '' } }],
 				['message not empty', { error: { message: '', code: 'error_code' } }],
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			])('should be true when %s', (_label: string, args: any) => {
 				const store = useAuthStore()
 				store.$patch(args)
