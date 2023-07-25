@@ -69,7 +69,7 @@ onMounted(() => {
 			<PostDomainForm class="-m-8 py-8 px-4" />
 		</BaseModal>
 		<div class="flex w-full gap-2 items-center relative mb-4">
-			<BaseInput v-model="query" @enter="submitQuery" />
+			<BaseInput v-model="query" @enter="submitQuery" @debounce="submitQuery" />
 			<NuxtIcon
 				name="times"
 				class="cursor-pointer absolute text-black right-10"

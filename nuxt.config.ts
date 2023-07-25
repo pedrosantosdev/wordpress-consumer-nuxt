@@ -62,4 +62,5 @@ export default defineNuxtConfig({
 	device: {
 		refreshOnResize: true,
 	},
+	spaLoadingTemplate: false,
 })
