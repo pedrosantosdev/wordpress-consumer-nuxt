@@ -10,7 +10,7 @@ type FetchResponse<DataT, ErrorT> = {
 
 export async function useBaseFetch<T = unknown, K = unknown>(
 	url: string,
-	options = {}
+	options = {},
 ): Promise<FetchResponse<T, K>> {
 	const authStore = useAuthStore()
 	const headers = { Accept: 'application/json', Authorization: '' }

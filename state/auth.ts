@@ -48,7 +48,7 @@ export const useAuthStore = defineStore({
 		async setCredential(response: ResponseAuth) {
 			if (
 				[response.accessToken, response.refreshToken, response.expires].every((value) =>
-					isNotEmpty(value)
+					isNotEmpty(value),
 				)
 			) {
 				await this.$patch((state: AuthState) => {
