@@ -21,11 +21,16 @@ export async function useBaseFetch<T = unknown, K = unknown>(
 		headers,
 		baseURL: useRuntimeConfig().public.baseUrl,
 		...options,
-		async onRequest({}) {
+		async onRequest({ options }) {
 			if (authStore.isExpired && url != 'login' && url != 'refresh' && !authStore.onRequest) {
 				const token = await authStore.credentialRefreshToken()
 				if (!token) {
 					authStore.logout()
+					return
+				}
+				options.headers = {
+					...options.headers,
+					Authorization: `Bearer ${authStore.token}`,
 				}
 			}
 		},
