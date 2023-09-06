@@ -4070,10 +4070,10 @@ h3@^1.7.1, h3@^1.8.1:
     uncrypto "^0.1.3"
     unenv "^1.7.4"
 
-happy-dom@^10.0.0:
-  version "10.11.2"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-10.11.2.tgz#6a299c8943f68f67859919b35ea49818573bdfbe"
-  integrity sha512-rzgmLjLkhyaOdFEyU8CWXzbgyCyM7wJHLqhaoeEVSTyur1fjcUaiNTHx+D4CPaLvx16tGy+SBPd9TVnP/kzL3w==
+happy-dom@^11.0.0:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-11.0.1.tgz#21c18b4b0d1730c2e53e0b33f3e434af48e73689"
+  integrity sha512-3U3kXpTbHQoCxItf5VhdHSSeX7ZKekcEx6hBZ5Ug12MeEASL89upfz6Nefv7pwTc5jWsXPHlVInjB1gID0HkwQ==
   dependencies:
     css.escape "^1.5.1"
     entities "^4.5.0"
