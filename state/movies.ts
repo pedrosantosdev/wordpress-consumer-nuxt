@@ -55,7 +55,7 @@ export const useMoviesStore = defineStore('movies', {
 			if ((payload.value as string).trim().length > 0) {
 				this.$state.query = payload.value as string
 				filterList = filterList.filter(
-					(movie) => movie.title.toLowerCase().search(this.query.toLowerCase()) > -1
+					(movie) => movie.title.toLowerCase().search(this.query.toLowerCase()) > -1,
 				)
 			}
 			this.$state.queryResultList = filterList
@@ -73,7 +73,7 @@ export const useMoviesStore = defineStore('movies', {
 			this.$state.isLoading = true
 			this.$state.hasError = false
 			const res = await useBaseFetch<MovieSearchModel>(
-				'movies/info?query=' + encodeURIComponent(payload)
+				'movies/info?query=' + encodeURIComponent(payload),
 			)
 			if (res && !res.error.value) {
 				this.$state.queryResultList = res.data.value?.results ?? undefined
