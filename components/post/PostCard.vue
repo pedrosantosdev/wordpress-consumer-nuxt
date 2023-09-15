@@ -19,6 +19,7 @@ defineProps({
 				crossorigin="anonymous"
 				loading="lazy"
 				:src="post.image_url"
+				onerror="this.style.display='none'"
 			/>
 			<div
 				class="lg:w-4/6 w-full"
