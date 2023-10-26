@@ -2,8 +2,8 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 import { fireEvent, render } from '@testing-library/vue'
 import LoginCard from '@/components/LoginCard/LoginCard.vue'
 import { createTestingPinia } from '@pinia/testing'
-import { StateTree } from '@pinia/nuxt/dist/runtime/composables'
 import { useAuthStore } from '@/state/auth'
+import type { StateTree } from 'pinia'
 import nuxtMock from '@/test/mock/FakeNuxt'
 
 const createPiniaSut = (state: StateTree | undefined = undefined) =>
