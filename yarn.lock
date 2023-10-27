@@ -991,7 +991,7 @@
     rc9 "^2.1.1"
     std-env "^3.4.3"
 
-"@nuxt/test-utils@^3.4.2":
+"@nuxt/test-utils@^3.8.0":
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/@nuxt/test-utils/-/test-utils-3.8.0.tgz#d5b3965c1e9b0691f66f4d1ff763fb9edad264ba"
   integrity sha512-E2QUa7AlD7ngr9xzl9uaU6EaLhc0jUSQ/SZd04nR2KftKt0IGy6xlix71vHxar8+nnE1rfMO/jsO7otDOjBT5w==
@@ -1006,7 +1006,7 @@
     pathe "^1.1.1"
     ufo "^1.3.1"
 
-"@nuxt/types@^2.16.3":
+"@nuxt/types@^2.17.2":
   version "2.17.2"
   resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-2.17.2.tgz#1fa1d7019cdfeafb6f2eb74553a67f76e11e70de"
   integrity sha512-0aAOe7CLfuVTGpP9OQhIUoGhut5kuChD6MkMtXpLXesjLzSWT9uu+uHi3y3+gPBdyRINXbFN+ETdDhhECAt3Kg==
@@ -4378,9 +4378,9 @@ h3@^1.7.1, h3@^1.8.1, h3@^1.8.2:
     unenv "^1.7.4"
 
 happy-dom@^12.0.0:
-  version "12.10.1"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-12.10.1.tgz#cd8e33a4ce91e2ed59cee95ef64d6c05c793c3ef"
-  integrity sha512-HW7tK/DtdVkEwnAju7qA3EFYmS+KM7NP29aK7vOlts/DdmfM6c+9R94tnckxQGrp58plJRWLO4iEzO/BHsDtBg==
+  version "12.10.3"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-12.10.3.tgz#e61985eff163b822c110458be7f81aa4f94ad588"
+  integrity sha512-JzUXOh0wdNGY54oKng5hliuBkq/+aT1V3YpTM+lrN/GoLQTANZsMaIvmHiHe612rauHvPJnDZkZ+5GZR++1Abg==
   dependencies:
     css.escape "^1.5.1"
     entities "^4.5.0"
