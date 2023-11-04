@@ -33,6 +33,8 @@ export default defineNuxtConfig({
 		'@vueuse/nuxt',
 		// https://nuxt.com/modules/device
 		'@nuxtjs/device',
+		// https://vite-pwa-org.netlify.app/frameworks/nuxt.html
+		'@vite-pwa/nuxt',
 	],
 	piniaPersistedstate: {
 		cookieOptions: {
@@ -40,6 +42,8 @@ export default defineNuxtConfig({
 			maxAge: 3 * 24 * 3600,
 		},
 		storage: 'cookies',
+	},
+	pwa: {
 	},
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {
