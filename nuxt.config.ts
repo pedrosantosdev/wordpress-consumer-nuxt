@@ -43,8 +43,7 @@ export default defineNuxtConfig({
 		},
 		storage: 'cookies',
 	},
-	pwa: {
-	},
+	pwa: {},
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {
 		public: {

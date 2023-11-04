@@ -1,6 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import type { Post } from '@/types/Post';
-import type { Page } from '@/types/Page';
+import type { Post } from '@/types/Post'
+import type { Page } from '@/types/Page'
 
 export interface StateModel {
 	list: { page: number; results: Post[] }
