@@ -1,5 +1,5 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import { MovieLocalModel, MovieModel, MovieSearchModel } from '@/types/Movie'
+import type { MovieLocalModel, MovieModel, MovieSearchModel } from '@/types/Movie'
 
 export interface StateModel {
 	list?: MovieModel[]

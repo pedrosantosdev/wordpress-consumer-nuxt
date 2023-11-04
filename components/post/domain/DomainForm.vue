@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PostDomain } from '@/types/Post'
+import { type PostDomain } from '@/types/Post'
 import { usePostDomainsStore } from '@/state/posts/domains'
 import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue'

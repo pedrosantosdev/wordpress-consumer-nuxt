@@ -25,7 +25,7 @@
 	</header>
 </template>
 <script setup lang="ts">
-import { LinksModel } from '@/types/Links'
+import { type LinksModel } from '@/types/Links'
 import { ref } from 'vue'
 const { isMobile } = useDevice()
 
