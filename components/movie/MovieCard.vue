@@ -39,8 +39,6 @@
 </template>
 
 <script setup lang="ts">
-import BaseCard from '@/components/base/BaseCard.vue'
-import BaseSwitchToggle from '@/components/base/BaseSwitchToggle.vue'
 import { type MovieModel } from '@/types/Movie'
 
 const props = defineProps<{

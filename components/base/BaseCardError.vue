@@ -3,7 +3,3 @@
 		<slot>Error</slot>
 	</BaseCard>
 </template>
-
-<script setup lang="ts">
-import BaseCard from '@/components/base/BaseCard.vue'
-</script>

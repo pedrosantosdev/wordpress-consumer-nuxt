@@ -57,8 +57,6 @@ import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
 import { ref, onBeforeMount } from 'vue'
 import { navigateTo } from 'nuxt/app'
-import BaseButton from '@/components/base/BaseButton.vue'
-import BaseCard from '@/components/base/BaseCard.vue'
 
 const authStore = useAuthStore()
 const { hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
