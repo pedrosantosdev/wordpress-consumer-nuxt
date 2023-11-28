@@ -1626,7 +1626,7 @@
     which "^3.0.1"
     ws "^8.14.2"
 
-"@nuxt/kit@3.8.1", "@nuxt/kit@^3.6.2", "@nuxt/kit@^3.8.0":
+"@nuxt/kit@3.8.1", "@nuxt/kit@^3.8.0":
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.8.1.tgz#64b3f161fdf56175af0f535c465b0c76b9730da0"
   integrity sha512-DrhG1Z85iH68QOTkgfb0HVfM2g7+CfcMWrFWMDwck9ofyM2RXQUZyfmvMedwBnui1AjjpgpLO9078yZM+RqNUg==
@@ -2821,15 +2821,15 @@
     node-gyp-build "^4.2.2"
     resolve-from "^5.0.0"
 
-"@vite-pwa/nuxt@^0.2.0":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@vite-pwa/nuxt/-/nuxt-0.2.3.tgz#e53bfeb3b2cf39bc5e71571cfbe4b3eaab88e15e"
-  integrity sha512-dAf7crzDth3/hXQ/JAcO0vh9alFl6gUZ3Sw2so1wL4W4VZOMYIA8D3sMo5AH8zV+loUlkqsb6kutmz8IKdpjmQ==
+"@vite-pwa/nuxt@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@vite-pwa/nuxt/-/nuxt-0.3.0.tgz#f9dddbc4c2b9453a89e925e7f6700a19f1faa0b3"
+  integrity sha512-2e0PgU5kzR/ogKLpHZaYPjeLsOEUHV0IBVyIeFBcAHdgGNSGhRzXSN6hypEO8nmIsgCKcGpuSBS/rK+Fpr9lwg==
   dependencies:
-    "@nuxt/kit" "^3.6.2"
+    "@nuxt/kit" "^3.8.2"
     pathe "^1.1.1"
-    ufo "^1.3.1"
-    vite-plugin-pwa ">=0.16.5 <1"
+    ufo "^1.3.2"
+    vite-plugin-pwa ">=0.16.7 <1"
 
 "@vitejs/plugin-vue-jsx@^3.1.0":
   version "3.1.0"
@@ -9255,13 +9255,13 @@ vite-plugin-inspect@^0.7.42:
     picocolors "^1.0.0"
     sirv "^2.0.3"
 
-"vite-plugin-pwa@>=0.16.5 <1":
-  version "0.16.7"
-  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.16.7.tgz#3dcacc342766ff3598472ac7d5e0782d14e2853e"
-  integrity sha512-4WMA5unuKlHs+koNoykeuCfTcqEGbiTRr8sVYUQMhc6tWxZpSRnv9Ojk4LKmqVhoPGHfBVCdGaMo8t9Qidkc1Q==
+"vite-plugin-pwa@>=0.16.7 <1":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.17.0.tgz#315648e0589e892b0e0e30e13175aa3c76990ee5"
+  integrity sha512-cOyEG8EEc7JHmyMapTnjK2j0g2BIC3ErlmOHyGzVu8hqjyF9Jt6yWMmVNFtpA6v/NNyzP28ARf3vwzIAzR1kaw==
   dependencies:
     debug "^4.3.4"
-    fast-glob "^3.3.1"
+    fast-glob "^3.3.2"
     pretty-bytes "^6.1.1"
     workbox-build "^7.0.0"
     workbox-window "^7.0.0"
