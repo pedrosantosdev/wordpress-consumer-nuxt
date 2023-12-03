@@ -7,17 +7,14 @@
 			<form autoComplete="off" :class="{ error: hasError }" @submit.prevent="onSubmit">
 				<div class="flex flex-col mb-2">
 					<div class="flex relative flex-wrap input-group">
-						<span
-							class="rounded-l-md inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm"
-						>
+						<label for="username" class="prefix-input">
 							<NuxtIcon name="mail" />
-						</span>
+						</label>
 						<input
 							id="username"
 							v-model.trim="form.username.value"
 							type="text"
 							name="username"
-							class="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600"
 							placeholder="Your email"
 						/>
 						<NuxtIcon name="times" class="error--icon" />
@@ -25,17 +22,14 @@
 				</div>
 				<div class="flex flex-col mb-4">
 					<div class="flex relative flex-wrap input-group">
-						<span
-							class="rounded-l-md inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm"
-						>
+						<label for="password" class="prefix-input">
 							<NuxtIcon name="unlock" />
-						</span>
+						</label>
 						<input
 							id="password"
 							v-model.trim="form.password.value"
 							type="password"
 							name="password"
-							class="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
 							placeholder="Your password"
 						/>
 						<NuxtIcon name="times" class="error--icon" />
@@ -95,22 +89,42 @@ async function onSubmit(): Promise<void> {
 .error {
 	&--message,
 	&--icon {
-		display: none;
+		@apply opacity-0 block transition-all;
 	}
 	&--icon {
-		position: absolute;
 		top: 12px;
 		right: 10px;
-		@apply text-red-500;
+		@apply text-red-500 absolute;
+	}
+}
+.input-group.input-group {
+	&:focus-within {
+		input,
+		.prefix-input {
+			@apply border-purple-600;
+		}
+	}
+	input,
+	.prefix-input {
+		@apply bg-white border-gray-300 shadow-sm border outline-none border-2;
+	}
+	.prefix-input {
+		@apply rounded-l-md inline-flex items-center px-3 border-r-0 text-gray-500 text-sm border-r-gray-300;
+	}
+	input {
+		@apply rounded-r-md flex-1 appearance-none border-l-0 w-full py-2 px-4 text-gray-700 placeholder-gray-400 text-base border-l-gray-300;
 	}
 }
 .error {
 	.error--message,
 	.error--icon {
-		display: block;
+		@apply opacity-100;
 	}
 	.input-group {
-		@apply ring-red-500 ring-2 rounded-md;
+		input,
+		.prefix-input {
+			@apply border-red-500;
+		}
 	}
 }
 </style>
