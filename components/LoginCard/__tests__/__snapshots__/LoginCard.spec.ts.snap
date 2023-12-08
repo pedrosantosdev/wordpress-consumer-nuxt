@@ -1,22 +1,26 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`LoginCard > should render properly 1`] = `
-"<div data-v-47574c68=\\"\\" class=\\"lg:w-96 w-full sm:h-64 md:h-auto flex flex-col sm:flex-row p-2 sm:p-4 rounded-2xl shadow-lg gap-5 select-none dark:bg-gray-800 bg-white dark:bg-gray-800 dark:text-white\\">
-  <div data-v-47574c68=\\"\\" class=\\"self-center text-xl font-light text-gray-600 sm:text-2xl dark:text-white\\"> Login To Your Account </div>
-  <div data-v-47574c68=\\"\\" class=\\"mt-2\\">
-    <form data-v-47574c68=\\"\\" autocomplete=\\"off\\" class=\\"\\">
-      <div data-v-47574c68=\\"\\" class=\\"flex flex-col mb-2\\">
-        <div data-v-47574c68=\\"\\" class=\\"flex relative flex-wrap input-group\\"><span data-v-47574c68=\\"\\" class=\\"rounded-l-md inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm\\"><nuxt-icon-stub data-v-47574c68=\\"\\" name=\\"mail\\"></nuxt-icon-stub></span><input data-v-47574c68=\\"\\" id=\\"username\\" type=\\"text\\" name=\\"username\\" class=\\"rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600\\" placeholder=\\"Your email\\">
-          <nuxt-icon-stub data-v-47574c68=\\"\\" name=\\"times\\" class=\\"error--icon\\"></nuxt-icon-stub>
+"<div data-v-47574c68="" class="lg:w-96 w-full sm:h-64 md:h-auto flex flex-col sm:flex-row p-2 sm:p-4 rounded-2xl shadow-lg gap-5 select-none dark:bg-gray-800 bg-white dark:bg-gray-800 dark:text-white">
+  <div data-v-47574c68="" class="self-center text-xl font-light text-gray-600 sm:text-2xl dark:text-white"> Login To Your Account </div>
+  <div data-v-47574c68="" class="mt-2">
+    <form data-v-47574c68="" autocomplete="off" class="">
+      <div data-v-47574c68="" class="flex flex-col mb-2">
+        <div data-v-47574c68="" class="flex relative flex-wrap input-group"><label data-v-47574c68="" for="username" class="prefix-input">
+            <nuxt-icon-stub data-v-47574c68="" name="mail"></nuxt-icon-stub>
+          </label><input data-v-47574c68="" id="username" type="text" name="username" placeholder="Your email">
+          <nuxt-icon-stub data-v-47574c68="" name="times" class="error--icon"></nuxt-icon-stub>
         </div>
       </div>
-      <div data-v-47574c68=\\"\\" class=\\"flex flex-col mb-4\\">
-        <div data-v-47574c68=\\"\\" class=\\"flex relative flex-wrap input-group\\"><span data-v-47574c68=\\"\\" class=\\"rounded-l-md inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm\\"><nuxt-icon-stub data-v-47574c68=\\"\\" name=\\"unlock\\"></nuxt-icon-stub></span><input data-v-47574c68=\\"\\" id=\\"password\\" type=\\"password\\" name=\\"password\\" class=\\"rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent\\" placeholder=\\"Your password\\">
-          <nuxt-icon-stub data-v-47574c68=\\"\\" name=\\"times\\" class=\\"error--icon\\"></nuxt-icon-stub>
+      <div data-v-47574c68="" class="flex flex-col mb-4">
+        <div data-v-47574c68="" class="flex relative flex-wrap input-group"><label data-v-47574c68="" for="password" class="prefix-input">
+            <nuxt-icon-stub data-v-47574c68="" name="unlock"></nuxt-icon-stub>
+          </label><input data-v-47574c68="" id="password" type="password" name="password" placeholder="Your password">
+          <nuxt-icon-stub data-v-47574c68="" name="times" class="error--icon"></nuxt-icon-stub>
         </div>
-        <p data-v-47574c68=\\"\\" class=\\"text-sm text-red-500 -bottom-6 w-full error--message\\">Invalid Credentials</p>
+        <p data-v-47574c68="" class="text-sm text-red-500 -bottom-6 w-full error--message">Invalid Credentials</p>
       </div>
-      <div data-v-47574c68=\\"\\" class=\\"flex w-full\\"><button data-v-47574c68=\\"\\" type=\\"button\\" class=\\"py-2 px-4 h-10 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg\\">Login</button></div>
+      <div data-v-47574c68="" class="flex w-full"><button data-v-47574c68="" type="button" class="py-2 px-4 h-10 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">Login</button></div>
     </form>
   </div>
 </div>"
