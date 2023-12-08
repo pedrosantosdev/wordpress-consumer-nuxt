@@ -53,6 +53,7 @@ import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
 import { ref, onBeforeMount } from 'vue'
 import { navigateTo } from 'nuxt/app'
+import { useI18n } from 'vue-i18n'
 
 const authStore = useAuthStore()
 const { hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
