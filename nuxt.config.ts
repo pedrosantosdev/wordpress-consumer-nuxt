@@ -35,6 +35,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/device',
 		// https://vite-pwa-org.netlify.app/frameworks/nuxt.html
 		'@vite-pwa/nuxt',
+		// https://v8.i18n.nuxtjs.org/
+		'@nuxtjs/i18n',
 	],
 	piniaPersistedstate: {
 		cookieOptions: {
@@ -44,6 +46,14 @@ export default defineNuxtConfig({
 		storage: 'cookies',
 	},
 	pwa: {},
+	i18n: {
+		defaultLocale: 'pt-BR',
+		detectBrowserLanguage: {
+			useCookie: true,
+			cookieKey: 'i18n_redirected',
+			redirectOn: 'root', // recommended
+		},
+	},
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {
 		public: {

@@ -90,7 +90,7 @@ describe('LoginCard', () => {
 			},
 		})
 		const authStore = useAuthStore()
-		await fireEvent.click(getByText('Login'))
+		await fireEvent.click(getByText('form.submit.button'))
 		expect(authStore.login).toBeCalledTimes(1)
 	})
 })

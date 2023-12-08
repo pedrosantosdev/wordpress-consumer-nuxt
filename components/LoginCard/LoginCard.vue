@@ -1,7 +1,7 @@
 <template>
 	<BaseCard>
 		<div class="self-center text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
-			Login To Your Account
+			{{ t('form.title') }}
 		</div>
 		<div class="mt-2">
 			<form autoComplete="off" :class="{ error: hasError }" @submit.prevent="onSubmit">
@@ -15,7 +15,7 @@
 							v-model.trim="form.username.value"
 							type="text"
 							name="username"
-							placeholder="Your email"
+							:placeholder="t('form.placeholder.email')"
 						/>
 						<NuxtIcon name="times" class="error--icon" />
 					</div>
@@ -30,16 +30,18 @@
 							v-model.trim="form.password.value"
 							type="password"
 							name="password"
-							placeholder="Your password"
+							:placeholder="t('form.placeholder.password')"
 						/>
 						<NuxtIcon name="times" class="error--icon" />
 					</div>
-					<p class="text-sm text-red-500 -bottom-6 w-full error--message">Invalid Credentials</p>
+					<p class="text-sm text-red-500 -bottom-6 w-full error--message">
+						{{ t('form.invalid.message') }}
+					</p>
 				</div>
 				<div class="flex w-full">
-					<BaseButton :disabled="isLoading" :show-icon="isLoading" @click="onSubmit"
-						>Login</BaseButton
-					>
+					<BaseButton :disabled="isLoading" :show-icon="isLoading" @click="onSubmit">{{
+						t('form.submit.button')
+					}}</BaseButton>
 				</div>
 			</form>
 		</div>
@@ -51,6 +53,7 @@ import { useAuthStore } from '@/state/auth'
 import { storeToRefs } from 'pinia'
 import { ref, onBeforeMount } from 'vue'
 import { navigateTo } from 'nuxt/app'
+import { useI18n } from 'vue-i18n'
 
 const authStore = useAuthStore()
 const { hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
@@ -59,6 +62,10 @@ const form = {
 	username: ref(''),
 	password: ref(''),
 }
+
+const { t } = useI18n({
+	useScope: 'local',
+})
 
 onBeforeMount(() => {
 	if (isAuth.value && isExpired.value) {
@@ -128,3 +135,22 @@ async function onSubmit(): Promise<void> {
 	}
 }
 </style>
+
+<i18n lang="json">
+{
+	"en": {
+		"form.title": "Login To Your Account",
+		"form.placeholder.email": "Your email",
+		"form.placeholder.password": "Your password",
+		"form.invalid.message": "Invalid Credentials",
+		"form.submit.button": "Login"
+	},
+	"pt-BR": {
+		"form.title": "Entre com seu acesso",
+		"form.placeholder.email": "Email",
+		"form.placeholder.password": "Senha",
+		"form.invalid.message": "Credenciais Invalidas",
+		"form.submit.button": "Entrar"
+	}
+}
+</i18n>
