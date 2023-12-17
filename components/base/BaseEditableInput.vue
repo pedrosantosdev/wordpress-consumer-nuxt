@@ -40,6 +40,7 @@ function toggleActive() {
 			<div class="flex self-center">
 				<BaseSwitchToggle
 					:id="`${$attrs.key}-editable-input`"
+					:key="`${$attrs.key}-editable-input`"
 					:default-state="checked"
 					@toggle="toggleActive"
 				/>
