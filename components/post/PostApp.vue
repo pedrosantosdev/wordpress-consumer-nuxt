@@ -40,9 +40,6 @@ function loadMore() {
 	page += 1
 	postsStores.get(page)
 }
-function onPostClick(id: number) {
-	navigateTo(`/posts/${id}`)
-}
 
 onBeforeMount(() => {
 	page = posts.value.page
@@ -50,6 +47,10 @@ onBeforeMount(() => {
 		postsStores.get()
 	}
 })
+
+const postData = computed(() =>
+	isNotEmpty(query.value) ? searchResults.value?.results : posts.value?.results,
+)
 onMounted(() => {
 	const { y } = useWindowScroll()
 	watch(
@@ -58,7 +59,7 @@ onMounted(() => {
 			if (el.value && window.innerHeight + newValue >= +(el.value.offsetHeight * 0.8).toFixed(1)) {
 				loadMore()
 			}
-		}
+		},
 	)
 })
 </script>
@@ -78,21 +79,10 @@ onMounted(() => {
 			<NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
 		</div>
 		<transition name="posts-list">
-			<div v-if="!isLoadingSearch && isNotEmpty(query)" class="posts-list">
-				<PostCard
-					v-for="post in searchResults?.results ?? []"
-					:key="post.id"
-					:post="post"
-					@click="onPostClick(post.id)"
-				/>
-			</div>
-			<div v-else-if="!isLoadingSearch && !isNotEmpty(query)" ref="el" class="posts-list">
-				<PostCard
-					v-for="post in posts.results"
-					:key="post.id"
-					:post="post"
-					@click="onPostClick(post.id)"
-				/>
+			<div v-if="!isLoadingSearch" class="posts-list">
+				<NuxtLink v-for="post in postData ?? []" :key="post.id" :to="'/posts/' + post.id">
+					<PostCard :key="post.id" :post="post" />
+				</NuxtLink>
 			</div>
 		</transition>
 
