@@ -79,7 +79,7 @@ onMounted(() => {
 			<NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
 		</div>
 		<transition name="posts-list">
-			<div v-if="!isLoadingSearch" class="posts-list">
+			<div v-if="!isLoadingSearch" ref="el" class="posts-list">
 				<NuxtLink v-for="post in postData ?? []" :key="post.id" :to="'/posts/' + post.id">
 					<PostCard :key="post.id" :post="post" />
 				</NuxtLink>
