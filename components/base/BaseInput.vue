@@ -51,6 +51,7 @@ onBeforeUnmount(() => {
 		:readonly="readonly"
 		:disabled="readonly"
 		:type="type"
+		v-bind="$attrs"
 		@input="debounceHandler"
 		@keydown.enter="keyDownEnter"
 	/>

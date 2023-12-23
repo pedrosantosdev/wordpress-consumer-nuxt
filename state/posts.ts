@@ -3,7 +3,7 @@ import type { Post } from '@/types/Post'
 import type { Page } from '@/types/Page'
 
 export interface StateModel {
-	list: { page: number; results: Post[] }
+	list: Page<Post>
 	searchList: Page<Post> | null
 	currentPost: Post | null
 	loading: string[]
@@ -14,7 +14,7 @@ const baseUri = 'posts'
 
 export const usePostsStore = defineStore('posts', {
 	state: (): StateModel => ({
-		list: { page: 1, results: [] },
+		list: { page: 0, results: [], total_pages: 0 },
 		searchList: null,
 		hasError: false,
 		currentPost: null,
@@ -44,6 +44,7 @@ export const usePostsStore = defineStore('posts', {
 			if (res && !res.error.value) {
 				this.$state.list = {
 					page,
+					total_pages: 0,
 					results:
 						page === 1
 							? res.data.value ?? []
@@ -56,13 +57,19 @@ export const usePostsStore = defineStore('posts', {
 		},
 		async search(query: string, page = 1) {
 			this.toggleLoadingFlag('search')
+			if (page === 1) {
+				this.$state.searchList = null
+			}
 			const res = await useBaseFetch<Post[]>(baseUri, {
 				params: { search: query, page },
 			})
 			if (res && res.data.value) {
 				this.$state.searchList = {
 					page,
-					results: res.data.value,
+					results:
+						this.$state.searchList == null
+							? res.data.value ?? []
+							: this.$state.searchList.results.concat(res.data.value ?? []),
 					total_pages: 1,
 				}
 			}
