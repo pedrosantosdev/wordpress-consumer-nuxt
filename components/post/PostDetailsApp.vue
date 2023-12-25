@@ -4,6 +4,9 @@ import { usePostsStore } from '@/state/posts'
 import { useToastStore } from '@/state/toast'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps<{
 	id: number
@@ -41,10 +44,10 @@ async function overrideLinkMagnet(text?: string): Promise<void> {
 	}
 	if (text && multipleSelectActive.value) return
 	if (linkCount.value === 0) {
-		useToastStore().showToast('Selecione pelo menos um link.', { status: 'error' })
+		useToastStore().showToast(t('post.details.link.error.empty'), { status: 'error' })
 		return
 	}
-	let message = 'Link Copiado'
+	let message = t('post.details.link.copy')
 	const readyText = textToCopy.join('\n')
 	if (rabbit.value) {
 		await useBaseFetch('movies/heap', {
@@ -54,14 +57,13 @@ async function overrideLinkMagnet(text?: string): Promise<void> {
 				type: useIsSeriesLink(readyText) ? 'series' : 'movies',
 			},
 		})
-		message = 'Link enfileirado'
+		message = t('post.details.link.enqueue')
 	} else {
 		copy(readyText)
 	}
 	linkCount.value = 0
 	useToastStore().showToast(message)
 	textToCopy = []
-	return
 }
 </script>
 
@@ -84,7 +86,7 @@ async function overrideLinkMagnet(text?: string): Promise<void> {
 		</div>
 		<transition>
 			<div v-if="post" ref="el" v-html="post.content.rendered"></div>
-			<div v-else>Not Found</div>
+			<div v-else>{{ t('not_found') }}</div>
 		</transition>
 	</div>
 </template>
@@ -111,3 +113,18 @@ async function overrideLinkMagnet(text?: string): Promise<void> {
 	}
 }
 </style>
+
+<i18n lang="json">
+{
+	"en": {
+		"post.details.link.error.empty": "Select at least one link",
+		"post.details.link.copy": "Copied Link",
+		"post.details.link.enqueue": "Enqueued Link"
+	},
+	"pt-BR": {
+		"post.details.link.error.empty": "Selecione pelo menos um link",
+		"post.details.link.copy": "Link Copiado",
+		"post.details.link.enqueue": "Link enfileirado"
+	}
+}
+</i18n>

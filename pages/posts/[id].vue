@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useRoute, abortNavigation } from 'nuxt/app'
+const { t } = useI18n()
 
 definePageMeta({
 	validate: async (route) => {
@@ -16,6 +17,6 @@ if (!route.params.id) {
 <template>
 	<Suspense>
 		<PostDetailsApp :id="+$route.params?.id?.toString()" />
-		<template #fallback> Loading... </template>
+		<template #fallback> {{ t('loading') }}... </template>
 	</Suspense>
 </template>

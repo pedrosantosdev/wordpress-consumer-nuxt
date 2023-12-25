@@ -3,6 +3,9 @@ import { storeToRefs } from 'pinia'
 import { usePostsStore } from '@/state/posts'
 import { isNotEmpty } from '@/helpers/string'
 import { ref, onBeforeMount } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const postsStores = usePostsStore()
 const {
@@ -40,7 +43,9 @@ const currentPage = computed(() =>
 )
 const isAnyLoading = computed(() => (searchEnabled.value ? isLoadingSearch.value : isLoading.value))
 
-const hasMore = computed(() => (postData.value?.length ?? 0) % PER_PAGE === 0)
+const hasMore = computed(
+	() => (postData.value?.length ?? 0) > 0 && (postData.value?.length ?? 0) % PER_PAGE === 0,
+)
 
 const waitForShowList = ref(false)
 
@@ -101,16 +106,14 @@ onMounted(() => {
 			</div>
 		</transition>
 
-		<transition>
-			<NuxtIcon v-if="isAnyLoading" class="w-2/4 mx-auto mt-4 spinner" name="spinner" />
-			<button
-				v-else-if="hasMore && !waitForShowList"
-				class="w-2/4 mx-auto mt-4 text-center p-5 border border-black"
-				@click="loadMore"
-			>
-				Ver Mais
-			</button>
-		</transition>
+		<NuxtIcon v-if="isAnyLoading" class="w-2/4 mx-auto mt-4 spinner" name="spinner" />
+		<button
+			v-else-if="hasMore && !waitForShowList"
+			class="w-2/4 mx-auto mt-4 text-center p-5 border border-black"
+			@click="loadMore"
+		>
+			{{ t('load-more') }}
+		</button>
 	</div>
 </template>
 
