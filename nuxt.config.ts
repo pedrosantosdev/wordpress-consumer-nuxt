@@ -54,6 +54,7 @@ export default defineNuxtConfig({
 			cookieKey: 'i18n_redirected',
 			redirectOn: 'root', // recommended
 		},
+		strategy: 'no_prefix',
 		locales: [
 			{
 				code: 'en',
