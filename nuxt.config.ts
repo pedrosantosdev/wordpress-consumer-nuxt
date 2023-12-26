@@ -63,7 +63,7 @@ export default defineNuxtConfig({
 				code: 'pt-BR',
 				file: 'locale/pt-BR.json',
 			},
-		]
+		],
 	},
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {
