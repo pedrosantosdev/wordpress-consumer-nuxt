@@ -23,7 +23,7 @@
 		"@testing-library/vue": "^8.0.0",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
-		"@vite-pwa/nuxt": "^0.3.0",
+		"@vite-pwa/nuxt": "^0.4.0",
 		"@vitejs/plugin-vue": "^5.0.0",
 		"@vue/eslint-config-standard": "^8.0.1",
 		"@vue/test-utils": "^2.3.1",
