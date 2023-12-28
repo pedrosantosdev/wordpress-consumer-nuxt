@@ -24,6 +24,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const props = defineProps({
 	input: {
 		type: String,
@@ -35,15 +39,15 @@ const emit = defineEmits(['update:input'])
 
 const initStateFilters = {
 	isLocal: {
-		label: 'Local',
+		label: t('local'),
 		value: false,
 	},
 	isActive: {
-		label: 'Ativo',
+		label: t('active'),
 		value: false,
 	},
 	isReady: {
-		label: 'Pronto',
+		label: t('synced'),
 		value: false,
 	},
 }

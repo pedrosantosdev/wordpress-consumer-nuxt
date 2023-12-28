@@ -1,5 +1,8 @@
 {
 	"loading": "Loading",
 	"load_more": "Load More",
-	"not_found": "Not Found"
+	"not_found": "Not Found",
+	"local": "Local",
+	"active": "Active",
+	"synced": "Synced"
 }
