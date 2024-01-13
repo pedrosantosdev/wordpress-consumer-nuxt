@@ -5309,9 +5309,9 @@ h3@^1.10.0, h3@^1.8.2, h3@^1.9.0:
     unenv "^1.8.0"
 
 happy-dom@^13.0.0:
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-13.0.0.tgz#79345c8435a9ff5579a8ed7ca5b6c03ff06841ce"
-  integrity sha512-R0j/6qco6wmihOKmelRGt6Coao9gDNEkhcZ8fB73zzr7qo8EaM+BBSmfe2f2hBhC81dykLVVZ1ONcI+zSRoWMQ==
+  version "13.0.6"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-13.0.6.tgz#aaad34ac48566171096ad5281ef77cfe356d37ba"
+  integrity sha512-Uyfnicb9UNd6W80C7Jf8ceAwekYkALzD3hbZmVGkH/UkdBmTd6CikpG6GSdgSl25gkRN/gZ8FMo/vdEUcUtLMQ==
   dependencies:
     css.escape "^1.5.1"
     entities "^4.5.0"
@@ -9701,6 +9701,7 @@ workbox-window@7.0.0, workbox-window@^7.0.0:
     workbox-core "7.0.0"
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
