@@ -38,7 +38,7 @@
 		"eslint-plugin-vitest": "^0.3.0",
 		"eslint-plugin-vue": "^9.11.0",
 		"happy-dom": "^13.0.0",
-		"husky": "^8.0.1",
+		"husky": "^9.0.0",
 		"nuxt": "^3.9.3",
 		"nuxt-icons": "^3.2.1",
 		"postcss": "^8.4.23",
