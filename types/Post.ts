@@ -6,6 +6,7 @@ export type Post = {
 	title: { rendered: string }
 	content: { rendered: string }
 	excerpt: { rendered: string }
+	domain_id?: number
 }
 
 export type PostDomain = {
@@ -14,4 +15,6 @@ export type PostDomain = {
 	healthEndpoint: string
 	isHealth: boolean
 	active: boolean
+	viewOrder: number
+	domain_id?: number
 }

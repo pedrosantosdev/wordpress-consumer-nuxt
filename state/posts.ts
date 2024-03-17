@@ -75,9 +75,9 @@ export const usePostsStore = defineStore('posts', {
 			}
 			this.toggleLoadingFlag('search', false)
 		},
-		async getById(id: number) {
+		async getById(id: number, domainId?: number) {
 			this.toggleLoadingFlag('getById')
-			const res = await useBaseFetch<Post>(`${baseUri}/${id}`)
+			const res = await useBaseFetch<Post>(`${baseUri}/${id}`, { params: { domain_id: domainId } })
 			if (res && !res.error.value) {
 				this.$state.currentPost = res.data.value
 			}

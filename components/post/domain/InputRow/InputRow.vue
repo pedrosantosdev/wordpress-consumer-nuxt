@@ -17,14 +17,14 @@ const defaultWordpressPath = {
 	endpoint: 'wp-json/wp/v2/',
 	healthEndpoint: 'wp-json/wp-site-health/v1/',
 }
-const domainRef = reactive(
+const domainRef = ref(
 	props.domain ?? {
 		id: 0,
 		endpoint: '',
 		healthEndpoint: '',
 		isHealth: true,
 		active: true,
-	}
+	},
 )
 const emit = defineEmits(['save', 'delete'])
 function onSaveClick(result: {
@@ -33,7 +33,7 @@ function onSaveClick(result: {
 }) {
 	const firstInput = result.input[0]
 	const newDomain = {
-		...domainRef,
+		...domainRef.value,
 		endpoint: firstInput.value,
 		healthEndpoint: firstInput.value,
 		active: result.checked,
@@ -57,16 +57,15 @@ function onSaveClick(result: {
 	emit('save', { ...newDomain })
 
 	if (props.isNew) {
-		domainRef.endpoint = ''
-		domainRef.healthEndpoint = ''
+		domainRef.value.endpoint = ''
+		domainRef.value.healthEndpoint = ''
 	}
 }
 function onDeleteClick() {
-	emit('delete', { ...domainRef })
+	emit('delete', { ...domainRef.value })
 }
 function toggleActive() {
-	domainRef.active = !domainRef.active
-	emit('save', { ...domainRef })
+	emit('save', { ...domainRef.value, active: !domainRef.value.active })
 }
 </script>
 
