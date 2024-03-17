@@ -1,17 +1,11 @@
 <script lang="ts" setup>
-import { useRoute, abortNavigation } from 'nuxt/app'
 const { t } = useI18n()
 
 definePageMeta({
 	validate: async (route) => {
-		return /^\d+$/.test(route.params.id)
+		return typeof route.params.id === 'string' && /^\d+$/.test(route.params.id)
 	},
 })
-
-const route = useRoute()
-if (!route.params.id) {
-	abortNavigation('404')
-}
 </script>
 
 <template>

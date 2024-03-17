@@ -100,7 +100,11 @@ onMounted(() => {
 		</div>
 		<transition name="posts-list">
 			<div v-if="!waitForShowList && postData.length > 0" ref="el" class="posts-list">
-				<NuxtLink v-for="post in postData" :key="post.id" :to="'/posts/' + post.id">
+				<NuxtLink
+					v-for="post in postData"
+					:key="post.id"
+					:to="'/posts/' + [post.id, post.domain_id].filter(Boolean).join('/')"
+				>
 					<PostCard :key="post.id" :post="post" />
 				</NuxtLink>
 			</div>

@@ -5,13 +5,14 @@ import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue'
 
 const domainsStore = usePostDomainsStore()
-const { list: domains, isLoading } = storeToRefs(domainsStore)
+const { list: domains } = storeToRefs(domainsStore)
 const isLoadingRefresh = ref(false)
 
 onBeforeMount(() => {
-	if (!isLoading.value && domains?.value?.length === 0) {
-		domainsStore.get()
+	if (domains?.value?.length !== 0 || isLoadingRefresh.value) {
+		return
 	}
+	domainsStore.get()
 })
 
 function refreshHealth() {
@@ -28,14 +29,14 @@ function saveEmit(postDomain: PostDomain) {
 		domainsStore.update(postDomain).finally(() => {
 			isLoadingRefresh.value = false
 		})
-	} else {
-		domainsStore
-			.add(postDomain)
-			.then(() => domainsStore.get())
-			.finally(() => {
-				isLoadingRefresh.value = false
-			})
+		return
 	}
+	domainsStore
+		.add(postDomain)
+		.then(() => domainsStore.get())
+		.finally(() => {
+			isLoadingRefresh.value = false
+		})
 }
 function deleteEmit(postDomain: PostDomain) {
 	isLoadingRefresh.value = true
@@ -46,7 +47,7 @@ function deleteEmit(postDomain: PostDomain) {
 </script>
 <template>
 	<transition>
-		<NuxtIcon v-if="isLoading" class="spinner" name="spinner" />
+		<NuxtIcon v-if="isLoadingRefresh" class="spinner" name="spinner" />
 		<div v-else class="post-domain-form">
 			<PostDomainInputRow
 				v-for="domain in domains"

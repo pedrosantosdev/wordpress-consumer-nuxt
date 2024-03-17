@@ -10,11 +10,12 @@ const { t } = useI18n()
 
 const props = defineProps<{
 	id: number
+	domainId?: number
 }>()
 
 const postStore = usePostsStore()
 const { currentPost: post } = storeToRefs(postStore)
-await postStore.getById(props.id)
+await postStore.getById(props.id, props.domainId)
 
 let textToCopy = reactive<string[]>([])
 const el = ref<HTMLDivElement | null>(null)

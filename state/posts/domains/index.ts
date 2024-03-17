@@ -4,26 +4,18 @@ import type { PostDomain } from '@/types/Post'
 const baseUri = 'post-domain'
 export interface StateModel {
 	list?: PostDomain[]
-	isLoading: boolean
-	hasError: boolean
 }
 
 export const usePostDomainsStore = defineStore('post-domains', {
 	state: (): StateModel => ({
 		list: [],
-		isLoading: false,
-		hasError: false,
 	}),
 	actions: {
 		async get() {
-			this.$state.isLoading = true
-			this.$state.hasError = false
 			const res = await useBaseFetch<PostDomain[]>(baseUri)
 			if (res && !res.error.value) {
 				this.$state.list = res.data.value ?? undefined
 			}
-			this.$state.hasError = !!res.error.value
-			this.$state.isLoading = res.pending.value
 		},
 		async add(payload: PostDomain) {
 			return useBaseFetch(baseUri, { method: 'POST', body: payload })
