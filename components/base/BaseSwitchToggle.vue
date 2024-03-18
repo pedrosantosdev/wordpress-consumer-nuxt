@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const props = defineProps({
 	id: {
@@ -35,9 +35,9 @@ const props = defineProps({
 const emit = defineEmits(['toggle'])
 
 const currentState = ref(props.defaultState)
-const keyId = `${props.id}-input`
+const keyId = computed(() => `${props.id}-input-toggle`)
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .toggle-checkbox:checked {
 	@apply right-0 border-green-400;
 	& + .toggle-label {
