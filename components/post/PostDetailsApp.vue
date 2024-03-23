@@ -28,7 +28,13 @@ const { copy } = useClipboard({ legacy: true })
 watchEffect(() => {
 	if (el.value && !listening.value) {
 		listening.value = true
-		el.value.querySelectorAll('a[href^="magnet:?"]').forEach((elLink) => {
+		const magnetLinks = el.value.querySelectorAll('a[href^="magnet:?"]')
+		if (magnetLinks.length === 0) {
+			el.value = null
+
+			return
+		}
+		magnetLinks.forEach((elLink) => {
 			elLink.addEventListener('click', (e) => {
 				e.preventDefault()
 				e.stopPropagation()
