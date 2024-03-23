@@ -71,6 +71,7 @@ function toggleActive() {
 
 <template>
 	<BaseEditableInput
+		:key="domainRef.id"
 		:checked="domainRef.active"
 		:is-new="isNew ?? false"
 		:is-invalid="!domainRef.isHealth"
