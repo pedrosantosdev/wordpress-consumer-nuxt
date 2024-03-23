@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getCurrentInstance } from 'vue'
 const props = defineProps<{
 	isNew: boolean
 	checked: boolean
@@ -39,8 +40,7 @@ function toggleActive() {
 		<div v-else class="icon-group">
 			<div class="flex self-center">
 				<BaseSwitchToggle
-					:id="`${$attrs.key}-editable-input`"
-					:key="`${$attrs.key}-editable-input`"
+					:id="`${getCurrentInstance()?.vnode?.key?.toString() ?? ''}-editable-input`"
 					:default-state="checked"
 					@toggle="toggleActive"
 				/>
