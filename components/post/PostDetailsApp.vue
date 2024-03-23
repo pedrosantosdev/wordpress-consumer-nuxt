@@ -24,6 +24,7 @@ const linkCount = ref(0)
 const rabbit = ref(false)
 const multipleSelectActive = ref(false)
 const { copy } = useClipboard({ legacy: true })
+const isValidLink = ref(false)
 
 watchEffect(() => {
 	if (el.value && !listening.value) {
@@ -31,6 +32,7 @@ watchEffect(() => {
 		const magnetLinks = el.value.querySelectorAll('a[href^="magnet:?"]')
 		if (magnetLinks.length === 0) {
 			el.value = null
+			isValidLink.value = false
 
 			return
 		}
@@ -94,6 +96,7 @@ async function overrideLinkMagnet(text?: string): Promise<void> {
 		<transition>
 			<div v-if="post" ref="el" v-html="post.content.rendered"></div>
 			<div v-else>{{ t('not_found') }}</div>
+			<div v-if="post && !isValidLink">Invalid post - {{ post.link }}</div>
 		</transition>
 	</div>
 </template>
