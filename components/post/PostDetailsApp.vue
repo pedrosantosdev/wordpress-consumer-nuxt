@@ -24,7 +24,7 @@ const linkCount = ref(0)
 const rabbit = ref(false)
 const multipleSelectActive = ref(false)
 const { copy } = useClipboard({ legacy: true })
-const isValidLink = ref(false)
+const isValidLink = ref(true)
 
 watchEffect(() => {
 	if (el.value && !listening.value) {
