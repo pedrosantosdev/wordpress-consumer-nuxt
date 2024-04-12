@@ -3,9 +3,9 @@ export type Post = {
 	date: string
 	link: string
 	image_url: string
-	title: { rendered: string }
-	content: { rendered: string }
-	excerpt: { rendered: string }
+	title: string
+	content: string
+	excerpt: string
 	domain_id?: number
 }
 

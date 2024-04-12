@@ -94,7 +94,7 @@ async function overrideLinkMagnet(text?: string): Promise<void> {
 			</div>
 		</div>
 		<transition>
-			<div v-if="post" ref="el" v-html="post.content.rendered"></div>
+			<div v-if="post" ref="el" v-html="post.content"></div>
 			<div v-else>{{ t('not_found') }}</div>
 		</transition>
 		<div v-if="post && !isValidLink">Invalid post - {{ post.link ?? post.domain_id }}</div>

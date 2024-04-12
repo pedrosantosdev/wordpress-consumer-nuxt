@@ -11,7 +11,7 @@ defineProps({
 	<BaseCard>
 		<div class="flex flex-row flex-wrap">
 			<div class="w-full mb-1">
-				{{ post.title.rendered }}
+				{{ post.title }}
 			</div>
 			<img
 				v-if="post.image_url"
@@ -20,11 +20,7 @@ defineProps({
 				:src="post.image_url"
 				onerror="this.style.display='none'"
 			/>
-			<div
-				class="lg:w-4/6 w-full"
-				:class="{ 'pl-2': post.image_url }"
-				v-html="post.excerpt.rendered"
-			></div>
+			<div class="lg:w-4/6 w-full" :class="{ 'pl-2': post.image_url }" v-html="post.summary"></div>
 		</div>
 	</BaseCard>
 </template>
