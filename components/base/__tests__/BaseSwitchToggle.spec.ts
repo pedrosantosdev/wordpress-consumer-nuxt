@@ -30,9 +30,9 @@ describe('BaseSwitchToggleVue', () => {
 			},
 		})
 		const input = container.querySelector('input[type="checkbox"]') as HTMLInputElement
-		await fireEvent.click(input)
-		expect(emitted().toggle).toBeTruthy()
-		expect(emitted().toggle.length).toBe(1)
-		expect(emitted().toggle.values().next().value[0]).toBeTruthy()
+		input.click()
+		expect(emitted('toggle')).toBeTruthy()
+		expect(emitted('toggle').length).toBe(1)
+		expect(emitted('toggle').values().next().value[0]).toBeTruthy()
 	})
 })
