@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { fireEvent, render } from '@testing-library/vue'
+import { render } from '@testing-library/vue'
 import BaseSwitchToggleVue from '@/components/base/BaseSwitchToggle.vue'
 
 describe('BaseSwitchToggleVue', () => {
