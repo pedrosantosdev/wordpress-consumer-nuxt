@@ -2,10 +2,12 @@
 import { storeToRefs } from 'pinia'
 import { usePostsStore } from '@/state/posts'
 import { isNotEmpty } from '@/helpers/string'
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const route = useRoute()
+const router = useRouter()
 
 const postsStores = usePostsStore()
 const {
@@ -18,7 +20,7 @@ const {
 const el: Ref<HTMLElement | null> = ref(null)
 const showModal = ref(false)
 
-const query = ref('')
+const query = ref(route.query?.q ?? '')
 let lastQuery = ''
 const PER_PAGE = 10
 
@@ -74,6 +76,20 @@ onMounted(() => {
 			if (el.value && window.innerHeight + newValue >= +(el.value.offsetHeight * 0.8).toFixed(1)) {
 				loadMore()
 			}
+		},
+	)
+	watch(
+		() => query.value,
+		(newValue) => {
+			if (newValue.trim() == '') {
+				router.replace({
+					query: {},
+				})
+				return
+			}
+			router.replace({
+				query: { q: newValue.trim() },
+			})
 		},
 	)
 })
