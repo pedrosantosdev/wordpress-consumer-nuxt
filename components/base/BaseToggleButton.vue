@@ -28,7 +28,6 @@ const showIcon = computed(() => (props.modelValue ? 'check' : 'times'))
 	align-items: center;
 	gap: 5px;
 	padding: 2px 10px;
-	width: 90px;
 	height: fit-content;
 	&.active {
 		border-color: variables.$green-light;

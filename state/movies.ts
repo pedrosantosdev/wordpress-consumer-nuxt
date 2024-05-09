@@ -58,6 +58,19 @@ export const useMoviesStore = defineStore('movies', {
 					(movie) => movie.title.toLowerCase().search(this.query.toLowerCase()) > -1,
 				)
 			}
+			if (payload.recentMovies) {
+				const dateStringToDate = (date: string): Date => {
+					if (date === 'TBA') {
+						return new Date(new Date().getFullYear() + 2)
+					}
+					return new Date(date)
+				}
+
+				filterList = filterList.sort(
+					(a, b) =>
+						dateStringToDate(b.inCinemas).getTime() - dateStringToDate(a.inCinemas).getTime(),
+				)
+			}
 			this.$state.queryResultList = filterList
 		},
 		async search(payload: string) {

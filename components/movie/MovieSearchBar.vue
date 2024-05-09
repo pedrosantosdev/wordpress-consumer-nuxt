@@ -50,6 +50,10 @@ const initStateFilters = {
 		label: t('synced'),
 		value: false,
 	},
+	recentMovies: {
+		label: t('recents'),
+		value: false,
+	},
 }
 
 const filters = reactive<

@@ -43,8 +43,9 @@ const searchMovie = (target: Record<string, string | number | boolean>) => {
 	searchActive.value = (query.value.length > 0 ||
 		target.isLocal ||
 		target.isActive ||
-		target.isReady) as boolean
-	if (target.isLocal || target.isActive || target.isReady) {
+		target.isReady ||
+		target.recentMovies) as boolean
+	if (target.isLocal || target.isActive || target.isReady || target.recentMovies) {
 		$store.searchLocal(target)
 	} else {
 		$store.search(query.value as string)
