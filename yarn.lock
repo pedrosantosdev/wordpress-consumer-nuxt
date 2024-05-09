@@ -3154,9 +3154,9 @@
   integrity sha512-Fg4zwR0GNnjzodMt3KRy2AWGMKQXByl56+4HjN87soxLNU9P5xcJkstAlIeEF3cU6UYOzmJl1tV0dVPGIljCnQ==
 
 "@vue/test-utils@^2.3.1", "@vue/test-utils@^2.4.1":
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-2.4.5.tgz#010aa4debe6602d83dc75f233b397092742105a2"
-  integrity sha512-oo2u7vktOyKUked36R93NB7mg2B+N7Plr8lxp2JBGwr18ch6EggFjixSCdIVVLkT6Qr0z359Xvnafc9dcKyDUg==
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-2.4.6.tgz#7d534e70c4319d2a587d6a3b45a39e9695ade03c"
+  integrity sha512-FMxEjOpYNYiFe0GkaHsnJPXFHxQ6m4t8vI/ElPGpMWxZKpmRvQ33OIrvRXemy6yha03RxhOlQuy+gZMC3CQSow==
   dependencies:
     js-beautify "^1.14.9"
     vue-component-type-helpers "^2.0.0"
@@ -6960,10 +6960,17 @@ nopt@^5.0.0:
   dependencies:
     abbrev "1"
 
-nopt@^7.0.0, nopt@^7.2.0:
+nopt@^7.0.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-7.2.0.tgz#067378c68116f602f552876194fd11f1292503d7"
   integrity sha512-CVDtwCdhYIvnAzFoJ6NJ6dX3oga9/HyciQDnG1vQDjSLMeKLJ4A93ZqYKDrgYSr1FBY5/hMYC+2VCi24pgpkGA==
+  dependencies:
+    abbrev "^2.0.0"
+
+nopt@^7.2.0:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/nopt/-/nopt-7.2.1.tgz#1cac0eab9b8e97c9093338446eddd40b2c8ca1e7"
+  integrity sha512-taM24ViiimT/XntxbPyJQzCG+p4EKOpgD3mxFwW38mGjVUrfERQOeY4EDHjdnptttfHuHQXFx+lTP08Q+mLa/w==
   dependencies:
     abbrev "^2.0.0"
 
@@ -9627,9 +9634,9 @@ vue-bundle-renderer@^2.0.0:
     ufo "^1.2.0"
 
 vue-component-type-helpers@^2.0.0:
-  version "2.0.13"
-  resolved "https://registry.yarnpkg.com/vue-component-type-helpers/-/vue-component-type-helpers-2.0.13.tgz#4cd08fe6c42a071159664e6c30b7fe1b01e17b68"
-  integrity sha512-xNO5B7DstNWETnoYflLkVgh8dK8h2ZDgxY1M2O0zrqGeBNq5yAZ8a10yCS9+HnixouNGYNX+ggU9MQQq86HTpg==
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/vue-component-type-helpers/-/vue-component-type-helpers-2.0.16.tgz#bfdb9cba265dca097b0f3411baeae879e008c33d"
+  integrity sha512-qisL/iAfdO++7w+SsfYQJVPj6QKvxp4i1MMxvsNO41z/8zu3KuAw9LkhKUfP/kcOWGDxESp+pQObWppXusejCA==
 
 vue-demi@>=0.14.5, vue-demi@>=0.14.7:
   version "0.14.7"
