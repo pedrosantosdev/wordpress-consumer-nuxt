@@ -107,10 +107,9 @@ watch(filters, () => emitValue(), { immediate: true, deep: true })
 	border-top-right-radius: 0;
 	height: 0;
 	overflow: hidden;
-	display: grid;
+	display: flex;
 	gap: 5px;
-	grid-auto-flow: column;
-	grid-auto-columns: max-content;
+	flex-flow: row wrap;
 	&.active {
 		min-height: 100px;
 		@apply p-3 transition-all;
