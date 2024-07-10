@@ -15,7 +15,7 @@ const props = defineProps<{
 
 const postStore = usePostsStore()
 const { currentPost: post } = storeToRefs(postStore)
-await postStore.getById(props.id, props.domainId)
+await postStore.getById(props.id, props.domainId, true)
 
 let textToCopy = reactive<string[]>([])
 const el = ref<HTMLDivElement | null>(null)
