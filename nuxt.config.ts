@@ -48,7 +48,6 @@ export default defineNuxtConfig({
 	pwa: {},
 	i18n: {
 		defaultLocale: 'pt-BR',
-		fallbackLocale: 'en',
 		detectBrowserLanguage: {
 			useCookie: true,
 			cookieKey: 'i18n_redirected',
@@ -89,4 +88,9 @@ export default defineNuxtConfig({
 		refreshOnResize: true,
 	},
 	spaLoadingTemplate: false,
+	vite: {
+		server: {
+			watch: {},
+		},
+	},
 })

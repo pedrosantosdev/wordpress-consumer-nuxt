@@ -38,7 +38,9 @@ function submitQuery() {
 const searchEnabled = computed(() => isNotEmpty(query.value))
 
 const postData = computed(() =>
-	searchEnabled.value ? searchResults.value?.results?.filter((elem) => elem.magnetLinks.length > 0) ?? [] : posts.value?.results?.filter((elem) => elem.magnetLinks.length > 0) ?? [],
+	searchEnabled.value
+		? searchResults.value?.results?.filter((elem) => elem.magnetLinks.length > 0) ?? []
+		: posts.value?.results?.filter((elem) => elem.magnetLinks.length > 0) ?? [],
 )
 const currentPage = computed(() =>
 	searchEnabled.value ? searchResults.value?.page ?? 1 : posts.value?.page ?? 1,

@@ -22,7 +22,7 @@ watch(
 	(showModal) => {
 		isOpen.value = showModal
 		useLockScroll(showModal)
-	}
+	},
 )
 </script>
 
