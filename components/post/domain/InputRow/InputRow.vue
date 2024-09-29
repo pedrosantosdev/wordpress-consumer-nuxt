@@ -26,6 +26,13 @@ const domainRef = ref(
 		active: true,
 	},
 )
+const formattedDomain = computed(() => {
+	try {
+		return new URL(domainRef.value.endpoint).hostname
+	} catch (err) {
+		return ''
+	}
+})
 const emit = defineEmits(['save', 'delete'])
 function onSaveClick(result: {
 	input: { id: string | number; type: string; value: string }[]
@@ -80,6 +87,7 @@ function toggleActive() {
 				id: domainRef.id,
 				type: 'url',
 				value: domainRef.endpoint,
+				readOnlyFormattedValue: formattedDomain,
 			},
 		]"
 		@save="onSaveClick"

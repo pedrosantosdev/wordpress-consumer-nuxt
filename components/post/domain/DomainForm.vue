@@ -3,10 +3,12 @@ import { type PostDomain } from '@/types/Post'
 import { usePostDomainsStore } from '@/state/posts/domains'
 import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue'
+import { useToastStore } from '@/state/toast';
 
 const domainsStore = usePostDomainsStore()
 const { list: domains } = storeToRefs(domainsStore)
 const isLoadingRefresh = ref(false)
+const toastStore = useToastStore()
 
 onBeforeMount(() => {
 	if (domains?.value?.length !== 0 || isLoadingRefresh.value) {
@@ -28,6 +30,12 @@ function saveEmit(postDomain: PostDomain) {
 	if (postDomain.id > 0) {
 		domainsStore.update(postDomain).finally(() => {
 			isLoadingRefresh.value = false
+		})
+		return
+	}
+	if (domains?.value?.some((domain: PostDomain) => domain.endpoint == postDomain.endpoint)) {
+		toastStore.showToast('Already Exists', {
+			status: 'error'
 		})
 		return
 	}
