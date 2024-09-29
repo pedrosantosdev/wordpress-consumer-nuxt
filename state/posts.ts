@@ -47,7 +47,7 @@ export const usePostsStore = defineStore('posts', {
 					total_pages: 0,
 					results:
 						page === 1
-							? res.data.value ?? []
+							? (res.data.value ?? [])
 							: this.$state.list.results.concat(res.data.value ?? []),
 				}
 			} else {
@@ -68,7 +68,7 @@ export const usePostsStore = defineStore('posts', {
 					page,
 					results:
 						this.$state.searchList == null
-							? res.data.value ?? []
+							? (res.data.value ?? [])
 							: this.$state.searchList.results.concat(res.data.value ?? []),
 					total_pages: 1,
 				}

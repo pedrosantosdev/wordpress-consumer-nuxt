@@ -84,9 +84,6 @@ export default defineNuxtConfig({
 		classSuffix: '',
 		storageKey: 'nuxt-color-mode',
 	},
-	device: {
-		refreshOnResize: true,
-	},
 	spaLoadingTemplate: false,
 	vite: {
 		server: {
