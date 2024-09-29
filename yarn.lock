@@ -2738,15 +2738,15 @@
     node-gyp-build "^4.2.2"
     resolve-from "^5.0.0"
 
-"@vite-pwa/nuxt@^0.8.0":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@vite-pwa/nuxt/-/nuxt-0.8.1.tgz#c64bed8dfac15f21791e8c55154b3b72da87a683"
-  integrity sha512-XQYBeP1quQXLxPG25qL5igeYw7sSCUVNwekLr+P5WXpdm9o9GhZt2yPoWXkU372CunvqzXxYexzknqHS8zP/BQ==
+"@vite-pwa/nuxt@^0.10.0":
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/@vite-pwa/nuxt/-/nuxt-0.10.5.tgz#05adfc86880c6f3a4d0ef84e2a3f7b62175358bb"
+  integrity sha512-I+qTkgQB2lvpoKQGgARgszsV/rBDys2xstczmTIgYoaNPALz2+zkhN/O8Fl8QI2ZHBL+ZnfpSOCOm/77ugrFHg==
   dependencies:
     "@nuxt/kit" "^3.9.0"
     pathe "^1.1.1"
     ufo "^1.3.2"
-    vite-plugin-pwa ">=0.20.0 <1"
+    vite-plugin-pwa ">=0.20.5 <1"
 
 "@vitejs/plugin-vue-jsx@^4.0.1":
   version "4.0.1"
@@ -8908,7 +8908,7 @@ vite-plugin-inspect@^0.8.7:
     picocolors "^1.0.1"
     sirv "^2.0.4"
 
-"vite-plugin-pwa@>=0.20.0 <1":
+"vite-plugin-pwa@>=0.20.5 <1":
   version "0.20.5"
   resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.20.5.tgz#437dca4a9bff650dc9c84ea3d7d3ac230b5985e0"
   integrity sha512-aweuI/6G6n4C5Inn0vwHumElU/UEpNuO+9iZzwPZGTCH87TeZ6YFMrEY6ZUBQdIHHlhTsbMDryFARcSuOdsz9Q==
