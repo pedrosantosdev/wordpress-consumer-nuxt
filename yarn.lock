@@ -5669,9 +5669,9 @@ h3@^1.13.1:
     unenv "^1.10.0"
 
 happy-dom@^16.0.0:
-  version "16.7.2"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-16.7.2.tgz#a2fd53c573c175fbf529e2e9c33af8790e5b904b"
-  integrity sha512-zOzw0xyYlDaF/ylwbAsduYZZVRTd5u7IwlFkGbEathIeJMLp3vrN3cHm3RS7PZpD9gr/IO16bHEswcgNyWTsqw==
+  version "16.8.1"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-16.8.1.tgz#43d7e998fd36aa6062acbdfa88262ef0bc0a105e"
+  integrity sha512-n0QrmT9lD81rbpKsyhnlz3DgnMZlaOkJPpgi746doA+HvaMC79bdWkwjrNnGJRvDrWTI8iOcJiVTJ5CdT/AZRw==
   dependencies:
     webidl-conversions "^7.0.0"
     whatwg-mimetype "^3.0.0"
