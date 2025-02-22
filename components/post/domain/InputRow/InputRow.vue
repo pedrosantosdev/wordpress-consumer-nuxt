@@ -12,6 +12,11 @@ const props = defineProps({
 		default: null,
 		required: false,
 	},
+	draggableClass: {
+		type: String,
+		required: false,
+		default: undefined,
+	},
 })
 const defaultWordpressPath = {
 	endpoint: 'wp-json/wp/v2/',
@@ -26,13 +31,6 @@ const domainRef = ref(
 		active: true,
 	},
 )
-const formattedDomain = computed(() => {
-	try {
-		return new URL(domainRef.value.endpoint).hostname
-	} catch (err) {
-		return ''
-	}
-})
 const emit = defineEmits(['save', 'delete'])
 function onSaveClick(result: {
 	input: { id: string | number; type: string; value: string }[]
@@ -82,12 +80,12 @@ function toggleActive() {
 		:checked="domainRef.active"
 		:is-new="isNew ?? false"
 		:is-invalid="!domainRef.isHealth"
+		:draggableClass="draggableClass"
 		:inputs="[
 			{
 				id: domainRef.id,
 				type: 'url',
 				value: domainRef.endpoint,
-				readOnlyFormattedValue: formattedDomain,
 			},
 		]"
 		@save="onSaveClick"
@@ -98,8 +96,10 @@ function toggleActive() {
 
 <style lang="scss" scoped>
 @use '@/assets/scss/abstract/_variables.scss';
+
 .editable-input {
 	border-top: 1px solid variables.$grey;
+
 	&:last-of-type {
 		border-bottom: 1px solid variables.$grey;
 	}
