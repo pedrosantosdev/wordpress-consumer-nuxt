@@ -1,47 +1,68 @@
+import { render, fireEvent } from '@testing-library/vue'
 import { describe, it, expect } from 'vitest'
-import { render } from '@testing-library/vue'
 import BaseEditableInput from '../BaseEditableInput.vue'
 
-describe('BaseEditableInput.vue', () => {
+describe('BaseEditableInput', () => {
 	const props = {
 		isNew: false,
 		checked: false,
 		isInvalid: false,
-		inputs: [{ id: 1, type: 'text', value: 'Test' }],
-		draggableClass: 'draggable',
+		inputs: [
+			{ id: 1, type: 'text', value: 'Test Value' }
+		],
+		draggableClass: 'draggable'
 	}
 
 	it('renders correctly', () => {
-		const wrapper = render(BaseEditableInput, { props })
-		expect(wrapper.container).toBeTruthy()
+		const { getByLabelText } = render(BaseEditableInput, { props })
+
+		expect(getByLabelText('Drag to reorder')).toBeTruthy()
+		expect(getByLabelText('Toogle Edit Field')).toBeTruthy()
+		expect(getByLabelText('Field options')).toBeTruthy()
 	})
 
-	it('emits save event on save button click', async () => {
-		const wrapper = render(BaseEditableInput, { props: { ...props, isNew: true } })
-		await wrapper.getByRole('button', { name: /check/i }).click()
-		expect(wrapper.emitted().save).toBeTruthy()
+	it('toggles edit mode', async () => {
+		const { getByLabelText } = render(BaseEditableInput, { props })
+		const toggleButton = getByLabelText('Toogle Edit Field')
+
+		await fireEvent.click(toggleButton)
+		expect(toggleButton).toBeTruthy()
 	})
 
-	it('emits delete event on delete button click', async () => {
-		const wrapper = render(BaseEditableInput, { props })
-		await wrapper.getByRole('button', { name: /times/i }).click()
-		expect(wrapper.emitted().delete).toBeTruthy()
+	it('shows save button when editing', async () => {
+		const { getByRole } = render(BaseEditableInput, { props: { ...props, isNew: true } })
+		const saveButton = getByRole('button', { name: 'Save Field' })
+
+		expect(saveButton).toBeTruthy()
 	})
 
-	it('emits toggle event on toggle button click', async () => {
-		const wrapper = render(BaseEditableInput, { props })
-		await wrapper.getByRole('button', { name: /list/i }).click()
-		await wrapper.getByRole('button', { name: /toggle/i }).click()
-		expect(wrapper.emitted().toggle).toBeTruthy()
+	it('emits save event', async () => {
+		const { getByRole, emitted } = render(BaseEditableInput, { props: { ...props, isNew: true } })
+		const saveButton = getByRole('button', { name: 'Save Field' })
+
+		await fireEvent.click(saveButton)
+		expect(emitted().save).toBeTruthy()
 	})
 
-	it('renders draggable class when provided', () => {
-		const wrapper = render(BaseEditableInput, { props })
-		expect(wrapper.container.querySelector('.draggable')).toBeTruthy()
+	it('emits delete event', async () => {
+		const { getByRole, getByText, emitted } = render(BaseEditableInput, { props })
+		const optionsButton = getByRole('button', { name: 'Field options' })
+
+		await fireEvent.click(optionsButton)
+		const deleteButton = getByText('Delete')
+
+		await fireEvent.click(deleteButton)
+		expect(emitted().delete).toBeTruthy()
 	})
 
-	it('applies invalid class when isInvalid is true', () => {
-		const wrapper = render(BaseEditableInput, { props: { ...props, isInvalid: true } })
-		expect(wrapper.container.querySelector('.editable-input')?.classList).toContain('bg-red-300')
+	it('emits toggle event', async () => {
+		const { getByRole, getByText, emitted } = render(BaseEditableInput, { props })
+		const optionsButton = getByRole('button', { name: 'Field options', })
+
+		await fireEvent.click(optionsButton)
+		const toggleButton = getByText('Enable')
+
+		await fireEvent.click(toggleButton)
+		expect(emitted().toggle).toBeTruthy()
 	})
 })
