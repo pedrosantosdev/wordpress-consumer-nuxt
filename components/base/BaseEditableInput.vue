@@ -48,7 +48,12 @@ function toggleActive() {
 		<template v-for="model in models" :key="model.id">
 			<BaseInput v-model="model.value" :type="model.type" :readonly="!canType" />
 		</template>
-		<button v-show="props.isNew || isEditing" class="icon-group" aria-label="Save Field" @click="onSaveClick">
+		<button
+			v-show="props.isNew || isEditing"
+			class="icon-group"
+			aria-label="Save Field"
+			@click="onSaveClick"
+		>
 			<NuxtIcon name="check" />
 		</button>
 		<button

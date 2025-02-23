@@ -7,10 +7,8 @@ describe('BaseEditableInput', () => {
 		isNew: false,
 		checked: false,
 		isInvalid: false,
-		inputs: [
-			{ id: 1, type: 'text', value: 'Test Value' }
-		],
-		draggableClass: 'draggable'
+		inputs: [{ id: 1, type: 'text', value: 'Test Value' }],
+		draggableClass: 'draggable',
 	}
 
 	it('renders correctly', () => {
@@ -57,7 +55,7 @@ describe('BaseEditableInput', () => {
 
 	it('emits toggle event', async () => {
 		const { getByRole, getByText, emitted } = render(BaseEditableInput, { props })
-		const optionsButton = getByRole('button', { name: 'Field options', })
+		const optionsButton = getByRole('button', { name: 'Field options' })
 
 		await fireEvent.click(optionsButton)
 		const toggleButton = getByText('Enable')
