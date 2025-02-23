@@ -4,6 +4,8 @@ import { usePostDomainsStore } from '@/state/posts/domains'
 import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue'
 import { useToastStore } from '@/state/toast'
+import { VueDraggable } from 'vue-draggable-plus'
+import { type SortableEvent } from 'sortablejs'
 
 const domainsStore = usePostDomainsStore()
 const { list: domains } = storeToRefs(domainsStore)
@@ -53,35 +55,49 @@ function deleteEmit(postDomain: PostDomain) {
 		isLoadingRefresh.value = false
 	})
 }
+
+function onEnd(event: SortableEvent & { data: PostDomain }) {
+	const newIndex = event.newIndex
+	if (newIndex === undefined || event.oldIndex === newIndex) {
+		return
+	}
+	let domain = domains?.value ? domains.value[newIndex] : undefined
+	if (domain === undefined) {
+		return
+	}
+	domain.viewOrder = newIndex
+	domainsStore.update(domain)
+}
 </script>
 <template>
 	<transition>
 		<NuxtIcon v-if="isLoadingRefresh" class="spinner" name="spinner" />
 		<div v-else class="post-domain-form">
-			<draggable
+			<NuxtIcon
+				class="cursor-pointer p-2 relative left-2 top-1"
+				:class="{ spinner: isLoadingRefresh }"
+				name="spinner"
+				@click="refreshHealth"
+			/>
+			<VueDraggable
+				ref="el"
 				v-model="domains"
 				item-key="id"
-				handle=".{{dragabbleClass}}"
+				:handle="`.${dragabbleClass}`"
 				:animation="150"
-				ghost-class="ghost"
+				@end="onEnd"
+				:disabled="(domains?.length ?? 0) <= 1"
 			>
 				<PostDomainInputRow
 					v-for="domain in domains"
 					:key="domain.id"
 					:domain="domain"
-					:draggableClass="dragabbleClass"
+					:draggableClass="(domains?.length ?? 0) > 1 ? dragabbleClass : undefined"
 					@save="saveEmit"
 					@delete="deleteEmit"
 				/>
-				<PostDomainInputRow slot="footer" :is-new="true" @save="saveEmit" />
-				<NuxtIcon
-					slot="header"
-					class="cursor-pointer p-2 absolute left-2 top-1"
-					:class="{ spinner: isLoadingRefresh }"
-					name="spinner"
-					@click="refreshHealth"
-				/>
-			</draggable>
+			</VueDraggable>
+			<PostDomainInputRow :is-new="true" @save="saveEmit" class="pl-14" />
 		</div>
 	</transition>
 </template>

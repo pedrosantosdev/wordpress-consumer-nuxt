@@ -50,6 +50,6 @@
 	},
 	"dependencies": {
 		"@pinia/nuxt": "^0.5.0",
-		"vuedraggable": "^4.1.0"
+		"vue-draggable-plus": "^0.6.0"
 	}
 }

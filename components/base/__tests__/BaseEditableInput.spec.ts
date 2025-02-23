@@ -7,10 +7,8 @@ describe('BaseEditableInput.vue', () => {
 		isNew: false,
 		checked: false,
 		isInvalid: false,
-		inputs: [
-			{ id: 1, type: 'text', value: 'Test' }
-		],
-		draggableClass: 'draggable'
+		inputs: [{ id: 1, type: 'text', value: 'Test' }],
+		draggableClass: 'draggable',
 	}
 
 	it('renders correctly', () => {

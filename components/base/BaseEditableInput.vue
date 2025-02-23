@@ -34,14 +34,11 @@ function toggleActive() {
 </script>
 
 <template>
-	<div
-		class="editable-input relative px-4 py-2"
-		:class="{ 'bg-red-300': props.isInvalid, 'opacity-50': !canType }"
-	>
+	<div class="editable-input" :class="{ 'bg-red-300': props.isInvalid }">
 		<template v-if="props.draggableClass">
 			<div :class="props.draggableClass">
 				<button
-					class="drag-handle cursor-move p-1 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+					class="drag-handle cursor-move p-1 text-gray-400 hover:text-gray-600"
 					aria-label="Drag to reorder"
 				>
 					<NuxtIcon name="grip-vertical" />
@@ -51,20 +48,22 @@ function toggleActive() {
 		<template v-for="model in models" :key="model.id">
 			<BaseInput v-model="model.value" :type="model.type" :readonly="!canType" />
 		</template>
-		<div v-if="props.isNew || isEditing" class="icon-group">
+		<button v-show="props.isNew || isEditing" class="icon-group" aria-label="Save Field">
 			<NuxtIcon name="check" @click="onSaveClick" />
-		</div>
-		<NuxtIcon name="mail" v-if="!props.isNew" />
+		</button>
+		<button
+			v-if="!props.isNew"
+			class="icon-group"
+			aria-label="Toogle Edit Field"
+			@click="isEditing = !isEditing"
+		>
+			<NuxtIcon name="mail" />
+		</button>
 		<div v-if="!props.isNew" class="icon-group">
-			<div class="relative">
-				<button
-					@click="showMenu = !showMenu"
-					class="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-					aria-label="Field options"
-				>
+			<div class="relative z-10">
+				<button @click="showMenu = !showMenu" class="rounded p-1" aria-label="Field options">
 					<NuxtIcon name="list" />
 				</button>
-
 				<div
 					v-show="showMenu"
 					class="absolute right-0 top-full z-10 mt-1 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5"
@@ -74,8 +73,7 @@ function toggleActive() {
 						@click="toggleActive"
 						class="flex w-full items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 					>
-						<Toggle class="mr-2 h-4 w-4" />
-						{{ isEditing ? 'Disable' : 'Enable' }}
+						{{ props.checked ? 'Disable' : 'Enable' }}
 					</button>
 					<button
 						@click="onDeleteClick"
@@ -94,17 +92,15 @@ function toggleActive() {
 @use '@/assets/scss/abstract/_variables.scss';
 
 .editable-input {
-	@apply w-full grid gap-3 grid-flow-col scroll-smooth overflow-hidden overflow-x-auto;
+	@apply w-full grid gap-8 grid-flow-col scroll-smooth relative pr-4 py-2 items-center;
 	grid-auto-columns: max-content;
 
 	.icon-group {
-		@apply flex flex-col gap-3 w-1/5 absolute z-20;
+		@apply flex flex-col gap-3 hover:text-gray-600;
 
 		span {
 			@apply cursor-pointer p-3 w-10;
-			border: 1px solid variables.$grey;
 			color: variables.$green-light;
-			border-radius: 25px;
 
 			svg {
 				@apply px-1 py-0;
