@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { use } from 'chai'
 import { computed, defineProps, defineEmits, reactive, ref, toRefs } from 'vue'
 
 const props = defineProps<{
