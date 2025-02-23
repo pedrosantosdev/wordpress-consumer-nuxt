@@ -97,7 +97,7 @@ function onEnd(event: SortableEvent & { data: PostDomain }) {
 					@delete="deleteEmit"
 				/>
 			</VueDraggable>
-			<PostDomainInputRow :is-new="true" @save="saveEmit" class="pl-14" />
+			<PostDomainInputRow :is-new="true" @save="saveEmit" class="pl-10" />
 		</div>
 	</transition>
 </template>
