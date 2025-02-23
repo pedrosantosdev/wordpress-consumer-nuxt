@@ -3,10 +3,15 @@ import { type PostDomain } from '@/types/Post'
 import { usePostDomainsStore } from '@/state/posts/domains'
 import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue'
+import { useToastStore } from '@/state/toast'
+import { VueDraggable } from 'vue-draggable-plus'
+import { type SortableEvent } from 'sortablejs'
 
 const domainsStore = usePostDomainsStore()
 const { list: domains } = storeToRefs(domainsStore)
 const isLoadingRefresh = ref(false)
+const toastStore = useToastStore()
+const dragabbleClass = 'drag-handle'
 
 onBeforeMount(() => {
 	if (domains?.value?.length !== 0 || isLoadingRefresh.value) {
@@ -31,6 +36,12 @@ function saveEmit(postDomain: PostDomain) {
 		})
 		return
 	}
+	if (domains?.value?.some((domain: PostDomain) => domain.endpoint == postDomain.endpoint)) {
+		toastStore.showToast('Already Exists', {
+			status: 'error',
+		})
+		return
+	}
 	domainsStore
 		.add(postDomain)
 		.then(() => domainsStore.get())
@@ -44,25 +55,49 @@ function deleteEmit(postDomain: PostDomain) {
 		isLoadingRefresh.value = false
 	})
 }
+
+function onEnd(event: SortableEvent & { data: PostDomain }) {
+	const newIndex = event.newIndex
+	if (newIndex === undefined || event.oldIndex === newIndex) {
+		return
+	}
+	let domain = domains?.value ? domains.value[newIndex] : undefined
+	if (domain === undefined) {
+		return
+	}
+	domain.viewOrder = newIndex
+	domainsStore.update(domain)
+}
 </script>
 <template>
 	<transition>
 		<NuxtIcon v-if="isLoadingRefresh" class="spinner" name="spinner" />
 		<div v-else class="post-domain-form">
-			<PostDomainInputRow
-				v-for="domain in domains"
-				:key="domain.id"
-				:domain="domain"
-				@save="saveEmit"
-				@delete="deleteEmit"
-			/>
-			<PostDomainInputRow :is-new="true" @save="saveEmit" />
 			<NuxtIcon
-				class="cursor-pointer p-2 absolute left-2 top-1"
+				class="cursor-pointer p-2 relative left-2 top-1"
 				:class="{ spinner: isLoadingRefresh }"
 				name="spinner"
 				@click="refreshHealth"
 			/>
+			<VueDraggable
+				ref="el"
+				v-model="domains"
+				item-key="id"
+				:handle="`.${dragabbleClass}`"
+				:animation="150"
+				@end="onEnd"
+				:disabled="(domains?.length ?? 0) <= 1"
+			>
+				<PostDomainInputRow
+					v-for="domain in domains"
+					:key="domain.id"
+					:domain="domain"
+					:draggableClass="(domains?.length ?? 0) > 1 ? dragabbleClass : undefined"
+					@save="saveEmit"
+					@delete="deleteEmit"
+				/>
+			</VueDraggable>
+			<PostDomainInputRow :is-new="true" @save="saveEmit" class="pl-14" />
 		</div>
 	</transition>
 </template>

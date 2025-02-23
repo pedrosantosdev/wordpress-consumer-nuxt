@@ -3,8 +3,10 @@ export default defineNuxtConfig({
 		shim: false,
 		strict: true,
 	},
+
 	ssr: false,
 	ignore: ['**/*.test.*', '**/*.spec.*'],
+
 	head: {
 		title: 'wordpress-consumer-nuxt',
 		htmlAttrs: {
@@ -18,6 +20,9 @@ export default defineNuxtConfig({
 		],
 		link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 	},
+
+	devtools: { enabled: false },
+
 	modules: [
 		// https://pinia.vuejs.org/ssr/nuxt.html
 		'@pinia/nuxt',
@@ -38,6 +43,7 @@ export default defineNuxtConfig({
 		// https://v8.i18n.nuxtjs.org/
 		'@nuxtjs/i18n',
 	],
+
 	piniaPersistedstate: {
 		cookieOptions: {
 			sameSite: 'strict',
@@ -45,7 +51,9 @@ export default defineNuxtConfig({
 		},
 		storage: 'cookies',
 	},
+
 	pwa: {},
+
 	i18n: {
 		defaultLocale: 'pt-BR',
 		detectBrowserLanguage: {
@@ -65,18 +73,22 @@ export default defineNuxtConfig({
 			},
 		],
 	},
+
 	// https://v3.nuxtjs.org/guide/features/runtime-config
 	runtimeConfig: {
 		public: {
 			baseUrl: process.env.BASE_URL || 'http://localhost:8080',
 		},
 	},
+
 	css: ['@/assets/scss/main.scss'],
+
 	tailwindcss: {
 		exposeConfig: true,
 		viewer: false,
 		injectPosition: 0,
 	},
+
 	colorMode: {
 		preference: 'system', // default value of $colorMode.preference
 		fallback: 'dark', // fallback value if not system preference found
@@ -90,4 +102,6 @@ export default defineNuxtConfig({
 			watch: {},
 		},
 	},
+
+	compatibilityDate: '2024-09-01',
 })
