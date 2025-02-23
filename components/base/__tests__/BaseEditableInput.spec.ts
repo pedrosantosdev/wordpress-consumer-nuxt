@@ -47,7 +47,7 @@ describe('BaseEditableInput', () => {
 		const optionsButton = getByRole('button', { name: 'Field options' })
 
 		await fireEvent.click(optionsButton)
-		const deleteButton = getByText('Delete')
+		const deleteButton = getByText('delete')
 
 		await fireEvent.click(deleteButton)
 		expect(emitted().delete).toBeTruthy()
@@ -58,7 +58,7 @@ describe('BaseEditableInput', () => {
 		const optionsButton = getByRole('button', { name: 'Field options' })
 
 		await fireEvent.click(optionsButton)
-		const toggleButton = getByText('Enable')
+		const toggleButton = getByText('enable')
 
 		await fireEvent.click(toggleButton)
 		expect(emitted().toggle).toBeTruthy()
