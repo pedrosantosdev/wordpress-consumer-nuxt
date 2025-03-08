@@ -5668,9 +5668,9 @@ h3@^1.15.1:
     uncrypto "^0.1.3"
 
 happy-dom@^17.0.0:
-  version "17.2.2"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-17.2.2.tgz#8f320b76cf69fbe5c0dd97a55557751ddf73e492"
-  integrity sha512-3I1/CrNi780sdOhuhUnFtgTWhloSc3quSZwsylI41jycx8o97M6Y4aQAu0phSexGusT7+59BxATh4L4xiY0HcA==
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-17.4.0.tgz#f80494ee00ad76b94f8f596a7b5c9103dca86248"
+  integrity sha512-LN2BIuvdFZ8snmF6LtQB2vYBzRmgCx+uqlFX9JpKVRHQ44NODNnOchB4ZW8404djHhdbQgEHRAkXCZ0zGOyzew==
   dependencies:
     webidl-conversions "^7.0.0"
     whatwg-mimetype "^3.0.0"
