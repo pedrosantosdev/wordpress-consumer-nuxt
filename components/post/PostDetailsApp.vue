@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <script lang="ts" setup>
 import useIsSeriesLink from '@/composables/useIsSeriesLink'
 import { usePostsStore } from '@/state/posts'
@@ -94,7 +95,7 @@ async function overrideLinkMagnet(text?: string): Promise<void> {
 			</div>
 		</div>
 		<transition>
-			<div v-if="post" ref="el" v-html="post.content"></div>
+			<div v-if="post" ref="el" v-html="post.content"/>
 			<div v-else>{{ t('not_found') }}</div>
 		</transition>
 		<div v-if="post && !isValidLink">Invalid post - {{ post.link ?? post.domain_id }}</div>

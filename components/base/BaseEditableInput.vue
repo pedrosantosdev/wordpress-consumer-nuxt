@@ -60,7 +60,7 @@ function toggleActive() {
 		</button>
 		<div v-if="!props.isNew" class="icon-group">
 			<div class="relative z-10">
-				<button @click="showMenu = !showMenu" class="rounded p-1" aria-label="Field options">
+				<button class="rounded p-1" aria-label="Field options" @click="showMenu = !showMenu">
 					<NuxtIcon name="list" />
 				</button>
 				<div
@@ -77,14 +77,14 @@ function toggleActive() {
 						{{ t('edit') }}
 					</button>
 					<button
-						@click="toggleActive"
 						class="flex w-full items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+						@click="toggleActive"
 					>
 						{{ props.checked ? t('disable') : t('enable') }}
 					</button>
 					<button
-						@click="onDeleteClick"
 						class="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+						@click="onDeleteClick"
 					>
 						{{ t('delete') }}
 					</button>

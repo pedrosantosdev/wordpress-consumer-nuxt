@@ -19,8 +19,8 @@ defineProps({
 				loading="lazy"
 				:src="post.image_url"
 				onerror="this.style.display='none'"
-			/>
-			<div class="lg:w-4/6 w-full" :class="{ 'pl-2': post.image_url }" v-html="post.summary"></div>
+			>
+			<div class="lg:w-4/6 w-full" :class="{ 'pl-2': post.image_url }" v-html="post.summary"/>
 		</div>
 	</BaseCard>
 </template>

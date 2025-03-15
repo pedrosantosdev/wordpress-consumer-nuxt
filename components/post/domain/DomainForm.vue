@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { type PostDomain } from '@/types/Post'
+import type { PostDomain } from '@/types/Post'
 import { usePostDomainsStore } from '@/state/posts/domains'
 import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue'
 import { useToastStore } from '@/state/toast'
 import { VueDraggable } from 'vue-draggable-plus'
-import { type SortableEvent } from 'sortablejs'
+import type { SortableEvent } from 'sortablejs'
 
 const domainsStore = usePostDomainsStore()
 const { list: domains } = storeToRefs(domainsStore)
@@ -61,7 +61,7 @@ function onEnd(event: SortableEvent & { data: PostDomain }) {
 	if (newIndex === undefined || event.oldIndex === newIndex) {
 		return
 	}
-	let domain = domains?.value ? domains.value[newIndex] : undefined
+	const domain = domains?.value ? domains.value[newIndex] : undefined
 	if (domain === undefined) {
 		return
 	}
@@ -85,19 +85,19 @@ function onEnd(event: SortableEvent & { data: PostDomain }) {
 				item-key="id"
 				:handle="`.${dragabbleClass}`"
 				:animation="150"
-				@end="onEnd"
 				:disabled="(domains?.length ?? 0) <= 1"
+				@end="onEnd"
 			>
 				<PostDomainInputRow
 					v-for="domain in domains"
 					:key="domain.id"
 					:domain="domain"
-					:draggableClass="(domains?.length ?? 0) > 1 ? dragabbleClass : undefined"
+					:draggable-class="(domains?.length ?? 0) > 1 ? dragabbleClass : undefined"
 					@save="saveEmit"
 					@delete="deleteEmit"
 				/>
 			</VueDraggable>
-			<PostDomainInputRow :is-new="true" @save="saveEmit" class="pl-10" />
+			<PostDomainInputRow :is-new="true" class="pl-10" @save="saveEmit" />
 		</div>
 	</transition>
 </template>

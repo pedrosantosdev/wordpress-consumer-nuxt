@@ -54,5 +54,5 @@ onBeforeUnmount(() => {
 		v-bind="$attrs"
 		@input="debounceHandler"
 		@keydown.enter="keyDownEnter"
-	/>
+	>
 </template>

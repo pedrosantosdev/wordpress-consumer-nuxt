@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
+ 
 export default function debounce(fn, delay) {
 	let timeoutID = null
 	return function () {

@@ -7,7 +7,9 @@ export const isUrl = (s?: string | null): boolean => {
 		try {
 			new URL(s ?? '')
 			isValid = true
-		} catch (e) {}
+		} catch {
+			// Invalid URL
+		}
 	}
 	return isValid
 }
