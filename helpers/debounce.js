@@ -1,4 +1,3 @@
- 
 export default function debounce(fn, delay) {
 	let timeoutID = null
 	return function () {

@@ -2,7 +2,8 @@
 import { storeToRefs } from 'pinia'
 import { usePostsStore } from '@/state/posts'
 import { isNotEmpty } from '@/helpers/string'
-import { ref, onBeforeMount, onMounted, watch } from 'vue'
+import { ref, onBeforeMount, onMounted, watch, computed } from 'vue'
+import debounce from '@/helpers/debounce'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -22,17 +23,14 @@ const showModal = ref(false)
 
 const query = ref(route.query?.q ?? '')
 let lastQuery = ''
-const PER_PAGE = 10
+const _PER_PAGE = 10
 
 function submitQuery() {
-	setTimeout(() => {
-		waitForShowList.value = false
-	}, 200)
 	if (query.value === lastQuery) {
 		return
 	}
 	lastQuery = query.value
-	postsStores.search(query.value)
+	postsStores.search(lastQuery)
 }
 
 const searchEnabled = computed(() => isNotEmpty(query.value))
@@ -47,14 +45,12 @@ const currentPage = computed(() =>
 )
 const isAnyLoading = computed(() => (searchEnabled.value ? isLoadingSearch.value : isLoading.value))
 
-const hasMore = computed(
-	() => (postData.value?.length ?? 0) > 0 && (postData.value?.length ?? 0) % PER_PAGE === 0,
-)
+const hasMore = true
 
 const waitForShowList = ref(false)
 
 function loadMore() {
-	if (isAnyLoading.value || (currentPage.value > 1 && !hasMore.value)) {
+	if (isAnyLoading.value || (currentPage.value > 1 && !hasMore)) {
 		return
 	}
 	if (searchEnabled.value) {
@@ -83,18 +79,28 @@ onMounted(() => {
 	watch(
 		() => query.value,
 		(newValue) => {
-			if (newValue.trim() == '') {
+			const sanitedValue = newValue.trim()
+			if (sanitedValue == '') {
 				router.replace({
 					query: {},
 				})
 				return
 			}
 			router.replace({
-				query: { q: newValue.trim() },
+				query: { q: sanitedValue },
 			})
 		},
 	)
 })
+
+function onInputKeyup() {
+	if (!waitForShowList.value) {
+		waitForShowList.value = true
+	}
+	debounce(() => {
+		waitForShowList.value = false
+	}, 300)
+}
 </script>
 
 <template>
@@ -105,7 +111,7 @@ onMounted(() => {
 		<div class="flex w-full gap-2 items-center relative mb-4">
 			<BaseInput
 				v-model="query"
-				@keyup="waitForShowList = true"
+				@keyup="onInputKeyup"
 				@enter="submitQuery"
 				@debounce="submitQuery"
 			/>
