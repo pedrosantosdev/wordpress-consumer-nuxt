@@ -56,17 +56,23 @@ function deleteEmit(postDomain: PostDomain) {
 	})
 }
 
-function onEnd(event: SortableEvent & { data: PostDomain }) {
+function onUpdate(event: SortableEvent) {
 	const newIndex = event.newIndex
 	if (newIndex === undefined || event.oldIndex === newIndex) {
 		return
 	}
-	const domain = domains?.value ? domains.value[newIndex] : undefined
+	const domain = domains?.value ? domains.value[event.oldIndex ?? 0] : undefined
 	if (domain === undefined) {
 		return
 	}
 	domain.viewOrder = newIndex
-	domainsStore.update(domain)
+	const currentIndex =
+		domains?.value?.findIndex((element: PostDomain) => element.id === domain.id) ?? -1
+	domainsStore.updateOrder(
+		domains?.value?.map((domain: PostDomain, index: number) => {
+			return { id: domain.id, order: currentIndex <= index ? index : index + 1 }
+		}) ?? [],
+	)
 }
 </script>
 <template>
@@ -86,7 +92,7 @@ function onEnd(event: SortableEvent & { data: PostDomain }) {
 				:handle="`.${dragabbleClass}`"
 				:animation="150"
 				:disabled="(domains?.length ?? 0) <= 1"
-				@end="onEnd"
+				@update="onUpdate"
 			>
 				<PostDomainInputRow
 					v-for="domain in domains"

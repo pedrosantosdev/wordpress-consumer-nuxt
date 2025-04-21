@@ -8,6 +8,7 @@ export type Post = {
 	excerpt: string
 	domain_id?: number
 	magnetLinks: string[]
+	summary: string
 }
 
 export type PostDomain = {

@@ -33,6 +33,14 @@ export const usePostDomainsStore = defineStore('post-domains', {
 				})
 			})
 		},
+		async updateOrder(payload: { id: number; order: number }[]) {
+			return useBaseFetch(`${baseUri}/order`, {
+				method: 'PUT',
+				body: payload.map((item) => {
+					return { first: item.id, second: item.order }
+				}),
+			})
+		},
 		async updateHealth() {
 			return useBaseFetch(`${baseUri}/health`)
 		},

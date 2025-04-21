@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+import type { Post } from '@/types/Post'
+
 defineProps({
 	post: {
-		type: Object,
+		type: Object as PropType<Post>,
 		required: true,
 	},
 })
@@ -20,7 +22,7 @@ defineProps({
 				:src="post.image_url"
 				onerror="this.style.display='none'"
 			>
-			<div class="lg:w-4/6 w-full" :class="{ 'pl-2': post.image_url }" v-html="post.summary"/>
+			<div v-safe-html="post.summary" class="lg:w-4/6 w-full" :class="{ 'pl-2': post.image_url }" />
 		</div>
 	</BaseCard>
 </template>
