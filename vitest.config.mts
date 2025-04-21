@@ -8,7 +8,6 @@ export default defineConfig({
 	plugins: [vue(), vueJsx(), Components({ dirs: ['./components', './composables'], dts: true })],
 	resolve: {
 		alias: {
-			 
 			'@': path.resolve(__dirname),
 			'#app': path.resolve(__dirname, './node_modules/nuxt/dist/app/index.d.ts'),
 		},
