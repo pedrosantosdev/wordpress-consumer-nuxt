@@ -33,7 +33,7 @@
 		"eslint": "^9.0.0",
 		"happy-dom": "^17.4.4",
 		"husky": "^9.1.7",
-		"nuxt": "^3.16.0",
+		"nuxt": "^3.17.1",
 		"nuxt-icons": "^3.2.1",
 		"postcss": "^8.5.3",
 		"prettier": "^3.5.3",
