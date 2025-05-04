@@ -3,7 +3,6 @@ import { storeToRefs } from 'pinia'
 import { usePostsStore } from '@/state/posts'
 import { isNotEmpty } from '@/helpers/string'
 import { ref, onBeforeMount, onMounted, watch, computed } from 'vue'
-import debounce from '@/helpers/debounce'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -47,8 +46,6 @@ const isAnyLoading = computed(() => (searchEnabled.value ? isLoadingSearch.value
 
 const hasMore = true
 
-const waitForShowList = ref(false)
-
 function loadMore() {
 	if (isAnyLoading.value || (currentPage.value > 1 && !hasMore)) {
 		return
@@ -80,12 +77,6 @@ onMounted(() => {
 		() => query.value,
 		(newValue) => {
 			const sanitedValue = newValue.trim()
-			if (!waitForShowList.value) {
-				waitForShowList.value = true
-			}
-			debounce(() => {
-				waitForShowList.value = false
-			}, 300)
 			if (sanitedValue == '') {
 				router.replace({
 					query: {},
@@ -115,7 +106,7 @@ onMounted(() => {
 			<NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
 		</div>
 		<transition name="posts-list">
-			<div v-if="!waitForShowList" ref="el" class="posts-list">
+			<div v-if="!isAnyLoading" ref="el" class="posts-list">
 				<NuxtLink
 					v-for="post in postData"
 					:key="post.id"
