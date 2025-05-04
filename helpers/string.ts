@@ -1,5 +1,5 @@
 export const isNotEmpty = (s?: string | null): boolean =>
-	s !== undefined && s !== null && s !== '' && typeof s === 'string' && s.trim().length > 0
+	s !== undefined && s !== null && typeof s === 'string' && s.trim().length > 0
 
 export const isUrl = (s?: string | null): boolean => {
 	let isValid = false
