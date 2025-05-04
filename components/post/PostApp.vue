@@ -106,7 +106,7 @@ onMounted(() => {
 			<NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
 		</div>
 		<transition name="posts-list">
-			<div v-if="!isAnyLoading" ref="el" class="posts-list">
+			<div v-if="currentPage > 1 || !isAnyLoading" ref="el" class="posts-list">
 				<NuxtLink
 					v-for="post in postData"
 					:key="post.id"
@@ -119,7 +119,7 @@ onMounted(() => {
 
 		<NuxtIcon v-if="isAnyLoading" class="w-2/4 mx-auto mt-4 spinner" name="spinner" />
 		<button
-			v-else-if="hasMore && !waitForShowList"
+			v-else-if="hasMore"
 			class="w-2/4 mx-auto mt-4 text-center p-5 border border-black"
 			@click="loadMore"
 		>
