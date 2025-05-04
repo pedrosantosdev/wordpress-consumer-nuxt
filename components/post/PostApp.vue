@@ -80,6 +80,12 @@ onMounted(() => {
 		() => query.value,
 		(newValue) => {
 			const sanitedValue = newValue.trim()
+			if (!waitForShowList.value) {
+				waitForShowList.value = true
+			}
+			debounce(() => {
+				waitForShowList.value = false
+			}, 300)
 			if (sanitedValue == '') {
 				router.replace({
 					query: {},
@@ -92,15 +98,6 @@ onMounted(() => {
 		},
 	)
 })
-
-function onInputKeyup() {
-	if (!waitForShowList.value) {
-		waitForShowList.value = true
-	}
-	debounce(() => {
-		waitForShowList.value = false
-	}, 300)
-}
 </script>
 
 <template>
@@ -109,12 +106,7 @@ function onInputKeyup() {
 			<PostDomainForm class="-m-8 py-8 px-4" />
 		</BaseModal>
 		<div class="flex w-full gap-2 items-center relative mb-4">
-			<BaseInput
-				v-model="query"
-				@keyup="onInputKeyup"
-				@enter="submitQuery"
-				@debounce="submitQuery"
-			/>
+			<BaseInput v-model="query" @enter="submitQuery" @debounce="submitQuery" />
 			<NuxtIcon
 				name="times"
 				class="cursor-pointer absolute text-black right-10"
@@ -123,7 +115,7 @@ function onInputKeyup() {
 			<NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
 		</div>
 		<transition name="posts-list">
-			<div v-if="!waitForShowList && postData.length > 0" ref="el" class="posts-list">
+			<div v-if="!waitForShowList" ref="el" class="posts-list">
 				<NuxtLink
 					v-for="post in postData"
 					:key="post.id"
@@ -147,8 +139,10 @@ function onInputKeyup() {
 
 <style lang="scss">
 @use '@/assets/scss/abstract/_mixins.scss';
+
 .posts-page {
 	@apply flex justify-center items-center w-full flex-row flex-wrap;
+
 	.posts-list {
 		@apply w-full gap-5 justify-evenly;
 		@include mixins.grid-auto-columns(24rem);
