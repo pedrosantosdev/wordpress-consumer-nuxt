@@ -2589,9 +2589,9 @@
     pinia "^2.2.3"
 
 "@pinia/testing@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@pinia/testing/-/testing-1.0.1.tgz#dd76908ac50fd3325065a7f866003bf19e7fbad1"
-  integrity sha512-EYnPfoFtbrgkPj4QLiCp8dHgsqmc8fLqmQtTzp760V7enEb5ZOgH5zkwitGhkF7DM+AW3H+btdzkGeD1U3KKiQ==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@pinia/testing/-/testing-1.0.2.tgz#85afa987eca6209df2cf07fd5b96edcfb5ecc55a"
+  integrity sha512-yZVXJTKh677J0AT8kOPxGk5s1v7hMQIDT3tmeriwtR5LDu41DvXTEBQf0ql9SsHW1mCSDG38QDFzSSl5ucJqnQ==
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
