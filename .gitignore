@@ -4,9 +4,6 @@ node_modules
 nuxt.d.ts
 .output
 .env
-# Nuxt Storybook
-.nuxt-storybook
-storybook-static
 coverage
 .vscode
-sw.*
+components.d.ts

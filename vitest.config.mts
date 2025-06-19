@@ -18,7 +18,8 @@ export default defineConfig({
 		setupFiles: ['test/mock/FakeRouter', 'test/mock/FakeNuxt'],
 		coverage: {
 			reporter: ['lcov', 'json', 'html'],
-			exclude: ['assets', 'test'],
+			exclude: ['assets', 'test', '**/.nuxt', '**/node_modules/**', '**/dist/**'],
 		},
+		exclude: ['**/.nuxt/**', '**/node_modules/**'],
 	},
 })
