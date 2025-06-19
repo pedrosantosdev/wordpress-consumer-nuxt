@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { type PostDomain } from '@/types/Post'
+import type { PostDomain } from '@/types/Post'
 import { usePostDomainsStore } from '@/state/posts/domains'
 import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue'
 import { useToastStore } from '@/state/toast'
 import { VueDraggable } from 'vue-draggable-plus'
-import { type SortableEvent } from 'sortablejs'
+import type { SortableEvent } from 'sortablejs'
 
 const domainsStore = usePostDomainsStore()
 const { list: domains } = storeToRefs(domainsStore)
@@ -56,17 +56,23 @@ function deleteEmit(postDomain: PostDomain) {
 	})
 }
 
-function onEnd(event: SortableEvent & { data: PostDomain }) {
+function onUpdate(event: SortableEvent) {
 	const newIndex = event.newIndex
 	if (newIndex === undefined || event.oldIndex === newIndex) {
 		return
 	}
-	let domain = domains?.value ? domains.value[newIndex] : undefined
+	const domain = domains?.value ? domains.value[event.oldIndex ?? 0] : undefined
 	if (domain === undefined) {
 		return
 	}
 	domain.viewOrder = newIndex
-	domainsStore.update(domain)
+	const currentIndex =
+		domains?.value?.findIndex((element: PostDomain) => element.id === domain.id) ?? -1
+	domainsStore.updateOrder(
+		domains?.value?.map((domain: PostDomain, index: number) => {
+			return { id: domain.id, order: currentIndex <= index ? index : index + 1 }
+		}) ?? [],
+	)
 }
 </script>
 <template>
@@ -85,19 +91,19 @@ function onEnd(event: SortableEvent & { data: PostDomain }) {
 				item-key="id"
 				:handle="`.${dragabbleClass}`"
 				:animation="150"
-				@end="onEnd"
 				:disabled="(domains?.length ?? 0) <= 1"
+				@update="onUpdate"
 			>
 				<PostDomainInputRow
 					v-for="domain in domains"
 					:key="domain.id"
 					:domain="domain"
-					:draggableClass="(domains?.length ?? 0) > 1 ? dragabbleClass : undefined"
+					:draggable-class="(domains?.length ?? 0) > 1 ? dragabbleClass : undefined"
 					@save="saveEmit"
 					@delete="deleteEmit"
 				/>
 			</VueDraggable>
-			<PostDomainInputRow :is-new="true" @save="saveEmit" class="pl-14" />
+			<PostDomainInputRow :is-new="true" class="pl-10" @save="saveEmit" />
 		</div>
 	</transition>
 </template>

@@ -9,11 +9,11 @@
 			type="checkbox"
 			name="toggle"
 			@change="emit('toggle', currentState)"
-		/>
+		>
 		<label
 			:for="keyId"
 			class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
-		></label>
+		/>
 	</div>
 </template>
 
@@ -24,7 +24,6 @@ const props = defineProps({
 	id: {
 		type: String,
 		required: true,
-		default: '',
 	},
 	defaultState: {
 		type: Boolean,

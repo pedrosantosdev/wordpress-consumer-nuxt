@@ -35,7 +35,7 @@ export async function useBaseFetch<T = unknown, K = unknown>(
 			}
 		},
 		onResponseError({ response }) {
-			if (response.status == 401 && authStore.isAuth && url != 'login') {
+			if (response.status == 401 && authStore.isAuth && url != 'login' && url != 'refresh') {
 				authStore.logout()
 			}
 		},

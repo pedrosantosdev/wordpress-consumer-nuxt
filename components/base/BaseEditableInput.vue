@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, defineProps, defineEmits, reactive, ref, toRefs } from 'vue'
+import { computed, reactive, ref, toRefs } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
 	isNew: boolean
@@ -13,6 +14,7 @@ const props = defineProps<{
 	draggableClass?: string
 }>()
 
+const { t } = useI18n()
 const { inputs } = toRefs(props)
 const models = reactive(inputs.value)
 const emit = defineEmits(['save', 'delete', 'toggle'])
@@ -56,36 +58,35 @@ function toggleActive() {
 		>
 			<NuxtIcon name="check" />
 		</button>
-		<button
-			v-if="!props.isNew"
-			class="icon-group"
-			aria-label="Toogle Edit Field"
-			@click="isEditing = !isEditing"
-		>
-			<NuxtIcon name="mail" />
-		</button>
 		<div v-if="!props.isNew" class="icon-group">
 			<div class="relative z-10">
-				<button @click="showMenu = !showMenu" class="rounded p-1" aria-label="Field options">
+				<button class="rounded p-1" aria-label="Field options" @click="showMenu = !showMenu">
 					<NuxtIcon name="list" />
 				</button>
 				<div
 					v-show="showMenu"
-					class="absolute right-0 top-full z-10 mt-1 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5"
+					class="absolute right-0 top-full z-20 mt-1 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5"
 					@blur="showMenu = false"
 				>
 					<button
-						@click="toggleActive"
-						class="flex w-full items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+						v-if="!props.isNew"
+						class="icon-group"
+						aria-label="Toogle Edit Field"
+						@click="isEditing = !isEditing"
 					>
-						{{ props.checked ? 'Disable' : 'Enable' }}
+						{{ t('edit') }}
 					</button>
 					<button
-						@click="onDeleteClick"
-						class="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+						class="flex w-full items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+						@click="toggleActive"
 					>
-						<NuxtIcon name="times" />
-						Delete
+						{{ props.checked ? t('disable') : t('enable') }}
+					</button>
+					<button
+						class="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+						@click="onDeleteClick"
+					>
+						{{ t('delete') }}
 					</button>
 				</div>
 			</div>
@@ -97,7 +98,7 @@ function toggleActive() {
 @use '@/assets/scss/abstract/_variables.scss';
 
 .editable-input {
-	@apply w-full grid gap-8 grid-flow-col scroll-smooth relative pr-4 py-2 items-center;
+	@apply w-full grid gap-4 grid-flow-col scroll-smooth relative pr-4 py-2 items-center;
 	grid-auto-columns: max-content;
 
 	.icon-group {

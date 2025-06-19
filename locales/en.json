@@ -6,5 +6,10 @@
 	"local": "Local",
 	"active": "Active",
 	"synced": "Synced",
-	"recents": "Recents"
+	"recents": "Recents",
+	"delete": "Delete",
+	"edit": "Edit",
+	"save": "Save",
+	"disable": "Disable",
+	"enable": "Enable"
 }

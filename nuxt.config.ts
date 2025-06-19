@@ -42,6 +42,8 @@ export default defineNuxtConfig({
 		'@vite-pwa/nuxt',
 		// https://v8.i18n.nuxtjs.org/
 		'@nuxtjs/i18n',
+		// https://eslint.nuxt.com/packages/module
+		'@nuxt/eslint',
 	],
 
 	piniaPersistedstate: {
@@ -65,11 +67,11 @@ export default defineNuxtConfig({
 		locales: [
 			{
 				code: 'en',
-				file: 'locale/en.json',
+				file: '../../locales/en.json',
 			},
 			{
 				code: 'pt-BR',
-				file: 'locale/pt-BR.json',
+				file: '../../locales/pt-BR.json',
 			},
 		],
 	},

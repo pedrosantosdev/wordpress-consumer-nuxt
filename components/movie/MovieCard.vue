@@ -7,7 +7,7 @@
 				class="max-h-full mx-auto"
 				:src="movie.image"
 				:alt="movie.title"
-			/>
+			>
 		</div>
 		<div class="flex flex-col lg:w-2/3 w-full flex-1 gap-5 sm:p-2">
 			<div class="flex flex-1 flex-col gap-3">
@@ -39,11 +39,11 @@
 </template>
 
 <script setup lang="ts">
-import { type MovieModel } from '@/types/Movie'
+import type { MovieModel } from '@/types/Movie'
 
 const props = defineProps<{
 	movie: MovieModel
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any, vue/require-default-prop
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	onToggleSwitch?: (model: { id: number; needSync: boolean }) => any
 }>()
 const date =

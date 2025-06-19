@@ -16,7 +16,7 @@
 							type="text"
 							name="username"
 							:placeholder="t('form.placeholder.email')"
-						/>
+						>
 						<NuxtIcon name="times" class="error--icon" />
 					</div>
 				</div>
@@ -31,7 +31,7 @@
 							type="password"
 							name="password"
 							:placeholder="t('form.placeholder.password')"
-						/>
+						>
 						<NuxtIcon name="times" class="error--icon" />
 					</div>
 					<p class="text-sm text-red-500 -bottom-6 w-full error--message">

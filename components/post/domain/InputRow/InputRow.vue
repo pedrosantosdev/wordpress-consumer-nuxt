@@ -80,7 +80,7 @@ function toggleActive() {
 		:checked="domainRef.active"
 		:is-new="isNew ?? false"
 		:is-invalid="!domainRef.isHealth"
-		:draggableClass="draggableClass"
+		:draggable-class="draggableClass"
 		:inputs="[
 			{
 				id: domainRef.id,

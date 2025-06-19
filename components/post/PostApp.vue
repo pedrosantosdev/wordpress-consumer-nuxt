@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia'
 import { usePostsStore } from '@/state/posts'
 import { isNotEmpty } from '@/helpers/string'
-import { ref, onBeforeMount, onMounted, watch } from 'vue'
+import { ref, onBeforeMount, onMounted, watch, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -22,17 +22,14 @@ const showModal = ref(false)
 
 const query = ref(route.query?.q ?? '')
 let lastQuery = ''
-const PER_PAGE = 10
+const _PER_PAGE = 10
 
 function submitQuery() {
-	setTimeout(() => {
-		waitForShowList.value = false
-	}, 200)
 	if (query.value === lastQuery) {
 		return
 	}
 	lastQuery = query.value
-	postsStores.search(query.value)
+	postsStores.search(lastQuery)
 }
 
 const searchEnabled = computed(() => isNotEmpty(query.value))
@@ -47,14 +44,10 @@ const currentPage = computed(() =>
 )
 const isAnyLoading = computed(() => (searchEnabled.value ? isLoadingSearch.value : isLoading.value))
 
-const hasMore = computed(
-	() => (postData.value?.length ?? 0) > 0 && (postData.value?.length ?? 0) % PER_PAGE === 0,
-)
-
-const waitForShowList = ref(false)
+const hasMore = true
 
 function loadMore() {
-	if (isAnyLoading.value || (currentPage.value > 1 && !hasMore.value)) {
+	if (isAnyLoading.value || (currentPage.value > 1 && !hasMore)) {
 		return
 	}
 	if (searchEnabled.value) {
@@ -83,14 +76,15 @@ onMounted(() => {
 	watch(
 		() => query.value,
 		(newValue) => {
-			if (newValue.trim() == '') {
+			const sanitedValue = newValue.trim()
+			if (sanitedValue == '') {
 				router.replace({
 					query: {},
 				})
 				return
 			}
 			router.replace({
-				query: { q: newValue.trim() },
+				query: { q: sanitedValue },
 			})
 		},
 	)
@@ -103,12 +97,7 @@ onMounted(() => {
 			<PostDomainForm class="-m-8 py-8 px-4" />
 		</BaseModal>
 		<div class="flex w-full gap-2 items-center relative mb-4">
-			<BaseInput
-				v-model="query"
-				@keyup="waitForShowList = true"
-				@enter="submitQuery"
-				@debounce="submitQuery"
-			/>
+			<BaseInput v-model="query" @enter="submitQuery" @debounce="submitQuery" />
 			<NuxtIcon
 				name="times"
 				class="cursor-pointer absolute text-black right-10"
@@ -117,7 +106,7 @@ onMounted(() => {
 			<NuxtIcon name="gears" class="cursor-pointer" @click="showModal = true" />
 		</div>
 		<transition name="posts-list">
-			<div v-if="!waitForShowList && postData.length > 0" ref="el" class="posts-list">
+			<div v-if="postData.length > 0 || !isAnyLoading" ref="el" class="posts-list">
 				<NuxtLink
 					v-for="post in postData"
 					:key="post.id"
@@ -130,7 +119,7 @@ onMounted(() => {
 
 		<NuxtIcon v-if="isAnyLoading" class="w-2/4 mx-auto mt-4 spinner" name="spinner" />
 		<button
-			v-else-if="hasMore && !waitForShowList"
+			v-else
 			class="w-2/4 mx-auto mt-4 text-center p-5 border border-black"
 			@click="loadMore"
 		>
@@ -141,8 +130,10 @@ onMounted(() => {
 
 <style lang="scss">
 @use '@/assets/scss/abstract/_mixins.scss';
+
 .posts-page {
 	@apply flex justify-center items-center w-full flex-row flex-wrap;
+
 	.posts-list {
 		@apply w-full gap-5 justify-evenly;
 		@include mixins.grid-auto-columns(24rem);
