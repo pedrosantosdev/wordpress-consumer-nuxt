@@ -20,8 +20,7 @@ export type AuthState = {
 	onRequest: boolean
 } & AuthModel
 
-export const useAuthStore = defineStore({
-	id: 'auth',
+export const useAuthStore = defineStore('auth', {
 	state: (): AuthState => {
 		return {
 			lastPage: '/',
