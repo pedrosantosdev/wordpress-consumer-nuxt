@@ -24,6 +24,7 @@ export default defineNuxtConfig({
 	devtools: { enabled: false },
 
 	modules: [
+		 '@nuxt/test-utils/module',
 		// https://pinia.vuejs.org/ssr/nuxt.html
 		'@pinia/nuxt',
 		// https://prazdevs.github.io/pinia-plugin-persistedstate/frameworks/nuxt-3.html
@@ -83,7 +84,7 @@ export default defineNuxtConfig({
 		},
 	},
 
-	css: ['@/assets/scss/main.scss'],
+	css: ['~/assets/scss/main.scss'],
 
 	tailwindcss: {
 		exposeConfig: true,
