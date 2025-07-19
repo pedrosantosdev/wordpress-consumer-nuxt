@@ -24,7 +24,7 @@ export default defineNuxtConfig({
 	devtools: { enabled: false },
 
 	modules: [
-		 '@nuxt/test-utils/module',
+		'@nuxt/test-utils/module',
 		// https://pinia.vuejs.org/ssr/nuxt.html
 		'@pinia/nuxt',
 		// https://prazdevs.github.io/pinia-plugin-persistedstate/frameworks/nuxt-3.html
@@ -33,8 +33,6 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode',
 		// https://go.nuxtjs.dev/tailwindcss
 		'@nuxtjs/tailwindcss',
-		// https://github.com/gitFoxCode/nuxt-icons
-		'nuxt-icons',
 		// https://vueuse.org/
 		'@vueuse/nuxt',
 		// https://nuxt.com/modules/device
@@ -45,6 +43,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/i18n',
 		// https://eslint.nuxt.com/packages/module
 		'@nuxt/eslint',
+		// https://nuxt.com/modules/icon
+		'@nuxt/icon',
 	],
 
 	piniaPersistedstate: {
