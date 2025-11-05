@@ -5,7 +5,7 @@ import Components from 'unplugin-vue-components/vite'
 import path from 'path'
 
 export default defineConfig({
-	plugins: [vue(), vueJsx(), Components({ dirs: ['./components', './composables'], dts: true })],
+	plugins: [vue(), vueJsx(), Components({ dirs: ['./app/components', './app/composables'], dts: true })],
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname),

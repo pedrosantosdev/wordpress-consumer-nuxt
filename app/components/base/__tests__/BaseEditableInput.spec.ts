@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/vue'
 import { describe, it, expect } from 'vitest'
-import BaseEditableInput from '../BaseEditableInput.vue'
+import BaseEditableInput from '../../../../components/base/BaseEditableInput.vue'
 
 describe('BaseEditableInput', () => {
 	const props = {

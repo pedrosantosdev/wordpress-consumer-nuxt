@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '@/state/auth'
+import { useAuthStore } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
 import { ref, onBeforeMount } from 'vue'
 import { navigateTo } from 'nuxt/app'

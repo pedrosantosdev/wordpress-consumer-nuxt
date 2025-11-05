@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/no-v-html -->
 <script lang="ts" setup>
 import useIsSeriesLink from '@/composables/useIsSeriesLink'
-import { usePostsStore } from '@/state/posts'
-import { useToastStore } from '@/state/toast'
+import { usePostsStore } from '@/stores/posts'
+import { useToastStore } from '@/stores/toast'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'

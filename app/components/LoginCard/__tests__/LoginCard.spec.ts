@@ -2,7 +2,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 import { fireEvent, render } from '@testing-library/vue'
 import LoginCard from '@/components/LoginCard/LoginCard.vue'
 import { createTestingPinia } from '@pinia/testing'
-import { useAuthStore } from '@/state/auth'
+import { useAuthStore } from '@/stores/auth'
 import type { StateTree } from 'pinia'
 import nuxtMock from '@/test/mock/FakeNuxt'
 

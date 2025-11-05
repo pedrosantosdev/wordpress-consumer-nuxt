@@ -1,7 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import type { MovieLocalModel, MovieModel, MovieSearchModel } from '@/types/Movie'
 
-export interface StateModel {
+interface StateModel {
 	list?: MovieModel[]
 	isLoading: boolean
 	hasError: boolean

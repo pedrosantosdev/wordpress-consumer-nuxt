@@ -5,7 +5,7 @@ interface Toast {
 	status: 'success' | 'warning' | 'error' | 'default'
 	timeout: number
 }
-export interface StateModel {
+interface StateModel {
 	list: Toast[]
 }
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { usePostsStore } from '@/state/posts'
-import { isNotEmpty } from '@/helpers/string'
+import { usePostsStore } from '@/stores/posts'
+import { isNotEmpty } from '@/utils/string'
 import { ref, onBeforeMount, onMounted, watch, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 

@@ -2,7 +2,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 
 import type { PostDomain } from '@/types/Post'
 const baseUri = 'post-domain'
-export interface StateModel {
+interface StateModel {
 	list?: PostDomain[]
 }
 

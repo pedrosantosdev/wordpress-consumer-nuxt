@@ -2,7 +2,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 import type { Post } from '@/types/Post'
 import type { Page } from '@/types/Page'
 
-export interface StateModel {
+interface StateModel {
 	list: Page<Post>
 	searchList: Page<Post> | null
 	currentPost: Post | null
