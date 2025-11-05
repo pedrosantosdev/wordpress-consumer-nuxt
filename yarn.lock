@@ -2912,9 +2912,9 @@
     "@nuxt/kit" "^4.2.0"
 
 "@pinia/testing@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@pinia/testing/-/testing-1.0.2.tgz#85afa987eca6209df2cf07fd5b96edcfb5ecc55a"
-  integrity sha512-yZVXJTKh677J0AT8kOPxGk5s1v7hMQIDT3tmeriwtR5LDu41DvXTEBQf0ql9SsHW1mCSDG38QDFzSSl5ucJqnQ==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@pinia/testing/-/testing-1.0.3.tgz#62e0813a7a8ac735505422bb7a4e38eb86f815dc"
+  integrity sha512-g+qR49GNdI1Z8rZxKrQC3GN+LfnGTNf5Kk8Nz5Cz6mIGva5WRS+ffPXQfzhA0nu6TveWzPNYTjGl4nJqd3Cu9Q==
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
