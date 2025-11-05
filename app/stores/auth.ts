@@ -1,6 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import type { AuthModel } from '@/types/User'
-import { isNotEmpty } from '@/helpers/string'
+import { isNotEmpty } from '@/utils/string'
 import { useBaseFetch } from '@/composables/useBaseFetch'
 import { navigateTo } from '#app'
 
@@ -117,6 +117,7 @@ export const useAuthStore = defineStore('auth', {
 			!isNotEmpty(state.refreshToken) ||
 			Date.parse(state.expiresAt) < new Date().getTime(),
 	},
+}, {
 	persist: {
 		paths: ['token', 'expiresAt', 'refreshToken'],
 	},

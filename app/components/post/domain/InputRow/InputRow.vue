@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isNotEmpty } from '@/helpers/string'
+import { isNotEmpty } from '@/utils/string'
 
 const props = defineProps({
 	isNew: {

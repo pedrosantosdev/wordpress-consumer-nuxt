@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { PostDomain } from '@/types/Post'
-import { usePostDomainsStore } from '@/state/posts/domains'
+import { usePostDomainsStore } from '@/stores/posts/domains'
 import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue'
-import { useToastStore } from '@/state/toast'
+import { useToastStore } from '@/stores/toast'
 import { VueDraggable } from 'vue-draggable-plus'
 import type { SortableEvent } from 'sortablejs'
 
