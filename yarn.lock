@@ -2104,10 +2104,10 @@
     pkg-types "^1.2.1"
     semver "^7.6.3"
 
-"@nuxtjs/device@^3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/device/-/device-3.2.4.tgz#574a0beefa207fa19fc992d116f731274e710eb4"
-  integrity sha512-jIvN6QeodBNrUrL/1FCHk4bebsiLsGHlJd8c/m2ksLrGY4IZ0npA8IYhDTdYV92epGxoe8+3iZOzCjav+6TshQ==
+"@nuxtjs/device@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/device/-/device-4.0.0.tgz#1ab5a96723690e9d0c33cf35b91edf1b7fac1f1d"
+  integrity sha512-Tkbvde/GInmigbS/n3X3X+qXJWi6hsYrViKpZrakaBBYY3NbGYJb0c8aVxd3vI636HBbOhu0I39rv7MSjP7w8Q==
   dependencies:
     defu "^6.1.4"
 
