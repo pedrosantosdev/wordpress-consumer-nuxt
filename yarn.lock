@@ -10482,10 +10482,10 @@ unplugin-utils@^0.3.0, unplugin-utils@^0.3.1:
     pathe "^2.0.3"
     picomatch "^4.0.3"
 
-unplugin-vue-components@^31.0.0:
-  version "31.1.0"
-  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-31.1.0.tgz#ea0b149d9b99aca02603ab88d773259916900847"
-  integrity sha512-9EbV5ark21A4BOBt6RJGJXCVD2I1eoxTZL1TAvNgYTokcrFIiuxpufb8owyWn7n+z2x8daz/ltZq6IRRKL3ydQ==
+unplugin-vue-components@^32.0.0:
+  version "32.0.0"
+  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-32.0.0.tgz#7ad8ac7cc196b0c44c8366533cb8c924bf82d503"
+  integrity sha512-uLdccgS7mf3pv1bCCP20y/hm+u1eOjAmygVkh+Oa70MPkzgl1eQv1L0CwdHNM3gscO8/GDMGIET98Ja47CBbZg==
   dependencies:
     chokidar "^5.0.0"
     local-pkg "^1.1.2"
@@ -10494,7 +10494,7 @@ unplugin-vue-components@^31.0.0:
     obug "^2.1.1"
     picomatch "^4.0.3"
     tinyglobby "^0.2.15"
-    unplugin "^2.3.11"
+    unplugin "^3.0.0"
     unplugin-utils "^0.3.1"
 
 unplugin-vue-router@^0.19.2:
