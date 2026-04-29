@@ -39,7 +39,7 @@
 		"prettier": "^3.5.3",
 		"sass": "^1.85.1",
 		"sortablejs": "1.15.7",
-		"typescript": "^5.0.0",
+		"typescript": "^6.0.0",
 		"unplugin-vue-components": "^32.0.0",
 		"vitest": "^4.0.0"
 	},
