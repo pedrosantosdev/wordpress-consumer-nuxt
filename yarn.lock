@@ -3301,10 +3301,12 @@
   dependencies:
     "@nuxt/kit" "^4.2.0"
 
-"@pinia/testing@^1.0.2":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@pinia/testing/-/testing-1.0.3.tgz#62e0813a7a8ac735505422bb7a4e38eb86f815dc"
-  integrity sha512-g+qR49GNdI1Z8rZxKrQC3GN+LfnGTNf5Kk8Nz5Cz6mIGva5WRS+ffPXQfzhA0nu6TveWzPNYTjGl4nJqd3Cu9Q==
+"@pinia/testing@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@pinia/testing/-/testing-2.0.1.tgz#4886124ac5cd632aa29b82103a0afb7d0c2d4f7f"
+  integrity sha512-pQ4a4SCzdiLrhM4yv/TQG2ufNmktNlLZjjN6X/qMhXvZIiDN3L4L4WrChmcufX2LIarbl/ZPWOty1RB5KZIb2A==
+  dependencies:
+    nostics "^1.1.4"
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
