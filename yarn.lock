@@ -8321,7 +8321,7 @@ local-pkg@^1.1.1:
     pkg-types "^2.3.0"
     quansync "^0.2.11"
 
-local-pkg@^1.1.2, local-pkg@^1.2.1:
+local-pkg@^1.1.2, local-pkg@^1.2.0, local-pkg@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/local-pkg/-/local-pkg-1.2.1.tgz#9628389399851d78f3b50c9236eddb02f0c31b2b"
   integrity sha512-++gUqRDEvcnN6Zhqrr+y/CkVEHhlrR96vZn3nZZPYzMcBUyBtTKzB9NadClFIsIVSsu+3i9tfk/erqy9kAmt7Q==
@@ -11342,17 +11342,17 @@ unplugin-utils@^0.3.0, unplugin-utils@^0.3.1, unplugin-utils@^0.3.2:
     picomatch "^4.0.4"
 
 unplugin-vue-components@^32.0.0:
-  version "32.0.0"
-  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-32.0.0.tgz#7ad8ac7cc196b0c44c8366533cb8c924bf82d503"
-  integrity sha512-uLdccgS7mf3pv1bCCP20y/hm+u1eOjAmygVkh+Oa70MPkzgl1eQv1L0CwdHNM3gscO8/GDMGIET98Ja47CBbZg==
+  version "32.1.0"
+  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-32.1.0.tgz#6381802ff55b72b4664f575e926765f454255b8d"
+  integrity sha512-YiUkSxuRjab18XFOrX5VsIxXzccrfmHVGsGeJgSgklb829DQmCy9E4vvDUE4tuvZZdxyFJZX0Oc4TPnnxiiMyg==
   dependencies:
     chokidar "^5.0.0"
-    local-pkg "^1.1.2"
+    local-pkg "^1.2.0"
     magic-string "^0.30.21"
     mlly "^1.8.2"
     obug "^2.1.1"
-    picomatch "^4.0.3"
-    tinyglobby "^0.2.15"
+    picomatch "^4.0.4"
+    tinyglobby "^0.2.16"
     unplugin "^3.0.0"
     unplugin-utils "^0.3.1"
 
