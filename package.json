@@ -23,7 +23,7 @@
 		"@nuxtjs/i18n": "^10.0.0",
 		"@nuxtjs/tailwindcss": "^6.13.2",
 		"@pinia-plugin-persistedstate/nuxt": "^1.2.1",
-		"@pinia/testing": "^1.0.2",
+		"@pinia/testing": "^2.0.0",
 		"@testing-library/vue": "^8.1.0",
 		"@types/sanitize-html": "^2.15.0",
 		"@vite-pwa/nuxt": "^1.0.0",
