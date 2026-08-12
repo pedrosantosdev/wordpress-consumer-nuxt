@@ -35,7 +35,7 @@
 		"husky": "^9.1.7",
 		"nuxt": "^3.18.0",
 		"nuxt-icons": "^4.0.0",
-		"postcss": "^8.5.3",
+		"postcss": "^8.5.23",
 		"prettier": "^3.5.3",
 		"sass": "^1.85.1",
 		"sortablejs": "1.15.7",
