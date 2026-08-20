@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
-import useLockScroll from '@/composables/useLockScroll'
+import { useLockScroll } from '@/composables/useLockScroll'
 
 const props = defineProps({
 	showModal: {

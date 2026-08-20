@@ -2,7 +2,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 import type { Post } from '@/types/Post'
 import type { Page } from '@/types/Page'
 
-export interface StateModel {
+export interface PostsState {
 	list: Page<Post>
 	searchList: Page<Post> | null
 	currentPost: Post | null
@@ -13,7 +13,7 @@ export interface StateModel {
 const baseUri = 'posts'
 
 export const usePostsStore = defineStore('posts', {
-	state: (): StateModel => ({
+	state: (): PostsState => ({
 		list: { page: 0, results: [], total_pages: 0 },
 		searchList: null,
 		hasError: false,
@@ -21,9 +21,9 @@ export const usePostsStore = defineStore('posts', {
 		loading: [],
 	}),
 	getters: {
-		isLoading: (state: StateModel) => state.loading.includes('get'),
-		isLoadingSearch: (state: StateModel) => state.loading.includes('search'),
-		isLoadingGetById: (state: StateModel) => state.loading.includes('getById'),
+		isLoading: (state: PostsState) => state.loading.includes('get'),
+		isLoadingSearch: (state: PostsState) => state.loading.includes('search'),
+		isLoadingGetById: (state: PostsState) => state.loading.includes('getById'),
 	},
 	actions: {
 		toggleLoadingFlag(flag: string, status = true) {

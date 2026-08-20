@@ -1,4 +1,4 @@
-import useHtml from '@/composables/useHtml'
+import { useHtml } from '@/composables/useHtml'
 
 export default defineNuxtPlugin((nuxtApp) => {
 	nuxtApp.vueApp.directive('safe-html', {

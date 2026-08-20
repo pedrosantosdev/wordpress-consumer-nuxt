@@ -5,18 +5,18 @@ interface Toast {
 	status: 'success' | 'warning' | 'error' | 'default'
 	timeout: number
 }
-export interface StateModel {
+export interface ToastState {
 	list: Toast[]
 }
 
 const defaultShowTime = 2_000
 
 export const useToastStore = defineStore('toast', {
-	state: (): StateModel => ({
+	state: (): ToastState => ({
 		list: [],
 	}),
 	getters: {
-		toastToShow: (state: StateModel) => state.list.at(0) ?? null,
+		toastToShow: (state: ToastState) => state.list.at(0) ?? null,
 	},
 	actions: {
 		showToast(message: string, options?: Partial<Omit<Toast, 'message'>>) {

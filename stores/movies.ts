@@ -1,7 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import type { MovieLocalModel, MovieModel, MovieSearchModel } from '@/types/Movie'
 
-export interface StateModel {
+export interface MoviesState {
 	list?: MovieModel[]
 	isLoading: boolean
 	hasError: boolean
@@ -10,7 +10,7 @@ export interface StateModel {
 }
 
 export const useMoviesStore = defineStore('movies', {
-	state: (): StateModel => ({
+	state: (): MoviesState => ({
 		list: [],
 		isLoading: false,
 		hasError: false,
@@ -18,7 +18,7 @@ export const useMoviesStore = defineStore('movies', {
 		queryResultList: [],
 	}),
 	getters: {
-		getSearchMovies: (state: StateModel) =>
+		getSearchMovies: (state: MoviesState) =>
 			state.queryResultList?.map((movie): MovieLocalModel => {
 				const movieLocal = state.list?.find((movieFromList) => movieFromList.id === movie.id)
 				if (movieLocal) {

@@ -1,4 +1,4 @@
-import { useAuthStore } from '@/state/auth'
+import { useAuthStore } from '@/stores/auth'
 import { defineNuxtRouteMiddleware } from 'nuxt/app'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

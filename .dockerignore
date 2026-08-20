@@ -1,0 +1,11 @@
+node_modules
+.nuxt
+.output
+.git
+coverage
+.vscode
+components.d.ts
+*.log
+.env
+dist
+tests/e2e-validate

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { usePostsStore } from '@/state/posts'
+import { usePostsStore } from '@/stores/posts'
 import { isNotEmpty } from '@/helpers/string'
 import { ref, onBeforeMount, onMounted, watch, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -129,14 +129,13 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@use '@/assets/scss/abstract/_mixins.scss';
-
 .posts-page {
 	@apply flex justify-center items-center w-full flex-row flex-wrap;
 
 	.posts-list {
 		@apply w-full gap-5 justify-evenly;
-		@include mixins.grid-auto-columns(24rem);
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(auto, 24rem));
 	}
 }
 </style>

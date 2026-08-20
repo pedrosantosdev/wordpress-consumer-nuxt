@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { useMoviesStore } from '@/state/movies'
+import { useMoviesStore } from '@/stores/movies'
 
 const $store = useMoviesStore()
 const { list: getMovies, hasError, isLoading, getSearchMovies } = storeToRefs($store)

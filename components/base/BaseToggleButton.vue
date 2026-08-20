@@ -19,18 +19,17 @@ const showIcon = computed(() => (props.modelValue ? 'check' : 'times'))
 </script>
 
 <style lang="scss">
-@use '@/assets/scss/abstract/variables';
 .filter-button {
 	border-radius: 12px;
 	border-width: 1px;
-	border-color: variables.$grey;
+	border-color: gray;
 	display: flex;
 	align-items: center;
 	gap: 5px;
 	padding: 2px 10px;
 	height: fit-content;
 	&.active {
-		border-color: variables.$green-light;
+		border-color: #68d391;
 	}
 	.nuxt-icon {
 		padding-top: 1px;

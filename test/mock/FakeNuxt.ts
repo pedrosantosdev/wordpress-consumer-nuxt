@@ -28,4 +28,8 @@ vi.mock('#imports', () => {
 	return nuxtMock
 })
 
+vi.mock('@vueuse/core', () => ({
+	useDebounceFn: (fn: (...args: unknown[]) => unknown) => fn,
+}))
+
 export default nuxtMock
