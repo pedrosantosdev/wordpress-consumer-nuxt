@@ -1,0 +1,10 @@
+{
+  "name": "e2e-validate",
+  "private": true,
+  "scripts": {
+    "validate": "node validate.js"
+  },
+  "dependencies": {
+    "playwright-core": "1.52.0"
+  }
+}
