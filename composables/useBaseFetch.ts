@@ -1,4 +1,4 @@
-import { useAuthStore } from '@/state/auth'
+import { useAuthStore } from '@/stores/auth'
 import { useRuntimeConfig, useFetch } from 'nuxt/app'
 import type { Ref } from 'vue'
 

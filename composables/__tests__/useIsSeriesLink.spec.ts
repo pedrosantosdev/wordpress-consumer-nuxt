@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import useIsSeriesLink from '../useIsSeriesLink'
+import { useIsSeriesLink } from '../useIsSeriesLink'
 
 describe('useIsSeriesLink', () => {
 	it.each([

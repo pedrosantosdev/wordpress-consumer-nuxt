@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import debounce from '@/helpers/debounce'
-import { computed, onBeforeMount, onBeforeUnmount } from 'vue'
+import { computed } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
 
 const emit = defineEmits(['update:modelValue', 'enter', 'debounce'])
 const props = defineProps({
@@ -31,15 +31,8 @@ const value = computed({
 	},
 })
 const keyDownEnter = () => emit('enter', value.value)
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-let debounceHandler: ((...args: any[]) => void) | undefined = undefined
-onBeforeMount(() => {
-	debounceHandler = debounce(() => {
-		emit('debounce', value.value)
-	})
-})
-onBeforeUnmount(() => {
-	debounceHandler = undefined
+const debounceHandler = useDebounceFn(() => {
+	emit('debounce', value.value)
 })
 </script>
 

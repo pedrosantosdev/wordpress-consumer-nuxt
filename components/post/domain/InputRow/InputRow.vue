@@ -95,13 +95,11 @@ function toggleActive() {
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/abstract/_variables.scss';
-
 .editable-input {
-	border-top: 1px solid variables.$grey;
+	border-top: 1px solid gray;
 
 	&:last-of-type {
-		border-bottom: 1px solid variables.$grey;
+		border-bottom: 1px solid gray;
 	}
 }
 </style>

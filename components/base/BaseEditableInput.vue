@@ -95,8 +95,6 @@ function toggleActive() {
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/abstract/_variables.scss';
-
 .editable-input {
 	@apply w-full grid gap-4 grid-flow-col scroll-smooth relative pr-4 py-2 items-center;
 	grid-auto-columns: max-content;
@@ -106,7 +104,7 @@ function toggleActive() {
 
 		span {
 			@apply cursor-pointer p-3 w-10;
-			color: variables.$green-light;
+			color: #68d391;
 
 			svg {
 				@apply px-1 py-0;
