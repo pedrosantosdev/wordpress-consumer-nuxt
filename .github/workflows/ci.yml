@@ -10,41 +10,35 @@ on:
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [lts/*]
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v7.0.0
+      - name: Setup node
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
+          node-version: lts/*
 
-      - name: Get yarn cache directory path 🛠
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Enable Corepack
+        run: corepack enable
 
-      - name: Cache node_modules 📦
-        uses: actions/cache@v6.1.0
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      - name: Cache yarn
+        uses: actions/cache@v4
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          path: |
+            .yarn/cache
+            .yarn/install-state.gz
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install dependencies 👨🏻‍💻
-        run: yarn
+      - name: Install dependencies
+        run: yarn install --immutable
 
-      - name: Run linter 👀
+      - name: Run linter
         run: yarn lint
 
-      - name: Run tests 🧪
-        run: yarn test
+      - name: Run tests
+        run: yarn test --run

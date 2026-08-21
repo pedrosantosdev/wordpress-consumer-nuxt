@@ -3,11 +3,11 @@ FROM node:lts AS base
 WORKDIR /home/app
 
 RUN corepack enable && \
-    corepack prepare yarn@1.22.22 --activate
+    corepack prepare yarn@4.18.0 --activate
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarnrc.yml ./
 
-RUN yarn install --frozen-lockfile --network-timeout 120000 && \
+RUN yarn install --immutable --network-timeout 120000 && \
     chown -R node:node /home/app
 
 COPY --chown=node:node . .

@@ -2,10 +2,16 @@ node_modules
 .nuxt
 .output
 .git
+.github
+.husky
 coverage
 .vscode
 components.d.ts
 *.log
 .env
+.env.*
 dist
+test
 tests/e2e-validate
+migration
+README.md
