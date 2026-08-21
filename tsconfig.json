@@ -1,9 +1,6 @@
 {
 	"extends": "./.nuxt/tsconfig.json",
 	"compilerOptions": {
-		"paths": {
-			"@/*": ["./*"]
-		},
 		"types": ["@pinia/nuxt", "vitest/importMeta"]
 	}
 }

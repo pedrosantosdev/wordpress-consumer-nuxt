@@ -4,6 +4,11 @@ node_modules
 nuxt.d.ts
 .output
 .env
+.env.*
+!.env.example
 coverage
 .vscode
 components.d.ts
+.yarn/
+.pnp.*
+migration
