@@ -32,7 +32,7 @@
 		"nuxt-icons": "^4.0.0",
 		"prettier": "^3.9.6",
 		"sass": "^1.103.0",
-		"typescript": "^6.0.0",
+		"typescript": "^7.0.0",
 		"unplugin-vue-components": "^32.1.0",
 		"vitest": "^4.1.11"
 	},
