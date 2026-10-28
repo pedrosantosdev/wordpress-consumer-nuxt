@@ -28,7 +28,7 @@
 		"@vueuse/nuxt": "^14.4.0",
 		"eslint": "^10.0.0",
 		"happy-dom": "^20.11.6",
-		"nuxt": "^4.0.0",
+		"nuxt": "^4.6.2",
 		"nuxt-icons": "^4.0.0",
 		"prettier": "^3.9.6",
 		"sass": "^1.103.0",
