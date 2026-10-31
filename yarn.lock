@@ -3509,14 +3509,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pinia/testing@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@pinia/testing@npm:2.0.1"
+"@pinia/testing@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@pinia/testing@npm:2.0.2"
   dependencies:
-    nostics: "npm:^1.1.4"
+    nostics: "npm:^1.2.0"
   peerDependencies:
-    pinia: ">=4.0.2"
-  checksum: 10c0/fa1239f6919c0a42dea4a7e1e371b6203e4af6c6adeeeb3795771501205ff1cadcf16bebd98c8a241b28c232e4399b2e494339384984772c862b86ff16254403
+    pinia: ">=4.1.0"
+  checksum: 10c0/53d679f645b41b6ff3adb352fbd2e1324a0d5a28bb77c304780b3182731e29f2edead2fbf850700610d1ffdc50cb90919d0ec7145538057ad3c6d56d272ef56b
   languageName: node
   linkType: hard
 
@@ -12136,7 +12136,7 @@ __metadata:
     "@nuxtjs/tailwindcss": "npm:^6.14.0"
     "@pinia-plugin-persistedstate/nuxt": "npm:^1.2.1"
     "@pinia/nuxt": "npm:^1.0.2"
-    "@pinia/testing": "npm:^2.0.1"
+    "@pinia/testing": "npm:^2.0.2"
     "@testing-library/vue": "npm:^8.1.0"
     "@types/sanitize-html": "npm:^2.16.1"
     "@vite-pwa/nuxt": "npm:^1.1.1"
