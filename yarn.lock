@@ -10913,7 +10913,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt@npm:^4.0.0":
+"nuxt@npm:^4.6.3":
   version: 4.6.3
   resolution: "nuxt@npm:4.6.3"
   dependencies:
@@ -12639,7 +12639,7 @@ __metadata:
     "@vueuse/nuxt": "npm:^15.0.0"
     eslint: "npm:^10.14.0"
     happy-dom: "npm:^21.0.4"
-    nuxt: "npm:^4.0.0"
+    nuxt: "npm:^4.6.3"
     nuxt-icons: "npm:^4.0.0"
     pinia: "npm:^4.0.3"
     prettier: "npm:^3.9.6"
