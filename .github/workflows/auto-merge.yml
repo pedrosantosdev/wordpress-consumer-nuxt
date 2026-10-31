@@ -13,8 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
     steps:
-      - name: Enable auto-merge
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request-number: ${{ github.event.pull_request.number }}
+      - name: Auto merge
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_METHOD: merge
+          MERGE_LABELS: ""
+          MERGE_REMOVE_LABELS: ""
+          MERGE_DELETE_BRANCH: "false"
+          UPDATE_METHOD: rebase
