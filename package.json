@@ -21,7 +21,7 @@
 		"@pinia-plugin-persistedstate/nuxt": "^1.2.1",
 		"@pinia/testing": "^2.0.2",
 		"@testing-library/vue": "^8.1.0",
-		"@types/sanitize-html": "^2.16.1",
+		"@types/sanitize-html": "^2.16.2",
 		"@vite-pwa/nuxt": "^1.1.1",
 		"@vitejs/plugin-vue": "^6.0.8",
 		"@vue/test-utils": "^2.4.11",
