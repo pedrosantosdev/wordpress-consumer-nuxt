@@ -27,7 +27,7 @@
 		"@vue/test-utils": "^2.4.11",
 		"@vueuse/nuxt": "^14.4.0",
 		"eslint": "^10.14.0",
-		"happy-dom": "^20.11.6",
+		"happy-dom": "^21.0.0",
 		"nuxt": "^4.0.0",
 		"nuxt-icons": "^4.0.0",
 		"prettier": "^3.9.6",
