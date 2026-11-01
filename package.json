@@ -38,7 +38,7 @@
 	},
 	"dependencies": {
 		"@pinia/nuxt": "^1.0.3",
-		"pinia": "^4.0.3",
+		"pinia": "^4.1.0",
 		"sanitize-html": "^2.18.1",
 		"vue-draggable-plus": "^0.6.1"
 	},
