@@ -1,5 +1,8 @@
 name: ci
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -42,3 +45,21 @@ jobs:
 
       - name: Run tests
         run: yarn test --run
+
+  auto-merge:
+    needs: ci
+    if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Auto merge
+        uses: pascalgn/automerge-action@v0.16.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_METHOD: merge
+          MERGE_LABELS: ""
+          MERGE_REMOVE_LABELS: ""
+          MERGE_DELETE_BRANCH: "false"
+          UPDATE_METHOD: rebase
