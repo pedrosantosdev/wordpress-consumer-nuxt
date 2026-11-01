@@ -12643,7 +12643,7 @@ __metadata:
     nuxt-icons: "npm:^4.0.0"
     pinia: "npm:^4.0.3"
     prettier: "npm:^3.9.10"
-    sanitize-html: "npm:^2.17.7"
+    sanitize-html: "npm:^2.18.1"
     sass: "npm:^1.103.0"
     typescript: "npm:^7.0.2"
     unplugin-vue-components: "npm:^32.1.0"
@@ -12723,7 +12723,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sanitize-html@npm:^2.17.7":
+"sanitize-html@npm:^2.18.1":
   version: 2.18.1
   resolution: "sanitize-html@npm:2.18.1"
   dependencies:
