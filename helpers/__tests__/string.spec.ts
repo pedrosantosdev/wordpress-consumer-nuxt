@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isNotEmpty, isUrl } from '../string'
+import { isNotEmpty, isUrl, sanitizePassword, sanitizeUsername } from '../string'
 
 describe('helpers/string', () => {
 	describe('isNotEmpty', () => {
@@ -25,6 +25,30 @@ describe('helpers/string', () => {
 
 		it('should return true for string with spaces', () => {
 			expect(isNotEmpty(' hello ')).toBeTruthy()
+		})
+	})
+
+	describe('sanitizeUsername', () => {
+		it('should remove HTML and quote characters', () => {
+			expect(sanitizeUsername('<script>alert("x")</script>')).toBe('scriptalert(x)/script')
+		})
+
+		it('should remove control and zero-width characters', () => {
+			expect(sanitizeUsername('user\u0000\u200Bname')).toBe('username')
+		})
+
+		it('should trim surrounding whitespace', () => {
+			expect(sanitizeUsername('  user@example.com  ')).toBe('user@example.com')
+		})
+	})
+
+	describe('sanitizePassword', () => {
+		it('should remove control characters', () => {
+			expect(sanitizePassword('p\u0000a\ns\u007Fs')).toBe('pass')
+		})
+
+		it('should preserve printable special characters', () => {
+			expect(sanitizePassword('p<a&s"s\'w`d')).toBe('p<a&s"s\'w`d')
 		})
 	})
 

@@ -93,4 +93,60 @@ describe('LoginCard', () => {
 		await fireEvent.click(getByText('form.submit.button'))
 		expect(authStore.login).toBeCalledTimes(1)
 	})
+	it('should configure credential inputs for password managers and length limits', () => {
+		const { container } = render(LoginCard, {
+			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
+				plugins: [createPiniaSut()],
+			},
+		})
+		const form = container.querySelector('form')
+		const username = container.querySelector('#username')
+		const password = container.querySelector('#password')
+		expect(form?.getAttribute('autocomplete')).toBeNull()
+		expect(username?.getAttribute('autocomplete')).toBe('username')
+		expect(username?.getAttribute('maxlength')).toBe('254')
+		expect(password?.getAttribute('autocomplete')).toBe('current-password')
+		expect(password?.getAttribute('maxlength')).toBe('1024')
+	})
+	it('should filter unsafe characters from the username input', async () => {
+		const { container } = render(LoginCard, {
+			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
+				plugins: [createPiniaSut()],
+			},
+		})
+		const username = container.querySelector('#username') as HTMLInputElement
+
+		await fireEvent.update(username, '<script>alert("x")</script>')
+
+		expect(username.value).toBe('scriptalert(x)/script')
+	})
+	it('should not submit while the login is locked', async () => {
+		initialState = {
+			auth: {
+				failedLoginAttempts: 5,
+				loginLockedUntil: Date.now() + 60_000,
+				error: { message: 'Too Many Login Attempts', code: 'too_many_attempts' },
+			},
+		}
+		const { container } = render(LoginCard, {
+			global: {
+				stubs: {
+					NuxtIcon: true,
+				},
+				plugins: [createPiniaSut(initialState)],
+			},
+		})
+		const authStore = useAuthStore()
+		const loginSpy = vi.spyOn(authStore, 'login')
+
+		await fireEvent.submit(container.querySelector('form') as HTMLFormElement)
+
+		expect(loginSpy).not.toHaveBeenCalled()
+	})
 })

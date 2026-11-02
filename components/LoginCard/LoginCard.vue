@@ -4,7 +4,7 @@
 			{{ t('form.title') }}
 		</div>
 		<div class="mt-2">
-			<form autoComplete="off" :class="{ error: hasError }" @submit.prevent="onSubmit">
+			<form novalidate :class="{ error: hasError }" @submit.prevent="onSubmit">
 				<div class="flex flex-col mb-2">
 					<div class="flex relative flex-wrap input-group">
 						<label for="username" class="prefix-input">
@@ -12,9 +12,18 @@
 						</label>
 						<input
 							id="username"
-							v-model.trim="form.username.value"
+							v-model="username"
 							type="text"
 							name="username"
+							autocomplete="username"
+							autocapitalize="none"
+							autocorrect="off"
+							spellcheck="false"
+							maxlength="254"
+							required
+							aria-required="true"
+							:aria-invalid="hasError"
+							aria-describedby="login-error"
 							:placeholder="t('form.placeholder.email')"
 						>
 						<NuxtIcon name="times" class="error--icon" />
@@ -27,19 +36,35 @@
 						</label>
 						<input
 							id="password"
-							v-model.trim="form.password.value"
+							v-model="password"
 							type="password"
 							name="password"
+							autocomplete="current-password"
+							maxlength="1024"
+							required
+							aria-required="true"
+							:aria-invalid="hasError"
+							aria-describedby="login-error"
 							:placeholder="t('form.placeholder.password')"
 						>
 						<NuxtIcon name="times" class="error--icon" />
 					</div>
-					<p class="text-sm text-red-500 -bottom-6 w-full error--message">
-						{{ t('form.invalid.message') }}
+					<p
+						id="login-error"
+						role="alert"
+						aria-live="assertive"
+						aria-atomic="true"
+						class="text-sm text-red-500 -bottom-6 w-full error--message"
+					>
+						{{ errorMessage }}
 					</p>
 				</div>
 				<div class="flex w-full">
-					<BaseButton :disabled="isLoading" :show-icon="isLoading" @click="onSubmit">{{
+					<BaseButton
+						:disabled="isLoading || isLoginLocked"
+						:show-icon="isLoading"
+						@click="onSubmit"
+					>{{
 						t('form.submit.button')
 					}}</BaseButton>
 				</div>
@@ -50,22 +75,84 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
+import { sanitizePassword, sanitizeUsername } from '@/helpers/string'
 import { storeToRefs } from 'pinia'
-import { ref, onBeforeMount } from 'vue'
+import { ref, computed, watch, onBeforeMount, onBeforeUnmount } from 'vue'
 import { navigateTo } from 'nuxt/app'
 import { useI18n } from 'vue-i18n'
 
 const authStore = useAuthStore()
-const { hasError, isAuth, lastPage, isExpired } = storeToRefs(authStore)
+const { hasError, isAuth, lastPage, isExpired, loginLockedUntil } = storeToRefs(authStore)
 const isLoading = ref(false)
+const now = ref(Date.now())
 const form = {
 	username: ref(''),
 	password: ref(''),
 }
+const username = computed({
+	get: () => form.username.value,
+	set: (value: string) => {
+		form.username.value = sanitizeUsername(value)
+	},
+})
+const password = computed({
+	get: () => form.password.value,
+	set: (value: string) => {
+		form.password.value = sanitizePassword(value)
+	},
+})
+
+let lockoutTimer: ReturnType<typeof setInterval> | undefined
 
 const { t } = useI18n({
 	useScope: 'local',
 })
+
+const lockoutRemaining = computed(() => {
+	if (loginLockedUntil.value === null) {
+		return 0
+	}
+	return Math.max(0, Math.ceil((loginLockedUntil.value - now.value) / 1000))
+})
+const isLoginLocked = computed(() => lockoutRemaining.value > 0)
+const errorMessage = computed(() => {
+	if (!hasError.value) {
+		return ''
+	}
+	switch (authStore.error.code) {
+		case 'too_many_attempts':
+			return t('form.lockout.message', { seconds: lockoutRemaining.value })
+		case 'empty_fields':
+			return t('form.required.message')
+		default:
+			return t('form.invalid.message')
+	}
+})
+
+function stopLockoutTimer(): void {
+	if (lockoutTimer !== undefined) {
+		clearInterval(lockoutTimer)
+		lockoutTimer = undefined
+	}
+}
+
+watch(
+	isLoginLocked,
+	(locked) => {
+		if (locked && lockoutTimer === undefined) {
+			lockoutTimer = setInterval(() => {
+				now.value = Date.now()
+			}, 1000)
+		} else if (!locked) {
+			stopLockoutTimer()
+			if (authStore.error.code === 'too_many_attempts') {
+				authStore.setError()
+			}
+		}
+	},
+	{ immediate: true },
+)
+onBeforeUnmount(stopLockoutTimer)
 
 onBeforeMount(() => {
 	if (isAuth.value && isExpired.value) {
@@ -83,12 +170,22 @@ function goForward(): void {
 	navigateTo(lastPage.value ?? '/')
 }
 async function onSubmit(): Promise<void> {
+	if (isLoading.value || isLoginLocked.value) {
+		return
+	}
 	const data = new FormData()
-	data.append('username', form.username.value)
-	data.append('password', form.password.value)
+	data.append('username', sanitizeUsername(form.username.value))
+	data.append('password', sanitizePassword(form.password.value))
 	isLoading.value = true
-	await authStore.login(data)
-	isLoading.value = false
+	try {
+		await authStore.login(data)
+		if (['invalid_credentials', 'too_many_attempts'].includes(authStore.error.code ?? '')) {
+			form.password.value = ''
+		}
+	} finally {
+		isLoading.value = false
+		now.value = Date.now()
+	}
 }
 </script>
 
@@ -142,14 +239,18 @@ async function onSubmit(): Promise<void> {
 		"form.title": "Login To Your Account",
 		"form.placeholder.email": "Your email",
 		"form.placeholder.password": "Your password",
-		"form.invalid.message": "Invalid Credentials",
+		"form.invalid.message": "Invalid username or password",
+		"form.required.message": "Please enter your username and password",
+		"form.lockout.message": "Too many failed attempts. Try again in {seconds}s",
 		"form.submit.button": "Login"
 	},
 	"pt-BR": {
 		"form.title": "Entre com seu acesso",
 		"form.placeholder.email": "Email",
 		"form.placeholder.password": "Senha",
-		"form.invalid.message": "Credenciais Invalidas",
+		"form.invalid.message": "Usuário ou senha inválidos",
+		"form.required.message": "Informe seu usuário e senha",
+		"form.lockout.message": "Muitas tentativas. Tente novamente em {seconds}s",
 		"form.submit.button": "Entrar"
 	}
 }
