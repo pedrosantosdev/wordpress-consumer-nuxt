@@ -22,10 +22,12 @@ export async function useBaseFetch<T = unknown, K = unknown>(
 		baseURL: useRuntimeConfig().public.baseUrl,
 		...options,
 		async onRequest({ options }) {
-			if (authStore.isExpired && url != 'login' && url != 'refresh' && !authStore.onRequest) {
+			if (authStore.isExpired && url != 'login' && url != 'refresh') {
 				const token = await authStore.credentialRefreshToken()
 				if (!token) {
-					authStore.logout()
+					if (authStore.isAuth) {
+						authStore.logout()
+					}
 					return
 				}
 				options.headers = {
