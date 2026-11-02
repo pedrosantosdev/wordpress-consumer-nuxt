@@ -14,36 +14,36 @@
 	"devDependencies": {
 		"@nuxt/eslint": "^1.17.0",
 		"@nuxt/test-utils": "^3.23.0",
-		"@nuxtjs/color-mode": "^4.0.1",
+		"@nuxtjs/color-mode": "^4.1.0",
 		"@nuxtjs/device": "^4.0.0",
 		"@nuxtjs/i18n": "^10.6.0",
 		"@nuxtjs/tailwindcss": "^6.14.0",
 		"@pinia-plugin-persistedstate/nuxt": "^1.2.1",
-		"@pinia/testing": "^2.0.1",
+		"@pinia/testing": "^2.0.2",
 		"@testing-library/vue": "^8.1.0",
-		"@types/sanitize-html": "^2.16.1",
+		"@types/sanitize-html": "^2.16.2",
 		"@vite-pwa/nuxt": "^1.1.1",
-		"@vitejs/plugin-vue": "^6.0.8",
-		"@vue/test-utils": "^2.4.11",
-		"@vueuse/nuxt": "^14.4.0",
-		"eslint": "^10.0.0",
-		"happy-dom": "^20.11.6",
-		"nuxt": "^4.0.0",
+		"@vitejs/plugin-vue": "^6.0.10",
+		"@vue/test-utils": "^2.5.1",
+		"@vueuse/nuxt": "^15.0.0",
+		"eslint": "^10.14.0",
+		"happy-dom": "^21.0.4",
+		"nuxt": "^4.6.3",
 		"nuxt-icons": "^4.0.0",
-		"prettier": "^3.9.6",
-		"sass": "^1.103.0",
-		"typescript": "^6.0.0",
+		"prettier": "^3.9.10",
+		"sass": "^1.107.1",
+		"typescript": "^6.0.3",
 		"unplugin-vue-components": "^32.1.0",
-		"vitest": "^5.0.0"
+		"vitest": "^5.0.5"
 	},
 	"dependencies": {
-		"@pinia/nuxt": "^1.0.2",
-		"pinia": "^4.0.3",
-		"sanitize-html": "^2.17.7",
+		"@pinia/nuxt": "^1.0.3",
+		"pinia": "^4.1.0",
+		"sanitize-html": "^2.18.1",
 		"vue-draggable-plus": "^0.6.1"
 	},
 	"engines": {
-		"node": ">=20.19.0"
+		"node": ">=26.13.0"
 	},
-	"packageManager": "yarn@4.18.0"
+	"packageManager": "yarn@4.18.1"
 }
