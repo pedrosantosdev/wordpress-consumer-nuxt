@@ -5151,6 +5151,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitejs/plugin-vue@npm:^6.0.11":
+  version: 6.0.11
+  resolution: "@vitejs/plugin-vue@npm:6.0.11"
+  dependencies:
+    "@rolldown/pluginutils": "npm:^1.0.1"
+  peerDependencies:
+    vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+    vue: ^3.2.25 || ^3.6.0-rc.15
+  checksum: 10c0/4d9ff0e2c56ebd8e20916feccc1f97f2973d46d02d98fdeb2d9511c2cf48932bd0dbdcbe8914359718347e1494a524f4d04af55e004d7be360de6e768a91d25b
+  languageName: node
+  linkType: hard
+
 "@vitest/mocker@npm:5.1.0":
   version: 5.1.0
   resolution: "@vitest/mocker@npm:5.1.0"
@@ -12460,7 +12472,7 @@ __metadata:
     "@testing-library/vue": "npm:^8.1.0"
     "@types/sanitize-html": "npm:^2.16.2"
     "@vite-pwa/nuxt": "npm:^1.1.1"
-    "@vitejs/plugin-vue": "npm:^6.0.10"
+    "@vitejs/plugin-vue": "npm:^6.0.11"
     "@vue/test-utils": "npm:^2.5.1"
     "@vueuse/nuxt": "npm:^15.0.0"
     eslint: "npm:^10.14.0"
