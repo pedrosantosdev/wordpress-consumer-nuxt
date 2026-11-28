@@ -3121,7 +3121,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rolldown/pluginutils@npm:^1.1.0":
+"@rolldown/pluginutils@npm:^1.1.1":
   version: 1.1.1
   resolution: "@rolldown/pluginutils@npm:1.1.1"
   checksum: 10c0/ee35ab757a5b6cc296a13abfd3b1f998ef141a6bf302f2d25eee53ab9cb1aea265bea0d55495664f02e91c38c3995c79773ea8e14213089d9c31c1821997b606
@@ -3854,9 +3854,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@unplugin-pwa/core@npm:0.0.8, @unplugin-pwa/core@npm:^0.0.8":
-  version: 0.0.8
-  resolution: "@unplugin-pwa/core@npm:0.0.8"
+"@unplugin-pwa/core@npm:0.0.10, @unplugin-pwa/core@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "@unplugin-pwa/core@npm:0.0.10"
   dependencies:
     "@vite-pwa/workbox-build": "npm:^8.0.15"
     "@vite-pwa/workbox-window": "npm:^8.0.15"
@@ -3872,24 +3872,24 @@ __metadata:
       optional: true
     vite:
       optional: true
-  checksum: 10c0/45a2b29bf780fa6760b64744b93879a8f50cd4ca52e955163cf592817f3804126eb73c080119843be6e43876058a330f7ffb8202fbb848af56f892da8a46bef2
+  checksum: 10c0/a09ed318aa2741a6e4978df390e83715794e1a315b76e1b3e3a02554ad85f08f106f506f4a45679a6086c11ac04632cf397fe8ba7a9eb78c6568b8a275b77275
   languageName: node
   linkType: hard
 
-"@unplugin-pwa/inspector@npm:0.0.8":
-  version: 0.0.8
-  resolution: "@unplugin-pwa/inspector@npm:0.0.8"
-  checksum: 10c0/1f4b596ab804f668e78c0cb28bdbd43161fe063f96a9df42f9e9a78fdcbc8fdf7000e955461fe4156f2e62b53589414c2bc881f8ec2249ac53e0ae0bb1b3850e
+"@unplugin-pwa/inspector@npm:0.0.10":
+  version: 0.0.10
+  resolution: "@unplugin-pwa/inspector@npm:0.0.10"
+  checksum: 10c0/69214ebdc0981088a4447cf6211b16b6d8ad36c1246b747cc1f9ea2f6cf9e8bacebc5338467db7701d4c91593ea9e5f781ec03652962a6e06a7240c28659e6d3
   languageName: node
   linkType: hard
 
-"@unplugin-pwa/vite@npm:^0.0.8":
-  version: 0.0.8
-  resolution: "@unplugin-pwa/vite@npm:0.0.8"
+"@unplugin-pwa/vite@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "@unplugin-pwa/vite@npm:0.0.10"
   dependencies:
-    "@rolldown/pluginutils": "npm:^1.1.0"
-    "@unplugin-pwa/core": "npm:0.0.8"
-    "@unplugin-pwa/inspector": "npm:0.0.8"
+    "@rolldown/pluginutils": "npm:^1.1.1"
+    "@unplugin-pwa/core": "npm:0.0.10"
+    "@unplugin-pwa/inspector": "npm:0.0.10"
     "@vite-pwa/workbox-build": "npm:^8.0.15"
     "@vite-pwa/workbox-swkit": "npm:^8.0.15"
     "@vite-pwa/workbox-window": "npm:^8.0.15"
@@ -3907,7 +3907,7 @@ __metadata:
       optional: true
     vite:
       optional: true
-  checksum: 10c0/b5a6a12609eba7861e073a82689759ed4b4a7c1275d53aefe9cb8d2fc3dd02774207ebb5a0026a4e741b3dd5f6805603d810299cf23ec9bb9690016fbf57e68c
+  checksum: 10c0/e4159719b2899b9d8539886db6f9ada374bfac4326b2a7c0b97a16a30fbf39b5e3a5aa16c20ec0dd6df29af8b2b4c299aeb2f929b5b870b39f2746fc0f49423f
   languageName: node
   linkType: hard
 
@@ -4091,25 +4091,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vite-pwa/nuxt-core@npm:2.0.4":
-  version: 2.0.4
-  resolution: "@vite-pwa/nuxt-core@npm:2.0.4"
+"@vite-pwa/nuxt-core@npm:2.0.5":
+  version: 2.0.5
+  resolution: "@vite-pwa/nuxt-core@npm:2.0.5"
   dependencies:
-    "@unplugin-pwa/core": "npm:^0.0.8"
+    "@unplugin-pwa/core": "npm:^0.0.10"
     "@vite-pwa/workbox-build": "npm:^8.0.15"
-  checksum: 10c0/dcfc182937563a81b72478e5adb0580ee91dc709036ca7960ed27120725456d1558da0ec474ca7a52d965d83ec7314e40e72c7b4cf68a68930df637065be8d0f
+  checksum: 10c0/2651cdcd1d28c24b688ccc6823e4ff346c4b81e4d92cfefd0d902eddd6e0e58f187408dd6c0aad599210614025f198ae5383385999060114f45e3e839ebb1a22
   languageName: node
   linkType: hard
 
-"@vite-pwa/nuxt-vite@npm:2.0.4":
-  version: 2.0.4
-  resolution: "@vite-pwa/nuxt-vite@npm:2.0.4"
+"@vite-pwa/nuxt-vite@npm:2.0.5":
+  version: 2.0.5
+  resolution: "@vite-pwa/nuxt-vite@npm:2.0.5"
   dependencies:
-    "@nuxt/kit": "npm:^4.6.4"
-    "@rolldown/pluginutils": "npm:^1.1.0"
-    "@unplugin-pwa/core": "npm:^0.0.8"
-    "@unplugin-pwa/vite": "npm:^0.0.8"
-    "@vite-pwa/nuxt-core": "npm:2.0.4"
+    "@nuxt/kit": "npm:^4.7.0"
+    "@rolldown/pluginutils": "npm:^1.1.1"
+    "@unplugin-pwa/core": "npm:^0.0.10"
+    "@unplugin-pwa/vite": "npm:^0.0.10"
+    "@vite-pwa/nuxt-core": "npm:2.0.5"
     "@vite-pwa/workbox-build": "npm:^8.0.15"
     verkit: "npm:^0.5.0"
   peerDependencies:
@@ -4123,18 +4123,18 @@ __metadata:
       optional: true
     rolldown:
       optional: true
-  checksum: 10c0/40210c7885c88a8a4dd08f44f0351cee0ccbe4dd14733e68415c050e456fa9703e72e1ff64e19d2503e7a36eb5c761c9bc478114a15ed1f9e233013311ea0793
+  checksum: 10c0/62f3449f62d0644c628f3d94c4d48396f8daf970e294e455d36d48a1fddf7a2cf01dd0e71d1a16b6624779ac149efb7433bdadfaee09498281b4b38f2b6b2193
   languageName: node
   linkType: hard
 
-"@vite-pwa/nuxt@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "@vite-pwa/nuxt@npm:2.0.4"
+"@vite-pwa/nuxt@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "@vite-pwa/nuxt@npm:2.0.5"
   dependencies:
-    "@nuxt/kit": "npm:^4.6.4"
-    "@unplugin-pwa/core": "npm:^0.0.8"
-    "@vite-pwa/nuxt-core": "npm:2.0.4"
-    "@vite-pwa/nuxt-vite": "npm:2.0.4"
+    "@nuxt/kit": "npm:^4.7.0"
+    "@unplugin-pwa/core": "npm:^0.0.10"
+    "@vite-pwa/nuxt-core": "npm:2.0.5"
+    "@vite-pwa/nuxt-vite": "npm:2.0.5"
     "@vite-pwa/workbox-build": "npm:^8.0.15"
     defu: "npm:^6.1.7"
     verkit: "npm:^0.5.0"
@@ -4149,7 +4149,7 @@ __metadata:
       optional: true
     rolldown:
       optional: true
-  checksum: 10c0/091b0e32ae9579879e011df6312d57b7d0ad3cc873876254f8ffaa41145f07a041e4ec99246d88f1e896da676cf165fdf8768e54d4dfc06c21da00e5191f2145
+  checksum: 10c0/76eb3fb17544751a9ed549965cc8a2d87b3bce163595b7becff17dd2ac5b59c0f76b422a816768995dab4b9ce7aefd294d2a24f534d6f58cc6e031173e603d57
   languageName: node
   linkType: hard
 
@@ -10792,7 +10792,7 @@ __metadata:
     "@pinia/testing": "npm:^2.0.2"
     "@testing-library/vue": "npm:^8.1.0"
     "@types/sanitize-html": "npm:^2.16.2"
-    "@vite-pwa/nuxt": "npm:^2.0.4"
+    "@vite-pwa/nuxt": "npm:^2.0.5"
     "@vitejs/plugin-vue": "npm:^6.0.11"
     "@vue/test-utils": "npm:^2.6.0"
     "@vueuse/nuxt": "npm:^15.1.0"
